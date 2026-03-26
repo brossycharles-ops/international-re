@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | International RE</title>
+  <meta name="description" content="Travel photos from 30+ countries — the coastlines, volcanoes, ancient ruins, and hidden gems that fuel our global perspective on real estate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <span class="logo-icon">&#9670;</span>
+        International <span class="logo-accent">RE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#markets">Markets</a></li>
+        <li><a href="/#newsletters">Newsletters</a></li>
+        <li><a href="gallery.html" class="active-link">Gallery</a></li>
+        <li><a href="/#travel-map">Map</a></li>
+        <li><a href="/#subscribe" class="nav-cta">Subscribe</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Gallery Page -->
+  <section class="gallery-page">
+    <div class="container">
+      <div class="gallery-page-header">
+        <p class="section-label">On The Ground</p>
+        <h1>Exploring the World</h1>
+        <p class="section-desc">Real photos from our travels across 30+ countries — the coastlines, volcanoes, ancient ruins, and hidden gems that fuel our global perspective on real estate.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="americas">Americas</button>
+        <button class="filter-btn" data-filter="europe">Europe</button>
+        <button class="filter-btn" data-filter="middle-east">Middle East</button>
+      </div>
+
+      <div class="gallery-masonry">
+        <div class="gallery-item gallery-tall" data-region="middle-east">
+          <img src="images/gallery/petra-treasury.jpg" alt="The Treasury at Petra, Jordan" loading="lazy">
+          <div class="gallery-caption">Petra, Jordan</div>
+        </div>
+        <div class="gallery-item gallery-wide" data-region="europe">
+          <img src="images/gallery/alps-summit.jpg" alt="Alpine summit panorama" loading="lazy">
+          <div class="gallery-caption">Alpine Summit, Austria</div>
+        </div>
+        <div class="gallery-item" data-region="americas">
+          <img src="images/gallery/volcano-crater.jpg" alt="Volcanic crater with turquoise lake" loading="lazy">
+          <div class="gallery-caption">Volcano Crater, Costa Rica</div>
+        </div>
+        <div class="gallery-item" data-region="americas">
+          <img src="images/gallery/beach-sunset.jpg" alt="Pacific beach sunset" loading="lazy">
+          <div class="gallery-caption">Pacific Sunset, El Salvador</div>
+        </div>
+        <div class="gallery-item gallery-wide" data-region="europe">
+          <img src="images/gallery/madeira-coast.jpg" alt="Dramatic cliffs meeting deep blue ocean" loading="lazy">
+          <div class="gallery-caption">Madeira Coast, Portugal</div>
+        </div>
+        <div class="gallery-item" data-region="middle-east">
+          <img src="images/gallery/wadi-rum-explorer.jpg" alt="Explorer walking through Wadi Rum desert canyon" loading="lazy">
+          <div class="gallery-caption">Wadi Rum, Jordan</div>
+        </div>
+        <div class="gallery-item gallery-tall" data-region="europe">
+          <img src="images/gallery/sagrada-familia.jpg" alt="Sagrada Familia cathedral" loading="lazy">
+          <div class="gallery-caption">Sagrada Familia, Spain</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/budapest-parliament.jpg" alt="Hungarian Parliament building" loading="lazy">
+          <div class="gallery-caption">Parliament, Budapest</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/alps-lake.jpg" alt="Alpine lake with mountain backdrop" loading="lazy">
+          <div class="gallery-caption">Lake District, Austria</div>
+        </div>
+        <div class="gallery-item" data-region="americas">
+          <img src="images/gallery/nicaragua-sunset.jpg" alt="Tropical sunset with palm trees" loading="lazy">
+          <div class="gallery-caption">Sunset, Nicaragua</div>
+        </div>
+        <div class="gallery-item gallery-wide" data-region="europe">
+          <img src="images/gallery/albania-beach.jpg" alt="Crystal clear waters and dramatic cliffs" loading="lazy">
+          <div class="gallery-caption">Albanian Riviera, Albania</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/milan-christmas.jpg" alt="Milan cathedral at Christmas" loading="lazy">
+          <div class="gallery-caption">Duomo, Milan</div>
+        </div>
+        <div class="gallery-item" data-region="americas">
+          <img src="images/gallery/chile-coast.jpg" alt="Rocky Chilean coastline" loading="lazy">
+          <div class="gallery-caption">Pacific Coast, Chile</div>
+        </div>
+        <div class="gallery-item gallery-tall" data-region="europe">
+          <img src="images/gallery/cathedral-interior.jpg" alt="Gothic cathedral interior" loading="lazy">
+          <div class="gallery-caption">Cathedral, Belgium</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/portugal-sunset.jpg" alt="Golden sunset over the ocean" loading="lazy">
+          <div class="gallery-caption">Atlantic Sunset, Portugal</div>
+        </div>
+        <div class="gallery-item" data-region="americas">
+          <img src="images/gallery/peru-palace.jpg" alt="Government Palace in Lima Peru" loading="lazy">
+          <div class="gallery-caption">Plaza de Armas, Peru</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/alps-cows.jpg" alt="Hiking with cows in the Alps" loading="lazy">
+          <div class="gallery-caption">Alpine Trails, Austria</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/bruges-canal.jpg" alt="Bruges canal boat ride" loading="lazy">
+          <div class="gallery-caption">Canal Tour, Bruges</div>
+        </div>
+        <div class="gallery-item gallery-wide" data-region="middle-east">
+          <img src="images/gallery/petra-tombs.jpg" alt="Ancient rock-cut tombs at Petra" loading="lazy">
+          <div class="gallery-caption">Royal Tombs, Petra</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/berlin-cathedral.jpg" alt="Berlin Cathedral" loading="lazy">
+          <div class="gallery-caption">Berlin Cathedral, Germany</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/denmark-castle.jpg" alt="Danish castle" loading="lazy">
+          <div class="gallery-caption">Rosenborg Castle, Denmark</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/uk-abbey.jpg" alt="Whitby Abbey ruins" loading="lazy">
+          <div class="gallery-caption">Abbey Ruins, UK</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/budapest-parliament2.jpg" alt="Budapest Parliament at night" loading="lazy">
+          <div class="gallery-caption">Parliament Night, Budapest</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/budapest-cathedral.jpg" alt="St Stephen's Basilica interior" loading="lazy">
+          <div class="gallery-caption">St. Stephen's, Budapest</div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/mountain-gorge.jpg" alt="Mountain gorge" loading="lazy">
+          <div class="gallery-caption">Mountain Gorge, Albania</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-icon">&#9670;</span>
+            International <span class="logo-accent">RE</span>
+          </a>
+          <p>Your weekly guide to Latin American real estate markets. Expert insights, market data, and investment opportunities.</p>
+          <p class="footer-domain">internationalre.org</p>
+        </div>
+        <div class="footer-links">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="/#costa-rica">Costa Rica</a></li>
+            <li><a href="/#nicaragua">Nicaragua</a></li>
+            <li><a href="/#argentina">Argentina</a></li>
+            <li><a href="/#chile">Chile</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/#markets">About</a></li>
+            <li><a href="/#subscribe">Newsletter</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter / X</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 International RE — internationalre.org. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.querySelector('.nav-links');
+    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // Gallery Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.region === filter) {
+            item.style.display = '';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 50);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            setTimeout(() => { item.style.display = 'none'; }, 300);
+          }
+        });
+      });
+    });
+
+    // Fade in gallery items on load
+    galleryItems.forEach((item, i) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+      }, i * 60);
+    });
+  </script>
+</body>
+</html>
