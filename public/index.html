@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
 
@@ -21,10 +22,9 @@
       </a>
       <ul class="nav-links">
         <li><a href="#markets">Markets</a></li>
-        <li><a href="#costa-rica">Costa Rica</a></li>
-        <li><a href="#nicaragua">Nicaragua</a></li>
-        <li><a href="#argentina">Argentina</a></li>
-        <li><a href="#chile">Chile</a></li>
+        <li><a href="#newsletters">Newsletters</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#travel-map">Map</a></li>
         <li><a href="#subscribe" class="nav-cta">Subscribe</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -385,6 +385,112 @@
     </div>
   </section>
 
+  <!-- Newsletter Archive Section -->
+  <section class="newsletters-section" id="newsletters">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Newsletter</p>
+        <h2>Weekly Newsletters<br><span class="highlight">Coming June 2026</span></h2>
+        <p class="section-desc">We're preparing in-depth weekly newsletters covering market trends, investment opportunities, legal updates, and on-the-ground insights across Latin America. Join the list now to be first to receive them.</p>
+      </div>
+      <div class="newsletter-coming">
+        <div class="newsletter-preview-grid">
+          <div class="newsletter-preview-card">
+            <div class="newsletter-issue-badge">Issue #1</div>
+            <h4>Costa Rica Market Report</h4>
+            <p class="newsletter-date">June 2026</p>
+            <p>Deep dive into Guanacaste property trends, new developments, and expat hotspots.</p>
+            <span class="newsletter-tag">Coming Soon</span>
+          </div>
+          <div class="newsletter-preview-card">
+            <div class="newsletter-issue-badge">Issue #2</div>
+            <h4>Nicaragua Investment Guide</h4>
+            <p class="newsletter-date">June 2026</p>
+            <p>San Juan del Sur & Granada — where to buy, what to avoid, and legal essentials.</p>
+            <span class="newsletter-tag">Coming Soon</span>
+          </div>
+          <div class="newsletter-preview-card">
+            <div class="newsletter-issue-badge">Issue #3</div>
+            <h4>Argentina Dollar Deals</h4>
+            <p class="newsletter-date">June 2026</p>
+            <p>Buenos Aires neighborhoods with the best USD value and rental yield potential.</p>
+            <span class="newsletter-tag">Coming Soon</span>
+          </div>
+          <div class="newsletter-preview-card">
+            <div class="newsletter-issue-badge">Issue #4</div>
+            <h4>Chile Market Outlook</h4>
+            <p class="newsletter-date">July 2026</p>
+            <p>Santiago vs. Lake District — urban condos versus mountain retreats.</p>
+            <span class="newsletter-tag">Coming Soon</span>
+          </div>
+        </div>
+        <div class="newsletter-cta">
+          <p>&#128233; Join the list now and be the first to receive our weekly newsletter when it launches.</p>
+          <a href="#subscribe" class="btn btn-primary">Join the Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">On The Ground</p>
+        <h2>Exploring Latin America</h2>
+        <p class="section-desc">Real photos from our travels across the region — the coastlines, volcanoes, sunsets, and hidden gems that make Latin American real estate so compelling.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-wide">
+          <img src="images/coastal-panorama.jpg" alt="Coastal panorama with lush green hills and turquoise ocean">
+          <div class="gallery-caption">Caribbean Coastline — Untouched beachfront land</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/volcano-crater.jpg" alt="Volcanic crater with turquoise sulfur lake">
+          <div class="gallery-caption">Active Volcano Crater — Raw natural beauty</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/beach-sunset.jpg" alt="Beach sunset with people and palapa umbrellas">
+          <div class="gallery-caption">Pacific Coast Sunset — Beach town living</div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/mountain-terrace.jpg" alt="Mountain terrace with hammock net overlooking jungle">
+          <div class="gallery-caption">Cloud Forest Retreat — Eco-luxury living</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Travel Map -->
+  <section class="map-section" id="travel-map">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Our Reach</p>
+        <h2>Where We've Been &amp;<br>Where We're Going</h2>
+        <p class="section-desc">Our founder has explored 30+ countries across 4 continents — building a global perspective on real estate and lifestyle investments.</p>
+      </div>
+      <div class="map-legend">
+        <span class="legend-item"><span class="legend-dot visited"></span> Visited</span>
+        <span class="legend-item"><span class="legend-dot planned"></span> Planned</span>
+      </div>
+      <div class="map-container" id="worldMap"></div>
+      <div class="map-stats">
+        <div class="map-stat">
+          <span class="map-stat-num">32</span>
+          <span class="map-stat-label">Countries Visited</span>
+        </div>
+        <div class="map-stat">
+          <span class="map-stat-num">6</span>
+          <span class="map-stat-label">Countries Planned</span>
+        </div>
+        <div class="map-stat">
+          <span class="map-stat-num">4</span>
+          <span class="map-stat-label">Continents Explored</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Newsletter Signup -->
   <section class="subscribe-section" id="subscribe">
     <div class="subscribe-bg">
@@ -486,7 +592,7 @@
     <div class="popup">
       <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
       <div class="popup-image">
-        <img src="https://images.unsplash.com/photo-1499793983394-e58fc2791dae?w=600&q=80" alt="Beautiful Latin American beachfront property">
+        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Beautiful Latin American beachfront property">
       </div>
       <div class="popup-body">
         <span class="popup-badge">WEEKLY NEWSLETTER</span>
@@ -513,6 +619,8 @@
     </div>
   </div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
+  <script src="map.js"></script>
 </body>
 </html>
