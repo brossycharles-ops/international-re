@@ -189,3 +189,103 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ===== Sticky CTA Bar =====
+const stickyCta = document.getElementById('stickyCta');
+const heroSection = document.querySelector('.hero');
+const subscribeSection = document.getElementById('subscribe');
+
+if (stickyCta) {
+  window.addEventListener('scroll', () => {
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    const subscribeTop = subscribeSection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (heroBottom < 0 && subscribeTop > windowHeight) {
+      stickyCta.classList.add('visible');
+    } else {
+      stickyCta.classList.remove('visible');
+    }
+  });
+
+  // Hide sticky CTA when subscribe button is clicked
+  stickyCta.querySelector('a').addEventListener('click', () => {
+    stickyCta.classList.remove('visible');
+  });
+}
+
+// ===== Exit Intent Popup =====
+let exitIntentShown = false;
+document.addEventListener('mouseout', (e) => {
+  if (e.clientY < 5 && !exitIntentShown && !sessionStorage.getItem('popupShown') && !localStorage.getItem('subscribed')) {
+    popupOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    sessionStorage.setItem('popupShown', 'true');
+    exitIntentShown = true;
+  }
+});
+
+// ===== Parallax Hero =====
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const heroImg = document.querySelector('.hero-img');
+  if (heroImg && scrolled < window.innerHeight) {
+    heroImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+  }
+});
+
+// ===== Animated Counter for Stats =====
+const statNums = document.querySelectorAll('.stat-num');
+let statsAnimated = false;
+
+function animateStats() {
+  if (statsAnimated) return;
+  const heroStats = document.querySelector('.hero-stats');
+  if (!heroStats) return;
+
+  const rect = heroStats.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    statsAnimated = true;
+    statNums.forEach(el => {
+      const text = el.textContent;
+      const num = parseInt(text);
+      if (isNaN(num)) return;
+
+      const suffix = text.replace(num.toString(), '');
+      let current = 0;
+      const step = Math.ceil(num / 40);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= num) {
+          current = num;
+          clearInterval(timer);
+        }
+        el.textContent = current + suffix;
+      }, 30);
+    });
+  }
+}
+
+window.addEventListener('scroll', animateStats);
+animateStats();
+
+// ===== Gallery items fade in on scroll =====
+const galleryItems = document.querySelectorAll('.gallery-item');
+const galleryObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }, index * 80);
+      galleryObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+galleryItems.forEach(item => {
+  item.style.opacity = '0';
+  item.style.transform = 'translateY(30px)';
+  item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  galleryObserver.observe(item);
+});

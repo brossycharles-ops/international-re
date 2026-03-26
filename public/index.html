@@ -61,6 +61,16 @@
           <span class="stat-label">Free</span>
         </div>
       </div>
+      <div class="social-proof">
+        <div class="proof-avatars">
+          <div class="proof-avatar" style="background:#c9a84c;">C</div>
+          <div class="proof-avatar" style="background:#2563eb;">M</div>
+          <div class="proof-avatar" style="background:#059669;">A</div>
+          <div class="proof-avatar" style="background:#dc2626;">J</div>
+          <div class="proof-avatar" style="background:#7c3aed;">S</div>
+        </div>
+        <p>Join <strong>readers in 12+ countries</strong> getting weekly insights</p>
+      </div>
     </div>
     <div class="scroll-indicator">
       <span>Scroll to explore</span>
@@ -615,6 +625,9 @@
             <span class="btn-loading" style="display:none;">Subscribing...</span>
           </button>
           <p class="form-note">We respect your privacy. Unsubscribe anytime.</p>
+          <div class="form-guarantee">
+            <span>&#128274;</span> Your data is secure. We never share your email. Unsubscribe in one click.
+          </div>
         </form>
         <div id="successMessage" class="success-message" style="display:none;">
           <div class="success-icon">&#10003;</div>
@@ -624,6 +637,17 @@
       </div>
     </div>
   </section>
+
+  <!-- Sticky CTA Bar -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-text">
+        <strong>Free Weekly Newsletter</strong>
+        <span>Latin America real estate insights delivered to your inbox</span>
+      </div>
+      <a href="#subscribe" class="btn btn-primary sticky-cta-btn">Subscribe Free</a>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -676,12 +700,16 @@
     <div class="popup">
       <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
       <div class="popup-image">
-        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Beautiful Latin American beachfront property">
+        <img src="images/gallery/beach-sunset.jpg" alt="Beautiful Latin American beachfront property">
       </div>
       <div class="popup-body">
         <span class="popup-badge">WEEKLY NEWSLETTER</span>
         <h2>Get Our Free<br>Latin America<br>Real Estate Newsletter</h2>
         <p>Every week we deliver market trends, price data, legal updates, and expert insights across Costa Rica, Nicaragua, Argentina &amp; Chile — straight to your inbox.</p>
+        <div class="popup-urgency">
+          <span class="urgency-icon">&#9889;</span>
+          <span>Launching June 2026 — Early subscribers get exclusive content</span>
+        </div>
         <form id="popupForm" class="popup-form">
           <div class="popup-form-row">
             <input type="text" id="popupFirstName" placeholder="First Name" required>
