@@ -32,127 +32,159 @@
     </div>
   </nav>
 
+  <!-- Gallery Hero Banner -->
+  <div class="gallery-hero">
+    <img src="images/gallery/madeira-coast.jpg" alt="Travel photography" class="gallery-hero-img">
+    <div class="gallery-hero-overlay"></div>
+    <div class="gallery-hero-content">
+      <p class="section-label light">On The Ground</p>
+      <h1>Exploring the World</h1>
+      <p>30+ countries. 4 continents. Real photos from our travels.</p>
+    </div>
+  </div>
+
   <!-- Gallery Page -->
   <section class="gallery-page">
     <div class="container">
-      <div class="gallery-page-header">
-        <p class="section-label">On The Ground</p>
-        <h1>Exploring the World</h1>
-        <p class="section-desc">Real photos from our travels across 30+ countries — the coastlines, volcanoes, ancient ruins, and hidden gems that fuel our global perspective on real estate.</p>
-      </div>
 
       <!-- Filter Tabs -->
       <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="americas">Americas</button>
-        <button class="filter-btn" data-filter="europe">Europe</button>
-        <button class="filter-btn" data-filter="middle-east">Middle East</button>
+        <button class="filter-btn active" data-filter="all">All <span class="filter-count">25</span></button>
+        <button class="filter-btn" data-filter="americas">Americas <span class="filter-count">5</span></button>
+        <button class="filter-btn" data-filter="europe">Europe <span class="filter-count">17</span></button>
+        <button class="filter-btn" data-filter="middle-east">Middle East <span class="filter-count">3</span></button>
       </div>
 
-      <div class="gallery-masonry">
-        <div class="gallery-item gallery-tall" data-region="middle-east">
+      <div class="gallery-grid">
+        <!-- Row 1: Featured -->
+        <div class="gallery-item gallery-featured" data-region="middle-east">
           <img src="images/gallery/petra-treasury.jpg" alt="The Treasury at Petra, Jordan" loading="lazy">
-          <div class="gallery-caption">Petra, Jordan</div>
-        </div>
-        <div class="gallery-item gallery-wide" data-region="europe">
-          <img src="images/gallery/alps-summit.jpg" alt="Alpine summit panorama" loading="lazy">
-          <div class="gallery-caption">Alpine Summit, Austria</div>
+          <div class="gallery-caption"><span class="caption-location">Petra</span><span class="caption-country">Jordan</span></div>
         </div>
         <div class="gallery-item" data-region="americas">
           <img src="images/gallery/volcano-crater.jpg" alt="Volcanic crater with turquoise lake" loading="lazy">
-          <div class="gallery-caption">Volcano Crater, Costa Rica</div>
+          <div class="gallery-caption"><span class="caption-location">Volcano Crater</span><span class="caption-country">Costa Rica</span></div>
         </div>
         <div class="gallery-item" data-region="americas">
           <img src="images/gallery/beach-sunset.jpg" alt="Pacific beach sunset" loading="lazy">
-          <div class="gallery-caption">Pacific Sunset, El Salvador</div>
+          <div class="gallery-caption"><span class="caption-location">Pacific Sunset</span><span class="caption-country">El Salvador</span></div>
         </div>
-        <div class="gallery-item gallery-wide" data-region="europe">
-          <img src="images/gallery/madeira-coast.jpg" alt="Dramatic cliffs meeting deep blue ocean" loading="lazy">
-          <div class="gallery-caption">Madeira Coast, Portugal</div>
+
+        <!-- Row 2 -->
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/alps-summit.jpg" alt="Alpine summit panorama" loading="lazy">
+          <div class="gallery-caption"><span class="caption-location">Alpine Summit</span><span class="caption-country">Austria</span></div>
+        </div>
+        <div class="gallery-item gallery-featured" data-region="europe">
+          <img src="images/gallery/sagrada-familia.jpg" alt="Sagrada Familia cathedral" loading="lazy">
+          <div class="gallery-caption"><span class="caption-location">Sagrada Familia</span><span class="caption-country">Spain</span></div>
         </div>
         <div class="gallery-item" data-region="middle-east">
           <img src="images/gallery/wadi-rum-explorer.jpg" alt="Explorer walking through Wadi Rum desert canyon" loading="lazy">
-          <div class="gallery-caption">Wadi Rum, Jordan</div>
+          <div class="gallery-caption"><span class="caption-location">Wadi Rum</span><span class="caption-country">Jordan</span></div>
         </div>
-        <div class="gallery-item gallery-tall" data-region="europe">
-          <img src="images/gallery/sagrada-familia.jpg" alt="Sagrada Familia cathedral" loading="lazy">
-          <div class="gallery-caption">Sagrada Familia, Spain</div>
-        </div>
+
+        <!-- Row 3 -->
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/budapest-parliament.jpg" alt="Hungarian Parliament building" loading="lazy">
-          <div class="gallery-caption">Parliament, Budapest</div>
+          <div class="gallery-caption"><span class="caption-location">Parliament</span><span class="caption-country">Budapest</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/alps-lake.jpg" alt="Alpine lake with mountain backdrop" loading="lazy">
-          <div class="gallery-caption">Lake District, Austria</div>
+          <div class="gallery-caption"><span class="caption-location">Lake District</span><span class="caption-country">Austria</span></div>
         </div>
         <div class="gallery-item" data-region="americas">
           <img src="images/gallery/nicaragua-sunset.jpg" alt="Tropical sunset with palm trees" loading="lazy">
-          <div class="gallery-caption">Sunset, Nicaragua</div>
+          <div class="gallery-caption"><span class="caption-location">Sunset</span><span class="caption-country">Nicaragua</span></div>
         </div>
-        <div class="gallery-item gallery-wide" data-region="europe">
+
+        <!-- Row 4 -->
+        <div class="gallery-item" data-region="europe">
           <img src="images/gallery/albania-beach.jpg" alt="Crystal clear waters and dramatic cliffs" loading="lazy">
-          <div class="gallery-caption">Albanian Riviera, Albania</div>
+          <div class="gallery-caption"><span class="caption-location">Albanian Riviera</span><span class="caption-country">Albania</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/milan-christmas.jpg" alt="Milan cathedral at Christmas" loading="lazy">
-          <div class="gallery-caption">Duomo, Milan</div>
+          <div class="gallery-caption"><span class="caption-location">Duomo</span><span class="caption-country">Milan</span></div>
         </div>
-        <div class="gallery-item" data-region="americas">
+        <div class="gallery-item gallery-featured" data-region="americas">
           <img src="images/gallery/chile-coast.jpg" alt="Rocky Chilean coastline" loading="lazy">
-          <div class="gallery-caption">Pacific Coast, Chile</div>
+          <div class="gallery-caption"><span class="caption-location">Pacific Coast</span><span class="caption-country">Chile</span></div>
         </div>
-        <div class="gallery-item gallery-tall" data-region="europe">
+
+        <!-- Row 5 -->
+        <div class="gallery-item" data-region="europe">
           <img src="images/gallery/cathedral-interior.jpg" alt="Gothic cathedral interior" loading="lazy">
-          <div class="gallery-caption">Cathedral, Belgium</div>
+          <div class="gallery-caption"><span class="caption-location">Cathedral</span><span class="caption-country">Belgium</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/portugal-sunset.jpg" alt="Golden sunset over the ocean" loading="lazy">
-          <div class="gallery-caption">Atlantic Sunset, Portugal</div>
+          <div class="gallery-caption"><span class="caption-location">Atlantic Sunset</span><span class="caption-country">Portugal</span></div>
         </div>
         <div class="gallery-item" data-region="americas">
           <img src="images/gallery/peru-palace.jpg" alt="Government Palace in Lima Peru" loading="lazy">
-          <div class="gallery-caption">Plaza de Armas, Peru</div>
+          <div class="gallery-caption"><span class="caption-location">Plaza de Armas</span><span class="caption-country">Peru</span></div>
         </div>
+
+        <!-- Row 6 -->
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/alps-cows.jpg" alt="Hiking with cows in the Alps" loading="lazy">
-          <div class="gallery-caption">Alpine Trails, Austria</div>
+          <div class="gallery-caption"><span class="caption-location">Alpine Trails</span><span class="caption-country">Austria</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/bruges-canal.jpg" alt="Bruges canal boat ride" loading="lazy">
-          <div class="gallery-caption">Canal Tour, Bruges</div>
+          <div class="gallery-caption"><span class="caption-location">Canal Tour</span><span class="caption-country">Bruges</span></div>
         </div>
-        <div class="gallery-item gallery-wide" data-region="middle-east">
+        <div class="gallery-item" data-region="middle-east">
           <img src="images/gallery/petra-tombs.jpg" alt="Ancient rock-cut tombs at Petra" loading="lazy">
-          <div class="gallery-caption">Royal Tombs, Petra</div>
+          <div class="gallery-caption"><span class="caption-location">Royal Tombs</span><span class="caption-country">Petra</span></div>
         </div>
+
+        <!-- Row 7 -->
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/berlin-cathedral.jpg" alt="Berlin Cathedral" loading="lazy">
-          <div class="gallery-caption">Berlin Cathedral, Germany</div>
+          <div class="gallery-caption"><span class="caption-location">Berlin Cathedral</span><span class="caption-country">Germany</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/denmark-castle.jpg" alt="Danish castle" loading="lazy">
-          <div class="gallery-caption">Rosenborg Castle, Denmark</div>
+          <div class="gallery-caption"><span class="caption-location">Rosenborg Castle</span><span class="caption-country">Denmark</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/uk-abbey.jpg" alt="Whitby Abbey ruins" loading="lazy">
-          <div class="gallery-caption">Abbey Ruins, UK</div>
+          <div class="gallery-caption"><span class="caption-location">Abbey Ruins</span><span class="caption-country">United Kingdom</span></div>
         </div>
+
+        <!-- Row 8 -->
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/budapest-parliament2.jpg" alt="Budapest Parliament at night" loading="lazy">
-          <div class="gallery-caption">Parliament Night, Budapest</div>
+          <div class="gallery-caption"><span class="caption-location">Parliament Night</span><span class="caption-country">Budapest</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/budapest-cathedral.jpg" alt="St Stephen's Basilica interior" loading="lazy">
-          <div class="gallery-caption">St. Stephen's, Budapest</div>
+          <div class="gallery-caption"><span class="caption-location">St. Stephen's</span><span class="caption-country">Budapest</span></div>
         </div>
         <div class="gallery-item" data-region="europe">
           <img src="images/gallery/mountain-gorge.jpg" alt="Mountain gorge" loading="lazy">
-          <div class="gallery-caption">Mountain Gorge, Albania</div>
+          <div class="gallery-caption"><span class="caption-location">Mountain Gorge</span><span class="caption-country">Albania</span></div>
+        </div>
+        <div class="gallery-item" data-region="europe">
+          <img src="images/gallery/madeira-coast.jpg" alt="Dramatic coastal cliffs" loading="lazy">
+          <div class="gallery-caption"><span class="caption-location">Madeira Coast</span><span class="caption-country">Portugal</span></div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -235,15 +267,93 @@
       });
     });
 
-    // Fade in gallery items on load
+    // Fade in gallery items on scroll
+    const galleryObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0) scale(1)';
+          galleryObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
     galleryItems.forEach((item, i) => {
       item.style.opacity = '0';
       item.style.transform = 'translateY(20px)';
-      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      item.style.transitionDelay = `${(i % 6) * 0.08}s`;
+      galleryObserver.observe(item);
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+    let visibleItems = [];
+
+    function getVisibleItems() {
+      return [...document.querySelectorAll('.gallery-item')].filter(
+        item => item.style.display !== 'none'
+      );
+    }
+
+    function openLightbox(index) {
+      visibleItems = getVisibleItems();
+      currentIndex = index;
+      const item = visibleItems[currentIndex];
+      const img = item.querySelector('img');
+      const location = item.querySelector('.caption-location')?.textContent || '';
+      const country = item.querySelector('.caption-country')?.textContent || '';
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = location + (country ? ' — ' + country : '');
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(dir) {
+      visibleItems = getVisibleItems();
+      currentIndex = (currentIndex + dir + visibleItems.length) % visibleItems.length;
+      const item = visibleItems[currentIndex];
+      const img = item.querySelector('img');
+      const location = item.querySelector('.caption-location')?.textContent || '';
+      const country = item.querySelector('.caption-country')?.textContent || '';
+      lightboxImg.style.opacity = '0';
       setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateY(0)';
-      }, i * 60);
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = location + (country ? ' — ' + country : '');
+        lightboxImg.style.opacity = '1';
+      }, 200);
+    }
+
+    galleryItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        visibleItems = getVisibleItems();
+        const visibleIndex = visibleItems.indexOf(item);
+        openLightbox(visibleIndex >= 0 ? visibleIndex : 0);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(-1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); navigateLightbox(1); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
     });
   </script>
 </body>
