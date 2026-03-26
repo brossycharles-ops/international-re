@@ -1562,11 +1562,11 @@ a {
 
 /* ===== SOCIAL PROOF ===== */
 .social-proof {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-top: 48px;
+  margin: 48px auto 0;
   padding: 16px 28px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
@@ -1578,6 +1578,8 @@ a {
 }
 .proof-avatar {
   width: 32px;
+  min-width: 32px;
+  max-width: 32px;
   height: 32px;
   border-radius: 50%;
   border: 2px solid rgba(10,22,40,0.8);
@@ -1588,6 +1590,7 @@ a {
   font-size: 0.75rem;
   font-weight: 700;
   color: white;
+  flex-shrink: 0;
 }
 .proof-avatar:first-child {
   margin-left: 0;
