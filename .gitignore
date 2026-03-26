@@ -1,0 +1,4 @@
+node_modules/
+newsletter_subscribers.xlsx
+.DS_Store
+.env

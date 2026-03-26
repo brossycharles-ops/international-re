@@ -1,0 +1,15 @@
+{
+  "name": "international-re",
+  "version": "1.0.0",
+  "description": "International RE - Latin American Real Estate Newsletter & Market Insights",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "xlsx": "^0.18.5",
+    "body-parser": "^1.20.2"
+  }
+}
