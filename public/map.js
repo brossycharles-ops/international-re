@@ -2,8 +2,8 @@
 const mapContainer = document.getElementById('worldMap');
 if (mapContainer) {
   const map = L.map('worldMap', {
-    center: [25, 10],
-    zoom: 2.5,
+    center: [30, -20],
+    zoom: 2,
     minZoom: 2,
     maxZoom: 6,
     scrollWheelZoom: false,
