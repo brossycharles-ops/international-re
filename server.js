@@ -16,7 +16,6 @@ function initExcel() {
   if (!fs.existsSync(EXCEL_FILE)) {
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet([['First Name', 'Last Name', 'Email', 'Date Subscribed']]);
-    // Style the header row width
     ws['!cols'] = [{ wch: 20 }, { wch: 20 }, { wch: 35 }, { wch: 22 }];
     XLSX.utils.book_append_sheet(wb, ws, 'Subscribers');
     XLSX.writeFile(wb, EXCEL_FILE);
