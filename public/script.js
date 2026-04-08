@@ -121,9 +121,14 @@ popupForm.addEventListener('submit', async (e) => {
     if (response.ok) {
       popupForm.style.display = 'none';
       popupSuccess.style.display = 'block';
-      // Also mark that they subscribed so the main form knows
       localStorage.setItem('subscribed', 'true');
-      // Auto close after 3 seconds
+      // Pre-fill main form so user doesn't retype
+      const mainFirst = document.getElementById('firstName');
+      const mainLast = document.getElementById('lastName');
+      const mainEmail = document.getElementById('email');
+      if (mainFirst) mainFirst.value = firstName;
+      if (mainLast) mainLast.value = lastName;
+      if (mainEmail) mainEmail.value = email;
       setTimeout(closePopup, 3000);
     } else {
       alert(data.error || 'Something went wrong. Please try again.');
@@ -173,7 +178,6 @@ form.addEventListener('submit', async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      // Show success message
       form.style.display = 'none';
       successMessage.style.display = 'block';
       localStorage.setItem('subscribed', 'true');
