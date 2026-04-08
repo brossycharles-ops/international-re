@@ -5,6 +5,9 @@
 # Every task publishes directly to the live site — zero manual steps
 # ═══════════════════════════════════════════════════════════════
 
+# Ensure PATH includes Claude CLI and Node.js (LaunchAgents use minimal PATH)
+export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+
 SITE_URL="https://www.internationalre.org"
 PROJECT_DIR="$HOME/Desktop/my-project/Claude Newsletter"
 DATE=$(date +%Y-%m-%d)

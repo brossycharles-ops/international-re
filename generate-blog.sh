@@ -3,6 +3,9 @@
 # Runs via macOS LaunchAgent every Monday at 8am
 # Uses Claude Code CLI to research and write a new blog post
 
+# Ensure PATH includes Claude CLI and Node.js (LaunchAgents use minimal PATH)
+export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+
 cd ~/Desktop/my-project/Claude\ Newsletter
 
 claude --print "You are writing a new weekly blog post for the International RE website at $(pwd).
