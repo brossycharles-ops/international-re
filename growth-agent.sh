@@ -9,13 +9,14 @@ SITE_URL="https://www.internationalre.org"
 PROJECT_DIR="$HOME/Desktop/my-project/Claude Newsletter"
 DATE=$(date +%Y-%m-%d)
 DAY_OF_WEEK=$(date +%u)  # 1=Monday, 7=Sunday
+WEEK_OF_YEAR=$(date +%V)
 LOG_FILE="$PROJECT_DIR/growth-agent.log"
 
 cd "$PROJECT_DIR"
 
 echo "" >> "$LOG_FILE"
 echo "═══════════════════════════════════════════" >> "$LOG_FILE"
-echo "Growth Agent Run: $DATE (Day $DAY_OF_WEEK)" >> "$LOG_FILE"
+echo "Growth Agent Run: $DATE (Day $DAY_OF_WEEK, Week $WEEK_OF_YEAR)" >> "$LOG_FILE"
 echo "═══════════════════════════════════════════" >> "$LOG_FILE"
 
 # ──────────────────────────────────────────────
@@ -27,9 +28,36 @@ curl -s "https://www.bing.com/ping?sitemap=${SITE_URL}/sitemap.xml" > /dev/null 
 echo "  Google & Bing pinged." >> "$LOG_FILE"
 
 # ──────────────────────────────────────────────────────────────
-# MONDAY: New blog post (handled by generate-blog.sh at 8am)
-#         Growth agent adds a SECOND piece of content: a
-#         keyword-targeted location guide page
+# DAILY: Auto-build and update the Guides index page
+#        So visitors can browse all guides from one place
+# ──────────────────────────────────────────────────────────────
+echo "[DAILY] Rebuilding guides index page..." >> "$LOG_FILE"
+
+claude --print "You are a web developer for International RE (internationalre.org).
+
+YOUR TASK: Rebuild the GUIDES INDEX page at public/guides.html (create it if it doesn't exist).
+
+INSTRUCTIONS:
+1. Read ALL files in public/guides/ to see every guide that exists.
+2. Read public/blog.html for the exact HTML template to follow (same nav, hero banner, footer, subscribe banner, styles).
+3. Create or update public/guides.html with:
+   - A hero banner titled 'Real Estate Guides' with subtitle 'In-depth guides, FAQs, and resources for Latin American property buyers.'
+   - A grid of cards linking to every guide in public/guides/, organized by type:
+     * Location Guides
+     * FAQs & Legal
+     * Comparisons & Rankings
+     * Resources & Tools
+   - Each card shows: title, short description (extract from meta description), and country tag
+4. Make sure public/guides.html is in public/sitemap.xml.
+5. Make sure the navbar on ALL pages includes a 'Guides' link between 'Blog' and 'Gallery'. Check every HTML file in public/, public/blog/, and public/guides/ and add the link if missing.
+6. If you made any changes, git add, commit, and push to GitHub.
+7. If there are no guides yet, still create the index page with a message like 'Guides coming soon — subscribe to be notified.' so the nav link works." 2>> "$LOG_FILE"
+
+echo "  Guides index rebuilt." >> "$LOG_FILE"
+
+# ──────────────────────────────────────────────────────────────
+# MONDAY: Location guide page
+#         (blog post handled separately by generate-blog.sh at 8am)
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "1" ]; then
   echo "[MON] Creating new location guide page..." >> "$LOG_FILE"
@@ -60,8 +88,7 @@ The page must be 1000-1500 words with real data, not generic filler. Write it li
 fi
 
 # ──────────────────────────────────────────────────────────────
-# TUESDAY: Create a new FAQ page targeting question-based search
-#          queries (People Also Ask / Featured Snippets)
+# TUESDAY: FAQ page targeting People Also Ask / Featured Snippets
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "2" ]; then
   echo "[TUE] Creating FAQ/answer page..." >> "$LOG_FILE"
@@ -92,8 +119,7 @@ INSTRUCTIONS:
 fi
 
 # ──────────────────────────────────────────────────────────────
-# WEDNESDAY: Create a market data comparison page with tables
-#            (targets searches like "Costa Rica vs Nicaragua real estate")
+# WEDNESDAY: Market comparison page with data tables
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "3" ]; then
   echo "[WED] Creating market comparison page..." >> "$LOG_FILE"
@@ -123,8 +149,7 @@ Make the tables genuinely useful — someone should be able to make a decision b
 fi
 
 # ──────────────────────────────────────────────────────────────
-# THURSDAY: Improve existing content — add sections, update data,
-#           strengthen internal links, improve meta tags
+# THURSDAY: Improve existing content + internal links + conversion
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "4" ]; then
   echo "[THU] Improving existing content & internal links..." >> "$LOG_FILE"
@@ -167,8 +192,7 @@ CONVERSION:
 fi
 
 # ──────────────────────────────────────────────────────────────
-# FRIDAY: Create a new blog post (second post of the week)
-#         Targets a different keyword cluster than Monday's content
+# FRIDAY: Second blog post of the week
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "5" ]; then
   echo "[FRI] Creating second weekly blog post..." >> "$LOG_FILE"
@@ -204,8 +228,7 @@ Topic ideas to rotate through:
 fi
 
 # ──────────────────────────────────────────────────────────────
-# SATURDAY: Full SEO audit — fix technical issues, improve page
-#           speed signals, verify all links work
+# SATURDAY: Full SEO audit + broken link check + performance
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "6" ]; then
   echo "[SAT] Running full SEO audit..." >> "$LOG_FILE"
@@ -242,8 +265,7 @@ INDEXING:
 fi
 
 # ──────────────────────────────────────────────────────────────
-# SUNDAY: Create an evergreen resource page — calculators,
-#         checklists, glossaries (high-value link targets)
+# SUNDAY: Evergreen resource page (glossaries, checklists, tools)
 # ──────────────────────────────────────────────────────────────
 if [ "$DAY_OF_WEEK" = "7" ]; then
   echo "[SUN] Creating evergreen resource page..." >> "$LOG_FILE"
@@ -274,6 +296,147 @@ INSTRUCTIONS:
 These pages should be so useful that other websites would want to link to them." 2>> "$LOG_FILE"
 
   echo "  Evergreen resource page published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Homepage freshness — update the homepage with the
+#        latest content so it never looks stale
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Updating homepage with latest content..." >> "$LOG_FILE"
+
+claude --print "You are a web developer for International RE (internationalre.org).
+
+YOUR TASK: Keep the homepage fresh by featuring the latest content.
+
+INSTRUCTIONS:
+1. Read public/index.html to see the current homepage.
+2. Read public/blog.html to see the latest blog posts.
+3. Read all files in public/guides/ to see the latest guides.
+4. Check if the homepage already has a 'Latest from the Blog' section.
+   - If it does NOT exist yet: add a new section after the 'Markets' section that shows the 3 most recent blog posts as cards (image, title, date, short excerpt, link). Use the same card styling as blog.html. Title the section 'Latest from the Blog'.
+   - If it DOES already exist: update it to show the 3 most recent posts (check blog.html for the latest). Only make changes if the featured posts are outdated.
+5. Check if the homepage has a 'Free Guides' or 'Resources' section.
+   - If NOT and there are guides in public/guides/: add a small section after the blog section showing 2-3 featured guides as cards with links.
+   - If it exists: update it to feature the most recent/best guides.
+6. ONLY make changes if the homepage is actually outdated. If everything is current, do nothing.
+7. If you made changes, git add, commit, and push to GitHub." 2>> "$LOG_FILE"
+
+echo "  Homepage freshness check complete." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Cross-link audit — make sure every new page is
+#        connected to the rest of the site
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Running cross-link audit..." >> "$LOG_FILE"
+
+claude --print "You are an internal linking specialist for International RE (internationalre.org).
+
+YOUR TASK: Make sure every page on the site links to and from other relevant pages. Internal links are one of the strongest SEO signals — Google ranks well-connected pages higher.
+
+INSTRUCTIONS:
+1. Read ALL HTML files across public/, public/blog/, and public/guides/.
+2. Build a mental map of which pages link to which other pages.
+3. Find pages that are ORPHANED (no other page links to them) or UNDER-LINKED (only 1 page links to them).
+4. For each under-linked page, add 2-3 contextual links to it from relevant existing pages. Insert links naturally within body text, not as a list dump.
+5. Find pages that link OUT to very few other pages on the site, and add 2-3 relevant outbound internal links to them.
+6. Goal: every page should have at least 3 inbound internal links and at least 2 outbound internal links.
+7. ONLY make changes if there are actual linking gaps. If the site is well-linked, do nothing.
+8. If you made changes, git add, commit, and push to GitHub." 2>> "$LOG_FILE"
+
+echo "  Cross-link audit complete." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Sundays): Refresh stale data in old posts
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "7" ]; then
+  echo "[SUN] Refreshing data in oldest content..." >> "$LOG_FILE"
+
+  claude --print "You are a fact-checker and data updater for International RE (internationalre.org).
+
+YOUR TASK: Find the OLDEST blog post or guide on the site and refresh its data so it stays accurate and ranks well.
+
+INSTRUCTIONS:
+1. Read all files in public/blog/ and public/guides/.
+2. Find the post with the OLDEST date.
+3. Use web search to check if any of the key statistics in that post are outdated (prices, yields, laws, regulations, tourism stats).
+4. Update any stale data with current 2026 numbers. Add a note like 'Updated [today's date]' near the top of the article.
+5. If the article has fewer than 3 internal links, add more.
+6. Update the lastmod date in public/sitemap.xml.
+7. Git add, commit, and push to GitHub.
+8. If the data is still accurate, do nothing." 2>> "$LOG_FILE"
+
+  echo "  Stale data refresh complete." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# BI-WEEKLY (Weeks 2, 4, 6...): Create a topic cluster pillar page
+# These are comprehensive 2000+ word hub pages that link to
+# all related content — Google LOVES these for topical authority
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "4" ] && [ $((WEEK_OF_YEAR % 2)) -eq 0 ]; then
+  echo "[BI-WEEKLY] Creating topic cluster pillar page..." >> "$LOG_FILE"
+
+  claude --print "You are a content strategist for International RE (internationalre.org).
+
+YOUR TASK: Create a comprehensive PILLAR PAGE — a 2000+ word ultimate guide that serves as the hub for a topic cluster.
+
+INSTRUCTIONS:
+1. Read ALL content in public/blog/ and public/guides/ to understand what exists.
+2. Identify which TOPIC CLUSTER has the most supporting content but no pillar page yet. Topic clusters:
+   - 'Costa Rica Real Estate: The Complete Guide' (links to all CR posts/guides)
+   - 'Argentina Real Estate: The Complete Guide' (links to all AR posts/guides)
+   - 'Nicaragua Real Estate: The Complete Guide' (links to all NI posts/guides)
+   - 'Chile Real Estate: The Complete Guide' (links to all CL posts/guides)
+   - 'Latin America Real Estate Investment: The Ultimate Guide' (links to everything)
+   - 'Expat Property Buying Guide: Latin America Edition'
+3. Create the pillar page in public/guides/ with:
+   - 2000-2500 words covering the topic comprehensively
+   - Table of contents at the top with anchor links
+   - Links to EVERY related blog post and guide on the site (embedded naturally in the text)
+   - Real data researched via web search
+   - JSON-LD Article structured data
+   - The subscribe banner
+4. Update EVERY blog post and guide that this pillar page covers — add a link back to the pillar page from each one (e.g., 'For our complete guide, see [Pillar Page Title]').
+5. Add to sitemap, commit, and push to GitHub.
+
+Pillar pages are the single most important SEO asset. Make this genuinely authoritative." 2>> "$LOG_FILE"
+
+  echo "  Pillar page created." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# MONTHLY (1st of each month): Generate a 'Market Update' post
+# summarizing the month's real estate trends across all 4 countries
+# ══════════════════════════════════════════════════════════════
+DAY_OF_MONTH=$(date +%d)
+if [ "$DAY_OF_MONTH" = "01" ]; then
+  echo "[MONTHLY] Creating monthly market update..." >> "$LOG_FILE"
+
+  MONTH_NAME=$(date +%B)
+  YEAR=$(date +%Y)
+
+  claude --print "You are a market analyst for International RE (internationalre.org).
+
+YOUR TASK: Create a MONTHLY MARKET UPDATE blog post summarizing real estate trends across all 4 countries.
+
+INSTRUCTIONS:
+1. Read existing blog posts in public/blog/ to avoid duplication and see the template.
+2. Use web search to research the latest real estate news and data for Costa Rica, Nicaragua, Argentina, and Chile.
+3. Write a blog post titled '$MONTH_NAME $YEAR Latin America Real Estate Market Update' (by Sofia Mendez).
+4. Structure it as:
+   - Executive summary (3-4 bullet points of the biggest takeaways)
+   - Costa Rica update (prices, developments, regulatory changes)
+   - Nicaragua update
+   - Argentina update
+   - Chile update
+   - 'What We're Watching Next Month' section
+5. Use the same HTML template as existing blog posts.
+6. Update blog.html to feature this as the top post.
+7. Add to sitemap.xml, commit, and push to GitHub.
+
+Use REAL data from this month. This should feel like a professional market briefing." 2>> "$LOG_FILE"
+
+  echo "  Monthly market update published." >> "$LOG_FILE"
 fi
 
 echo "[DONE] Growth Agent complete for $DATE" >> "$LOG_FILE"
