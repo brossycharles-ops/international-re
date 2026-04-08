@@ -128,8 +128,8 @@ function shutdown(signal) {
 
 // Start server
 initExcel();
-const server = app.listen(PORT, () => {
-  console.log(`\n  International RE is running at http://localhost:${PORT}\n`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n  International RE is running at http://0.0.0.0:${PORT}\n`);
 });
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));
