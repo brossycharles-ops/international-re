@@ -38,7 +38,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="/#markets">Markets</a></li>
-        <li><a href="/#newsletters">Newsletters</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="gallery.html" class="active-link">Gallery</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="/#subscribe" class="nav-cta">Subscribe</a></li>
@@ -203,6 +203,33 @@
     </div>
   </div>
 
+  <!-- Inline Subscribe Banner -->
+  <section class="inline-subscribe-banner">
+    <div class="container">
+      <div class="inline-subscribe-inner">
+        <div class="inline-subscribe-text">
+          <h3>Get Our Free Latin America Real Estate Guide</h3>
+          <p>Subscribe and receive our <strong>2026 Market Entry Guide</strong> — covering legal requirements, pricing data, and the best neighborhoods across 4 countries.</p>
+        </div>
+        <form class="inline-subscribe-form" id="inlineSubscribeForm">
+          <div class="inline-form-fields">
+            <input type="text" placeholder="First Name" id="inlineFirstName" required>
+            <input type="text" placeholder="Last Name" id="inlineLastName" required>
+            <input type="email" placeholder="Email Address" id="inlineEmail" required>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <span class="inline-btn-text">Get Free Guide</span>
+            <span class="inline-btn-loading" style="display:none;">Subscribing...</span>
+          </button>
+        </form>
+        <div class="inline-subscribe-success" id="inlineSuccess" style="display:none;">
+          <div class="success-icon">&#10003;</div>
+          <p><strong>You're in!</strong> Check your inbox for the guide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -244,12 +271,53 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 International RE — internationalre.org. All rights reserved.</p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> International RE — internationalre.org. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    // Inline Subscribe Form
+    const inlineForm = document.getElementById('inlineSubscribeForm');
+    if (inlineForm) {
+      inlineForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const firstName = document.getElementById('inlineFirstName').value.trim();
+        const lastName = document.getElementById('inlineLastName').value.trim();
+        const email = document.getElementById('inlineEmail').value.trim();
+        if (!firstName || !lastName || !email) return;
+        const btn = inlineForm.querySelector('button');
+        const btnText = inlineForm.querySelector('.inline-btn-text');
+        const btnLoading = inlineForm.querySelector('.inline-btn-loading');
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        btn.disabled = true;
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ firstName, lastName, email })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            inlineForm.style.display = 'none';
+            document.getElementById('inlineSuccess').style.display = 'flex';
+            localStorage.setItem('subscribed', 'true');
+          } else {
+            alert(data.error || 'Something went wrong.');
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            btn.disabled = false;
+          }
+        } catch {
+          alert('Network error. Please try again.');
+          btnText.style.display = 'inline';
+          btnLoading.style.display = 'none';
+          btn.disabled = false;
+        }
+      });
+    }
+
     // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.querySelector('.nav-links');

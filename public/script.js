@@ -1,3 +1,16 @@
+// ===== Live Subscriber Count =====
+const subscriberCountEl = document.getElementById('subscriberCount');
+if (subscriberCountEl) {
+  fetch('/api/subscriber-count')
+    .then(res => res.json())
+    .then(data => {
+      if (data.count > 0) {
+        subscriberCountEl.textContent = data.count + '+';
+      }
+    })
+    .catch(() => {});
+}
+
 // ===== Navbar Scroll Effect =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -45,16 +58,17 @@ const popupClose = document.getElementById('popupClose');
 const popupForm = document.getElementById('popupForm');
 const popupSuccess = document.getElementById('popupSuccess');
 
-// Show popup after a short delay on first visit
+// Show popup after delay on first visit (8s gives visitors time to see value)
 function showPopup() {
-  // Check if user has already seen the popup this session
+  if (localStorage.getItem('subscribed')) return;
   if (sessionStorage.getItem('popupShown')) return;
 
   setTimeout(() => {
+    if (sessionStorage.getItem('popupShown')) return;
     popupOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     sessionStorage.setItem('popupShown', 'true');
-  }, 1500);
+  }, 8000);
 }
 
 // Close popup
@@ -217,7 +231,7 @@ if (stickyCta) {
 // ===== Exit Intent Popup =====
 let exitIntentShown = false;
 document.addEventListener('mouseout', (e) => {
-  if (e.clientY < 5 && !exitIntentShown && !sessionStorage.getItem('popupShown') && !localStorage.getItem('subscribed')) {
+  if (e.clientY < 5 && !exitIntentShown && !localStorage.getItem('subscribed') && !popupOverlay.classList.contains('active')) {
     popupOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     sessionStorage.setItem('popupShown', 'true');
