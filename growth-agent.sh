@@ -442,4 +442,313 @@ Use REAL data from this month. This should feel like a professional market brief
   echo "  Monthly market update published." >> "$LOG_FILE"
 fi
 
+# ══════════════════════════════════════════════════════════════
+# DAILY: Create Spanish-language version of newest content
+#        Doubles the keyword surface — targets "bienes raices
+#        Costa Rica", "comprar propiedad Argentina", etc.
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Creating Spanish content..." >> "$LOG_FILE"
+
+claude --print "You are a bilingual content translator for International RE (internationalre.org).
+
+YOUR TASK: Create a Spanish-language version of the most recent blog post or guide that does NOT already have a Spanish version.
+
+INSTRUCTIONS:
+1. Read all files in public/blog/ and public/guides/.
+2. Check if a directory public/es/ exists. If not, create public/es/blog/ and public/es/guides/.
+3. Find the most recent English page (by date) that does NOT have a corresponding file in public/es/blog/ or public/es/guides/.
+4. Translate it into natural, fluent Latin American Spanish. Do NOT just machine-translate — write it like a native Spanish-speaking real estate journalist would.
+5. Adapt SEO metadata for Spanish:
+   - Spanish title tag targeting Spanish search queries
+   - Spanish meta description with Spanish keywords
+   - Spanish OG tags
+   - Add hreflang tags to BOTH the English and Spanish versions (link them to each other)
+6. Keep the same HTML template but change the nav to include both language options.
+7. Add the Spanish page to public/sitemap.xml.
+8. Git add, commit, and push to GitHub.
+9. If ALL pages already have Spanish versions, do nothing.
+
+Spanish real estate searches are a MASSIVE untapped keyword market." 2>> "$LOG_FILE"
+
+echo "  Spanish content task complete." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Generate micro-landing pages for hyper-specific
+#        long-tail search queries that have almost zero competition
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Creating micro-landing page..." >> "$LOG_FILE"
+
+claude --print "You are a long-tail SEO specialist for International RE (internationalre.org).
+
+YOUR TASK: Create ONE hyper-specific micro-landing page targeting a long-tail search query with very low competition.
+
+INSTRUCTIONS:
+1. Read all files in public/blog/, public/guides/, and public/landing/ to see what exists.
+2. Create public/landing/ directory if it doesn't exist.
+3. Pick ONE very specific search query that a real buyer would type into Google. Examples:
+   - 'How much does a 2 bedroom condo cost in Tamarindo Costa Rica'
+   - 'Can a Canadian buy beachfront property in Nicaragua'
+   - 'Best areas to buy rental property in Buenos Aires for Airbnb'
+   - 'Costa Rica vs Panama for retirement real estate'
+   - 'How to wire money to buy property in Argentina'
+   - 'Property closing costs in Chile for foreigners'
+   - 'Is it safe to buy property in Managua Nicaragua'
+   - 'Average rental yield Valparaiso Chile 2026'
+   - 'Do I need a lawyer to buy property in Costa Rica'
+   - 'Best gated communities in Guanacaste for families'
+   - 'How to get residency in Nicaragua through property investment'
+   - 'Lake District Chile real estate prices per square meter'
+   DO NOT duplicate any topic that already has a page.
+4. Use web search to research REAL, specific data to answer that exact query.
+5. Create a 600-900 word page that directly answers the query in the first paragraph (for Google Featured Snippets), then provides in-depth supporting detail.
+6. Use the same HTML template as blog posts (nav, footer, subscribe banner).
+7. Include JSON-LD structured data.
+8. Add the page to public/sitemap.xml.
+9. Link to this page from the most relevant existing blog post or guide.
+10. Git add, commit, and push to GitHub.
+
+These pages target queries that big real estate sites ignore — that's how a small site wins on Google." 2>> "$LOG_FILE"
+
+echo "  Micro-landing page task complete." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Create/update a 'Market Data Dashboard' page with
+#        current prices, yields, and trends — the kind of page
+#        investors bookmark and check weekly
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Updating market data dashboard..." >> "$LOG_FILE"
+
+claude --print "You are a data analyst for International RE (internationalre.org).
+
+YOUR TASK: Create or update a MARKET DATA DASHBOARD page at public/guides/market-data-dashboard.html.
+
+INSTRUCTIONS:
+1. Check if public/guides/market-data-dashboard.html exists. If not, create it.
+2. Use web search to find the LATEST real estate market data for all 4 countries.
+3. The page should contain data tables showing:
+   - Average price per sqm by city (at least 3 cities per country)
+   - Average rental yields by city
+   - Year-over-year price change percentages
+   - Average days on market
+   - Foreign buyer restrictions summary
+   - Currency exchange rates (USD to local currency)
+4. If the page already exists, UPDATE the numbers with the freshest data available. Add a 'Last updated: [today's date]' timestamp at the top.
+5. Use clean, styled HTML tables. Use the same template as other pages (nav, footer, subscribe).
+6. Add JSON-LD Dataset structured data.
+7. Add to sitemap if new. Update lastmod if updated.
+8. Git add, commit, and push if changes were made.
+9. If the data hasn't changed since last update, do nothing.
+
+This is the single most bookmarkable page on the site — investors will return to it weekly." 2>> "$LOG_FILE"
+
+echo "  Market data dashboard task complete." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# TUESDAY & THURSDAY: Generate 'investor case study' pages
+#        Real-world-style investment scenarios with ROI math
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "2" ] || [ "$DAY_OF_WEEK" = "4" ]; then
+  echo "[TUE/THU] Creating investor case study page..." >> "$LOG_FILE"
+
+  claude --print "You are a real estate investment analyst for International RE (internationalre.org).
+
+YOUR TASK: Create a detailed INVESTOR CASE STUDY page showing a realistic property investment scenario.
+
+INSTRUCTIONS:
+1. Read existing content in public/blog/, public/guides/, and public/case-studies/ to avoid duplication.
+2. Create public/case-studies/ directory if it doesn't exist.
+3. Pick ONE specific investment scenario that hasn't been covered. Examples:
+   - 'I Bought a 2BR Condo in Tamarindo for \$180K — Here's My Year 1 ROI'
+   - 'Buenos Aires Rental Property: \$65K Investment, \$850/Month Income'
+   - 'Building a Vacation Rental Portfolio in San Juan del Sur'
+   - 'Buying a Vineyard Estate in Mendoza: Costs, Returns & Lifestyle'
+   - 'Santiago Apartment Investment: Airbnb vs Long-Term Rental Numbers'
+   - 'Retirement Property in Lake Atitlan: What \$150K Gets You'
+   - 'Flipping Property in Nosara Costa Rica: 18-Month Case Study'
+4. Use web search for REAL current prices, rental rates, and costs. Build a detailed financial breakdown:
+   - Purchase price and closing costs
+   - Monthly expenses (HOA, property tax, insurance, management, utilities)
+   - Monthly rental income (high season, low season, occupancy rate)
+   - Annual ROI calculation
+   - 5-year appreciation projection
+5. Format with clear tables and numbers. Use the same HTML template.
+6. Add JSON-LD Article structured data.
+7. Add to sitemap. Add internal links to/from relevant content.
+8. Git add, commit, and push.
+
+Investors LOVE concrete numbers. These pages convert browsers into subscribers." 2>> "$LOG_FILE"
+
+  echo "  Case study published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# MONDAY & WEDNESDAY & FRIDAY: Generate email newsletter and
+#        auto-send to all subscribers via the server API
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "1" ] || [ "$DAY_OF_WEEK" = "3" ] || [ "$DAY_OF_WEEK" = "5" ]; then
+  echo "[MWF] Generating subscriber email content..." >> "$LOG_FILE"
+
+  mkdir -p "$PROJECT_DIR/growth-output"
+
+  claude --print "You are an email marketing specialist for International RE (internationalre.org).
+
+YOUR TASK: Generate a ready-to-send email newsletter that highlights the latest content and drives subscribers back to the site.
+
+INSTRUCTIONS:
+1. Read the 3 most recent blog posts in public/blog/ and the 2 most recent guides in public/guides/.
+2. Write an engaging email newsletter (250-400 words) with:
+   - A compelling subject line that drives opens (use curiosity, numbers, or urgency)
+   - A personal opening hook (1-2 sentences, conversational)
+   - Featured article: summarize the newest blog post with a 'Read More' link
+   - Quick hits: 2-3 bullet points linking to other recent content
+   - A market stat or fact that makes readers feel informed
+   - CTA: 'Know someone investing in Latin America? Forward this email.'
+   - PS: tease upcoming content
+3. Format the output as a clean, simple HTML email with inline styles.
+   - Single column, max-width 600px
+   - Use the brand colors: navy (#0a1628), gold (#c9a84c), cream (#f8f5ef)
+   - Mobile-friendly (no complex layouts)
+   - Include the International RE logo text at top
+   - Include unsubscribe placeholder at bottom
+4. Save the file to: $PROJECT_DIR/growth-output/newsletter-$(date +%Y-%m-%d).html
+
+This newsletter keeps subscribers engaged and drives repeat traffic to the site." > "$PROJECT_DIR/growth-output/newsletter-${DATE}.html" 2>> "$LOG_FILE"
+
+  echo "  Newsletter draft saved." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Wednesdays): Create an interactive tool/calculator page
+#        These get shared heavily and attract backlinks
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "3" ]; then
+  echo "[WED] Creating interactive tool page..." >> "$LOG_FILE"
+
+  claude --print "You are a web developer and real estate expert for International RE (internationalre.org).
+
+YOUR TASK: Create an INTERACTIVE TOOL page with JavaScript that provides genuine utility to property buyers.
+
+INSTRUCTIONS:
+1. Read existing content in public/guides/ and public/tools/ to avoid duplication.
+2. Create public/tools/ directory if it doesn't exist.
+3. Pick ONE tool that doesn't already exist. Rotate through:
+   - 'Rental Yield Calculator' — input purchase price, monthly rent, expenses → get gross & net yield
+   - 'Property Investment ROI Calculator' — input price, down payment, rental income, appreciation rate → 5/10 year returns
+   - 'Cost of Living Comparison Tool' — dropdown to compare 2 cities side by side across categories
+   - 'Currency Converter for Property Buyers' — convert USD to CRC, NIO, ARS, CLP with property-specific context
+   - 'Closing Cost Estimator by Country' — select country, input price → estimated total closing costs breakdown
+   - 'Mortgage Affordability Calculator' — income, debts, rate → what you can afford in each country
+   - 'Rental Income Estimator' — select city & property type → estimated monthly income range
+4. Build the tool as a single HTML page with embedded JavaScript. No external dependencies.
+5. Make it genuinely functional — real calculations, not just a form that goes nowhere.
+6. Use the same page template (nav, footer, subscribe banner).
+7. Style the tool with clean, modern CSS that matches the site's design.
+8. Add JSON-LD SoftwareApplication structured data.
+9. Add to sitemap. Link from at least 2 relevant blog posts/guides.
+10. Git add, commit, and push.
+
+Interactive tools get shared on social media and linked to from other sites — they're backlink magnets." 2>> "$LOG_FILE"
+
+  echo "  Interactive tool published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Saturdays): Create a 'news roundup' post pulling
+#        the latest real estate headlines for all 4 countries
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "6" ]; then
+  echo "[SAT] Creating weekly news roundup..." >> "$LOG_FILE"
+
+  WEEK_START=$(date -v-6d +%B\ %d)
+  WEEK_END=$(date +%B\ %d,\ %Y)
+
+  claude --print "You are a real estate news curator for International RE (internationalre.org).
+
+YOUR TASK: Create a weekly news roundup blog post covering the latest Latin American real estate news.
+
+INSTRUCTIONS:
+1. Read existing blog posts in public/blog/ for the template.
+2. Use web search to find 8-12 real estate news stories from the past week about Costa Rica, Nicaragua, Argentina, and Chile. Search for:
+   - New development projects announced
+   - Government policy or regulation changes affecting property
+   - Tourism statistics that impact rental markets
+   - Infrastructure projects (airports, highways, ports)
+   - Foreign investment trends
+   - Notable property sales or market milestones
+3. Write a blog post titled 'Latin America Real Estate News Roundup: $WEEK_START – $WEEK_END' (by Carolina Vega).
+4. Structure: brief 2-3 sentence summary of each news item with context on why it matters to investors. Group by country.
+5. Use the same blog post HTML template.
+6. Update blog.html to feature as the top post.
+7. Add to sitemap, commit, and push.
+
+News roundups drive repeat weekly visits — readers come back every Saturday." 2>> "$LOG_FILE"
+
+  echo "  Weekly news roundup published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Fridays): Generate a 'property spotlight' page
+#        featuring a specific real listing or property type
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "5" ]; then
+  echo "[FRI] Creating property spotlight page..." >> "$LOG_FILE"
+
+  claude --print "You are a real estate content creator for International RE (internationalre.org).
+
+YOUR TASK: Create a PROPERTY SPOTLIGHT page that showcases a specific type of property in one of our 4 markets.
+
+INSTRUCTIONS:
+1. Read existing content in public/blog/ and public/spotlights/ to avoid duplication.
+2. Create public/spotlights/ directory if it doesn't exist.
+3. Pick ONE property type + location combo. Examples:
+   - 'Ocean-View Condos Under \$200K in Tamarindo, Costa Rica'
+   - 'Colonial Homes in San Telmo, Buenos Aires — What \$100K Buys'
+   - 'Beachfront Lots in San Juan del Sur Starting at \$50K'
+   - 'Modern Apartments in Las Condes, Santiago — \$150K-\$300K'
+   - 'Jungle Homes Near Nosara: Surf & Invest'
+   - 'Vineyard Properties in Mendoza Under \$250K'
+   - 'Lakefront Cabins in Chile\'s Lake District'
+4. Use web search to find REAL current listings data — actual price ranges, sizes, amenities, neighborhoods.
+5. Write 800-1000 words describing what buyers can expect: price ranges, typical features, neighborhood vibe, rental potential, lifestyle benefits.
+6. Use the same blog post HTML template. Include Unsplash images for the hero.
+7. Add JSON-LD RealEstateListing structured data.
+8. Add to sitemap. Link from relevant blog posts.
+9. Git add, commit, and push.
+
+These pages target buyers who are ready to act — highest intent traffic." 2>> "$LOG_FILE"
+
+  echo "  Property spotlight published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# MONTHLY (15th): Create a 'Top 10' or 'Best of' listicle
+#        Listicles are the most shared content format on the internet
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_MONTH" = "15" ]; then
+  echo "[MONTHLY] Creating Top 10 listicle..." >> "$LOG_FILE"
+
+  claude --print "You are a content creator for International RE (internationalre.org).
+
+YOUR TASK: Create a 'Top 10' or 'Best of' listicle blog post — the most shareable content format on the internet.
+
+INSTRUCTIONS:
+1. Read existing blog posts to avoid duplication.
+2. Pick ONE listicle topic that hasn't been done. Rotate through:
+   - '10 Best Beach Towns in Latin America to Buy Property in 2026'
+   - '10 Cheapest Places to Buy a Home in Central & South America'
+   - 'Top 10 Latin American Cities for Digital Nomads Who Want to Invest'
+   - '10 Things I Wish I Knew Before Buying Property in Costa Rica'
+   - '10 Best Neighborhoods in Buenos Aires for Foreign Investors'
+   - 'Top 10 Mistakes Foreign Buyers Make in Latin American Real Estate'
+   - '10 Latin American Properties Under \$100K That Are Actually Worth It'
+3. Use web search for real data to back each item.
+4. Write 1200-1500 words. Each item gets: a heading, 100-word description, key stats, and a link to relevant content on the site.
+5. Use the same blog post HTML template.
+6. Update blog.html, add to sitemap, commit, and push.
+
+Listicles get shared on social media more than any other format." 2>> "$LOG_FILE"
+
+  echo "  Listicle published." >> "$LOG_FILE"
+fi
+
 echo "[DONE] Growth Agent complete for $DATE" >> "$LOG_FILE"
