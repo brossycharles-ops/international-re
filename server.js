@@ -108,6 +108,65 @@ app.get('/api/subscriber-count', (req, res) => {
   }
 });
 
+// RSS Feed endpoint — social media tools (Buffer, IFTTT, Zapier) can
+// auto-post from this feed. Also helps with Google News indexing.
+app.get('/feed.xml', (req, res) => {
+  const blogDir = path.join(__dirname, 'public', 'blog');
+  const files = fs.existsSync(blogDir) ? fs.readdirSync(blogDir).filter(f => f.endsWith('.html')) : [];
+
+  let items = files.map(file => {
+    const content = fs.readFileSync(path.join(blogDir, file), 'utf-8');
+    const titleMatch = content.match(/<title>([^<|]*)/);
+    const descMatch = content.match(/<meta name="description" content="([^"]*)"/);
+    const dateMatch = content.match(/<span class="blog-post-date">([^<]*)<\/span>/);
+    return {
+      title: titleMatch ? titleMatch[1].trim() : file,
+      description: descMatch ? descMatch[1] : '',
+      link: `https://www.internationalre.org/blog/${file}`,
+      date: dateMatch ? dateMatch[1].trim() : ''
+    };
+  });
+
+  items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>International RE — Latin America Real Estate</title>
+    <link>https://www.internationalre.org</link>
+    <description>Weekly market intelligence on Costa Rica, Nicaragua, Argentina &amp; Chile real estate.</description>
+    <language>en-us</language>
+    <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
+    ${items.map(item => `<item>
+      <title>${item.title.replace(/&/g, '&amp;')}</title>
+      <link>${item.link}</link>
+      <description>${item.description.replace(/&/g, '&amp;')}</description>
+      <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
+      <guid>${item.link}</guid>
+    </item>`).join('\n    ')}
+  </channel>
+</rss>`;
+
+  res.type('application/xml').send(rss);
+});
+
+// API endpoint to serve latest social media content as JSON
+// Automation tools can poll this to get ready-to-post content
+app.get('/api/social-content', (req, res) => {
+  const socialDir = path.join(__dirname, 'growth-output', 'social');
+  if (!fs.existsSync(socialDir)) return res.json({ posts: [] });
+
+  const files = fs.readdirSync(socialDir)
+    .filter(f => f.endsWith('.md'))
+    .sort()
+    .reverse();
+
+  if (files.length === 0) return res.json({ posts: [] });
+
+  const latest = fs.readFileSync(path.join(socialDir, files[0]), 'utf-8');
+  res.json({ date: files[0], content: latest });
+});
+
 // Prevent crashes from unhandled errors
 process.on('uncaughtException', (err) => {
   console.error('Uncaught exception:', err);

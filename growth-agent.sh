@@ -443,6 +443,49 @@ Use REAL data from this month. This should feel like a professional market brief
 fi
 
 # ══════════════════════════════════════════════════════════════
+# DAILY: Auto-publish a 'Daily Tip' short-form page on the site
+#        These are quick, shareable, social-media-style posts
+#        that live on the website and get indexed by Google
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Publishing daily tip page..." >> "$LOG_FILE"
+
+claude --print "You are a social media content creator for International RE (internationalre.org).
+
+YOUR TASK: Create and publish a SHORT-FORM 'DAILY TIP' page directly on the website — like a social media post but on the site so Google indexes it.
+
+INSTRUCTIONS:
+1. Read existing files in public/tips/ to avoid duplication.
+2. Create public/tips/ directory if it doesn't exist.
+3. Create a daily-tip page with:
+   - A bold, scroll-stopping headline (like a reel hook)
+   - 150-300 words MAX — punchy, fast, visual
+   - ONE key takeaway or stat that makes people want to share
+   - Large, bold pull-quote or stat block styled for visual impact
+   - Subscribe CTA at the bottom
+   - Share buttons (Twitter, Facebook, LinkedIn, WhatsApp — use share URLs like https://twitter.com/intent/tweet?text=...&url=...)
+   - Use the same nav/footer template as blog posts
+   - Add Open Graph tags optimized for social sharing (large image, compelling title)
+   - Add max-image-preview:large meta for Google Discover
+4. Topic ideas (rotate daily):
+   - 'Did you know? Foreigners have full property rights in Costa Rica'
+   - 'Buenos Aires apartments cost \$1,200/sqm — Manhattan costs \$15,000'
+   - 'Nicaragua rental yields hit 12% — here is where to invest'
+   - '3 things your lawyer should check before buying in Chile'
+   - 'The #1 mistake expats make buying property abroad'
+   - 'This Costa Rica town has 10%+ Airbnb yields'
+   - 'You can buy a beachfront lot in Nicaragua for \$45K'
+   Use REAL data from web search. Never make up numbers.
+5. File name: tip-${DATE}.html
+6. Add to sitemap.xml.
+7. Update a tips index page at public/tips.html (create if needed — grid of all tips, newest first).
+8. Make sure the navbar includes a 'Tips' link on ALL pages.
+9. Git add, commit, and push.
+
+These tip pages are designed to be shared on social media — each one is a mini-post that drives traffic back to the site." 2>> "$LOG_FILE"
+
+echo "  Daily tip published." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
 # DAILY: Create Spanish-language version of newest content
 #        Doubles the keyword surface — targets "bienes raices
 #        Costa Rica", "comprar propiedad Argentina", etc.
@@ -750,5 +793,307 @@ Listicles get shared on social media more than any other format." 2>> "$LOG_FILE
 
   echo "  Listicle published." >> "$LOG_FILE"
 fi
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Generate social media reel scripts + short posts
+#        Saved to growth-output/social/ — ready to copy-paste
+#        or read directly into CapCut/Canva for reel creation
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Generating social media reel scripts & posts..." >> "$LOG_FILE"
+
+mkdir -p "$PROJECT_DIR/growth-output/social"
+
+claude --print "You are a viral social media content creator for International RE (internationalre.org).
+
+YOUR TASK: Generate a FULL DAY's worth of social media content — reel scripts and short posts — ready to post across all platforms.
+
+INSTRUCTIONS:
+1. Read the 3 most recent blog posts in public/blog/ and guides in public/guides/ for content to repurpose.
+2. Read existing files in growth-output/social/ to avoid repeating the same content.
+3. Create ALL of the following and save them in one markdown file:
+
+═══ INSTAGRAM/TIKTOK REELS (3 scripts) ═══
+For each reel, provide:
+- HOOK (first 2 seconds — the text that appears on screen to stop the scroll. Must be shocking, curious, or bold. Examples: 'You can buy a beach house for \$89K', 'This country lets Americans buy property with ZERO restrictions', 'I found apartments in Buenos Aires for \$45K')
+- SCRIPT (15-30 seconds of voiceover text, punchy and fast-paced)
+- TEXT OVERLAYS (exactly what text to show on screen at each moment)
+- CAPTION (engaging caption with 20-30 hashtags)
+- CTA ('Link in bio for our free guide' or 'Follow for more Latin America real estate tips')
+- TRENDING AUDIO SUGGESTION (describe the vibe: upbeat, dramatic reveal, chill travel, etc.)
+
+Reel topics to rotate through:
+- 'What \$X gets you in [Country]' (show price comparisons)
+- 'POV: You just bought property in [Country]' (lifestyle content)
+- '3 things nobody tells you about buying in [Country]'
+- 'This [Country] town has [X]% rental yields'
+- 'I compared property prices in 4 countries — here's what I found'
+- 'Why [Country] is the #1 place to invest right now'
+- 'Rich people are quietly buying property here'
+- 'Stop renting. Here's what a mortgage costs in [Country]'
+
+═══ TWITTER/X POSTS (5 tweets) ═══
+- Each under 280 characters
+- Mix: 1 hot take, 1 data point, 1 question, 1 thread starter, 1 CTA
+- Include hashtags: #RealEstate #LatinAmerica #PropertyInvestment #CostaRica #ExpatLife etc.
+- Thread starter should have '1/' and set up a 5-part thread
+
+═══ LINKEDIN POSTS (2 posts) ═══
+- 100-200 words each, professional but engaging
+- Start with a bold first line (LinkedIn shows first 2 lines before 'see more')
+- Include a data-driven insight
+- End with a question to drive comments
+- Include link to blog post
+
+═══ FACEBOOK POSTS (2 posts) ═══
+- 50-150 words, conversational and shareable
+- Include a question or 'tag someone who...' prompt
+- Link to website
+
+═══ PINTEREST PINS (3 descriptions) ═══
+- 200-300 word descriptions (Pinterest is a search engine — longer = better)
+- Include keywords: Latin America real estate, buy property abroad, expat living, beach house, investment property
+- Suggest an image style (infographic, property photo, comparison chart, etc.)
+- Each pin should link to a specific page on the site
+
+═══ YOUTUBE SHORTS SCRIPTS (2 scripts) ═══
+- 30-60 seconds each
+- Same format as reel scripts but slightly longer
+- Include suggested title, description, and tags
+
+4. Use REAL data and specific numbers from the blog posts — never be vague.
+5. Make the hooks SCROLL-STOPPING. Think about what makes someone pause on their phone.
+6. Save to: growth-output/social/social-content-${DATE}.md" > "$PROJECT_DIR/growth-output/social/social-content-${DATE}.md" 2>> "$LOG_FILE"
+
+echo "  Social media content pack generated." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Generate keyword-targeted pages for ALL major search
+#        engines worldwide — Google, Bing, Yahoo, Yandex,
+#        DuckDuckGo, Baidu (English), Naver (English), etc.
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Creating keyword expansion page..." >> "$LOG_FILE"
+
+claude --print "You are a global SEO keyword strategist for International RE (internationalre.org).
+
+YOUR TASK: Create ONE new page targeting a high-value keyword cluster that people search for on Google, Bing, Yahoo, DuckDuckGo, and other search engines worldwide.
+
+INSTRUCTIONS:
+1. Read all existing content across public/blog/, public/guides/, public/landing/, public/case-studies/, public/spotlights/, and public/tools/ to see what keywords are already covered.
+2. Create a new page targeting a keyword cluster that does NOT already have a page. Focus on these HIGH-VOLUME keyword categories:
+
+BUYER INTENT KEYWORDS (people ready to purchase):
+- 'buy property in [country/city] as American/Canadian/British/European/Australian'
+- '[country] real estate for sale 2026'
+- 'homes for sale in [city] [country] under \$[price]'
+- 'invest in [country] real estate'
+- 'best places to buy property in [region]'
+
+RESEARCH KEYWORDS (people comparing options):
+- 'is [country] a good place to invest in real estate'
+- '[country A] vs [country B] for real estate investment'
+- 'cost of buying property in [country]'
+- 'safest places to invest in Latin America'
+- 'best rental markets in Central/South America'
+
+EXPAT/LIFESTYLE KEYWORDS (people planning to move):
+- 'retire in [country] real estate'
+- 'expat living in [city] cost'
+- 'digital nomad [country] property'
+- 'best places to live in [country] for foreigners'
+- 'moving to [country] buying house'
+
+LEGAL/PROCESS KEYWORDS (people need answers):
+- 'can foreigners buy property in [country]'
+- 'property ownership laws [country]'
+- 'real estate closing process [country]'
+- 'property taxes in [country] for foreigners'
+- 'do I need a visa to buy property in [country]'
+
+FINANCIAL KEYWORDS (people calculating ROI):
+- 'rental yield [city] [country]'
+- 'property appreciation [country] 2026'
+- 'best ROI real estate Latin America'
+- 'passive income property [country]'
+- 'Airbnb income [city]'
+
+3. Use web search to research REAL data for the chosen keyword.
+4. Create the page (600-1200 words) in the most appropriate directory (public/landing/ for buyer intent, public/guides/ for research/legal, public/blog/ for lifestyle).
+5. CRITICAL SEO ELEMENTS — include ALL of these:
+   - Title tag with exact keyword (under 60 chars)
+   - Meta description with keyword + compelling CTA (155 chars)
+   - H1 tag matching the primary keyword
+   - H2 tags for related keywords
+   - First paragraph answers the query directly (Featured Snippet optimization)
+   - JSON-LD structured data (Article, FAQPage, or WebPage)
+   - Open Graph + Twitter Card tags
+   - Canonical URL
+   - Internal links to 3+ other pages on the site
+   - Subscribe form/banner
+6. Add to sitemap.xml.
+7. Add link to this page from at least 1 existing page.
+8. Git add, commit, and push.
+
+Target keywords that have search volume but where the top-ranking pages are weak (forums, thin content, outdated). That's where a quality page can rank fast." 2>> "$LOG_FILE"
+
+echo "  Keyword expansion page created." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Submit sitemap to additional search engines beyond
+#        Google and Bing — Yahoo, Yandex, DuckDuckGo use
+#        Bing's index but some have their own submission tools
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Pinging additional search engines..." >> "$LOG_FILE"
+# Yandex Webmaster ping
+curl -s "https://blogs.yandex.ru/pings/?status=success&url=${SITE_URL}/sitemap.xml" > /dev/null 2>&1
+# IndexNow protocol (used by Bing, Yandex, Seznam, Naver)
+# Ping with the latest page URL to trigger immediate indexing
+LATEST_PAGE=$(grep -o '<loc>[^<]*</loc>' "$PROJECT_DIR/public/sitemap.xml" | tail -1 | sed 's/<[^>]*>//g')
+if [ -n "$LATEST_PAGE" ]; then
+  curl -s "https://api.indexnow.org/indexnow?url=${LATEST_PAGE}&key=internationalre" > /dev/null 2>&1
+fi
+echo "  Yandex & IndexNow pinged." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Tuesdays): Create Portuguese-language content
+#        Targets Brazilian investors searching in Portuguese
+#        (Brazil is the largest economy in Latin America)
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "2" ]; then
+  echo "[TUE] Creating Portuguese content for Brazilian market..." >> "$LOG_FILE"
+
+  claude --print "You are a bilingual content creator for International RE (internationalre.org).
+
+YOUR TASK: Create a Portuguese-language version of a popular blog post or guide to target Brazilian real estate investors.
+
+INSTRUCTIONS:
+1. Read all files in public/blog/ and public/guides/.
+2. Check if public/pt/ directory exists. If not, create public/pt/blog/ and public/pt/guides/.
+3. Find a high-value English page that does NOT have a Portuguese version in public/pt/.
+4. Translate and ADAPT it for Brazilian readers:
+   - Write in natural Brazilian Portuguese (not European Portuguese)
+   - Adapt financial context (mention BRL currency, Brazilian tax implications)
+   - Brazilian investors are a HUGE market for Latin American real estate
+5. SEO metadata in Portuguese:
+   - Portuguese title targeting 'investir em imoveis [country]', 'comprar propriedade [country]'
+   - Portuguese meta description
+   - Add hreflang tags linking English, Spanish, and Portuguese versions
+6. Same HTML template. Add to sitemap. Git add, commit, push.
+7. If all pages already have Portuguese versions, do nothing.
+
+Brazil has 215 million people — Portuguese content is an enormous untapped market." 2>> "$LOG_FILE"
+
+  echo "  Portuguese content task complete." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Thursdays): Create a 'Quick Read' short-form page
+#        2-minute reads optimized for mobile, social sharing,
+#        and Google Discover feed
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "4" ]; then
+  echo "[THU] Creating quick-read short-form page..." >> "$LOG_FILE"
+
+  claude --print "You are a short-form content specialist for International RE (internationalre.org).
+
+YOUR TASK: Create a QUICK READ page — a punchy, 2-minute article optimized for mobile readers and social sharing.
+
+INSTRUCTIONS:
+1. Read existing content to avoid duplication.
+2. Create public/quick-reads/ directory if it doesn't exist.
+3. Pick ONE topic that's perfect for a quick, scrollable read. Format ideas:
+   - '5 Facts About [Country] Real Estate That Will Surprise You'
+   - '[City] in Numbers: Property Prices, Yields & Lifestyle Stats'
+   - 'The 60-Second Guide to Buying Property in [Country]'
+   - 'What \$100K Buys You in 4 Latin American Countries'
+   - '3 Latin American Markets That Outperformed the S&P 500'
+   - 'The #1 Mistake Americans Make When Buying Abroad'
+   - 'Why [City] Is Trending Among Property Investors Right Now'
+4. Write 300-500 words MAX. Use:
+   - Bold stats and numbers
+   - Short paragraphs (1-2 sentences each)
+   - Bullet points and visual breaks
+   - One clear CTA at the end
+5. Use the same HTML template but optimize the CSS for mobile-first reading:
+   - Larger font size for body text
+   - Extra padding on mobile
+   - Full-width images
+6. Add max-image-preview:large meta tag for Google Discover eligibility.
+7. Add to sitemap. Link from relevant content. Git add, commit, push.
+
+Quick reads get shared more than long articles — they're perfect for social media traffic." 2>> "$LOG_FILE"
+
+  echo "  Quick-read page published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# WEEKLY (Sundays): Create a 'voice search optimized' page
+#        Targets Siri, Alexa, Google Assistant queries
+#        (20%+ of searches are now voice)
+# ══════════════════════════════════════════════════════════════
+if [ "$DAY_OF_WEEK" = "7" ]; then
+  echo "[SUN] Creating voice-search optimized page..." >> "$LOG_FILE"
+
+  claude --print "You are a voice search SEO specialist for International RE (internationalre.org).
+
+YOUR TASK: Create a page optimized for VOICE SEARCH queries — the way people ask Siri, Alexa, or Google Assistant.
+
+INSTRUCTIONS:
+1. Read existing content to avoid duplication.
+2. Create the page in public/guides/ or public/landing/.
+3. Voice searches are CONVERSATIONAL and question-based. Target queries like:
+   - 'Hey Google, can I buy a house in Costa Rica as an American?'
+   - 'Alexa, what's the cheapest country to buy beachfront property?'
+   - 'Siri, how much does it cost to buy an apartment in Buenos Aires?'
+   - 'What country in Latin America is best for real estate investment?'
+   - 'How do I buy property in another country?'
+   - 'What are the best places to retire in Central America?'
+   - 'Is it safe to buy property in Nicaragua?'
+4. Structure the page with:
+   - Each H2 is a full question (exactly how someone would say it out loud)
+   - Each answer starts with a direct, concise 1-2 sentence response (this is what voice assistants read aloud)
+   - Then follow with 100-200 words of supporting detail
+   - Add speakable structured data (JSON-LD) so Google knows which parts to read aloud
+5. Add FAQPage structured data covering ALL questions on the page.
+6. Use the same HTML template. Add to sitemap.
+7. Link from relevant content. Git add, commit, push.
+
+20% of all searches are now voice — and almost nobody optimizes for it." 2>> "$LOG_FILE"
+
+  echo "  Voice-search page published." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Generate a 'Google Web Story' — visual, tap-through
+#        slideshows that appear in Google Discover and Search
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Creating Google Web Story..." >> "$LOG_FILE"
+
+claude --print "You are a Google Web Stories creator for International RE (internationalre.org).
+
+YOUR TASK: Create a Google Web Story — a visual, swipeable, full-screen slideshow that appears in Google Discover and Google Search results.
+
+INSTRUCTIONS:
+1. Read existing files in public/stories/ to avoid duplication.
+2. Create public/stories/ directory if it doesn't exist.
+3. Pick ONE topic that works as a visual story (5-10 slides). Examples:
+   - 'What \$150K Buys in 4 Latin American Countries'
+   - 'Top 5 Beach Towns for Property Investors'
+   - '3 Countries Where Americans Can Buy Property Easily'
+   - 'Inside a \$200K Condo in Tamarindo, Costa Rica'
+   - 'The Cheapest Beachfront Property in Central America'
+4. Create a valid AMP Web Story HTML file following Google's Web Story format:
+   - Use <amp-story> with <amp-story-page> for each slide
+   - Each slide: full-screen background image (Unsplash), large text overlay, minimal words
+   - 5-10 slides total
+   - Last slide: CTA to visit internationalre.org or subscribe
+   - Include required AMP boilerplate and Web Story metadata
+5. Add Web Story structured data (JSON-LD).
+6. Add to sitemap.
+7. Git add, commit, push.
+8. If a story on this topic already exists, pick a different one.
+
+Web Stories appear in Google Discover (phone feeds) and drive massive mobile traffic." 2>> "$LOG_FILE"
+
+echo "  Web Story created." >> "$LOG_FILE"
 
 echo "[DONE] Growth Agent complete for $DATE" >> "$LOG_FILE"
