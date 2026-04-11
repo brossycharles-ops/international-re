@@ -108,39 +108,76 @@ app.get('/api/subscriber-count', (req, res) => {
   }
 });
 
-// RSS Feed endpoint — social media tools (Buffer, IFTTT, Zapier) can
-// auto-post from this feed. Also helps with Google News indexing.
+// RSS Feed endpoint — scans ALL content directories so dlvr.it
+// auto-posts every new page to Twitter and TikTok daily
 app.get('/feed.xml', (req, res) => {
-  const blogDir = path.join(__dirname, 'public', 'blog');
-  const files = fs.existsSync(blogDir) ? fs.readdirSync(blogDir).filter(f => f.endsWith('.html')) : [];
+  // Scan all content directories — every new page becomes a social post
+  const contentDirs = [
+    { dir: 'blog', urlPrefix: 'blog' },
+    { dir: 'guides', urlPrefix: 'guides' },
+    { dir: 'tips', urlPrefix: 'tips' },
+    { dir: 'landing', urlPrefix: 'landing' },
+    { dir: 'case-studies', urlPrefix: 'case-studies' },
+    { dir: 'spotlights', urlPrefix: 'spotlights' },
+    { dir: 'tools', urlPrefix: 'tools' },
+    { dir: 'quick-reads', urlPrefix: 'quick-reads' },
+    { dir: 'stories', urlPrefix: 'stories' },
+    { dir: 'es/blog', urlPrefix: 'es/blog' },
+    { dir: 'es/guides', urlPrefix: 'es/guides' },
+    { dir: 'pt/blog', urlPrefix: 'pt/blog' },
+    { dir: 'pt/guides', urlPrefix: 'pt/guides' },
+  ];
 
-  let items = files.map(file => {
-    const content = fs.readFileSync(path.join(blogDir, file), 'utf-8');
-    const titleMatch = content.match(/<title>([^<|]*)/);
-    const descMatch = content.match(/<meta name="description" content="([^"]*)"/);
-    const dateMatch = content.match(/<span class="blog-post-date">([^<]*)<\/span>/);
-    return {
-      title: titleMatch ? titleMatch[1].trim() : file,
-      description: descMatch ? descMatch[1] : '',
-      link: `https://www.internationalre.org/blog/${file}`,
-      date: dateMatch ? dateMatch[1].trim() : ''
-    };
+  let items = [];
+
+  contentDirs.forEach(({ dir, urlPrefix }) => {
+    const fullPath = path.join(__dirname, 'public', dir);
+    if (!fs.existsSync(fullPath)) return;
+    const files = fs.readdirSync(fullPath).filter(f => f.endsWith('.html'));
+
+    files.forEach(file => {
+      try {
+        const content = fs.readFileSync(path.join(fullPath, file), 'utf-8');
+        const titleMatch = content.match(/<title>([^<|]*)/);
+        const descMatch = content.match(/<meta name="description" content="([^"]*)"/);
+        // Try multiple date formats used across different page types
+        const dateMatch = content.match(/<span class="blog-post-date">([^<]*)<\/span>/) ||
+                          content.match(/<meta property="article:published_time" content="([^"]*)"/>) ||
+                          content.match(/Updated\s+(\d{4}-\d{2}-\d{2})/);
+        const dateStr = dateMatch ? dateMatch[1].trim() : '';
+        // Use file modification time as fallback
+        const fileStat = fs.statSync(path.join(fullPath, file));
+
+        items.push({
+          title: titleMatch ? titleMatch[1].trim() : file.replace('.html', ''),
+          description: descMatch ? descMatch[1] : '',
+          link: `https://www.internationalre.org/${urlPrefix}/${file}`,
+          date: dateStr || fileStat.mtime.toISOString().split('T')[0]
+        });
+      } catch (e) {
+        // Skip files that can't be parsed
+      }
+    });
   });
 
+  // Sort newest first
   items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Limit to 50 most recent items
+  items = items.slice(0, 50);
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>International RE — Latin America Real Estate</title>
     <link>https://www.internationalre.org</link>
-    <description>Weekly market intelligence on Costa Rica, Nicaragua, Argentina &amp; Chile real estate.</description>
+    <description>Daily market intelligence on Costa Rica, Nicaragua, Argentina &amp; Chile real estate.</description>
     <language>en-us</language>
     <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
     ${items.map(item => `<item>
-      <title>${item.title.replace(/&/g, '&amp;')}</title>
+      <title>${item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>
       <link>${item.link}</link>
-      <description>${item.description.replace(/&/g, '&amp;')}</description>
+      <description>${item.description.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</description>
       <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
       <guid>${item.link}</guid>
     </item>`).join('\n    ')}
