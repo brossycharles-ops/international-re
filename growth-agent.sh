@@ -867,75 +867,259 @@ Reel topics to rotate through:
 echo "  Social media content pack generated." >> "$LOG_FILE"
 
 # ══════════════════════════════════════════════════════════════
-# DAILY: Generate keyword-targeted pages for ALL major search
-#        engines worldwide — Google, Bing, Yahoo, Yandex,
-#        DuckDuckGo, Baidu (English), Naver (English), etc.
+# DAILY: MASSIVE KEYWORD EXPANSION — Create 5 keyword-targeted
+#        pages per day across every major search engine worldwide
+#        Google, Bing, Yahoo, Yandex, DuckDuckGo, Baidu, Naver,
+#        Ecosia, Brave Search, AOL, Ask.com
+#        = 35 new keyword pages per week = 1,800+ per year
 # ══════════════════════════════════════════════════════════════
-echo "[DAILY] Creating keyword expansion page..." >> "$LOG_FILE"
+echo "[DAILY] Starting massive keyword expansion (5 pages)..." >> "$LOG_FILE"
 
+# ─── KEYWORD PAGE 1: Buyer Intent (people ready to purchase) ───
 claude --print "You are a global SEO keyword strategist for International RE (internationalre.org).
 
-YOUR TASK: Create ONE new page targeting a high-value keyword cluster that people search for on Google, Bing, Yahoo, DuckDuckGo, and other search engines worldwide.
+YOUR TASK: Create ONE page targeting a BUYER INTENT keyword — someone who is ready to purchase property.
 
 INSTRUCTIONS:
-1. Read all existing content across public/blog/, public/guides/, public/landing/, public/case-studies/, public/spotlights/, and public/tools/ to see what keywords are already covered.
-2. Create a new page targeting a keyword cluster that does NOT already have a page. Focus on these HIGH-VOLUME keyword categories:
+1. Read all existing files across public/blog/, public/guides/, public/landing/, public/case-studies/, public/spotlights/, public/tools/ to see what exists. DO NOT duplicate.
+2. Create public/landing/ if it doesn't exist.
+3. Target ONE of these buyer-intent keyword patterns (pick one that has NO page yet):
+   - 'buy property in Costa Rica as American'
+   - 'buy property in Nicaragua as foreigner'
+   - 'buy apartment Buenos Aires as US citizen'
+   - 'buy house in Chile as Canadian'
+   - 'buy beachfront property Costa Rica'
+   - 'buy rental property Buenos Aires'
+   - 'invest in Costa Rica real estate 2026'
+   - 'invest in Argentina real estate'
+   - 'invest in Nicaragua real estate'
+   - 'invest in Chile real estate 2026'
+   - 'homes for sale Tamarindo Costa Rica under 200K'
+   - 'condos for sale Buenos Aires under 100K'
+   - 'beachfront property San Juan del Sur Nicaragua'
+   - 'property for sale Santiago Chile foreigners'
+   - 'buy land in Costa Rica foreigner'
+   - 'buy condo Nosara Costa Rica'
+   - 'cheap property Latin America for sale'
+   - 'buy vacation home Costa Rica'
+   - 'buy investment property Argentina cheap'
+   - 'beach houses for sale Nicaragua'
+   - 'buy vineyard Mendoza Argentina'
+   - 'buy property abroad from USA'
+   - 'overseas property investment for Americans'
+   - 'international real estate for sale 2026'
+   - 'buy property Central America best country'
+   - 'buy property South America best country'
+   - 'buy property in Latin America'
+   - 'affordable international real estate'
+   - 'buy property overseas with USD'
+   - 'best country to buy property as American 2026'
+4. Use web search for REAL current data. Include specific prices, legal requirements, and steps.
+5. Create a 600-1000 word page in public/landing/.
+6. Include: title tag with exact keyword, meta description, JSON-LD, OG tags, canonical URL, H1 matching keyword, first paragraph answers the query directly.
+7. Internal links to 3+ other pages. Subscribe form. Add to sitemap.
+8. Git add, commit, push." 2>> "$LOG_FILE"
 
-BUYER INTENT KEYWORDS (people ready to purchase):
-- 'buy property in [country/city] as American/Canadian/British/European/Australian'
-- '[country] real estate for sale 2026'
-- 'homes for sale in [city] [country] under \$[price]'
-- 'invest in [country] real estate'
-- 'best places to buy property in [region]'
+echo "  Keyword page 1 (buyer intent) created." >> "$LOG_FILE"
 
-RESEARCH KEYWORDS (people comparing options):
-- 'is [country] a good place to invest in real estate'
-- '[country A] vs [country B] for real estate investment'
-- 'cost of buying property in [country]'
-- 'safest places to invest in Latin America'
-- 'best rental markets in Central/South America'
+# ─── KEYWORD PAGE 2: Nationality-specific (target different countries' buyers) ───
+claude --print "You are a global SEO strategist for International RE (internationalre.org).
 
-EXPAT/LIFESTYLE KEYWORDS (people planning to move):
-- 'retire in [country] real estate'
-- 'expat living in [city] cost'
-- 'digital nomad [country] property'
-- 'best places to live in [country] for foreigners'
-- 'moving to [country] buying house'
+YOUR TASK: Create ONE page targeting buyers from a SPECIFIC NATIONALITY searching for Latin American property.
 
-LEGAL/PROCESS KEYWORDS (people need answers):
-- 'can foreigners buy property in [country]'
-- 'property ownership laws [country]'
-- 'real estate closing process [country]'
-- 'property taxes in [country] for foreigners'
-- 'do I need a visa to buy property in [country]'
+INSTRUCTIONS:
+1. Read all existing content to avoid duplication.
+2. Create a page in public/landing/ targeting ONE of these nationality-specific keywords (pick one with NO existing page):
+   - 'buying property in Costa Rica as a British citizen'
+   - 'buying property in Argentina as Australian'
+   - 'buying property in Nicaragua as European'
+   - 'buying property in Chile as German'
+   - 'can British citizens buy property in Costa Rica'
+   - 'can Canadians buy property in Argentina'
+   - 'can Europeans buy property in Nicaragua'
+   - 'can Australians buy property in Chile'
+   - 'UK citizens buying property in Latin America'
+   - 'Canadian buying property in Central America'
+   - 'German investors buying property Costa Rica'
+   - 'French buying property South America'
+   - 'Dutch buying property Latin America'
+   - 'Irish buying property abroad Latin America'
+   - 'Scandinavian buying property Central America'
+   - 'Japanese investors Latin American real estate'
+   - 'Middle Eastern investors Latin American property'
+   - 'South African buying property Costa Rica'
+   - 'New Zealand citizens buying property abroad'
+   - 'Israeli investors buying property Argentina'
+   - 'Indian NRI buying property Latin America'
+   - 'Chinese investors Latin American real estate 2026'
+   - 'Korean investors buying property in Chile'
+   - 'Swiss buying property in Costa Rica'
+   - 'Singaporean investing in Latin America property'
+3. Research the SPECIFIC legal requirements, tax implications, and considerations for that nationality.
+4. Include: visa requirements, tax treaties, currency transfer rules, property rights for that nationality.
+5. 600-1000 words. JSON-LD, OG tags, canonical URL, internal links, subscribe form.
+6. Add to sitemap. Git add, commit, push." 2>> "$LOG_FILE"
 
-FINANCIAL KEYWORDS (people calculating ROI):
-- 'rental yield [city] [country]'
-- 'property appreciation [country] 2026'
-- 'best ROI real estate Latin America'
-- 'passive income property [country]'
-- 'Airbnb income [city]'
+echo "  Keyword page 2 (nationality-specific) created." >> "$LOG_FILE"
 
-3. Use web search to research REAL data for the chosen keyword.
-4. Create the page (600-1200 words) in the most appropriate directory (public/landing/ for buyer intent, public/guides/ for research/legal, public/blog/ for lifestyle).
-5. CRITICAL SEO ELEMENTS — include ALL of these:
-   - Title tag with exact keyword (under 60 chars)
-   - Meta description with keyword + compelling CTA (155 chars)
-   - H1 tag matching the primary keyword
-   - H2 tags for related keywords
-   - First paragraph answers the query directly (Featured Snippet optimization)
-   - JSON-LD structured data (Article, FAQPage, or WebPage)
-   - Open Graph + Twitter Card tags
-   - Canonical URL
-   - Internal links to 3+ other pages on the site
-   - Subscribe form/banner
-6. Add to sitemap.xml.
-7. Add link to this page from at least 1 existing page.
-8. Git add, commit, and push.
+# ─── KEYWORD PAGE 3: City/Neighborhood level (hyperlocal SEO) ───
+claude --print "You are a hyperlocal SEO specialist for International RE (internationalre.org).
 
-Target keywords that have search volume but where the top-ranking pages are weak (forums, thin content, outdated). That's where a quality page can rank fast." 2>> "$LOG_FILE"
+YOUR TASK: Create ONE page targeting a SPECIFIC CITY or NEIGHBORHOOD keyword with very low competition.
 
-echo "  Keyword expansion page created." >> "$LOG_FILE"
+INSTRUCTIONS:
+1. Read all existing content to avoid duplication.
+2. Create a page in public/landing/ targeting ONE hyperlocal keyword (pick one with NO existing page):
+
+   COSTA RICA cities/neighborhoods:
+   - 'real estate Tamarindo Costa Rica' / 'property prices Tamarindo'
+   - 'real estate Nosara Costa Rica' / 'buy property Nosara'
+   - 'real estate Santa Teresa Costa Rica'
+   - 'real estate Jaco Costa Rica'
+   - 'real estate Papagayo Costa Rica'
+   - 'real estate Flamingo Beach Costa Rica'
+   - 'real estate Playas del Coco Costa Rica'
+   - 'real estate Ojochal Costa Rica'
+   - 'real estate Atenas Costa Rica retire'
+   - 'real estate Grecia Costa Rica'
+   - 'real estate Escazu Costa Rica'
+   - 'real estate San Ramon Costa Rica'
+
+   NICARAGUA cities/neighborhoods:
+   - 'real estate San Juan del Sur Nicaragua'
+   - 'real estate Granada Nicaragua'
+   - 'real estate Leon Nicaragua'
+   - 'real estate Managua Nicaragua'
+   - 'real estate Emerald Coast Nicaragua'
+   - 'real estate Tola Nicaragua'
+   - 'real estate Corn Islands Nicaragua'
+
+   ARGENTINA cities/neighborhoods:
+   - 'real estate Palermo Buenos Aires'
+   - 'real estate Recoleta Buenos Aires'
+   - 'real estate San Telmo Buenos Aires'
+   - 'real estate Belgrano Buenos Aires'
+   - 'real estate Mendoza city Argentina'
+   - 'real estate Bariloche Argentina'
+   - 'real estate Cordoba Argentina'
+   - 'real estate Salta Argentina'
+   - 'real estate Tigre Buenos Aires'
+   - 'real estate Puerto Madero Buenos Aires'
+
+   CHILE cities/neighborhoods:
+   - 'real estate Providencia Santiago Chile'
+   - 'real estate Las Condes Santiago'
+   - 'real estate Vitacura Santiago'
+   - 'real estate Nunoa Santiago Chile'
+   - 'real estate Valparaiso Chile'
+   - 'real estate Vina del Mar Chile'
+   - 'real estate Pucon Chile'
+   - 'real estate Puerto Varas Chile'
+   - 'real estate La Serena Chile'
+   - 'real estate Concepcion Chile'
+
+3. Use web search for REAL data: price per sqm, typical property types, neighborhood character, rental yields, expat community, walkability, safety.
+4. 600-1000 words. Include all SEO elements. Add to sitemap. Internal links. Subscribe form.
+5. Git add, commit, push." 2>> "$LOG_FILE"
+
+echo "  Keyword page 3 (hyperlocal) created." >> "$LOG_FILE"
+
+# ─── KEYWORD PAGE 4: Question-based / How-to (Featured Snippet targets) ───
+claude --print "You are a Featured Snippet SEO specialist for International RE (internationalre.org).
+
+YOUR TASK: Create ONE page targeting a QUESTION-BASED keyword — optimized to win Google's Featured Snippet (position zero).
+
+INSTRUCTIONS:
+1. Read all existing content to avoid duplication.
+2. Create a page in public/guides/ or public/landing/ targeting ONE question keyword (pick one with NO existing page):
+   - 'how to buy property in Costa Rica step by step'
+   - 'how to buy property in Argentina as foreigner'
+   - 'how to buy property in Nicaragua'
+   - 'how to buy property in Chile as American'
+   - 'how much does it cost to buy property in Costa Rica'
+   - 'how much does it cost to buy property in Argentina'
+   - 'how much are closing costs in Costa Rica'
+   - 'how much are closing costs in Chile'
+   - 'what do I need to buy property in Costa Rica'
+   - 'what documents do I need to buy property abroad'
+   - 'is it safe to buy property in Nicaragua'
+   - 'is it safe to invest in Argentina real estate'
+   - 'is Costa Rica a good place to invest in real estate'
+   - 'is Chile a good place to buy property'
+   - 'where is the cheapest place to buy beachfront property'
+   - 'where to buy property in Latin America 2026'
+   - 'where to retire in Central America on a budget'
+   - 'where to invest in real estate outside the US'
+   - 'why are people buying property in Costa Rica'
+   - 'why is Buenos Aires property so cheap'
+   - 'when is the best time to buy property in Costa Rica'
+   - 'when is the best time to buy property in Argentina'
+   - 'how to get residency in Costa Rica through property'
+   - 'how to get residency in Nicaragua'
+   - 'how to send money to buy property in Argentina'
+   - 'how to find a real estate lawyer in Costa Rica'
+   - 'how to do due diligence on property in Latin America'
+   - 'what are property taxes in Costa Rica'
+   - 'what are the risks of buying property abroad'
+   - 'what is the ROI on rental property in Costa Rica'
+3. CRITICAL: The first paragraph MUST directly answer the question in 2-3 sentences (this is what Google shows in Featured Snippets).
+4. Then provide detailed supporting content (600-1000 words).
+5. Use FAQ structured data. Include all SEO elements. Add to sitemap. Internal links.
+6. Git add, commit, push." 2>> "$LOG_FILE"
+
+echo "  Keyword page 4 (question/how-to) created." >> "$LOG_FILE"
+
+# ─── KEYWORD PAGE 5: Comparison / Alternative keywords ───
+claude --print "You are a comparison SEO specialist for International RE (internationalre.org).
+
+YOUR TASK: Create ONE page targeting a COMPARISON or ALTERNATIVE keyword — people weighing options before buying.
+
+INSTRUCTIONS:
+1. Read all existing content to avoid duplication.
+2. Create a page in public/guides/ or public/landing/ targeting ONE comparison keyword (pick one with NO existing page):
+
+   COUNTRY VS COUNTRY:
+   - 'Costa Rica vs Mexico for real estate investment'
+   - 'Costa Rica vs Panama property investment'
+   - 'Costa Rica vs Colombia real estate'
+   - 'Argentina vs Uruguay real estate investment'
+   - 'Chile vs Peru real estate investment'
+   - 'Nicaragua vs Honduras real estate'
+   - 'Costa Rica vs Portugal real estate for Americans'
+   - 'Latin America vs Southeast Asia real estate'
+   - 'Latin America vs Europe for property investment'
+   - 'Central America vs South America real estate'
+
+   CITY VS CITY:
+   - 'Tamarindo vs Nosara Costa Rica real estate'
+   - 'Buenos Aires vs Montevideo property'
+   - 'Santiago vs Lima real estate'
+   - 'San Juan del Sur vs Tamarindo'
+   - 'Mendoza vs Bariloche property'
+   - 'Jaco vs Manuel Antonio Costa Rica'
+
+   INVESTMENT TYPE:
+   - 'Airbnb vs long term rental Latin America'
+   - 'condo vs house investment Costa Rica'
+   - 'land vs built property Latin America investment'
+   - 'new construction vs resale property Costa Rica'
+   - 'beach property vs city apartment Latin America'
+   - 'managed rental vs self-managed property abroad'
+
+   ALTERNATIVES:
+   - 'alternatives to Florida real estate for investors'
+   - 'alternatives to Hawaii for beachfront property'
+   - 'alternatives to European real estate for Americans'
+   - 'cheaper alternatives to US real estate market'
+   - 'best alternatives to domestic real estate investing'
+   - 'better ROI than US rental property'
+
+3. Include data tables comparing both sides. Use web search for REAL numbers.
+4. 800-1200 words. All SEO elements. FAQ structured data. Internal links. Subscribe form.
+5. Add to sitemap. Git add, commit, push." 2>> "$LOG_FILE"
+
+echo "  Keyword page 5 (comparison) created." >> "$LOG_FILE"
+echo "  === All 5 keyword pages created ===" >> "$LOG_FILE"
 
 # ══════════════════════════════════════════════════════════════
 # DAILY: Submit sitemap to additional search engines beyond
