@@ -8,6 +8,12 @@ export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/b
 
 cd ~/Desktop/my-project/Claude\ Newsletter
 
+# Make sure Claude Desktop app is open and CLI is authenticated
+if ! claude --print "hello" > /dev/null 2>&1; then
+  open -a "Claude" 2>/dev/null
+  sleep 20
+fi
+
 claude --print "You are writing a new weekly blog post for the International RE website at $(pwd).
 
 INSTRUCTIONS:
