@@ -867,6 +867,146 @@ Reel topics to rotate through:
 echo "  Social media content pack generated." >> "$LOG_FILE"
 
 # ══════════════════════════════════════════════════════════════
+# DAILY: Generate PRODUCTION-READY TikTok/Reels video scripts
+#        with scene-by-scene breakdowns so you can film or
+#        use CapCut/Canva to produce them in minutes
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Generating TikTok/Reels video scripts..." >> "$LOG_FILE"
+
+mkdir -p "$PROJECT_DIR/growth-output/videos"
+
+claude --print "You are a viral TikTok and Instagram Reels video producer for International RE (internationalre.org).
+
+YOUR TASK: Generate 5 PRODUCTION-READY video scripts for TikTok and Instagram Reels. These should be so detailed that someone can produce the video in 10 minutes using CapCut, Canva, or just their phone.
+
+INSTRUCTIONS:
+1. Read the 3 most recent blog posts in public/blog/ and guides in public/guides/ for real data.
+2. Read existing files in growth-output/videos/ to avoid repeating topics.
+3. Create 5 video scripts in one markdown file. For EACH video:
+
+═══ VIDEO [number]: [Title] ═══
+
+PLATFORM: TikTok + Instagram Reels + YouTube Shorts
+DURATION: [15/30/60] seconds
+FORMAT: Vertical 9:16
+
+HOOK (0-2 seconds):
+- ON-SCREEN TEXT: [exact bold text shown — this is what stops the scroll]
+- VISUAL: [describe exactly what's on screen: stock footage of beach, text animation, face-to-camera, property photos, etc.]
+- AUDIO: [voiceover line or trending sound description]
+
+SCENE 1 (2-8 seconds):
+- ON-SCREEN TEXT: [exact text overlay]
+- VISUAL: [specific stock footage description or what to film — e.g., 'aerial beach drone shot', 'screenshot of property listing', 'text reveal animation']
+- VOICEOVER: '[exact words to say]'
+
+SCENE 2 (8-15 seconds):
+- ON-SCREEN TEXT: [exact text overlay]
+- VISUAL: [specific description]
+- VOICEOVER: '[exact words]'
+
+SCENE 3 (15-22 seconds):
+- ON-SCREEN TEXT: [exact text overlay]
+- VISUAL: [specific description]
+- VOICEOVER: '[exact words]'
+
+CTA SCENE (final 3-5 seconds):
+- ON-SCREEN TEXT: 'Follow @RealEstate_IRE for more' + 'Link in bio: internationalre.org'
+- VISUAL: [logo or subscribe animation]
+- VOICEOVER: 'Follow for more and grab our free guide — link in bio.'
+
+CAPTION: [full caption with line breaks and emojis for engagement]
+HASHTAGS: [15-20 relevant hashtags]
+BEST TIME TO POST: [specific time like '9am EST Tuesday' based on when real estate content performs best]
+TRENDING AUDIO: [specific song name or describe the audio style]
+ESTIMATED VIEWS: [what similar content typically gets]
+
+═══ VIDEO TOPICS — rotate through these categories: ═══
+
+1. PRICE REVEAL (highest engagement format):
+   'What \$X buys you in [Country]' — show 3-4 properties at different price points
+   Film: screenshot property listings or use Canva slides with Unsplash images
+
+2. MYTH BUSTING (drives comments/shares):
+   'STOP believing this about [Country] real estate' — debunk a common misconception
+   Film: face-to-camera or text-on-screen
+
+3. COMPARISON (very shareable):
+   '[Country] vs [Country] — which is better for investors?'
+   Film: split-screen comparison with text and numbers
+
+4. STORYTIME/POV (builds connection):
+   'POV: You just bought your dream property in [Country]'
+   Film: lifestyle footage, property tours, sunset shots
+
+5. DATA DROP (positions as expert):
+   'The numbers nobody talks about in [Country] real estate'
+   Film: animated stats, charts, or text reveals
+
+═══ ALSO GENERATE: ═══
+
+3 x TWITTER VIDEO DESCRIPTIONS (for posting video clips to Twitter):
+- Under 280 chars + link to internationalre.org
+- Designed to make people click through
+
+2 x TIKTOK CAROUSEL IDEAS (static image slideshows — no filming needed):
+- 5-7 slides each
+- Exact text for each slide
+- Topic + data from blog posts
+- These are the EASIEST content to produce — just text on images in Canva
+
+4. ALL numbers and data must be REAL — pulled from the blog posts.
+5. Save to: growth-output/videos/video-scripts-${DATE}.md" > "$PROJECT_DIR/growth-output/videos/video-scripts-${DATE}.md" 2>> "$LOG_FILE"
+
+echo "  TikTok/Reels video scripts generated." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
+# DAILY: Auto-create a Twitter thread (long-form content that
+#        gets massive reach on X/Twitter). Saved as ready-to-post.
+# ══════════════════════════════════════════════════════════════
+echo "[DAILY] Generating Twitter thread..." >> "$LOG_FILE"
+
+mkdir -p "$PROJECT_DIR/growth-output/threads"
+
+claude --print "You are a viral Twitter/X thread writer for International RE (internationalre.org).
+
+YOUR TASK: Write ONE viral Twitter thread (8-12 tweets) based on the latest blog content. Threads get 10x more reach than single tweets.
+
+INSTRUCTIONS:
+1. Read the 2 most recent blog posts in public/blog/ for real data.
+2. Read existing files in growth-output/threads/ to avoid repeating topics.
+3. Write a thread with this structure:
+
+TWEET 1 (THE HOOK — most important tweet):
+[Bold, curiosity-driving opening. Must make people click 'Show this thread'. Examples:]
+- 'I analyzed property prices in 4 Latin American countries. Here's what I found (thread):'
+- 'You can buy a beach house in Central America for less than a used car costs in the US. Here are the numbers:'
+- 'Most Americans don't know they can buy property in these 4 countries with FULL ownership rights. A breakdown:'
+
+TWEETS 2-10 (THE VALUE):
+- One key insight per tweet
+- Include specific numbers (\$ amounts, percentages, yields)
+- Use line breaks for readability
+- Add relevant images/charts description [in brackets]
+
+TWEET 11 (THE CTA):
+'If you found this useful:
+1. Follow @RealEstate_IRE for weekly insights
+2. Grab our free 2026 Market Guide: internationalre.org
+3. RT tweet 1 to help others discover this'
+
+TWEET 12 (THE ENGAGEMENT DRIVER):
+[Ask a question to drive replies: 'Which country would YOU invest in? Reply below.']
+
+FORMAT: Number each tweet clearly (1/, 2/, 3/, etc.)
+HASHTAGS: Only on tweet 1 and the final tweet (3-5 max)
+THREAD TOPIC: Rotate through — price analysis, country comparison, investment strategy, myth-busting, step-by-step guide
+
+Save to: growth-output/threads/thread-${DATE}.md" > "$PROJECT_DIR/growth-output/threads/thread-${DATE}.md" 2>> "$LOG_FILE"
+
+echo "  Twitter thread generated." >> "$LOG_FILE"
+
+# ══════════════════════════════════════════════════════════════
 # DAILY: MASSIVE KEYWORD EXPANSION — Create 5 keyword-targeted
 #        pages per day across every major search engine worldwide
 #        Google, Bing, Yahoo, Yandex, DuckDuckGo, Baidu, Naver,
