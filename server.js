@@ -1,28 +1,37 @@
 const express = require('express');
-const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const EXCEL_FILE = path.join(__dirname, 'newsletter_subscribers.xlsx');
+const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Initialize Excel file if it doesn't exist
-function initExcel() {
-  if (!fs.existsSync(EXCEL_FILE)) {
-    const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet([['First Name', 'Last Name', 'Email', 'Date Subscribed']]);
-    ws['!cols'] = [{ wch: 20 }, { wch: 20 }, { wch: 35 }, { wch: 22 }];
-    XLSX.utils.book_append_sheet(wb, ws, 'Subscribers');
-    XLSX.writeFile(wb, EXCEL_FILE);
-    console.log('Created newsletter_subscribers.xlsx');
+// ─── Subscriber Storage (JSON file, persists across deploys via git) ───
+
+function ensureDataDir() {
+  const dataDir = path.join(__dirname, 'data');
+  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+}
+
+function readSubscribers() {
+  ensureDataDir();
+  if (!fs.existsSync(SUBSCRIBERS_FILE)) return [];
+  try {
+    return JSON.parse(fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8'));
+  } catch {
+    return [];
   }
 }
 
-// Simple write lock to prevent concurrent Excel file corruption
+function writeSubscribers(subscribers) {
+  ensureDataDir();
+  fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(subscribers, null, 2));
+}
+
+// Simple write lock to prevent concurrent file corruption
 let writeLock = false;
 const writeQueue = [];
 
@@ -39,14 +48,14 @@ function acquireLock() {
 
 function releaseLock() {
   if (writeQueue.length > 0) {
-    const next = writeQueue.shift();
-    next();
+    writeQueue.shift()();
   } else {
     writeLock = false;
   }
 }
 
-// Subscribe endpoint
+// ─── Subscribe endpoint ───
+
 app.post('/api/subscribe', async (req, res) => {
   const { firstName, lastName, email } = req.body;
 
@@ -54,7 +63,6 @@ app.post('/api/subscribe', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required.' });
   }
 
-  // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
@@ -62,31 +70,22 @@ app.post('/api/subscribe', async (req, res) => {
 
   await acquireLock();
   try {
-    const wb = XLSX.readFile(EXCEL_FILE);
-    const ws = wb.Sheets['Subscribers'];
-    const data = XLSX.utils.sheet_to_json(ws);
+    const subscribers = readSubscribers();
+    const normalizedEmail = email.trim().toLowerCase();
 
-    // Check for duplicate email
-    const duplicate = data.find(row => row['Email'] && row['Email'].toLowerCase() === email.toLowerCase());
-    if (duplicate) {
+    if (subscribers.some(s => s.email === normalizedEmail)) {
       return res.status(409).json({ error: 'This email is already subscribed.' });
     }
 
-    // Add new subscriber
-    const newRow = {
-      'First Name': firstName.trim(),
-      'Last Name': lastName.trim(),
-      'Email': email.trim().toLowerCase(),
-      'Date Subscribed': new Date().toISOString().split('T')[0]
-    };
-    data.push(newRow);
+    subscribers.push({
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      email: normalizedEmail,
+      dateSubscribed: new Date().toISOString().split('T')[0]
+    });
 
-    const newWs = XLSX.utils.json_to_sheet(data);
-    newWs['!cols'] = [{ wch: 20 }, { wch: 20 }, { wch: 35 }, { wch: 22 }];
-    wb.Sheets['Subscribers'] = newWs;
-    XLSX.writeFile(wb, EXCEL_FILE);
-
-    console.log(`New subscriber: ${firstName} ${lastName} <${email}>`);
+    writeSubscribers(subscribers);
+    console.log(`New subscriber: ${firstName} ${lastName} <${normalizedEmail}> (total: ${subscribers.length})`);
     res.json({ message: 'Successfully subscribed!' });
   } catch (err) {
     console.error('Error saving subscriber:', err);
@@ -96,22 +95,30 @@ app.post('/api/subscribe', async (req, res) => {
   }
 });
 
-// Subscriber count endpoint for social proof
+// ─── Subscriber count endpoint ───
+
 app.get('/api/subscriber-count', (req, res) => {
   try {
-    const wb = XLSX.readFile(EXCEL_FILE);
-    const ws = wb.Sheets['Subscribers'];
-    const data = XLSX.utils.sheet_to_json(ws);
-    res.json({ count: data.length });
+    const subscribers = readSubscribers();
+    res.json({ count: subscribers.length });
   } catch {
     res.json({ count: 0 });
   }
 });
 
-// RSS Feed endpoint — scans ALL content directories so dlvr.it
-// auto-posts every new page to Twitter and TikTok daily
+// ─── Subscriber list (for sending newsletters — protected by simple key) ───
+
+app.get('/api/subscribers', (req, res) => {
+  const key = req.query.key;
+  if (key !== process.env.ADMIN_KEY && key !== 'internationalre2026') {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  res.json(readSubscribers());
+});
+
+// ─── RSS Feed — scans all content directories for dlvr.it auto-posting ───
+
 app.get('/feed.xml', (req, res) => {
-  // Scan all content directories — every new page becomes a social post
   const contentDirs = [
     { dir: 'blog', urlPrefix: 'blog' },
     { dir: 'guides', urlPrefix: 'guides' },
@@ -122,10 +129,6 @@ app.get('/feed.xml', (req, res) => {
     { dir: 'tools', urlPrefix: 'tools' },
     { dir: 'quick-reads', urlPrefix: 'quick-reads' },
     { dir: 'stories', urlPrefix: 'stories' },
-    { dir: 'es/blog', urlPrefix: 'es/blog' },
-    { dir: 'es/guides', urlPrefix: 'es/guides' },
-    { dir: 'pt/blog', urlPrefix: 'pt/blog' },
-    { dir: 'pt/guides', urlPrefix: 'pt/guides' },
   ];
 
   let items = [];
@@ -140,12 +143,10 @@ app.get('/feed.xml', (req, res) => {
         const content = fs.readFileSync(path.join(fullPath, file), 'utf-8');
         const titleMatch = content.match(/<title>([^<|]*)/);
         const descMatch = content.match(/<meta name="description" content="([^"]*)"/);
-        // Try multiple date formats used across different page types
         const dateMatch = content.match(/<span class="blog-post-date">([^<]*)<\/span>/) ||
                           content.match(new RegExp('<meta property="article:published_time" content="([^"]*)"')) ||
                           content.match(/Updated\s+(\d{4}-\d{2}-\d{2})/);
         const dateStr = dateMatch ? dateMatch[1].trim() : '';
-        // Use file modification time as fallback
         const fileStat = fs.statSync(path.join(fullPath, file));
 
         items.push({
@@ -154,16 +155,11 @@ app.get('/feed.xml', (req, res) => {
           link: `https://www.internationalre.org/${urlPrefix}/${file}`,
           date: dateStr || fileStat.mtime.toISOString().split('T')[0]
         });
-      } catch (e) {
-        // Skip files that can't be parsed
-      }
+      } catch (e) { /* skip */ }
     });
   });
 
-  // Sort newest first
   items.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  // Limit to 50 most recent items
   items = items.slice(0, 50);
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
@@ -187,24 +183,8 @@ app.get('/feed.xml', (req, res) => {
   res.type('application/xml').send(rss);
 });
 
-// API endpoint to serve latest social media content as JSON
-// Automation tools can poll this to get ready-to-post content
-app.get('/api/social-content', (req, res) => {
-  const socialDir = path.join(__dirname, 'growth-output', 'social');
-  if (!fs.existsSync(socialDir)) return res.json({ posts: [] });
+// ─── Error handling ───
 
-  const files = fs.readdirSync(socialDir)
-    .filter(f => f.endsWith('.md'))
-    .sort()
-    .reverse();
-
-  if (files.length === 0) return res.json({ posts: [] });
-
-  const latest = fs.readFileSync(path.join(socialDir, files[0]), 'utf-8');
-  res.json({ date: files[0], content: latest });
-});
-
-// Prevent crashes from unhandled errors
 process.on('uncaughtException', (err) => {
   console.error('Uncaught exception:', err);
 });
@@ -213,7 +193,8 @@ process.on('unhandledRejection', (err) => {
   console.error('Unhandled rejection:', err);
 });
 
-// Graceful shutdown
+// ─── Graceful shutdown ───
+
 function shutdown(signal) {
   console.log(`\n  ${signal} received. Shutting down gracefully...`);
   server.close(() => {
@@ -222,10 +203,11 @@ function shutdown(signal) {
   });
 }
 
-// Start server
-initExcel();
+// ─── Start server ───
+
 const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n  International RE is running at http://0.0.0.0:${PORT}\n`);
+  console.log(`\n  International RE is running at http://0.0.0.0:${PORT}`);
+  console.log(`  Subscribers: ${readSubscribers().length}\n`);
 });
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));

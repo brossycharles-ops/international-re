@@ -1,4 +1,7 @@
 node_modules/
 newsletter_subscribers.xlsx
+~$newsletter_subscribers.xlsx
 .DS_Store
 .env
+*.log
+growth-output/
