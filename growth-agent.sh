@@ -23,6 +23,24 @@ echo "Growth Agent Run: $DATE (Day $DAY_OF_WEEK, Week $WEEK_OF_YEAR)" >> "$LOG_F
 echo "═══════════════════════════════════════════" >> "$LOG_FILE"
 
 # ──────────────────────────────────────────────
+# PRE-CHECK: Make sure Claude CLI is authenticated
+# If not, open Claude Desktop app and wait for it
+# ──────────────────────────────────────────────
+if ! claude --print "hello" > /dev/null 2>&1; then
+  echo "[WARNING] Claude CLI not authenticated. Opening Claude Desktop app..." >> "$LOG_FILE"
+  open -a "Claude" 2>/dev/null
+  sleep 15
+  if ! claude --print "hello" > /dev/null 2>&1; then
+    echo "[ERROR] Claude CLI still not authenticated. Content tasks will be skipped." >> "$LOG_FILE"
+    echo "[ERROR] Make sure Claude Desktop app is open and you are logged in." >> "$LOG_FILE"
+  else
+    echo "[OK] Claude CLI authenticated after opening app." >> "$LOG_FILE"
+  fi
+else
+  echo "[OK] Claude CLI authenticated." >> "$LOG_FILE"
+fi
+
+# ──────────────────────────────────────────────
 # DAILY: Ping search engines (runs every single day)
 # ──────────────────────────────────────────────
 echo "[DAILY] Pinging search engines..." >> "$LOG_FILE"
