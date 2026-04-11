@@ -142,7 +142,7 @@ app.get('/feed.xml', (req, res) => {
         const descMatch = content.match(/<meta name="description" content="([^"]*)"/);
         // Try multiple date formats used across different page types
         const dateMatch = content.match(/<span class="blog-post-date">([^<]*)<\/span>/) ||
-                          content.match(/<meta property="article:published_time" content="([^"]*)"/>) ||
+                          content.match(new RegExp('<meta property="article:published_time" content="([^"]*)"')) ||
                           content.match(/Updated\s+(\d{4}-\d{2}-\d{2})/);
         const dateStr = dateMatch ? dateMatch[1].trim() : '';
         // Use file modification time as fallback
@@ -175,9 +175,9 @@ app.get('/feed.xml', (req, res) => {
     <language>en-us</language>
     <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
     ${items.map(item => `<item>
-      <title>${item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>
+      <title>${item.title.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;')}</title>
       <link>${item.link}</link>
-      <description>${item.description.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</description>
+      <description>${item.description.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;')}</description>
       <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
       <guid>${item.link}</guid>
     </item>`).join('\n    ')}
