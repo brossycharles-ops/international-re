@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const EMAIL_FROM = process.env.EMAIL_FROM || 'International RE <onboarding@resend.dev>';
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -93,7 +94,7 @@ app.post('/api/subscribe', async (req, res) => {
     // Send welcome email (non-blocking — don't fail the subscribe if email fails)
     if (resend) {
       resend.emails.send({
-        from: 'International RE <newsletter@internationalre.org>',
+        from: EMAIL_FROM,
         to: normalizedEmail,
         subject: 'Welcome to International RE — Your Free Guide Is Ready',
         html: `
@@ -185,7 +186,7 @@ app.post('/api/send-newsletter', async (req, res) => {
     const batch = subscribers.slice(i, i + 10);
     const promises = batch.map(sub =>
       resend.emails.send({
-        from: 'International RE <newsletter@internationalre.org>',
+        from: EMAIL_FROM,
         to: sub.email,
         subject,
         html: html.replace(/{{firstName}}/g, sub.firstName)
