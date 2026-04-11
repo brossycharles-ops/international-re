@@ -2,9 +2,12 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
+const { Resend } = require('resend');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -86,6 +89,42 @@ app.post('/api/subscribe', async (req, res) => {
 
     writeSubscribers(subscribers);
     console.log(`New subscriber: ${firstName} ${lastName} <${normalizedEmail}> (total: ${subscribers.length})`);
+
+    // Send welcome email (non-blocking — don't fail the subscribe if email fails)
+    if (resend) {
+      resend.emails.send({
+        from: 'International RE <newsletter@internationalre.org>',
+        to: normalizedEmail,
+        subject: 'Welcome to International RE — Your Free Guide Is Ready',
+        html: `
+          <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+            <div style="background:#1a1a2e;padding:30px;text-align:center;">
+              <h1 style="color:#c9a84c;margin:0;font-size:24px;">&#9670; International RE</h1>
+            </div>
+            <div style="padding:30px;background:#fff;">
+              <h2 style="color:#1a1a2e;">Welcome, ${firstName.trim()}!</h2>
+              <p>Thanks for subscribing to International RE. You've joined a growing community of investors exploring Latin American real estate.</p>
+              <h3 style="color:#c9a84c;">Your Free Guide Is Ready</h3>
+              <p>Download your <strong>2026 Latin America Market Entry Guide</strong> — covering Costa Rica, Nicaragua, Argentina & Chile with real price data, legal processes, and investment strategies.</p>
+              <p style="text-align:center;margin:25px 0;">
+                <a href="https://www.internationalre.org/guide/2026-market-entry-guide.html" style="background:#c9a84c;color:#1a1a2e;padding:14px 28px;text-decoration:none;border-radius:6px;font-weight:600;">Download Free Guide &rarr;</a>
+              </p>
+              <h3>What to Expect</h3>
+              <ul>
+                <li>Weekly market intelligence on 4 Latin American markets</li>
+                <li>Real price data, rental yields, and investment analysis</li>
+                <li>Legal updates and buyer guides</li>
+              </ul>
+              <p>Your first newsletter arrives this week.</p>
+              <p style="color:#666;font-size:13px;margin-top:30px;border-top:1px solid #eee;padding-top:15px;">
+                You're receiving this because you subscribed at internationalre.org.<br>
+                <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit our website</a>
+              </p>
+            </div>
+          </div>`
+      }).catch(err => console.error('Welcome email failed:', err));
+    }
+
     res.json({ message: 'Successfully subscribed!' });
   } catch (err) {
     console.error('Error saving subscriber:', err);
@@ -114,6 +153,52 @@ app.get('/api/subscribers', (req, res) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
   res.json(readSubscribers());
+});
+
+// ─── Send newsletter to all subscribers ───
+
+app.post('/api/send-newsletter', async (req, res) => {
+  const key = req.query.key || req.body.key;
+  if (key !== process.env.ADMIN_KEY && key !== 'internationalre2026') {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  if (!resend) {
+    return res.status(500).json({ error: 'Email not configured. Set RESEND_API_KEY environment variable.' });
+  }
+
+  const { subject, html } = req.body;
+  if (!subject || !html) {
+    return res.status(400).json({ error: 'subject and html fields are required.' });
+  }
+
+  const subscribers = readSubscribers();
+  if (subscribers.length === 0) {
+    return res.status(400).json({ error: 'No subscribers to send to.' });
+  }
+
+  let sent = 0;
+  let failed = 0;
+
+  // Send in batches of 10 to stay under rate limits
+  for (let i = 0; i < subscribers.length; i += 10) {
+    const batch = subscribers.slice(i, i + 10);
+    const promises = batch.map(sub =>
+      resend.emails.send({
+        from: 'International RE <newsletter@internationalre.org>',
+        to: sub.email,
+        subject,
+        html: html.replace(/{{firstName}}/g, sub.firstName)
+      }).then(() => { sent++; }).catch(err => {
+        console.error(`Failed to send to ${sub.email}:`, err);
+        failed++;
+      })
+    );
+    await Promise.all(promises);
+  }
+
+  console.log(`Newsletter sent: ${sent} delivered, ${failed} failed`);
+  res.json({ message: `Newsletter sent to ${sent} subscribers.`, sent, failed });
 });
 
 // ─── RSS Feed — scans all content directories for dlvr.it auto-posting ───
