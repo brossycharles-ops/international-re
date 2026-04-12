@@ -1,8 +1,8 @@
 #!/bin/bash
 # ═══════════════════════════════════════════════════════════════
-# INTERNATIONAL RE — GROWTH AGENT (Slim Edition)
+# INTERNATIONAL RE — AGGRESSIVE GROWTH AGENT
 # Runs daily at 9am via macOS LaunchAgent
-# 1 quality content piece per day + search engine pings
+# 2-3 content pieces per day + social media + SEO + search pings
 # ═══════════════════════════════════════════════════════════════
 
 export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
@@ -34,7 +34,7 @@ fi
 echo "[OK] Claude CLI ready." >> "$LOG_FILE"
 
 # ── TASK 1: Ping search engines (every day, no Claude needed) ──
-echo "[1/3] Pinging search engines..." >> "$LOG_FILE"
+echo "[1/5] Pinging search engines..." >> "$LOG_FILE"
 curl -s "https://www.google.com/ping?sitemap=${SITE_URL}/sitemap.xml" > /dev/null 2>&1
 curl -s "https://www.bing.com/ping?sitemap=${SITE_URL}/sitemap.xml" > /dev/null 2>&1
 curl -s -X POST "https://api.indexnow.org/indexnow" \
@@ -42,8 +42,10 @@ curl -s -X POST "https://api.indexnow.org/indexnow" \
   -d "{\"host\":\"www.internationalre.org\",\"key\":\"internationalre\",\"urlList\":[\"${SITE_URL}\"]}" > /dev/null 2>&1
 echo "  Done." >> "$LOG_FILE"
 
-# ── TASK 2: One quality content piece (rotates by day of week) ──
-echo "[2/3] Creating daily content..." >> "$LOG_FILE"
+# ══════════════════════════════════════════════════════════════
+# TASK 2: PRIMARY CONTENT — one long-form piece per day
+# ══════════════════════════════════════════════════════════════
+echo "[2/5] Creating primary content..." >> "$LOG_FILE"
 
 CONTENT_PROMPT=""
 
@@ -137,28 +139,94 @@ if [ -n "$CONTENT_PROMPT" ]; then
   claude --print "$CONTENT_PROMPT" >> "$LOG_FILE" 2>&1
   RESULT=$?
   if [ $RESULT -eq 0 ]; then
-    echo "  Content created successfully." >> "$LOG_FILE"
+    echo "  Primary content created." >> "$LOG_FILE"
   else
-    echo "  [ERROR] Content creation failed (exit code $RESULT)." >> "$LOG_FILE"
+    echo "  [ERROR] Primary content failed (exit $RESULT)." >> "$LOG_FILE"
   fi
 fi
 
-# ── TASK 3: IndexNow ping for any new pages (every day) ──
-echo "[3/3] IndexNow ping for new content..." >> "$LOG_FILE"
+# ══════════════════════════════════════════════════════════════
+# TASK 3: QUICK-READ PAGE — short SEO-targeted content
+# A quick 300-500 word page targeting a specific long-tail keyword
+# These stack up fast and capture search traffic
+# ══════════════════════════════════════════════════════════════
+echo "[3/5] Creating quick-read SEO page..." >> "$LOG_FILE"
+
+claude --print "You are the SEO content writer for International RE (internationalre.org).
+
+CREATE A QUICK-READ SEO PAGE (300-500 words):
+1. Read ALL existing files in public/blog/, public/guides/, and public/quick-reads/ to avoid duplicating topics.
+2. Create public/quick-reads/ directory if it doesn't exist.
+3. Target ONE specific long-tail search keyword that people actually Google. Pick from types like:
+   - 'How much does a house cost in [specific city]?'
+   - 'Is it safe to buy property in [country]?'
+   - 'Best neighborhoods in [city] for expats'
+   - '[Country] property tax rates for foreigners'
+   - 'Airbnb rental income in [city] — what to expect'
+   - 'Cost of living in [city] per month 2026'
+   - 'How to get residency in [country] through real estate'
+   - 'Best time to buy property in [country]'
+4. Use web search for real current data.
+5. Create a short, focused HTML page in public/quick-reads/ using the same template as blog posts.
+6. Include a strong CTA linking to the free guide and subscribe form.
+7. Add internal links to 2-3 related pages on the site.
+8. Update public/sitemap.xml. Git add, commit, push." >> "$LOG_FILE" 2>&1
+
+if [ $? -eq 0 ]; then
+  echo "  Quick-read page created." >> "$LOG_FILE"
+else
+  echo "  [ERROR] Quick-read page failed." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# TASK 4: SOCIAL MEDIA CONTENT for RSS → dlvr.it → Twitter
+# Create a short social-optimized page that dlvr.it auto-posts
+# ══════════════════════════════════════════════════════════════
+echo "[4/5] Creating social media content for auto-posting..." >> "$LOG_FILE"
+
+claude --print "You are the social media content creator for International RE (internationalre.org).
+
+CREATE A SOCIAL-OPTIMIZED SHORT POST PAGE:
+This page will be picked up by our RSS feed and auto-posted to Twitter/X via dlvr.it.
+
+1. Read existing content in public/blog/ and public/tips/ to avoid duplicates.
+2. Create public/tips/ directory if it doesn't exist.
+3. Create a short, punchy page in public/tips/ — think 'daily tip' or 'market stat of the day'. Examples:
+   - '🏠 Did You Know? Foreigners can own property in Costa Rica with FULL ownership rights.'
+   - '📊 Market Stat: Buenos Aires apartments cost \$1,500/sqm — that is 80% less than Miami.'
+   - '💡 Investor Tip: Nicaragua has 0% capital gains tax on property sales.'
+   - '🌴 Expat Insight: Costa Rica property taxes are capped at just 0.25% per year.'
+4. The page title should be attention-grabbing and work as a tweet (under 200 chars).
+5. The meta description should be compelling and include relevant hashtags concepts (dlvr.it adds hashtags from content).
+6. Keep the page body SHORT — 150-300 words max. Include one eye-catching stat, a brief explanation, and a CTA to subscribe or download the free guide.
+7. Use the same HTML template as blog posts but shorter.
+8. Include keywords: #LatinAmericaRealEstate #InvestAbroad #ExpatLife #PropertyInvestment naturally in the text.
+9. Update public/sitemap.xml. Git add, commit, push." >> "$LOG_FILE" 2>&1
+
+if [ $? -eq 0 ]; then
+  echo "  Social content created." >> "$LOG_FILE"
+else
+  echo "  [ERROR] Social content failed." >> "$LOG_FILE"
+fi
+
+# ══════════════════════════════════════════════════════════════
+# TASK 5: IndexNow ping for all new pages
+# ══════════════════════════════════════════════════════════════
+echo "[5/5] IndexNow ping for new content..." >> "$LOG_FILE"
 
 # Find HTML files modified today and ping them
-NEW_FILES=$(find public/blog public/guides -name "*.html" -newer "$LOG_FILE" 2>/dev/null | head -5)
+NEW_FILES=$(find public/blog public/guides public/quick-reads public/tips -name "*.html" -mtime 0 2>/dev/null | head -10)
 if [ -n "$NEW_FILES" ]; then
   URLS=""
   for f in $NEW_FILES; do
     PAGE_PATH=$(echo "$f" | sed 's|^public/||')
     URLS="${URLS}\"${SITE_URL}/${PAGE_PATH}\","
   done
-  URLS="${URLS%,}"  # remove trailing comma
+  URLS="${URLS%,}"
   curl -s -X POST "https://api.indexnow.org/indexnow" \
     -H "Content-Type: application/json" \
     -d "{\"host\":\"www.internationalre.org\",\"key\":\"internationalre\",\"urlList\":[${URLS}]}" > /dev/null 2>&1
-  echo "  Pinged IndexNow for new pages." >> "$LOG_FILE"
+  echo "  Pinged IndexNow for: $NEW_FILES" >> "$LOG_FILE"
 else
   echo "  No new pages to ping." >> "$LOG_FILE"
 fi
@@ -175,6 +243,20 @@ CREATE A MONTHLY MARKET UPDATE:
 4. Make it the featured post on public/blog.html.
 5. Update public/sitemap.xml. Git add, commit, push." >> "$LOG_FILE" 2>&1
   echo "  Monthly update done." >> "$LOG_FILE"
+fi
+
+# ── TWICE MONTHLY: 15th — Top 10 listicle for search traffic ──
+if [ "$DAY_OF_MONTH" = "15" ]; then
+  echo "[BIMONTHLY] Creating Top 10 listicle..." >> "$LOG_FILE"
+  claude --print "You are the content writer for International RE (internationalre.org).
+
+CREATE A TOP 10 LISTICLE BLOG POST:
+1. Read existing content to avoid duplicates.
+2. Pick an engaging listicle topic: 'Top 10 cheapest beach towns in Latin America', '10 mistakes expats make buying property abroad', 'Top 10 neighborhoods in Buenos Aires for investment', '10 reasons to buy property in Costa Rica in 2026'.
+3. Use web search for real data.
+4. Create a long-form blog post (1500+ words) in public/blog/ — listicles rank well in search.
+5. Update public/blog.html. Update public/sitemap.xml. Git add, commit, push." >> "$LOG_FILE" 2>&1
+  echo "  Listicle done." >> "$LOG_FILE"
 fi
 
 echo "" >> "$LOG_FILE"
