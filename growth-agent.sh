@@ -22,11 +22,11 @@ echo "Growth Agent: $DATE (Day $DAY_OF_WEEK)" >> "$LOG_FILE"
 echo "═══════════════════════════════════════════" >> "$LOG_FILE"
 
 # ── Pre-check: Claude CLI authentication ──
-if ! claude --print "hello" > /dev/null 2>&1; then
+if ! claude -p --dangerously-skip-permissions "hello" > /dev/null 2>&1; then
   echo "[WARN] Claude CLI not authenticated. Opening Claude Desktop..." >> "$LOG_FILE"
   open -a "Claude" 2>/dev/null
   sleep 20
-  if ! claude --print "hello" > /dev/null 2>&1; then
+  if ! claude -p --dangerously-skip-permissions "hello" > /dev/null 2>&1; then
     echo "[ERROR] Claude CLI still not authenticated. Aborting." >> "$LOG_FILE"
     exit 1
   fi
@@ -136,7 +136,7 @@ REFRESH OUTDATED CONTENT:
 esac
 
 if [ -n "$CONTENT_PROMPT" ]; then
-  claude --print "$CONTENT_PROMPT" >> "$LOG_FILE" 2>&1
+  claude -p --dangerously-skip-permissions "$CONTENT_PROMPT" >> "$LOG_FILE" 2>&1
   RESULT=$?
   if [ $RESULT -eq 0 ]; then
     echo "  Primary content created." >> "$LOG_FILE"
@@ -152,7 +152,7 @@ fi
 # ══════════════════════════════════════════════════════════════
 echo "[3/5] Creating quick-read SEO page..." >> "$LOG_FILE"
 
-claude --print "You are the SEO content writer for International RE (internationalre.org).
+claude -p --dangerously-skip-permissions "You are the SEO content writer for International RE (internationalre.org).
 
 CREATE A QUICK-READ SEO PAGE (300-500 words):
 1. Read ALL existing files in public/blog/, public/guides/, and public/quick-reads/ to avoid duplicating topics.
@@ -184,7 +184,7 @@ fi
 # ══════════════════════════════════════════════════════════════
 echo "[4/5] Creating social media content for auto-posting..." >> "$LOG_FILE"
 
-claude --print "You are the social media content creator for International RE (internationalre.org).
+claude -p --dangerously-skip-permissions "You are the social media content creator for International RE (internationalre.org).
 
 CREATE A SOCIAL-OPTIMIZED SHORT POST PAGE:
 This page will be picked up by our RSS feed and auto-posted to Twitter/X via dlvr.it.
@@ -234,7 +234,7 @@ fi
 # ── MONTHLY: First of month — market update ──
 if [ "$DAY_OF_MONTH" = "01" ]; then
   echo "[MONTHLY] Creating monthly market update..." >> "$LOG_FILE"
-  claude --print "You are the content writer for International RE (internationalre.org).
+  claude -p --dangerously-skip-permissions "You are the content writer for International RE (internationalre.org).
 
 CREATE A MONTHLY MARKET UPDATE:
 1. Read existing blog posts in public/blog/ to avoid duplicating.
@@ -248,7 +248,7 @@ fi
 # ── TWICE MONTHLY: 15th — Top 10 listicle for search traffic ──
 if [ "$DAY_OF_MONTH" = "15" ]; then
   echo "[BIMONTHLY] Creating Top 10 listicle..." >> "$LOG_FILE"
-  claude --print "You are the content writer for International RE (internationalre.org).
+  claude -p --dangerously-skip-permissions "You are the content writer for International RE (internationalre.org).
 
 CREATE A TOP 10 LISTICLE BLOG POST:
 1. Read existing content to avoid duplicates.

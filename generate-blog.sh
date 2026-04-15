@@ -14,7 +14,7 @@ if ! claude --print "hello" > /dev/null 2>&1; then
   sleep 20
 fi
 
-claude --print "You are writing a new weekly blog post for the International RE website at $(pwd).
+claude -p --dangerously-skip-permissions "You are writing a new weekly blog post for the International RE website at $(pwd).
 
 INSTRUCTIONS:
 1. Read public/blog.html to see which posts already exist and which market/writer was used most recently.
