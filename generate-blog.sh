@@ -1,29 +1,45 @@
 #!/bin/bash
-# Weekly Blog Post Generator for International RE
-# Runs via macOS LaunchAgent every Monday at 8am
-# Uses Claude Code CLI to research and write a new blog post
+# Weekly featured blog post — runs every Monday at 8am via LaunchAgent
 
-# Ensure PATH includes Claude CLI and Node.js (LaunchAgents use minimal PATH)
-export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
 
-cd ~/Desktop/my-project/Claude\ Newsletter
+PROJECT_DIR="$HOME/Desktop/my-project/Claude Newsletter"
+DATE=$(date +%Y-%m-%d)
+LOG_FILE="$PROJECT_DIR/blog-generator.log"
 
-# Make sure Claude Desktop app is open and CLI is authenticated
-if ! claude -p --dangerously-skip-permissions "hello" > /dev/null 2>&1; then
+cd "$PROJECT_DIR" || exit 1
+
+echo "" >> "$LOG_FILE"
+echo "Blog Generator: $DATE" >> "$LOG_FILE"
+
+# Auth check
+if ! claude -p --dangerously-skip-permissions "reply with OK" > /dev/null 2>&1; then
   open -a "Claude" 2>/dev/null
-  sleep 20
+  sleep 30
+  if ! claude -p --dangerously-skip-permissions "reply with OK" > /dev/null 2>&1; then
+    echo "[ERROR] Claude CLI not authenticated. Aborting." >> "$LOG_FILE"
+    echo "  Fix: open Claude desktop app and make sure you are logged in." >> "$LOG_FILE"
+    exit 1
+  fi
 fi
 
-claude -p --dangerously-skip-permissions "You are writing a new weekly blog post for the International RE website at $(pwd).
+claude -p --dangerously-skip-permissions \
+"Content writer for International RE (internationalre.org).
 
-INSTRUCTIONS:
-1. Read public/blog.html to see which posts already exist and which market/writer was used most recently.
-2. Pick the NEXT writer in rotation: Sofia Mendez, James Whitfield, Carolina Vega (check who wrote the most recent post and pick the next one).
-3. Pick a market (Costa Rica, Nicaragua, Argentina, or Chile) that was NOT covered in the most recent 2 posts.
-4. Research current real estate market data for that market using web search. Get real numbers: prices per sqm, rental yields, tourism stats, legal requirements, recent developments.
-5. Create a new blog post HTML file in public/blog/ following the EXACT same template as existing posts (guanacaste-hottest-market-2026.html). Include: nav bar, hero image, full article with real data, subscribe banner, footer. Use an appropriate Unsplash image URL for the hero.
-6. Update public/blog.html: move the current featured post into the grid (as the first grid item), and make the new post the featured article at the top.
-7. Use today's date for the publish date.
-8. The blog post should be 800-1200 words with real market data, specific numbers, and actionable insights.
-9. Update public/sitemap.xml to add the new blog post URL with today's date as lastmod.
-10. After creating the post, commit and push all changes to GitHub with a descriptive commit message."
+TASK: Write the weekly featured blog post in public/blog/.
+- Run: ls public/blog/ and read the last 2 blog post filenames to find recent market and writer.
+- Next writer rotation: Sofia Mendez → James Whitfield → Carolina Vega → repeat.
+- Pick a market NOT in the last 2 posts (Costa Rica, Nicaragua, Argentina, Chile).
+- Web search for 3-5 real current data points (price/sqm, rental yield, one notable development).
+- Write a 700-900 word HTML post matching public/blog/guanacaste-hottest-market-2026.html (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
+- Update public/blog.html: move current featured post to grid, make new post featured.
+- Add URL to public/sitemap.xml with lastmod $DATE.
+- git add -A && git commit -m 'Add weekly blog: [title]' && git push" >> "$LOG_FILE" 2>&1
+
+if [ $? -eq 0 ]; then
+  echo "[OK] Weekly blog post created." >> "$LOG_FILE"
+else
+  echo "[ERROR] Blog post failed." >> "$LOG_FILE"
+fi
+
+echo "Completed: $(date)" >> "$LOG_FILE"
