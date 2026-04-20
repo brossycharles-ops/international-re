@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "international-re",
-      "runtimeExecutable": "node",
+      "runtimeExecutable": "/Users/charlesbrossy/.nvm/versions/node/v22.22.2/bin/node",
       "runtimeArgs": ["server.js"],
-      "port": 3000
+      "env": { "PORT": "3001" },
+      "port": 3001
     }
   ]
 }
