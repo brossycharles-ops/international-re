@@ -5,15 +5,15 @@
 # 2 focused tasks per day to stay well under usage limits
 # ═══════════════════════════════════════════════════════════════
 
-export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
+export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
 
 SITE_URL="https://www.internationalre.org"
-PROJECT_DIR="$HOME/Desktop/my-project/Claude Newsletter"
+PROJECT_DIR="/Users/charlesbrossy/Desktop/my-project/Claude Newsletter"
 DATE=$(date +%Y-%m-%d)
 DAY_OF_WEEK=$(date +%u)   # 1=Monday … 7=Sunday
 DAY_OF_MONTH=$(date +%d)
 LOG_FILE="$PROJECT_DIR/growth-agent.log"
-CLAUDE="claude -p --dangerously-skip-permissions"
+CLAUDE="/Users/charlesbrossy/.local/bin/claude -p --dangerously-skip-permissions"
 
 cd "$PROJECT_DIR" || exit 1
 
