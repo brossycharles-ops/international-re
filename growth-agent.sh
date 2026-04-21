@@ -6,6 +6,8 @@
 # Exactly 2 Claude calls per day — never more.
 # Monthly/bimonthly tasks REPLACE the daily pair, not stack on top.
 # Monday handles the weekly blog (generate-blog.sh eliminated).
+# Markets: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia,
+#          Mexico, Uruguay, Ecuador, Peru, Brazil
 # ═══════════════════════════════════════════════════════════════
 
 export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
@@ -13,6 +15,7 @@ export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/
 SITE_URL="https://www.internationalre.org"
 PROJECT_DIR="/Users/charlesbrossy/Desktop/my-project/Claude Newsletter"
 DATE=$(date +%Y-%m-%d)
+MONTH_YEAR=$(date +"%B %Y")
 DAY_OF_WEEK=$(date +%u)   # 1=Mon … 7=Sun
 DAY_OF_MONTH=$(date +%-d) # 1-31 without leading zero
 LOG_FILE="$PROJECT_DIR/growth-agent.log"
@@ -61,12 +64,13 @@ if [ "$DAY_OF_MONTH" = "1" ]; then
   run_claude "Monthly market update" \
 "Content writer for International RE (internationalre.org).
 
-TASK: Write a monthly market update blog post covering all 4 markets.
-- Web search for the single most newsworthy real estate development this month in each: Costa Rica, Nicaragua, Argentina, Chile.
-- Write a 600-800 word HTML post in public/blog/ titled 'Latin America Real Estate — [Month] 2026 Market Update'. Publish date: $DATE.
+TASK: Write a monthly market update blog post covering multiple Latin American markets.
+- Web search for the single most newsworthy real estate development this month ($MONTH_YEAR) in each: Costa Rica, Colombia, Panama, Mexico, Argentina, Chile, Uruguay.
+- Use current data as of $DATE — prices per sqm, rental yields, notable developments.
+- Write a 700-900 word HTML post in public/blog/ titled 'Latin America Real Estate — $MONTH_YEAR Market Update'. Publish date: $DATE.
 - Update public/blog.html: move current featured post to grid, make new post featured.
 - Add to public/sitemap.xml with lastmod $DATE.
-- git add -A && git commit -m 'Add monthly update: [month] 2026' && git push"
+- git add -A && git commit -m 'Add monthly update: $MONTH_YEAR' && git push"
   log "Growth Agent completed (monthly): $(date)"
   log "═══════════════════════════════════════════"
   exit 0
@@ -77,10 +81,13 @@ if [ "$DAY_OF_MONTH" = "15" ]; then
   run_claude "Top-10 listicle" \
 "Content writer for International RE (internationalre.org).
 
-TASK: Write a top-10 listicle blog post.
+TASK: Write a top-10 listicle blog post about Latin American real estate.
 - Run: ls public/blog/ — avoid duplicating any existing listicle.
-- Pick an engaging topic not yet covered (e.g. '10 cheapest beach towns in Latin America 2026', '10 mistakes expats make buying property abroad', 'Top 10 neighborhoods for investors in Buenos Aires').
-- Web search for real data to back each point briefly.
+- Pick an engaging topic not yet covered. Examples:
+  '10 cheapest beach towns in Latin America $DATE', '10 mistakes expats make buying property abroad',
+  'Top 10 neighborhoods for investors in Medellín', 'Top 10 reasons to buy in Panama in 2026',
+  '10 Latin American cities with the highest rental yields'.
+- Web search for real, current data ($DATE) to back each point.
 - Write a 700-900 word HTML post in public/blog/. Publish date: $DATE.
 - Update public/blog.html. Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add listicle: [title]' && git push"
@@ -93,19 +100,24 @@ fi
 # REGULAR DAYS — exactly 2 Claude calls
 # Call 1: primary long-form content
 # Call 2: short piece (quick-read on odd days, tip on even days)
+#
+# MARKETS TO ROTATE THROUGH:
+#   Costa Rica | Nicaragua | Argentina | Chile | Panama | Colombia
+#   Mexico | Uruguay | Ecuador | Peru | Brazil
+# Always use web search for data current as of $DATE.
 # ══════════════════════════════════════════════════════════
 
 log "[1/2] Primary content (Day $DAY_OF_WEEK)..."
 case $DAY_OF_WEEK in
-  1) # Monday — weekly featured blog (replaces generate-blog.sh)
+  1) # Monday — weekly featured blog
     run_claude "Weekly featured blog" \
 "Content writer for International RE (internationalre.org).
 
 TASK: Write this week's featured blog post in public/blog/.
-- Run: ls public/blog/ — check the last 2 filenames for recent market and writer.
+- Run: ls public/blog/ — check the last 3 filenames for recent markets covered.
 - Next writer rotation: Sofia Mendez → James Whitfield → Carolina Vega → repeat.
-- Pick a market NOT in the last 2 posts: Costa Rica, Nicaragua, Argentina, Chile.
-- Web search for 3-5 real current data points (price/sqm, rental yield, one notable development).
+- Pick a market NOT in the last 3 posts. Rotate across: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia (Medellín or Cartagena), Mexico (Playa del Carmen, CDMX, or Tulum), Uruguay, Ecuador, Peru, Brazil.
+- Web search for 3-5 real current data points as of $DATE (price/sqm, rental yield, one notable development, USD exchange context).
 - Write a 700-900 word HTML post matching public/blog/guanacaste-hottest-market-2026.html (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
 - Update public/blog.html: move current featured post to grid, make new post featured.
 - Add to public/sitemap.xml with lastmod $DATE.
@@ -118,8 +130,8 @@ TASK: Write this week's featured blog post in public/blog/.
 
 TASK: Create one new legal or FAQ guide in public/guides/.
 - Run: ls public/guides/ — do NOT duplicate any existing topic.
-- Pick an uncovered topic: property taxes, closing costs, residency through investment, or a 'Can foreigners buy in X?' guide for a country not yet covered (check existing guides first).
-- Web search for the real current rules and numbers.
+- Pick an uncovered topic. Good options: property taxes, closing costs, residency through investment, or a 'Can foreigners buy in X?' guide for a country not yet covered. Countries to consider: Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil, Nicaragua, Argentina, Chile, Costa Rica.
+- Web search for the real current rules and numbers as of $DATE.
 - Write a 600-800 word HTML guide matching existing guides (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add legal guide: [title]' && git push"
@@ -131,8 +143,8 @@ TASK: Create one new legal or FAQ guide in public/guides/.
 
 TASK: Create one market comparison page in public/guides/.
 - Run: ls public/guides/ public/blog/ — do NOT duplicate any existing comparison.
-- Pick an uncovered pairing: two cities, two countries, or a 'best value' overview.
-- Web search for real price data and rental yields to include in a simple comparison table.
+- Pick an uncovered pairing. Examples: 'Medellín vs Buenos Aires for expat investors', 'Panama City vs San José', 'Mexico Beach Towns vs Costa Rica', 'Uruguay vs Chile for retirees', 'Best value beach markets: Nicaragua, Ecuador, or Brazil'.
+- Web search for real price data and rental yields as of $DATE to include in a simple comparison table.
 - Write a 600-800 word HTML page matching existing guide style (nav, hero, article with table, subscribe banner, footer). Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add comparison: [title]' && git push"
@@ -145,7 +157,8 @@ TASK: Create one market comparison page in public/guides/.
 TASK: Improve the weakest existing page.
 - Run: ls -lS public/blog/ public/guides/ to find the smallest files (weakest content).
 - Pick the smallest one. Read it.
-- Add 150-200 words of updated data (web search for one current stat), improve the meta description to be more compelling, add 2-3 internal links to related pages.
+- Web search for one current stat as of $DATE relevant to that page's topic.
+- Add 150-200 words of updated data, improve the meta description to be more compelling, add 2-3 internal links to related pages.
 - git add -A && git commit -m 'SEO: strengthen [filename]' && git push"
     ;;
 
@@ -155,8 +168,8 @@ TASK: Improve the weakest existing page.
 
 TASK: Create one new location guide in public/guides/.
 - Run: ls public/guides/ public/blog/ — do NOT duplicate any existing topic.
-- Pick one not yet covered: neighborhood guide, cost-of-living breakdown, or rental-yield analysis for a specific city in Costa Rica, Nicaragua, Argentina, or Chile.
-- Web search for 3-5 real current data points (price/sqm, rental yield, one recent development).
+- Pick one not yet covered. Rotate across: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil. Types: neighborhood guide, cost-of-living breakdown, or rental-yield analysis for a specific city.
+- Web search for 3-5 real current data points as of $DATE (price/sqm, rental yield, one recent development).
 - Write a 600-800 word HTML guide matching public/guides/can-foreigners-buy-property-costa-rica.html (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add guide: [title]' && git push"
@@ -167,7 +180,7 @@ TASK: Create one new location guide in public/guides/.
 "Content writer for International RE (internationalre.org).
 
 TASK: Create a weekly Latin America real estate news roundup post.
-- Web search for 4-5 real recent news items about real estate across Costa Rica, Nicaragua, Argentina, Chile. Find actual headlines with sources.
+- Web search for 4-5 real recent news items (as of $DATE) about real estate across Latin America — cover at least 3 different countries from: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil.
 - Write a 500-700 word HTML post in public/blog/ titled 'Latin America Real Estate Weekly — [date range]'. Same structure as existing posts (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
 - Update public/blog.html: move current featured post to grid, make new post featured.
 - Add to public/sitemap.xml with lastmod $DATE.
@@ -181,7 +194,7 @@ TASK: Create a weekly Latin America real estate news roundup post.
 TASK: Refresh the single oldest page on the site with current data.
 - Run: ls -lt public/blog/ public/guides/ | tail -6 to find the oldest files.
 - Pick the oldest one. Read it.
-- Web search for one or two updates for that topic as of $DATE.
+- Web search for one or two updates for that topic as of $DATE — new prices, policy changes, market shifts.
 - Add 100-150 words of fresh data, update the 'Updated' date to $DATE, add one internal link to a recently created page.
 - git add -A && git commit -m 'Refresh: [filename] with $(date +%B) 2026 data' && git push"
     ;;
@@ -196,8 +209,9 @@ if [ $(( DAY_OF_WEEK % 2 )) -eq 1 ]; then
 
 TASK: Create one short quick-read page (250-400 words) in public/quick-reads/.
 - Run: ls public/quick-reads/ — pick a NEW long-tail keyword not yet covered.
-  Good targets: 'Airbnb income in [city]', 'property tax in [country]', 'cost of living in [city] per month 2026', 'how long does it take to buy property in [country]', 'best time to buy in [country]'.
-- Web search for one real current stat to anchor the page.
+  Target countries to expand into: Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil (plus existing: Costa Rica, Nicaragua, Argentina, Chile).
+  Good targets: 'Airbnb income in [city] $DATE', 'property tax in [country] for foreigners', 'cost of living in [city] per month', 'how long does it take to buy property in [country]', 'best neighborhoods in [city] for expats'.
+- Web search for one real current stat as of $DATE to anchor the page.
 - Write a short focused HTML page (same structure as existing quick-reads: nav, short article, subscribe CTA, footer). Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add quick-read: [topic]' && git push"
@@ -208,8 +222,8 @@ else
 
 TASK: Create one short tip/stat page (150-250 words) in public/tips/.
 - Run: ls public/tips/ — pick a NEW punchy stat not yet covered there.
-  Good examples: a surprising price comparison, a tax advantage, a legal right for foreign buyers, a rental yield fact.
-- Web search to confirm the stat is real and current.
+  Good examples: a surprising price comparison, a tax advantage, a legal right for foreign buyers, a rental yield fact. Cover new countries: Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil — not just the ones already covered.
+- Web search to confirm the stat is real and current as of $DATE.
 - Write a short HTML page (same structure as public/tips/medellin-property-vs-miami.html). Title under 200 chars — must work as a standalone social post. Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add tip: [stat]' && git push"
