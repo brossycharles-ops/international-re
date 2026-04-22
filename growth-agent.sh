@@ -10,7 +10,8 @@
 #          Mexico, Uruguay, Ecuador, Peru, Brazil
 # ═══════════════════════════════════════════════════════════════
 
-export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
+export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export HOME="/Users/charlesbrossy"
 
 SITE_URL="https://www.internationalre.org"
 PROJECT_DIR="/Users/charlesbrossy/Desktop/my-project/Claude Newsletter"
