@@ -20,11 +20,12 @@ MONTH_YEAR=$(date +"%B %Y")
 DAY_OF_WEEK=$(date +%u)   # 1=Mon … 7=Sun
 DAY_OF_MONTH=$(date +%-d) # 1-31 without leading zero
 LOG_FILE="$PROJECT_DIR/growth-agent.log"
-CLAUDE="/Users/charlesbrossy/.local/bin/claude -p --dangerously-skip-permissions"
+CLAUDE_BIN="/Users/charlesbrossy/.local/bin/claude"
 
 cd "$PROJECT_DIR" || exit 1
 
 log() { echo "$1" >> "$LOG_FILE"; }
+claude_run() { "$CLAUDE_BIN" -p --dangerously-skip-permissions "$1" >> "$LOG_FILE" 2>&1; }
 
 log ""
 log "═══════════════════════════════════════════"
@@ -32,11 +33,11 @@ log "Growth Agent: $DATE (Day $DAY_OF_WEEK)"
 log "═══════════════════════════════════════════"
 
 # ── Auth check ──────────────────────────────────────────────
-if ! $CLAUDE "reply with OK" > /dev/null 2>&1; then
+if ! "$CLAUDE_BIN" -p --dangerously-skip-permissions "reply with OK" > /dev/null 2>&1; then
   log "[WARN] Claude not authenticated — opening Claude Desktop..."
   open -a "Claude" 2>/dev/null
   sleep 30
-  if ! $CLAUDE "reply with OK" > /dev/null 2>&1; then
+  if ! "$CLAUDE_BIN" -p --dangerously-skip-permissions "reply with OK" > /dev/null 2>&1; then
     log "[ERROR] Claude not authenticated. Open the Claude app and log in, then it will run tomorrow at 9am."
     exit 1
   fi
@@ -53,7 +54,7 @@ log "  Done."
 run_claude() {
   local label="$1"; local prompt="$2"
   log "[run] $label..."
-  $CLAUDE "$prompt" >> "$LOG_FILE" 2>&1
+  claude_run "$prompt"
   if [ $? -eq 0 ]; then log "  [OK] $label"; else log "  [FAIL] $label"; fi
 }
 
