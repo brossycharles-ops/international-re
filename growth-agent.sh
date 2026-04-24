@@ -19,13 +19,14 @@ DATE=$(date +%Y-%m-%d)
 MONTH_YEAR=$(date +"%B %Y")
 DAY_OF_WEEK=$(date +%u)   # 1=Mon … 7=Sun
 DAY_OF_MONTH=$(date +%-d) # 1-31 without leading zero
-LOG_FILE="$PROJECT_DIR/growth-agent.log"
 CLAUDE_BIN="/Users/charlesbrossy/.local/bin/claude"
 
 cd "$PROJECT_DIR" || exit 1
 
-log() { echo "$1" >> "$LOG_FILE"; }
-claude_run() { "$CLAUDE_BIN" -p --dangerously-skip-permissions "$1" >> "$LOG_FILE" 2>&1; }
+# stdout is already redirected to the log file by launchd (StandardOutPath).
+# Never open the log file directly — that causes EDEADLK (resource deadlock).
+log() { echo "$1"; }
+claude_run() { "$CLAUDE_BIN" -p --dangerously-skip-permissions "$1" 2>&1; }
 
 log ""
 log "═══════════════════════════════════════════"
