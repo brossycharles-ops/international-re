@@ -5,3 +5,5 @@ newsletter_subscribers.xlsx
 .env
 *.log
 growth-output/
+__pycache__/
+*.pyc
