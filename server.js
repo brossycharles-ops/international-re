@@ -2,10 +2,26 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const compression = require('compression');
+const helmet = require('helmet');
 
 const { Resend } = require('resend');
 
 const app = express();
+app.use(helmet({
+  contentSecurityPolicy: {
+    useDefaults: true,
+    directives: {
+      'default-src': ["'self'"],
+      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com'],
+      'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://unpkg.com'],
+      'font-src': ["'self'", 'https://fonts.gstatic.com'],
+      'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com', 'https://*.tile.openstreetmap.org'],
+      'connect-src': ["'self'"],
+      'frame-ancestors': ["'none'"],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+}));
 const PORT = process.env.PORT || 3000;
 const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
