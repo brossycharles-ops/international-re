@@ -37,14 +37,23 @@
   // Real cap rates / yield ranges sourced from existing site guides.
   // (gross yield % ranges, midpoints used)
   const MARKETS = {
-    'costa-rica': { name: 'Costa Rica', yield: 0.072, growth: 0.10, tax: 0.0025 },
-    'panama':     { name: 'Panama',     yield: 0.085, growth: 0.06, tax: 0.0070 },
-    'colombia':   { name: 'Colombia',   yield: 0.078, growth: 0.20, tax: 0.0080 },
-    'mexico':     { name: 'Mexico',     yield: 0.090, growth: 0.08, tax: 0.0030 },
-    'argentina':  { name: 'Argentina',  yield: 0.062, growth: 0.05, tax: 0.0125 },
-    'chile':      { name: 'Chile',      yield: 0.055, growth: 0.04, tax: 0.0098 },
-    'nicaragua':  { name: 'Nicaragua',  yield: 0.110, growth: 0.07, tax: 0.0100 },
-    'uruguay':    { name: 'Uruguay',    yield: 0.058, growth: 0.05, tax: 0.0030 }
+    'costa-rica': { name: 'Costa Rica',          yield: 0.072, growth: 0.10, tax: 0.0025 },
+    'panama':     { name: 'Panama',              yield: 0.085, growth: 0.06, tax: 0.0070 },
+    'colombia':   { name: 'Colombia',            yield: 0.078, growth: 0.18, tax: 0.0080 },
+    'mexico':     { name: 'Mexico (Playa)',      yield: 0.090, growth: 0.08, tax: 0.0030 },
+    'tulum':      { name: 'Mexico (Tulum)',      yield: 0.105, growth: 0.11, tax: 0.0030 },
+    'argentina':  { name: 'Argentina',           yield: 0.062, growth: 0.07, tax: 0.0125 },
+    'chile':      { name: 'Chile',               yield: 0.055, growth: 0.04, tax: 0.0098 },
+    'nicaragua':  { name: 'Nicaragua',           yield: 0.110, growth: 0.07, tax: 0.0100 },
+    'uruguay':    { name: 'Uruguay',             yield: 0.058, growth: 0.05, tax: 0.0030 },
+    'ecuador':    { name: 'Ecuador',             yield: 0.075, growth: 0.05, tax: 0.0050 },
+    'peru':       { name: 'Peru',                yield: 0.070, growth: 0.05, tax: 0.0040 },
+    'brazil':     { name: 'Brazil',              yield: 0.065, growth: 0.07, tax: 0.0060 },
+    'portugal':   { name: 'Portugal (Lisbon)',   yield: 0.050, growth: 0.04, tax: 0.0050 },
+    'greece':     { name: 'Greece (Athens)',     yield: 0.065, growth: 0.10, tax: 0.0035 },
+    'indonesia':  { name: 'Indonesia (Bali)',    yield: 0.140, growth: 0.12, tax: 0.0050 },
+    'georgia':    { name: 'Georgia (Tbilisi)',   yield: 0.100, growth: 0.115, tax: 0.0010 },
+    'dominican':  { name: 'Dominican Republic',  yield: 0.095, growth: 0.085, tax: 0.0100 }
   };
 
   function fmtUSD(n) {
