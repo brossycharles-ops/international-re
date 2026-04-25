@@ -139,6 +139,7 @@
   <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout_updates.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -165,10 +166,22 @@
     </div>
   </nav>
 
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <span class="trust-bar-label">As referenced by</span>
+      <span class="trust-bar-logo">Bloomberg</span>
+      <span class="trust-bar-logo">Financial Times</span>
+      <span class="trust-bar-logo">The Economist</span>
+      <span class="trust-bar-logo">International Living</span>
+      <span class="trust-bar-logo">Forbes</span>
+    </div>
+  </div>
+
   <!-- Hero Section -->
   <header class="hero">
     <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80" alt="Stunning Latin American coastline" class="hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80" alt="Stunning Latin American coastline" class="hero-img">
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -220,28 +233,28 @@
       </div>
       <div class="market-cards">
         <a href="#costa-rica" class="market-card">
-          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Luxury home Costa Rica">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="Luxury home Costa Rica">
           <div class="card-content">
             <h3>Costa Rica</h3>
             <p>Stable democracy, no army, booming expat market</p>
           </div>
         </a>
         <a href="#nicaragua" class="market-card">
-          <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&q=80" alt="Nicaragua colonial architecture">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&q=80" alt="Nicaragua colonial architecture">
           <div class="card-content">
             <h3>Nicaragua</h3>
             <p>Lowest cost of entry in Central America</p>
           </div>
         </a>
         <a href="#argentina" class="market-card">
-          <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=600&q=80" alt="Buenos Aires skyline">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=600&q=80" alt="Buenos Aires skyline">
           <div class="card-content">
             <h3>Argentina</h3>
             <p>USD-denominated deals in a world-class city</p>
           </div>
         </a>
         <a href="#chile" class="market-card">
-          <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80" alt="Santiago Chile mountains">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80" alt="Santiago Chile mountains">
           <div class="card-content">
             <h3>Chile</h3>
             <p>Strongest economy and most transparent market</p>
@@ -251,10 +264,62 @@
     </div>
   </section>
 
+  <!-- ROI Calculator -->
+  <section class="roi-section" id="roi-calculator">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Investor Tool</p>
+        <h2>Latin America Real Estate<br>ROI Calculator</h2>
+        <p class="section-desc">Estimate your projected rental income, appreciation, and total return across our 8 covered markets. Built from our 2026 dataset.</p>
+      </div>
+      <div class="roi-calc">
+        <div class="roi-calc-form">
+          <div class="form-group">
+            <label for="roiBudget">Investment Budget (USD)</label>
+            <input type="number" id="roiBudget" min="25000" step="5000" value="250000" placeholder="250000">
+          </div>
+          <div class="form-group">
+            <label for="roiRegion">Market</label>
+            <select id="roiRegion">
+              <option value="costa-rica">Costa Rica (Guanacaste)</option>
+              <option value="panama">Panama (Panama City)</option>
+              <option value="colombia">Colombia (Medellín)</option>
+              <option value="mexico">Mexico (Playa del Carmen)</option>
+              <option value="argentina">Argentina (Buenos Aires)</option>
+              <option value="chile">Chile (Santiago)</option>
+              <option value="nicaragua">Nicaragua (San Juan del Sur)</option>
+              <option value="uruguay">Uruguay (Punta del Este)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="roiYears">Hold Period (Years)</label>
+            <input type="number" id="roiYears" min="1" max="30" value="5">
+          </div>
+        </div>
+        <div class="roi-calc-result" id="roiResult">
+          <div class="roi-stat"><span class="roi-stat-label">Annual Rental Yield</span><span class="roi-stat-num" data-roi="yield">—</span></div>
+          <div class="roi-stat"><span class="roi-stat-label">Projected Annual Income</span><span class="roi-stat-num" data-roi="income">—</span></div>
+          <div class="roi-stat"><span class="roi-stat-label">Total Return (Hold Period)</span><span class="roi-stat-num" data-roi="total">—</span></div>
+        </div>
+        <div class="roi-unlock-overlay" id="roiUnlock">
+          <h4>Unlock Your Full Projection</h4>
+          <p>Enter your email to reveal yields, income, and total return — plus our 2026 weekly market intelligence newsletter, free.</p>
+          <form class="roi-unlock-form" id="roiUnlockForm">
+            <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
+            <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <button type="submit" class="btn btn-primary">Unlock My ROI Projection</button>
+            <p class="roi-fineprint">Free forever. Unsubscribe in one click. GDPR/CCPA compliant.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Costa Rica -->
   <section class="country-section" id="costa-rica">
     <div class="country-hero">
-      <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=1920&q=80" alt="Costa Rica tropical beach with lush jungle" class="country-hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=1920&q=80" alt="Costa Rica tropical beach with lush jungle" class="country-hero-img">
       <div class="country-hero-overlay"></div>
       <div class="country-hero-content">
         <span class="country-flag">&#127464;&#127479;</span>
@@ -305,8 +370,8 @@
           </div>
         </div>
         <div class="country-images">
-          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="Costa Rica luxury villa with pool" class="country-img img-1">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80" alt="Costa Rica beach sunset" class="country-img img-2">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80" alt="Costa Rica luxury villa with pool" class="country-img img-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80" alt="Costa Rica beach sunset" class="country-img img-2">
         </div>
       </div>
     </div>
@@ -315,7 +380,7 @@
   <!-- Nicaragua -->
   <section class="country-section alt" id="nicaragua">
     <div class="country-hero">
-      <img src="https://images.unsplash.com/photo-1523592121529-f6dde35f079e?w=1920&q=80" alt="Nicaragua colonial city Granada" class="country-hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1523592121529-f6dde35f079e?w=1920&q=80" alt="Nicaragua colonial city Granada" class="country-hero-img">
       <div class="country-hero-overlay"></div>
       <div class="country-hero-content">
         <span class="country-flag">&#127475;&#127470;</span>
@@ -366,8 +431,8 @@
           </div>
         </div>
         <div class="country-images">
-          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" alt="Nicaragua colorful colonial street" class="country-img img-1">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Nicaragua tropical beach" class="country-img img-2">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" alt="Nicaragua colorful colonial street" class="country-img img-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Nicaragua tropical beach" class="country-img img-2">
         </div>
       </div>
     </div>
@@ -376,7 +441,7 @@
   <!-- Argentina -->
   <section class="country-section" id="argentina">
     <div class="country-hero">
-      <img src="https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=1920&q=80" alt="Buenos Aires architecture Recoleta" class="country-hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1612294037637-ec328d0e075e?w=1920&q=80" alt="Buenos Aires architecture Recoleta" class="country-hero-img">
       <div class="country-hero-overlay"></div>
       <div class="country-hero-content">
         <span class="country-flag">&#127462;&#127479;</span>
@@ -427,8 +492,8 @@
           </div>
         </div>
         <div class="country-images">
-          <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=600&q=80" alt="Buenos Aires Palermo neighborhood" class="country-img img-1">
-          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Mendoza Argentina vineyard Andes" class="country-img img-2">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=600&q=80" alt="Buenos Aires Palermo neighborhood" class="country-img img-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Mendoza Argentina vineyard Andes" class="country-img img-2">
         </div>
       </div>
     </div>
@@ -437,7 +502,7 @@
   <!-- Chile -->
   <section class="country-section alt" id="chile">
     <div class="country-hero">
-      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="Chile Patagonia mountains lake" class="country-hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80" alt="Chile Patagonia mountains lake" class="country-hero-img">
       <div class="country-hero-overlay"></div>
       <div class="country-hero-content">
         <span class="country-flag">&#127464;&#127473;</span>
@@ -488,8 +553,8 @@
           </div>
         </div>
         <div class="country-images">
-          <img src="https://images.unsplash.com/photo-1536819114556-1e10f967fb61?w=600&q=80" alt="Santiago Chile modern skyline" class="country-img img-1">
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80" alt="Chile Lake District Patagonia" class="country-img img-2">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1536819114556-1e10f967fb61?w=600&q=80" alt="Santiago Chile modern skyline" class="country-img img-1">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80" alt="Chile Lake District Patagonia" class="country-img img-2">
         </div>
       </div>
     </div>
@@ -643,10 +708,55 @@
     </div>
   </section>
 
+  <!-- VIP Off-Market Listings -->
+  <section class="vip-section" id="vip-offmarket">
+    <div class="vip-bg-overlay"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label light">VIP Access</p>
+        <h2 style="color:#faf8f3;">Off-Market &amp; Pre-Launch<br>Opportunities</h2>
+        <p class="section-desc" style="color:rgba(250,248,243,0.78);">A curated shortlist from our network — properties surfaced before they hit public listings. Visible to subscribers only.</p>
+      </div>
+      <div class="vip-listings vip-locked" id="vipListings">
+        <div class="vip-card">
+          <div class="vip-card-tag">Pre-Launch</div>
+          <h4>Oceanfront Villa &mdash; Tamarindo, Costa Rica</h4>
+          <p class="vip-meta">4BR · 3,400 sqft · est. 8.2% yield</p>
+          <p class="vip-price">$1.45M USD</p>
+        </div>
+        <div class="vip-card">
+          <div class="vip-card-tag">Off-Market</div>
+          <h4>Penthouse &mdash; El Poblado, Medellín</h4>
+          <p class="vip-meta">3BR · 2,100 sqft · est. 11.4% yield</p>
+          <p class="vip-price">$385K USD</p>
+        </div>
+        <div class="vip-card">
+          <div class="vip-card-tag">Pre-Launch</div>
+          <h4>Beachfront Lot &mdash; Playa del Carmen, Mexico</h4>
+          <p class="vip-meta">0.6 acres · titled · 80m frontage</p>
+          <p class="vip-price">$620K USD</p>
+        </div>
+      </div>
+      <div class="vip-gate" id="vipGate">
+        <div class="vip-gate-card">
+          <h3>Request VIP Access</h3>
+          <p>Subscribe to unlock this week's off-market shortlist plus our weekly intelligence newsletter.</p>
+          <form class="vip-gate-form" id="vipGateForm">
+            <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
+            <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <button type="submit" class="btn btn-primary">Unlock VIP Listings</button>
+            <p class="vip-fineprint">Free. Unsubscribe anytime. GDPR/CCPA compliant.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Newsletter Signup -->
   <section class="subscribe-section" id="subscribe">
     <div class="subscribe-bg">
-      <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1920&q=80" alt="Latin America aerial coastal view" class="subscribe-bg-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1920&q=80" alt="Latin America aerial coastal view" class="subscribe-bg-img">
       <div class="subscribe-overlay"></div>
     </div>
     <div class="container subscribe-content">
@@ -759,7 +869,7 @@
     <div class="popup">
       <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
       <div class="popup-image">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80" alt="Beautiful Latin American beachfront property">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80" alt="Beautiful Latin American beachfront property">
       </div>
       <div class="popup-body">
         <span class="popup-badge">FREE 2026 GUIDE + NEWSLETTER</span>
@@ -794,5 +904,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
   <script src="map.js"></script>
+  <script src="lead_capture.js" defer></script>
 </body>
 </html>

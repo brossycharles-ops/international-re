@@ -26,6 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout_updates.css">
 </head>
 <body>
 
@@ -53,7 +54,7 @@
 
   <!-- Gallery Hero Banner -->
   <div class="gallery-hero">
-    <img src="images/gallery/madeira-coast.jpg" alt="Travel photography" class="gallery-hero-img">
+    <img loading="lazy" src="images/gallery/madeira-coast.jpg" alt="Travel photography" class="gallery-hero-img">
     <div class="gallery-hero-overlay"></div>
     <div class="gallery-hero-content">
       <p class="section-label light">On The Ground</p>
@@ -200,7 +201,7 @@
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
     <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
     <div class="lightbox-content">
-      <img src="" alt="" id="lightboxImg">
+      <img loading="lazy" src="" alt="" id="lightboxImg">
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
   </div>
@@ -443,5 +444,6 @@
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
   </script>
+  <script src="lead_capture.js" defer></script>
 </body>
 </html>

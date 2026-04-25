@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../layout_updates.css">
 </head>
 <body>
 
@@ -34,7 +35,7 @@
 
   <article class="blog-post">
     <div class="blog-post-hero">
-      <img src="https://images.unsplash.com/photo-1548625149-720754951064?w=1920&q=80" alt="Granada Nicaragua colorful colonial architecture and cathedral" class="blog-post-hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1548625149-720754951064?w=1920&q=80" alt="Granada Nicaragua colorful colonial architecture and cathedral" class="blog-post-hero-img">
       <div class="blog-post-hero-overlay"></div>
       <div class="blog-post-hero-content">
         <span class="blog-card-tag">Nicaragua</span>
@@ -200,5 +201,6 @@
     mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
     navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
+  <script src="../lead_capture.js" defer></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/
 export HOME="/Users/charlesbrossy"
 
 SITE_URL="https://www.internationalre.org"
-PROJECT_DIR="/Users/charlesbrossy/Desktop/my-project/Claude Newsletter"
+PROJECT_DIR="/Users/charlesbrossy/repos/international-re"
 DATE=$(date +%Y-%m-%d)
 MONTH_YEAR=$(date +"%B %Y")
 DAY_OF_WEEK=$(date +%u)   # 1=Mon … 7=Sun

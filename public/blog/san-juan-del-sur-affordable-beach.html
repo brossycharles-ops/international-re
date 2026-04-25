@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../layout_updates.css">
 </head>
 <body>
 
@@ -34,7 +35,7 @@
 
   <article class="blog-post">
     <div class="blog-post-hero">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Nicaragua tropical beach" class="blog-post-hero-img">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Nicaragua tropical beach" class="blog-post-hero-img">
       <div class="blog-post-hero-overlay"></div>
       <div class="blog-post-hero-content">
         <span class="blog-card-tag">Nicaragua</span>
@@ -165,5 +166,6 @@
     if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!firstName || !lastName || !email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
     const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
+  <script src="../lead_capture.js" defer></script>
 </body>
 </html>

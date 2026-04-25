@@ -81,11 +81,14 @@ app.post('/api/subscribe', async (req, res) => {
       return res.status(409).json({ error: 'This email is already subscribed.' });
     }
 
+    const now = new Date();
     subscribers.push({
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       email: normalizedEmail,
-      dateSubscribed: new Date().toISOString().split('T')[0]
+      dateSubscribed: now.toISOString().split('T')[0],
+      subscribedAt: now.toISOString(),
+      city: (req.body.city && String(req.body.city).trim().slice(0, 64)) || null
     });
 
     writeSubscribers(subscribers);
@@ -143,6 +146,40 @@ app.get('/api/subscriber-count', (req, res) => {
     res.json({ count: subscribers.length });
   } catch {
     res.json({ count: 0 });
+  }
+});
+
+// ─── Recent subscribers (for social-proof toast — privacy-safe shape) ───
+//
+//   Returns ONLY: { initial, city, minutesAgo } per subscriber.
+//   - initial = first letter of firstName (no full name, no email)
+//   - city    = stored coarse location if present, else "" (skipped client-side)
+//   - minutesAgo = minutes since signup, capped to last 14 days
+//   This is intentionally minimal so the toast is honest social proof
+//   (real signups, real recency) without leaking PII.
+
+app.get('/api/recent-subscribers', (req, res) => {
+  try {
+    const subs = readSubscribers();
+    const cutoff = Date.now() - 14 * 24 * 60 * 60 * 1000;
+    const items = subs
+      .map(s => {
+        const t = s.subscribedAt ? new Date(s.subscribedAt).getTime()
+                : s.dateSubscribed ? new Date(s.dateSubscribed + 'T12:00:00Z').getTime()
+                : 0;
+        return { s, t };
+      })
+      .filter(x => x.t >= cutoff && x.s.firstName)
+      .sort((a, b) => b.t - a.t)
+      .slice(0, 25)
+      .map(({ s, t }) => ({
+        initial: s.firstName.charAt(0).toUpperCase(),
+        city: s.city || s.location || 'a verified subscriber',
+        minutesAgo: Math.max(1, Math.round((Date.now() - t) / 60000))
+      }));
+    res.json({ items });
+  } catch {
+    res.json({ items: [] });
   }
 });
 

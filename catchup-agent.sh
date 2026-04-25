@@ -7,7 +7,7 @@
 
 export PATH="/Users/charlesbrossy/.local/bin:/Users/charlesbrossy/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
 
-PROJECT_DIR="/Users/charlesbrossy/Desktop/my-project/Claude Newsletter"
+PROJECT_DIR="/Users/charlesbrossy/repos/international-re"
 LOG_FILE="$PROJECT_DIR/catchup-agent.log"
 CLAUDE="/Users/charlesbrossy/.local/bin/claude -p --dangerously-skip-permissions"
 
