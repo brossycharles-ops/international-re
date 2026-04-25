@@ -170,11 +170,13 @@
   <div class="trust-bar">
     <div class="trust-bar-inner">
       <span class="trust-bar-label">As referenced by</span>
-      <span class="trust-bar-logo">Bloomberg</span>
-      <span class="trust-bar-logo">Financial Times</span>
-      <span class="trust-bar-logo">The Economist</span>
-      <span class="trust-bar-logo">International Living</span>
-      <span class="trust-bar-logo">Forbes</span>
+      <div class="trust-bar-logos">
+        <span>Bloomberg</span>
+        <span>Financial Times</span>
+        <span>The Economist</span>
+        <span>International Living</span>
+        <span>Forbes</span>
+      </div>
     </div>
   </div>
 
@@ -297,9 +299,9 @@
           </div>
         </div>
         <div class="roi-calc-result" id="roiResult">
-          <div class="roi-stat"><span class="roi-stat-label">Annual Rental Yield</span><span class="roi-stat-num" data-roi="yield">—</span></div>
-          <div class="roi-stat"><span class="roi-stat-label">Projected Annual Income</span><span class="roi-stat-num" data-roi="income">—</span></div>
-          <div class="roi-stat"><span class="roi-stat-label">Total Return (Hold Period)</span><span class="roi-stat-num" data-roi="total">—</span></div>
+          <div class="roi-metric"><span class="roi-metric-label">Annual Rental Yield</span><span class="roi-metric-value" data-roi="yield">—</span><span class="roi-metric-sub" data-roi-sub="yield"></span></div>
+          <div class="roi-metric"><span class="roi-metric-label">Projected Annual Income</span><span class="roi-metric-value" data-roi="income">—</span><span class="roi-metric-sub" data-roi-sub="income"></span></div>
+          <div class="roi-metric"><span class="roi-metric-label">Total Return (Hold Period)</span><span class="roi-metric-value" data-roi="total">—</span><span class="roi-metric-sub" data-roi-sub="total"></span></div>
         </div>
         <div class="roi-unlock-overlay" id="roiUnlock">
           <h4>Unlock Your Full Projection</h4>
@@ -308,7 +310,8 @@
             <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
             <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
             <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-            <button type="submit" class="btn btn-primary">Unlock My ROI Projection</button>
+            <button type="submit" class="btn btn-primary">Unlock Results</button>
+            <p class="roi-unlock-msg" aria-live="polite"></p>
             <p class="roi-fineprint">Free forever. Unsubscribe in one click. GDPR/CCPA compliant.</p>
           </form>
         </div>
@@ -710,44 +713,54 @@
 
   <!-- VIP Off-Market Listings -->
   <section class="vip-section" id="vip-offmarket">
-    <div class="vip-bg-overlay"></div>
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label light">VIP Access</p>
-        <h2 style="color:#faf8f3;">Off-Market &amp; Pre-Launch<br>Opportunities</h2>
-        <p class="section-desc" style="color:rgba(250,248,243,0.78);">A curated shortlist from our network — properties surfaced before they hit public listings. Visible to subscribers only.</p>
+    <div class="vip-inner">
+      <div class="vip-copy">
+        <p class="section-label">VIP Access</p>
+        <h2>Off-Market &amp; Pre-Launch Opportunities</h2>
+        <p>A curated shortlist from our broker &amp; developer network — properties surfaced before they hit public listings.</p>
+        <ul>
+          <li>Pre-launch developer pricing, 8–15% below MLS</li>
+          <li>Off-market estate &amp; portfolio opportunities</li>
+          <li>Direct introductions to vetted local counsel</li>
+        </ul>
       </div>
       <div class="vip-listings vip-locked" id="vipListings">
-        <div class="vip-card">
-          <div class="vip-card-tag">Pre-Launch</div>
-          <h4>Oceanfront Villa &mdash; Tamarindo, Costa Rica</h4>
-          <p class="vip-meta">4BR · 3,400 sqft · est. 8.2% yield</p>
-          <p class="vip-price">$1.45M USD</p>
+        <div class="vip-listing-card">
+          <div class="vip-listing-thumb">&#9670;</div>
+          <div>
+            <div class="vip-listing-meta-row">Pre-Launch · Costa Rica</div>
+            <h4>Oceanfront Villa — Tamarindo</h4>
+            <p>4BR · 3,400 sqft · est. 8.2% yield · $1.45M USD</p>
+          </div>
         </div>
-        <div class="vip-card">
-          <div class="vip-card-tag">Off-Market</div>
-          <h4>Penthouse &mdash; El Poblado, Medellín</h4>
-          <p class="vip-meta">3BR · 2,100 sqft · est. 11.4% yield</p>
-          <p class="vip-price">$385K USD</p>
+        <div class="vip-listing-card">
+          <div class="vip-listing-thumb">&#9670;</div>
+          <div>
+            <div class="vip-listing-meta-row">Off-Market · Colombia</div>
+            <h4>Penthouse — El Poblado, Medellín</h4>
+            <p>3BR · 2,100 sqft · est. 11.4% yield · $385K USD</p>
+          </div>
         </div>
-        <div class="vip-card">
-          <div class="vip-card-tag">Pre-Launch</div>
-          <h4>Beachfront Lot &mdash; Playa del Carmen, Mexico</h4>
-          <p class="vip-meta">0.6 acres · titled · 80m frontage</p>
-          <p class="vip-price">$620K USD</p>
+        <div class="vip-listing-card">
+          <div class="vip-listing-thumb">&#9670;</div>
+          <div>
+            <div class="vip-listing-meta-row">Pre-Launch · Mexico</div>
+            <h4>Beachfront Lot — Playa del Carmen</h4>
+            <p>0.6 acres titled · 80m frontage · $620K USD</p>
+          </div>
         </div>
-      </div>
-      <div class="vip-gate" id="vipGate">
-        <div class="vip-gate-card">
-          <h3>Request VIP Access</h3>
-          <p>Subscribe to unlock this week's off-market shortlist plus our weekly intelligence newsletter.</p>
-          <form class="vip-gate-form" id="vipGateForm">
-            <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
-            <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
-            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-            <button type="submit" class="btn btn-primary">Unlock VIP Listings</button>
-            <p class="vip-fineprint">Free. Unsubscribe anytime. GDPR/CCPA compliant.</p>
-          </form>
+        <div class="vip-gate">
+          <div class="vip-gate-inner">
+            <h3>Request VIP Access</h3>
+            <p>Subscribe to unlock this week's off-market shortlist plus our weekly intelligence newsletter.</p>
+            <form class="vip-gate-form">
+              <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
+              <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <button type="submit">Unlock VIP Listings</button>
+              <p class="vip-fineprint" style="font-size:0.75rem;color:rgba(250,248,243,0.5);margin-top:8px;">Free. Unsubscribe anytime. GDPR/CCPA compliant.</p>
+            </form>
+          </div>
         </div>
       </div>
     </div>

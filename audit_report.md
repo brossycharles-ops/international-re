@@ -35,9 +35,18 @@ Transform internationalre.org into a high-end, GDPR/CCPA-compliant lead-capture 
 - `GET /api/recent-subscribers` → 200, `{"items":[]}` (no subscribers in 14d window yet)
 
 ## Pending / Not Done
-- RealEstateListing JSON-LD on existing `guides/` and `quick-reads/` pages (only added to new programmatic landing set).
-- Code minification (HTML/CSS/JS) — left to Railway build pipeline / static asset CDN.
 - A/B copy testing on ROI gate.
+
+## Round 2 — Audit Fixes (2026-04-25, second pass)
+- **CSS class mismatches in injected sections** (would have broken visuals):
+  - ROI: HTML used `.roi-stat*` but CSS targets `.roi-metric*` → blur/styling missed. Fixed by aligning HTML to CSS.
+  - VIP: HTML used `.vip-card`/`.vip-card-tag`/`.vip-gate-card`/`.vip-bg-overlay` but CSS targets `.vip-listing-card`/`.vip-listing-thumb`/`.vip-listing-meta-row`/`.vip-gate-inner` inside `.vip-inner` 2-col grid. Restructured HTML to match.
+  - Trust bar: HTML had flat `.trust-bar-logo` siblings; CSS expects wrapper `.trust-bar-logos` with `<span>` children. Wrapped.
+- **Missing JS-referenced elements** (would have thrown on first input):
+  - `[data-roi-sub="..."]` sub-line spans added to each ROI metric.
+  - `.roi-unlock-msg` paragraph added to unlock form.
+- **RealEstateListing JSON-LD** injected into 21 existing city-focused pages (`guides/`, `quick-reads/`, `blog/`, `tips/`, `guide/`) via `scripts/inject_listing_jsonld.py` — same data source as `seo_generator.py`.
+- **Performance**: added `compression` middleware (gzip on text responses, ~70% size reduction; verified `Content-Encoding: gzip` on `/`) and 7-day immutable cache headers for static assets.
 
 ## Files Changed
 - `public/index.html` — trust bar, ROI calc, VIP off-market, CSS+JS wiring

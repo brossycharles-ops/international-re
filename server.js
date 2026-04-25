@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const compression = require('compression');
 
 const { Resend } = require('resend');
 
@@ -10,8 +11,16 @@ const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const EMAIL_FROM = process.env.EMAIL_FROM || 'International RE <onboarding@resend.dev>';
 
+app.use(compression());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '7d',
+  setHeaders: (res, filePath) => {
+    if (/\.(css|js|png|jpe?g|webp|svg|woff2?)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
+    }
+  },
+}));
 
 // ─── Subscriber Storage (JSON file, persists across deploys via git) ───
 
