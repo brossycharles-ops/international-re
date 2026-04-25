@@ -6,4 +6,4 @@ echo "  International RE — Starting up..."
 echo "  Subscribers → newsletter_subscribers.xlsx"
 echo "  Website    → http://localhost:3000"
 echo "------------------------------------"
-python3 server.py
+node server.js

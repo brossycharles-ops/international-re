@@ -150,7 +150,7 @@ app.get('/api/subscriber-count', (req, res) => {
 
 app.get('/api/subscribers', (req, res) => {
   const key = req.query.key;
-  if (key !== process.env.ADMIN_KEY && key !== 'internationalre2026') {
+  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
   res.json(readSubscribers());
@@ -160,7 +160,7 @@ app.get('/api/subscribers', (req, res) => {
 
 app.post('/api/send-newsletter', async (req, res) => {
   const key = req.query.key || req.body.key;
-  if (key !== process.env.ADMIN_KEY && key !== 'internationalre2026') {
+  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
