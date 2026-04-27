@@ -5,7 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "audit:links": "python3 scripts/check_links.py",
+    "audit:jsonld": "python3 scripts/validate_jsonld.py",
+    "audit:a11y": "python3 scripts/audit_a11y.py",
+    "audit": "npm run audit:links && npm run audit:jsonld && npm run audit:a11y",
+    "sitemap": "python3 scripts/rebuild_sitemap.py",
+    "smoke": "bash scripts/test_subscribe.sh"
   },
   "dependencies": {
     "compression": "^1.8.1",
