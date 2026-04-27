@@ -52,11 +52,28 @@ curl -s "https://www.bing.com/ping?sitemap=${SITE_URL}/sitemap.xml" > /dev/null 
 log "  Done."
 
 # ── Helper ────────────────────────────────────────────────
+PENDING_FILE="$PROJECT_DIR/.pending-tasks.txt"
+queue_failed() {
+  local label="$1"; local prompt="$2"
+  local b64; b64=$(printf '%s' "$prompt" | base64 | tr -d '\n')
+  printf '%s|||%s\n' "$label" "$b64" >> "$PENDING_FILE"
+  log "  [QUEUED] $label saved to .pending-tasks.txt"
+}
 run_claude() {
   local label="$1"; local prompt="$2"
   log "[run] $label..."
-  claude_run "$prompt"
-  if [ $? -eq 0 ]; then log "  [OK] $label"; else log "  [FAIL] $label"; fi
+  local err_file; err_file=$(mktemp)
+  "$CLAUDE_BIN" -p --dangerously-skip-permissions "$prompt" 2>"$err_file" >/dev/null
+  local rc=$?
+  local err; err=$(cat "$err_file"); rm -f "$err_file"
+  # Real failure signals: nonzero exit OR stderr contains a streaming/API-level error
+  # (stdout matches don't count — content can legitimately mention these phrases).
+  if [ $rc -ne 0 ] || echo "$err" | grep -qiE "^(API Error|Stream idle timeout|usage limit reached|rate limit exceeded)"; then
+    log "  [FAIL] $label (rc=$rc) ${err:0:120}"
+    queue_failed "$label" "$prompt"
+  else
+    log "  [OK] $label"
+  fi
 }
 
 # ══════════════════════════════════════════════════════════

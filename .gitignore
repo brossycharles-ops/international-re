@@ -7,3 +7,4 @@ newsletter_subscribers.xlsx
 growth-output/
 __pycache__/
 *.pyc
+.pending-tasks.txt

@@ -18,9 +18,14 @@ app.use(helmet({
       'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com', 'https://*.tile.openstreetmap.org'],
       'connect-src': ["'self'"],
       'frame-ancestors': ["'none'"],
+      'object-src': ["'none'"],
+      'base-uri': ["'self'"],
+      'form-action': ["'self'"],
+      'upgrade-insecure-requests': [],
     },
   },
   crossOriginEmbedderPolicy: false,
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
 }));
 const PORT = process.env.PORT || 3000;
 const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');

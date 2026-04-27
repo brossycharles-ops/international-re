@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
-"""Inject RealEstateListing JSON-LD into existing city-focused guides/blog/tips/quick-reads pages."""
-import json, re, sys
+"""Unified JSON-LD injector. Replaces inject_listing_jsonld.py + inject_misc_jsonld.py.
+
+Two modes per page (auto-applied):
+- "listing": maps page → city slug → builds RealEstateListing schema from seo_generator.CITIES
+- "misc": uses an inline schema dict
+
+Idempotent — skips pages whose target schema type is already present."""
+import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
-
 sys.path.insert(0, str(ROOT))
-from seo_generator import CITIES
+from seo_generator import CITIES  # noqa: E402
 
 CITY_BY_SLUG = {c["slug"]: c for c in CITIES}
 
-PAGE_TO_CITY = {
+# page_rel → city slug (RealEstateListing)
+LISTING_PAGES = {
     "guides/can-foreigners-buy-property-costa-rica.html": "tamarindo-costa-rica",
     "guides/medellin-neighborhood-guide-property-buyers-2026.html": "medellin-colombia",
     "guides/montevideo-rental-yield-analysis-2026.html": "punta-del-este-uruguay",
@@ -35,26 +42,36 @@ PAGE_TO_CITY = {
     "guide/panama-foreign-buyer-legal-guide.html": "panama-city-panama",
 }
 
+MISC_PAGES = {
+    "blog.html": {"@context": "https://schema.org", "@type": "Blog",
+        "name": "International RE Blog",
+        "url": "https://www.internationalre.org/blog.html",
+        "description": "Weekly deep-dives into Latin American and international real estate markets.",
+        "publisher": {"@type": "Organization", "name": "International RE", "url": "https://www.internationalre.org"}},
+    "guides.html": {"@context": "https://schema.org", "@type": "CollectionPage",
+        "name": "International RE Buying Guides",
+        "url": "https://www.internationalre.org/guides.html",
+        "description": "Step-by-step buying guides for foreign property buyers across Latin America."},
+    "gallery.html": {"@context": "https://schema.org", "@type": "ImageGallery",
+        "name": "International RE Photo Gallery",
+        "url": "https://www.internationalre.org/gallery.html",
+        "description": "Property and travel photography across Latin America."},
+}
 
-def build_listing(c, page_path):
-    url = f"https://www.internationalre.org/{page_path}"
+
+def build_listing(c: dict, page_path: str) -> dict:
     return {
         "@context": "https://schema.org",
         "@type": "RealEstateListing",
         "name": f"{c['city']} ({c['country']}) — Representative Property Listings",
-        "url": url,
+        "url": f"https://www.internationalre.org/{page_path}",
         "description": f"Representative price and yield range for residential property in {c['city']}, {c['country']}. {c['tagline']}",
         "address": {"@type": "PostalAddress", "addressLocality": c["city"], "addressCountry": c["country"]},
         "image": c["image"],
-        "offers": {
-            "@type": "AggregateOffer",
-            "priceCurrency": "USD",
-            "lowPrice": c["price_low"],
-            "highPrice": c["price_high"],
-            "offerCount": 25,
-        },
+        "offers": {"@type": "AggregateOffer", "priceCurrency": "USD",
+                   "lowPrice": c["price_low"], "highPrice": c["price_high"], "offerCount": 25},
         "additionalProperty": [
-            {"@type": "PropertyValue", "name": "Rental Yield Low", "value": f"{c['yield_low']}%"},
+            {"@type": "PropertyValue", "name": "Rental Yield Low",  "value": f"{c['yield_low']}%"},
             {"@type": "PropertyValue", "name": "Rental Yield High", "value": f"{c['yield_high']}%"},
             {"@type": "PropertyValue", "name": "Annual Appreciation", "value": f"{c['growth']}%"},
             {"@type": "PropertyValue", "name": "Property Tax", "value": f"{c['tax']}%"},
@@ -62,25 +79,32 @@ def build_listing(c, page_path):
     }
 
 
-changed = 0
-skipped = 0
-for rel, slug in PAGE_TO_CITY.items():
+def inject(rel: str, schema: dict, marker: str) -> str:
     p = PUB / rel
     if not p.exists():
-        print(f"  missing: {rel}")
-        continue
+        return f"missing {rel}"
     html = p.read_text(encoding="utf-8")
-    if "RealEstateListing" in html:
-        skipped += 1
-        continue
-    c = CITY_BY_SLUG[slug]
-    block = '<script type="application/ld+json">\n' + json.dumps(build_listing(c, rel), indent=2) + "\n</script>"
+    if marker in html:
+        return f"skip {rel} (has {marker})"
+    block = '<script type="application/ld+json">\n' + json.dumps(schema, indent=2) + "\n</script>"
     new = html.replace("</head>", block + "\n</head>", 1)
     if new == html:
-        print(f"  no </head>: {rel}")
-        continue
+        return f"no </head>: {rel}"
     p.write_text(new, encoding="utf-8")
-    changed += 1
-    print(f"  injected: {rel} -> {slug}")
+    return f"injected {rel}"
 
-print(f"\n✓ injected {changed}, skipped {skipped} (already had JSON-LD)")
+
+changed = 0
+for rel, slug in LISTING_PAGES.items():
+    msg = inject(rel, build_listing(CITY_BY_SLUG[slug], rel), "RealEstateListing")
+    print(" ", msg)
+    if msg.startswith("injected"):
+        changed += 1
+
+for rel, schema in MISC_PAGES.items():
+    msg = inject(rel, schema, f'"@type": "{schema["@type"]}"')
+    print(" ", msg)
+    if msg.startswith("injected"):
+        changed += 1
+
+print(f"\n✓ {changed} pages updated")

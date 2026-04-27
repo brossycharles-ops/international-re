@@ -1,501 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.internationalre.org/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/blog.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://www.internationalre.org/about.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/gallery.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/guide/2026-market-entry-guide.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <loc>https://www.internationalre.org/blog/buenos-aires-best-value-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/guide/panama-foreign-buyer-legal-guide.html</loc>
-    <lastmod>2026-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/blog/medellin-real-estate-2026.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.internationalre.org/blog/granada-nicaraguas-colonial-gem-2026.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/blog/latam-weekly-apr-14-18-2026.html</loc>
-    <lastmod>2026-04-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/blog/santiago-supply-squeeze-2026.html</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.internationalre.org/blog/guanacaste-hottest-market-2026.html</loc>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/blog/buenos-aires-best-value-2026.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://www.internationalre.org/blog/latam-weekly-apr-14-18-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/blog/san-juan-del-sur-affordable-beach.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://www.internationalre.org/blog/latam-weekly-apr-21-25-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/blog/santiago-vs-lake-district.html</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://www.internationalre.org/blog/latam-weekly-apr-26-may-2-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/blog/medellin-real-estate-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.internationalre.org/blog/mendoza-wine-country-estates.html</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/guides/can-foreigners-buy-property-costa-rica.html</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://www.internationalre.org/blog/san-juan-del-sur-affordable-beach.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/blog/santiago-supply-squeeze-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/blog/santiago-vs-lake-district.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/blog/tbilisi-georgia-1-percent-tax-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/blog.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/quick-reads/best-neighborhoods-medellin-for-expats.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/quick-reads/airbnb-income-san-jose-costa-rica.html</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/quick-reads/airbnb-income-playa-del-carmen.html</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/tips/medellin-property-vs-miami.html</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/tips/panama-no-capital-gains-tax.html</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/tips/dominican-republic-fdi-record-2025.html</loc>
-    <lastmod>2026-04-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/tips/ecuador-dollar-beachfront.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/quick-reads/lisbon-property-buying-timeline.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/guides/panama-city-vs-san-jose-expat-investors-2026.html</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/guides/medellin-neighborhood-guide-property-buyers-2026.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/quick-reads/cost-of-living-panama-city-per-month.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/guides/montevideo-rental-yield-analysis-2026.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/quick-reads/airbnb-income-montevideo-uruguay-2026.html</loc>
+    <loc>https://www.internationalre.org/gallery.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.internationalre.org/guide/2026-market-entry-guide.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/guide/panama-foreign-buyer-legal-guide.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/guides/can-foreigners-buy-property-costa-rica.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/guides/medellin-neighborhood-guide-property-buyers-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/guides/montevideo-rental-yield-analysis-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/guides/panama-city-vs-san-jose-expat-investors-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/guides.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/index.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://www.internationalre.org/quick-reads/airbnb-income-cartagena-colombia-2026.html</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/quick-reads/airbnb-income-montevideo-uruguay-2026.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/quick-reads/airbnb-income-playa-del-carmen.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/quick-reads/airbnb-income-san-jose-costa-rica.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/quick-reads/best-neighborhoods-medellin-for-expats.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/quick-reads/cost-of-living-panama-city-per-month.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/quick-reads/lisbon-property-buying-timeline.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/reports/2026-global-investment-report.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-medellin-colombia.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://www.internationalre.org/tips/dominican-republic-fdi-record-2025.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-medellin-colombia.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://www.internationalre.org/tips/ecuador-dollar-beachfront.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-medellin-colombia.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://www.internationalre.org/tips/medellin-property-vs-miami.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-medellin-colombia.html</loc>
-    <lastmod>2026-04-25</lastmod>
+    <loc>https://www.internationalre.org/tips/panama-no-capital-gains-tax.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-playa-del-carmen-mexico.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-playa-del-carmen-mexico.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-playa-del-carmen-mexico.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-playa-del-carmen-mexico.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-tamarindo-costa-rica.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-tamarindo-costa-rica.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-tamarindo-costa-rica.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-tamarindo-costa-rica.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-panama-city-panama.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-panama-city-panama.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-panama-city-panama.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-panama-city-panama.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-buenos-aires-argentina.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-buenos-aires-argentina.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-buenos-aires-argentina.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-buenos-aires-argentina.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-santiago-chile.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-santiago-chile.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-santiago-chile.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-santiago-chile.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-san-juan-del-sur-nicaragua.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-san-juan-del-sur-nicaragua.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-san-juan-del-sur-nicaragua.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-san-juan-del-sur-nicaragua.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-punta-del-este-uruguay.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-punta-del-este-uruguay.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-punta-del-este-uruguay.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-punta-del-este-uruguay.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-cuenca-ecuador.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-cuenca-ecuador.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-cuenca-ecuador.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-cuenca-ecuador.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-lima-peru.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-lima-peru.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-lima-peru.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-lima-peru.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-florianopolis-brazil.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-florianopolis-brazil.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-florianopolis-brazil.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-florianopolis-brazil.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-lisbon-portugal.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-lisbon-portugal.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-lisbon-portugal.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-lisbon-portugal.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-athens-greece.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-athens-greece.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.internationalre.org/landing/expat-buying-guide-athens-greece.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-athens-greece.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-bali-indonesia.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-bali-indonesia.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -507,43 +223,49 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-bali-indonesia.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-buenos-aires-argentina.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-tbilisi-georgia.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-cuenca-ecuador.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-tbilisi-georgia.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-florianopolis-brazil.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/expat-buying-guide-tbilisi-georgia.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-lima-peru.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-tbilisi-georgia.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-lisbon-portugal.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-punta-cana-dominican-republic.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-medellin-colombia.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-punta-cana-dominican-republic.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-panama-city-panama.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-playa-del-carmen-mexico.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -555,19 +277,31 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-punta-cana-dominican-republic.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-punta-del-este-uruguay.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/luxury-real-estate-tulum-mexico.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-san-juan-del-sur-nicaragua.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/investment-opportunities-tulum-mexico.html</loc>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-santiago-chile.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-tamarindo-costa-rica.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/expat-buying-guide-tbilisi-georgia.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -579,39 +313,309 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/landing/vacation-rental-roi-tulum-mexico.html</loc>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-athens-greece.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/blog/tbilisi-georgia-1-percent-tax-2026.html</loc>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-bali-indonesia.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.internationalre.org/guides.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/blog/latam-weekly-apr-26-may-2-2026.html</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/blog/latam-weekly-apr-21-25-2026.html</loc>
-    <lastmod>2026-04-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.internationalre.org/reports/2026-global-investment-report.html</loc>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-buenos-aires-argentina.html</loc>
     <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-cuenca-ecuador.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-florianopolis-brazil.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-lima-peru.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-lisbon-portugal.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-medellin-colombia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-panama-city-panama.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-playa-del-carmen-mexico.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-punta-cana-dominican-republic.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-punta-del-este-uruguay.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-san-juan-del-sur-nicaragua.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-santiago-chile.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-tamarindo-costa-rica.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-tbilisi-georgia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/investment-opportunities-tulum-mexico.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-athens-greece.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-bali-indonesia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-buenos-aires-argentina.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-cuenca-ecuador.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-florianopolis-brazil.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-lima-peru.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-lisbon-portugal.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-medellin-colombia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-panama-city-panama.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-playa-del-carmen-mexico.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-punta-cana-dominican-republic.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-punta-del-este-uruguay.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-san-juan-del-sur-nicaragua.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-santiago-chile.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-tamarindo-costa-rica.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-tbilisi-georgia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/luxury-real-estate-tulum-mexico.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-athens-greece.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-bali-indonesia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-buenos-aires-argentina.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-cuenca-ecuador.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-florianopolis-brazil.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-lima-peru.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-lisbon-portugal.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-medellin-colombia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-panama-city-panama.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-playa-del-carmen-mexico.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-punta-cana-dominican-republic.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-punta-del-este-uruguay.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-san-juan-del-sur-nicaragua.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-santiago-chile.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-tamarindo-costa-rica.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-tbilisi-georgia.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.internationalre.org/landing/vacation-rental-roi-tulum-mexico.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
