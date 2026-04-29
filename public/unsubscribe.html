@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsubscribe | International RE</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/layout_updates.css">
+  <style>
+    body { background:#f7f5f0; }
+    .unsub-page { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 24px; text-align:center; }
+    .unsub-logo { margin-bottom:40px; font-size:1.1rem; font-weight:700; color:#0a1628; text-decoration:none; }
+    .unsub-card { background:#fff; border-radius:16px; padding:40px 44px; max-width:480px; width:100%; box-shadow:0 4px 24px rgba(10,22,40,0.08); }
+    .unsub-icon { font-size:2.4rem; margin-bottom:12px; }
+    .unsub-headline { font-family:'Playfair Display',serif; font-size:1.6rem; color:#0a1628; margin:0 0 10px; }
+    .unsub-sub { color:#666; font-size:0.92rem; line-height:1.65; margin:0 0 28px; }
+    .unsub-form input { width:100%; padding:13px 16px; border:2px solid #e8e3d9; border-radius:8px; font-size:0.95rem; font-family:inherit; outline:none; box-sizing:border-box; transition:border-color 0.15s; margin-bottom:12px; }
+    .unsub-form input:focus { border-color:#c9a84c; }
+    .unsub-form button { width:100%; padding:14px; background:#0a1628; color:#fff; border:none; border-radius:8px; font-weight:700; font-size:0.95rem; cursor:pointer; font-family:inherit; transition:background 0.15s; }
+    .unsub-form button:hover { background:#132039; }
+    .unsub-form button:disabled { background:#ccc; cursor:default; }
+    .unsub-success { display:none; padding:16px 0; }
+    .unsub-success p { color:#0a1628; font-size:0.95rem; line-height:1.6; margin:0; }
+    .unsub-links { margin-top:28px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+    .unsub-link { color:#c9a84c; font-weight:600; text-decoration:none; font-size:0.85rem; }
+    .unsub-link:hover { text-decoration:underline; }
+    .unsub-reconsider { background:#f7f5f0; border-radius:10px; padding:18px 20px; margin-bottom:24px; text-align:left; }
+    .unsub-reconsider h4 { font-size:0.82rem; font-weight:700; color:#0a1628; margin:0 0 6px; letter-spacing:0.04em; text-transform:uppercase; }
+    .unsub-reconsider p { font-size:0.85rem; color:#666; margin:0; line-height:1.6; }
+  </style>
+</head>
+<body>
+  <div class="unsub-page">
+    <a href="/" class="unsub-logo"><span style="color:#c9a84c">&#9670;</span> International RE</a>
+
+    <div class="unsub-card">
+      <div class="unsub-icon">&#128233;</div>
+      <h1 class="unsub-headline">Unsubscribe</h1>
+      <p class="unsub-sub">Enter your email below and we'll remove you from the International RE newsletter immediately. No questions asked.</p>
+
+      <div class="unsub-reconsider">
+        <h4>Before you go</h4>
+        <p>We send one email per week — no daily blasts, no promotions. If it's too much, we get it. You can also reply to any newsletter with "pause" and we'll skip you for a month.</p>
+      </div>
+
+      <form class="unsub-form" id="unsubForm">
+        <input type="email" id="unsubEmail" placeholder="Your email address" required>
+        <button type="submit" id="unsubBtn">Unsubscribe Me</button>
+      </form>
+      <div class="unsub-success" id="unsubSuccess">
+        <p>&#10003; <strong>Done.</strong> You've been removed from our list. You won't receive any more emails from us.<br><br>If you change your mind, you're always welcome back at <a href="/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a>.</p>
+      </div>
+
+      <div class="unsub-links">
+        <a href="/" class="unsub-link">Home</a>
+        <a href="/newsletter.html" class="unsub-link">Past Issues</a>
+        <a href="/blog.html" class="unsub-link">Blog</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailParam = urlParams.get('email');
+    if (emailParam) document.getElementById('unsubEmail').value = decodeURIComponent(emailParam);
+
+    document.getElementById('unsubForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('unsubEmail').value.trim();
+      const btn = document.getElementById('unsubBtn');
+      btn.disabled = true; btn.textContent = 'Removing…';
+      try {
+        const res = await fetch('/api/unsubscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (res.ok) {
+          this.style.display = 'none';
+          document.getElementById('unsubSuccess').style.display = 'block';
+          localStorage.removeItem('subscribed');
+        } else {
+          const data = await res.json();
+          alert(data.error || 'Something went wrong.');
+          btn.disabled = false; btn.textContent = 'Unsubscribe Me';
+        }
+      } catch {
+        alert('Network error. Please try again.');
+        btn.disabled = false; btn.textContent = 'Unsubscribe Me';
+      }
+    });
+  </script>
+</body>
+</html>

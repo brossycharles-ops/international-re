@@ -155,7 +155,7 @@ app.post('/api/subscribe', async (req, res) => {
               </div>
               <p style="color:#666;font-size:13px;margin-top:30px;border-top:1px solid #eee;padding-top:15px;">
                 You're receiving this because you subscribed at internationalre.org.<br>
-                <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit our website</a>
+                <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit our website</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
               </p>
             </div>
           </div>`
@@ -165,6 +165,29 @@ app.post('/api/subscribe', async (req, res) => {
     res.json({ message: 'Successfully subscribed!' });
   } catch (err) {
     console.error('Error saving subscriber:', err);
+    res.status(500).json({ error: 'Server error. Please try again.' });
+  } finally {
+    releaseLock();
+  }
+});
+
+// ─── Unsubscribe endpoint ───
+
+app.post('/api/unsubscribe', async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ error: 'Email is required.' });
+  const normalizedEmail = email.trim().toLowerCase();
+  await acquireLock();
+  try {
+    const subscribers = readSubscribers();
+    const idx = subscribers.findIndex(s => s.email === normalizedEmail);
+    if (idx === -1) return res.status(404).json({ error: 'Email not found on our list.' });
+    subscribers.splice(idx, 1);
+    writeSubscribers(subscribers);
+    console.log(`Unsubscribed: ${normalizedEmail} (remaining: ${subscribers.length})`);
+    res.json({ message: 'Successfully unsubscribed.' });
+  } catch (err) {
+    console.error('Unsubscribe error:', err);
     res.status(500).json({ error: 'Server error. Please try again.' });
   } finally {
     releaseLock();
@@ -374,7 +397,7 @@ const DRIP_EMAILS = [
           </p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -404,7 +427,7 @@ const DRIP_EMAILS = [
           <p>Also worth checking: our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will match you to the market that fits your budget and goals.</p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -440,7 +463,7 @@ const DRIP_EMAILS = [
           <p>You'll now receive our regular weekly newsletter. Reply to any email — we read them all.</p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -476,7 +499,7 @@ const DRIP_EMAILS = [
           </p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -524,7 +547,7 @@ const DRIP_EMAILS = [
           </div>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
