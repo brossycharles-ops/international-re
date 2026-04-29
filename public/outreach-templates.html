@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outreach Templates | International RE</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/layout_updates.css">
+  <style>
+    body { background: #f7f5f0; }
+    .ot-page { max-width: 860px; margin: 0 auto; padding: 60px 24px 80px; }
+    .ot-header { text-align: center; margin-bottom: 48px; }
+    .ot-logo { display: inline-block; font-size: 1.1rem; font-weight: 700; color: #0a1628; text-decoration: none; margin-bottom: 32px; }
+    .ot-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); color: #0a1628; margin: 0 0 12px; }
+    .ot-sub { color: #666; font-size: 1rem; line-height: 1.6; max-width: 560px; margin: 0 auto; }
+    .ot-nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 28px; }
+    .ot-nav-btn {
+      padding: 8px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; border: 2px solid #e8e3d9; background: #fff; color: #0a1628;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .ot-nav-btn:hover, .ot-nav-btn.active { background: #0a1628; color: #fff; border-color: #0a1628; }
+    .ot-section { margin-bottom: 48px; }
+    .ot-section-title {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #0a1628;
+      margin: 0 0 6px; display: flex; align-items: center; gap: 10px;
+    }
+    .ot-section-meta { font-size: 0.82rem; color: #888; margin: 0 0 20px; }
+    .template-card {
+      background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(10,22,40,0.06); border: 1px solid #e8e3d9;
+    }
+    .template-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; margin-bottom: 8px; }
+    .template-title { font-weight: 700; color: #0a1628; margin: 0 0 12px; font-size: 1rem; }
+    .template-body {
+      background: #f7f5f0; border-radius: 8px; padding: 16px 18px;
+      font-size: 0.88rem; line-height: 1.7; color: #333; white-space: pre-wrap;
+      font-family: 'Inter', sans-serif; border: 1px solid #e8e3d9;
+      cursor: text; user-select: all;
+    }
+    .template-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; flex-wrap: wrap; gap: 8px; }
+    .template-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .template-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: #e8e3d9; color: #0a1628; }
+    .copy-btn {
+      padding: 7px 16px; background: #0a1628; color: #fff; border: none;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: background 0.15s;
+    }
+    .copy-btn:hover { background: #132039; }
+    .copy-btn.copied { background: #2a7d4f; }
+    .tip-box {
+      background: linear-gradient(135deg, #0a1628, #132039);
+      border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; color: #fff;
+    }
+    .tip-box h4 { font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: #c9a84c; margin: 0 0 8px; }
+    .tip-box ul { margin: 0; padding-left: 18px; font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.85); }
+  </style>
+</head>
+<body>
+  <div class="ot-page">
+    <div class="ot-header">
+      <a href="/" class="ot-logo"><span style="color:#c9a84c">&#9670;</span> International RE</a>
+      <h1 class="ot-title">Outreach Templates</h1>
+      <p class="ot-sub">Copy-paste posts for Reddit, Facebook Groups, Twitter/X, and email. Drop your link, post, and watch subscribers roll in.</p>
+      <div class="ot-nav">
+        <button class="ot-nav-btn active" onclick="filter('all',this)">All</button>
+        <button class="ot-nav-btn" onclick="filter('reddit',this)">Reddit</button>
+        <button class="ot-nav-btn" onclick="filter('facebook',this)">Facebook Groups</button>
+        <button class="ot-nav-btn" onclick="filter('twitter',this)">Twitter / X</button>
+        <button class="ot-nav-btn" onclick="filter('email',this)">Email Forwards</button>
+        <button class="ot-nav-btn" onclick="filter('linkedin',this)">LinkedIn</button>
+      </div>
+    </div>
+
+    <!-- REDDIT -->
+    <div class="ot-section" data-channel="reddit">
+      <h2 class="ot-section-title">&#129497; Reddit</h2>
+      <p class="ot-section-meta">Best subreddits: r/ExpatFIRE · r/digitalnomad · r/personalfinance · r/realestateinvesting · r/legaladvice (international) · r/CostaRica · r/argentina · r/chile · r/Panama</p>
+
+      <div class="tip-box">
+        <h4>Reddit Rules</h4>
+        <ul>
+          <li>Lead with value — don't open with a link. Answer the question first, then mention the newsletter.</li>
+          <li>Check each sub's self-promotion rules before posting.</li>
+          <li>Use the "comment template" style: reply to existing threads asking about LatAm real estate.</li>
+          <li>Post the "original content" style as a standalone post in subs that allow it.</li>
+        </ul>
+      </div>
+
+      <div class="template-card">
+        <div class="template-label">Comment Reply Template</div>
+        <div class="template-title">r/ExpatFIRE — Replying to "Best countries for real estate investing as a foreigner?"</div>
+        <div class="template-body" id="t1">I've been tracking this pretty closely. Quick breakdown of what's working right now:
+
+🇨🇷 Costa Rica — Guanacaste is the hot zone. Rental yields 6–8%, strong USD rental demand, foreigners get same property rights as citizens. Title insurance is a must though.
+
+🇵🇦 Panama — Panama City still has the best infrastructure in LatAm. Pensionado visa + property rights = clean setup for early retirees. Yields ~8–9%.
+
+🇦🇷 Argentina — Counterintuitively one of the best right now. USD-denominated deals, Buenos Aires apartments are cheap vs. historical prices. High risk but high reward.
+
+🇲🇽 Tulum/Playa — Overtourism concerns but short-term rental yields are still 9–11% in the right pockets.
+
+I write a free weekly newsletter covering all of this with actual price data and legal breakdowns if anyone wants: internationalre.org/subscribe</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">reddit</span><span class="template-tag">comment</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t1',this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-label">Original Post Template</div>
+        <div class="template-title">r/realestateinvesting — Standalone post</div>
+        <div class="template-body" id="t2">**I've spent the last year tracking real estate markets in 11 Latin American countries — here's what the data shows**
+
+Most people hear "LatAm real estate" and think Argentina instability or drug cartel risks. The reality in 2026 is very different.
+
+**What I've found:**
+
+- Costa Rica: USD rental demand from remote workers is pushing Guanacaste vacancy rates below 10%. 7% gross yields on new builds.
+- Panama City: One of the few markets where you can still buy a centrally-located 2BR under $200K with 8% cap rates.
+- Colombia (Medellín): Fastest appreciation in the dataset — 18% nominal over the last 12 months in El Poblado.
+- Tulum: Oversupply concerns are real but existing short-term rentals (not new builds) are still clearing $90–120/night seasonally.
+
+**Legal differences matter a lot:**
+Foreigners have full ownership rights in CR, Panama, Colombia, and Mexico. Argentina is more complex (peso/USD exchange issues). Chile is the most stable legally but yields are lower.
+
+I write a free newsletter covering this weekly with live price data and legal guides: internationalre.org/subscribe
+
+Happy to answer questions about any specific market in the comments.</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">reddit</span><span class="template-tag">original post</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t2',this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-label">Short Comment Template</div>
+        <div class="template-title">r/digitalnomad — "Where can I buy cheap property that also has good internet?"</div>
+        <div class="template-body" id="t3">Medellín Colombia ticks every box — fiber internet, walkable neighborhoods, $1,200–1,800/sqm prices, and you can legally own as a foreigner. El Poblado and Laureles are the two main expat/nomad zones.
+
+Panama City is another solid pick — Casco Viejo has the character, and Marbella/Obarrio have the infrastructure.
+
+Both are in my newsletter if you want specifics (free): internationalre.org/subscribe</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">reddit</span><span class="template-tag">comment</span><span class="template-tag">short</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t3',this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACEBOOK GROUPS -->
+    <div class="ot-section" data-channel="facebook">
+      <h2 class="ot-section-title">&#128084; Facebook Groups</h2>
+      <p class="ot-section-meta">Best groups: Expats in Costa Rica · Expats in Panama · Argentina Expats · Buy/Sell Property in Medellín · Retiring in Latin America · FIRE Community</p>
+
+      <div class="template-card">
+        <div class="template-label">Value Post Template</div>
+        <div class="template-title">Expats in Costa Rica group</div>
+        <div class="template-body" id="t4">📊 Quick data dump for anyone researching Costa Rica real estate right now:
+
+Guanacaste (Tamarindo/Nosara/Flamingo):
+• Condo prices: $180K–$350K for 1–2BR
+• Gross rental yields: 6.5–8.5% (short-term Airbnb side)
+• Vacancy: ~12% annualized (low for LatAm)
+• Appreciation: ~10% nominal YoY since 2022
+
+Important legal notes:
+✅ Foreigners have IDENTICAL property rights to citizens
+✅ No restrictions on foreign ownership percentages
+✅ Maritime zone law applies within 50m of the beach (you can't own that strip)
+✅ Title insurance strongly recommended (squatter laws exist)
+
+The Central Valley (Escazú/Santa Ana) is the other hot market — more rental demand from expat professionals, lower yields (~5–6%) but more stable tenants.
+
+I cover this in more depth in my free weekly newsletter: internationalre.org/subscribe — includes live price data and legal updates every week.</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">facebook</span><span class="template-tag">value post</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t4',this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-label">Question Starter Template</div>
+        <div class="template-title">Retiring in Latin America group</div>
+        <div class="template-body" id="t5">Question for the group: what's your biggest hesitation about buying property in LatAm?
+
+I ask because I run a free newsletter tracking real estate in Costa Rica, Panama, Colombia, Mexico, Argentina, and Chile — and the #1 thing I hear from readers is that they WANT to invest but feel like they don't have enough information about legal processes and actual market prices.
+
+So I've started publishing weekly deep-dives with real numbers: what properties are actually trading for (not developer marketing prices), rental yield estimates, and step-by-step legal guides for each country.
+
+If that's useful — it's free at internationalre.org/subscribe
+
+But also genuinely curious what's holding people back. Drop a comment!</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">facebook</span><span class="template-tag">engagement</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t5',this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWITTER / X -->
+    <div class="ot-section" data-channel="twitter">
+      <h2 class="ot-section-title">&#120143; Twitter / X</h2>
+      <p class="ot-section-meta">Post at 9am or 6pm EST. Threads perform better than single tweets. Reply to @nomadlist, @levelsio, @PatrickOShag, and expat finance accounts.</p>
+
+      <div class="template-card">
+        <div class="template-label">Thread Template</div>
+        <div class="template-title">LatAm real estate data thread</div>
+        <div class="template-body" id="t6">I've been tracking real estate in 11 Latin American countries for a year.
+
+Here's what the data actually shows (thread) 🧵
+
+1/ Costa Rica: Guanacaste is the most liquid foreign-buyer market in LatAm right now. Yields: 6.5–8.5%. Foreigners own the same as citizens. Maritime law = nothing within 50m of beach.
+
+2/ Panama: Best infrastructure in Central America. Panama City 2BR under $200K still exists in the right neighborhoods. Pensionado visa makes this extremely tax-efficient for US retirees.
+
+3/ Colombia: Medellín saw 18% appreciation last year in El Poblado. Still buying opportunities in Laureles and Envigado at ~$1,200/sqm. Peso volatility = risk if renting in COP.
+
+4/ Mexico (Tulum): Short-term rental yields still 9–11% in the right spots. Ejido land is a trap — make sure you have proper title. New airport is real demand driver.
+
+5/ Argentina: Buenos Aires apartments in USD are as cheap as they've been in 20 years. Very high risk. Very high upside. Not for the faint of heart.
+
+If you want the full weekly breakdown with live price data, legal guides, and market moves — it's free: internationalre.org/subscribe</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">twitter</span><span class="template-tag">thread</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t6',this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-label">Single Tweet Template</div>
+        <div class="template-title">Bio / profile link tweet</div>
+        <div class="template-body" id="t7">If you've ever wondered about buying real estate in Costa Rica, Panama, Colombia, Mexico, or Argentina — I send a free weekly newsletter with actual price data, rental yields, and legal breakdowns.
+
+No hype. No developer partnerships. Just the numbers.
+
+internationalre.org/subscribe</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">twitter</span><span class="template-tag">single tweet</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t7',this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL FORWARD -->
+    <div class="ot-section" data-channel="email">
+      <h2 class="ot-section-title">&#9993; Email Forward Templates</h2>
+      <p class="ot-section-meta">Forward to friends, family, or your own network who've mentioned interest in international real estate or retiring abroad.</p>
+
+      <div class="template-card">
+        <div class="template-label">Friend Forward Template</div>
+        <div class="template-title">Short warm intro</div>
+        <div class="template-body" id="t8">Hey [name],
+
+Remember when we were talking about buying something in Costa Rica / Mexico / [country]?
+
+I found a free newsletter that actually covers this stuff with real data — not developer pitches. It's called International RE and they send weekly market intel on Costa Rica, Panama, Colombia, Mexico, Argentina, and Chile with actual price data and legal breakdowns.
+
+Sign-up link: internationalre.org/subscribe
+
+They also give you a free 38-page guide when you sign up. Thought of you immediately.</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">email</span><span class="template-tag">forward</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t8',this)">Copy</button>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-label">Group Forward Template</div>
+        <div class="template-title">Investment club / group chat</div>
+        <div class="template-body" id="t9">Sharing this with the group — found a free newsletter covering Latin American real estate with actual price data (not developer marketing).
+
+They cover: Costa Rica, Panama, Colombia, Mexico, Argentina, Chile, Nicaragua + more.
+
+Each issue has:
+• Live price per sqm by neighborhood
+• Rental yield data (short-term + long-term)
+• Legal notes (foreigners' rights, buying process)
+• Market moves and what's shifting
+
+Free signup + get a 38-page market entry guide: internationalre.org/subscribe
+
+Worth a read if you've ever thought about diversifying internationally.</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">email</span><span class="template-tag">group</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t9',this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINKEDIN -->
+    <div class="ot-section" data-channel="linkedin">
+      <h2 class="ot-section-title">&#128188; LinkedIn</h2>
+      <p class="ot-section-meta">Target: finance/investing professionals, digital nomads, real estate investors, expat community managers.</p>
+
+      <div class="template-card">
+        <div class="template-label">Post Template</div>
+        <div class="template-title">Thought leadership post</div>
+        <div class="template-body" id="t10">Most people think "Latin American real estate" means high risk and low quality.
+
+The data disagrees.
+
+Here's what I've found tracking 11 markets over the past year:
+
+→ Costa Rica (Guanacaste): Rental yields of 6.5–8.5%. Foreigners have identical property rights to citizens. More Americans are buying here than any point in the last decade.
+
+→ Panama City: Infrastructure comparable to Miami. Cap rates of 7–9% in central areas. Pensionado visa = significant tax advantages for retirees.
+
+→ Medellín, Colombia: 18% appreciation in 2024 in prime areas. Still trading at ~$1,200–1,500/sqm. Fiber internet. Sub-$800/month cost of living.
+
+→ Buenos Aires: USD-denominated deals at 2005 prices. Highest risk on this list. Highest upside.
+
+The window for getting in cheap on these markets is not infinite.
+
+I publish a free weekly newsletter with live price data, rental yield analysis, and legal guides across all these markets.
+
+If you're a professional investor, wealth manager, or high-earning professional thinking about international diversification — this is the intel you'd normally pay a consultant $5K for.
+
+Free: internationalre.org/subscribe</div>
+        <div class="template-footer">
+          <div class="template-tags"><span class="template-tag">linkedin</span><span class="template-tag">thought leadership</span></div>
+          <button class="copy-btn" onclick="copyTemplate('t10',this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding-top:20px;border-top:1px solid #e8e3d9;">
+      <a href="/" style="color:#c9a84c;font-weight:600;font-size:0.9rem;text-decoration:none;">&#8592; Back to internationalre.org</a>
+    </div>
+  </div>
+
+  <script>
+    function copyTemplate(id, btn) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2200);
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2200);
+      });
+    }
+
+    function filter(channel, btn) {
+      document.querySelectorAll('.ot-nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.ot-section').forEach(s => {
+        if (channel === 'all' || s.dataset.channel === channel) {
+          s.style.display = '';
+        } else {
+          s.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

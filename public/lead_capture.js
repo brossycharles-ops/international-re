@@ -194,9 +194,7 @@
       if (ok || (data && /already subscribed/i.test(data.error || ''))) {
         markSubscribed();
         f.outerHTML = '<p style="text-align:center;padding:20px;color:#0a0e1a;"><strong>Check your inbox.</strong><br>The report is on its way.</p>';
-        setTimeout(() => wrap.classList.remove('show'), 2200);
-        // Open the report in a new tab so they can read it now too
-        window.open('/reports/2026-global-investment-report.html', '_blank');
+        setTimeout(() => { window.location.href = '/thankyou.html'; }, 1400);
       } else {
         btn.disabled = false;
         btn.textContent = 'Send Me the Report';
@@ -296,6 +294,80 @@
     })[c]);
   }
 
+  /* ---------- 5. STICKY SUBSCRIBE BAR ---------- */
+  function initStickyBar() {
+    if (alreadySubscribed()) return;
+    const STICKY_DISMISSED = 'stickyBarDismissed';
+    if (sessionStorage.getItem(STICKY_DISMISSED) === 'true') return;
+    // Only show on blog/guide pages (not homepage, subscribe page, thankyou)
+    const path = window.location.pathname;
+    if (path === '/' || path === '/index.html' || /subscribe|thankyou|quiz/.test(path)) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'sticky-sub-bar';
+    bar.setAttribute('role', 'complementary');
+    bar.setAttribute('aria-label', 'Subscribe prompt');
+    bar.innerHTML = `
+      <div class="sticky-bar-inner">
+        <span class="sticky-bar-text">&#9670; Get free weekly Latin America real estate intel</span>
+        <form class="sticky-bar-form" autocomplete="off">
+          <input type="email" name="email" placeholder="Your email" required>
+          <button type="submit">Subscribe Free</button>
+        </form>
+        <button class="sticky-bar-close" aria-label="Dismiss">&times;</button>
+      </div>`;
+    document.body.appendChild(bar);
+
+    bar.querySelector('.sticky-bar-close').addEventListener('click', () => {
+      bar.classList.remove('visible');
+      try { sessionStorage.setItem(STICKY_DISMISSED, 'true'); } catch {}
+    });
+
+    bar.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = bar.querySelector('input[name="email"]').value.trim();
+      if (!email) return;
+      const btn = bar.querySelector('button[type="submit"]');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      const { ok, data } = await postSubscribe({ firstName: 'Reader', lastName: '', email });
+      if (ok || (data && /already subscribed/i.test(data.error || ''))) {
+        markSubscribed();
+        window.location.href = '/thankyou.html';
+      } else {
+        btn.disabled = false; btn.textContent = 'Subscribe Free';
+        alert((data && data.error) || 'Something went wrong.');
+      }
+    });
+
+    // Show after 60% scroll depth
+    let shown = false;
+    function checkScroll() {
+      if (shown) return;
+      const scrolled = window.scrollY + window.innerHeight;
+      const total = document.documentElement.scrollHeight;
+      if (scrolled / total >= 0.6) {
+        bar.classList.add('visible');
+        shown = true;
+        window.removeEventListener('scroll', checkScroll);
+      }
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+  }
+
+  /* ---------- 6. TIME-ON-PAGE EXIT INTENT (45s) ---------- */
+  function initTimeOnPage() {
+    if (alreadySubscribed()) return;
+    if (sessionStorage.getItem('exitModalShown') === 'true') return;
+    setTimeout(() => {
+      const modal = document.getElementById('exitIntentModal');
+      if (!modal) return;
+      if (sessionStorage.getItem('exitModalShown') === 'true') return;
+      if (alreadySubscribed()) return;
+      modal.classList.add('show');
+      sessionStorage.setItem('exitModalShown', 'true');
+    }, 45000);
+  }
+
   /* ---------- BOOT ---------- */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
@@ -307,5 +379,7 @@
     initExitIntent();
     initVIP();
     initSocialToast();
+    initStickyBar();
+    initTimeOnPage();
   }
 })();

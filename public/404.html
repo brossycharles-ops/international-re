@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | International RE</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/layout_updates.css">
+  <style>
+    .page-404 {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      background: #f7f5f0;
+      text-align: center;
+    }
+    .err-logo { margin-bottom: 48px; }
+    .err-code {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 700;
+      color: #e8e3d9;
+      line-height: 1;
+      margin: 0;
+    }
+    .err-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: #0a1628;
+      margin: 16px 0 12px;
+    }
+    .err-sub { color: #666; max-width: 420px; margin: 0 auto 40px; line-height: 1.6; }
+    .err-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 40px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(10,14,26,0.08);
+      margin-bottom: 32px;
+    }
+    .err-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: #0a1628;
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+    .err-card p { color: #666; font-size: 0.9rem; margin: 0 0 20px; }
+    .err-form { display: grid; gap: 10px; }
+    .err-form input {
+      padding: 13px 16px;
+      border: 2px solid #e8e3d9;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .err-form input:focus { border-color: #c9a84c; }
+    .err-form button {
+      padding: 14px;
+      background: linear-gradient(180deg, #d4b05a, #c9a84c);
+      color: #0a1628;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .err-success { display: none; padding: 16px; text-align: center; }
+    .err-success p { color: #0a1628; font-weight: 600; margin: 0; }
+    .err-links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .err-link {
+      color: #c9a84c;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .err-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-404">
+    <div class="err-logo">
+      <a href="/" style="font-size:1.1rem;font-weight:700;color:#0a1628;text-decoration:none;">
+        <span style="color:#c9a84c;">&#9670;</span> International RE
+      </a>
+    </div>
+
+    <p class="err-code">404</p>
+    <h1 class="err-headline">This page doesn't exist</h1>
+    <p class="err-sub">The page you're looking for may have moved. But while you're here — the newsletter is free and worth your time.</p>
+
+    <div class="err-card">
+      <h3>Get the free weekly market report</h3>
+      <p>Live prices, rental yields &amp; legal guides across 11 Latin American markets. Plus your 2026 Market Entry Guide on signup.</p>
+      <form class="err-form" id="err404Form">
+        <input type="text" name="firstName" placeholder="First name" required>
+        <input type="text" name="lastName" placeholder="Last name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <button type="submit" id="err404Btn">Subscribe Free &rarr;</button>
+      </form>
+      <div class="err-success" id="err404Success">
+        <p>&#10003; You're in! Check your inbox for the guide.</p>
+      </div>
+    </div>
+
+    <div class="err-links">
+      <a class="err-link" href="/">Home</a>
+      <a class="err-link" href="/blog.html">Blog</a>
+      <a class="err-link" href="/quiz.html">Market Quiz</a>
+      <a class="err-link" href="/newsletter.html">Newsletter Archive</a>
+      <a class="err-link" href="/guides.html">Guides</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('err404Form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('err404Btn');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ firstName: this.firstName.value.trim(), lastName: this.lastName.value.trim(), email: this.email.value.trim() })
+        });
+        const data = await res.json();
+        if (res.ok || /already subscribed/i.test(data.error || '')) {
+          localStorage.setItem('subscribed', 'true');
+          this.style.display = 'none';
+          document.getElementById('err404Success').style.display = 'block';
+        } else { alert(data.error || 'Something went wrong.'); btn.disabled = false; btn.textContent = 'Subscribe Free →'; }
+      } catch { alert('Network error.'); btn.disabled = false; btn.textContent = 'Subscribe Free →'; }
+    });
+  </script>
+  <script src="/lead_capture.js" defer></script>
+</body>
+</html>

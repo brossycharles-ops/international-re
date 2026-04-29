@@ -262,8 +262,7 @@
         const data = await res.json();
         if (res.ok || /already subscribed/i.test(data.error || '')) {
           localStorage.setItem('subscribed', 'true');
-          this.style.display = 'none';
-          document.getElementById('subSuccess').style.display = 'block';
+          window.location.href = '/thankyou.html';
         } else { alert(data.error || 'Something went wrong.'); btn.disabled = false; btn.textContent = 'Get Free Access →'; }
       } catch { alert('Network error.'); btn.disabled = false; btn.textContent = 'Get Free Access →'; }
     });

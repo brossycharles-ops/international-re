@@ -502,6 +502,12 @@ app.post('/api/drip-check', async (req, res) => {
   res.json({ sent, skipped, total: subscribers.length });
 });
 
+// ─── 404 handler ───
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
 // ─── Error handling ───
 
 process.on('uncaughtException', (err) => {

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Subscribed | International RE</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/layout_updates.css">
+  <style>
+    body { background: #f7f5f0; }
+    .ty-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .ty-logo { margin-bottom: 40px; font-size: 1.1rem; font-weight: 700; color: #0a1628; text-decoration: none; }
+    .ty-icon { font-size: 4rem; margin-bottom: 16px; }
+    .ty-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: #0a1628;
+      margin: 0 0 12px;
+    }
+    .ty-sub { color: #666; max-width: 440px; margin: 0 auto 40px; line-height: 1.65; font-size: 1rem; }
+
+    .ty-guide-card {
+      background: linear-gradient(135deg, #0a1628, #132039);
+      border-radius: 16px;
+      padding: 32px 36px;
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: 32px;
+      color: #fff;
+    }
+    .ty-guide-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 0 0 8px; }
+    .ty-guide-card p { color: rgba(255,255,255,0.7); font-size: 0.88rem; margin: 0 0 20px; }
+    .ty-guide-btn {
+      display: inline-block;
+      background: linear-gradient(180deg, #d4b05a, #c9a84c);
+      color: #0a1628;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+
+    .ty-share-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 36px;
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 20px rgba(10,14,26,0.07);
+    }
+    .ty-share-card h3 { font-family: 'Playfair Display', serif; color: #0a1628; font-size: 1.1rem; margin: 0 0 6px; }
+    .ty-share-card p { color: #666; font-size: 0.87rem; margin: 0 0 18px; }
+    .ty-share-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .ty-share-btn {
+      display: inline-block;
+      padding: 9px 18px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .ty-tw  { background: #000; color: #fff; }
+    .ty-fb  { background: #1877f2; color: #fff; }
+    .ty-wa  { background: #25d366; color: #fff; }
+    .ty-copy { background: #e8e3d9; color: #0a1628; }
+    .ty-copy:hover { background: #d8d3c9; }
+
+    .ty-next { max-width: 500px; width: 100%; }
+    .ty-next h4 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; font-weight: 600; margin: 0 0 14px; }
+    .ty-next-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .ty-next-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid #e8e3d9;
+      border-radius: 8px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #0a1628;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: border-color 0.15s;
+    }
+    .ty-next-link:hover { border-color: #c9a84c; }
+  </style>
+</head>
+<body>
+  <div class="ty-page">
+    <a href="/" class="ty-logo"><span style="color:#c9a84c">&#9670;</span> International RE</a>
+
+    <div class="ty-icon">🎉</div>
+    <h1 class="ty-headline">You're in!</h1>
+    <p class="ty-sub">Welcome to International RE. Your 2026 Market Entry Guide is on its way to your inbox. Your first weekly newsletter arrives this week.</p>
+
+    <div class="ty-guide-card">
+      <h3>Your free guide is ready</h3>
+      <p>38 pages of live price data, rental yields, and legal guides across Costa Rica, Panama, Colombia, Mexico, Argentina, Chile and more.</p>
+      <a href="/guide/2026-market-entry-guide.html" class="ty-guide-btn">Read the 2026 Market Entry Guide &rarr;</a>
+    </div>
+
+    <div class="ty-share-card">
+      <h3>Know someone who'd find this useful?</h3>
+      <p>Forward this page or share the free newsletter — they'll get the same guide instantly.</p>
+      <div class="ty-share-btns">
+        <a class="ty-share-btn ty-tw" id="tyTw" href="#" target="_blank" rel="noopener">&#120143; Share</a>
+        <a class="ty-share-btn ty-wa" id="tyWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="ty-share-btn ty-fb" id="tyFb" href="#" target="_blank" rel="noopener">Facebook</a>
+        <button class="ty-share-btn ty-copy" onclick="navigator.clipboard.writeText('https://www.internationalre.org/subscribe.html').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy Link'},2000)})">Copy Link</button>
+      </div>
+    </div>
+
+    <div class="ty-next">
+      <h4>Explore while you wait</h4>
+      <div class="ty-next-links">
+        <a class="ty-next-link" href="/quiz.html">🎯 Market Quiz</a>
+        <a class="ty-next-link" href="/newsletter.html">📰 Past Issues</a>
+        <a class="ty-next-link" href="/blog.html">📝 Blog</a>
+        <a class="ty-next-link" href="/guides.html">📚 Guides</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var url = encodeURIComponent('https://www.internationalre.org/subscribe.html');
+    var txt = encodeURIComponent('Free Latin America real estate intel — live prices, rental yields, legal guides across 11 markets. Highly recommend.');
+    document.getElementById('tyTw').href = 'https://twitter.com/intent/tweet?text=' + txt + '&url=' + url;
+    document.getElementById('tyWa').href = 'https://wa.me/?text=' + txt + ' ' + url;
+    document.getElementById('tyFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+  </script>
+</body>
+</html>
