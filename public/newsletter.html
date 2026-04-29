@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Archive — International RE</title>
+  <meta name="description" content="Read past issues of the International RE newsletter — weekly Latin American real estate intelligence covering Costa Rica, Panama, Colombia, Argentina, Chile and more.">
+  <link rel="canonical" href="https://www.internationalre.org/newsletter.html">
+  <meta property="og:title" content="International RE Newsletter Archive">
+  <meta property="og:description" content="Weekly Latin American real estate intelligence. Browse past issues before you subscribe.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout_updates.css">
+  <style>
+    .nl-page { padding-top: 80px; background: #f7f5f0; min-height: 100vh; }
+
+    .nl-hero {
+      background: linear-gradient(135deg, #0a1628 0%, #132039 60%, #0d1e38 100%);
+      color: #fff;
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+    .nl-hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .nl-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+    .nl-hero p {
+      color: rgba(255,255,255,0.75);
+      max-width: 540px;
+      margin: 0 auto 28px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .nl-hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .nl-stat { text-align: center; }
+    .nl-stat-value { font-size: 1.6rem; font-weight: 700; color: #c9a84c; }
+    .nl-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+    .nl-subscribe-bar {
+      background: #c9a84c;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .nl-subscribe-bar p {
+      color: #0a1628;
+      font-weight: 600;
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+    .nl-subscribe-bar form {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .nl-subscribe-bar input {
+      padding: 11px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      flex: 1;
+      min-width: 140px;
+      font-family: inherit;
+    }
+    .nl-subscribe-bar button {
+      padding: 11px 22px;
+      background: #0a1628;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .nl-bar-success { display: none; color: #0a1628; font-weight: 700; font-size: 1rem; }
+
+    .nl-container { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .nl-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #0a1628;
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e8e3d9;
+    }
+
+    .nl-grid { display: grid; gap: 16px; margin-bottom: 48px; }
+
+    .nl-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      border: 1px solid #e8e3d9;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .nl-card:hover { border-color: #c9a84c; box-shadow: 0 4px 16px rgba(10,14,26,0.08); }
+    .nl-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #f0ece4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .nl-card-body { flex: 1; }
+    .nl-card-meta {
+      font-size: 0.75rem;
+      color: #c9a84c;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .nl-card-title {
+      font-weight: 600;
+      color: #0a1628;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .nl-card-desc { font-size: 0.87rem; color: #666; line-height: 1.5; }
+    .nl-card-arrow { color: #c9a84c; font-size: 1.1rem; align-self: center; flex-shrink: 0; }
+
+    .nl-what-you-get {
+      background: linear-gradient(135deg, #0a1628, #132039);
+      border-radius: 16px;
+      padding: 40px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .nl-wyg-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin: 0 0 16px;
+    }
+    .nl-wyg-p { color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0 0 24px; }
+    .nl-wyg-btn {
+      display: inline-block;
+      background: linear-gradient(180deg, #d4b05a, #c9a84c);
+      color: #0a1628;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .nl-wyg-list { list-style: none; padding: 0; margin: 0; }
+    .nl-wyg-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .nl-wyg-list li:last-child { border-bottom: none; }
+    .nl-wyg-check { color: #c9a84c; flex-shrink: 0; margin-top: 2px; }
+
+    @media (max-width: 640px) {
+      .nl-what-you-get { grid-template-columns: 1fr; }
+      .nl-hero-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+      <ul class="nav-links">
+        <li><a href="/#markets">Markets</a></li>
+        <li><a href="/newsletter.html" class="active-link">Newsletter</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="/quiz.html">Market Quiz</a></li>
+        <li><a href="/#subscribe" class="nav-cta">Subscribe</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="nl-page">
+    <div class="nl-hero">
+      <span class="nl-hero-eyebrow">Free Weekly Newsletter</span>
+      <h1>Latin America Real Estate Intelligence</h1>
+      <p>Every week: live price data, rental yields, legal updates, and market moves across 11 countries. Read past issues below — then subscribe.</p>
+      <div class="nl-hero-stats">
+        <div class="nl-stat"><div class="nl-stat-value">Weekly</div><div class="nl-stat-label">Delivery</div></div>
+        <div class="nl-stat"><div class="nl-stat-value">11</div><div class="nl-stat-label">Markets Covered</div></div>
+        <div class="nl-stat"><div class="nl-stat-value">Free</div><div class="nl-stat-label">Always</div></div>
+        <div class="nl-stat"><div class="nl-stat-value">0</div><div class="nl-stat-label">Ads or Sponsors</div></div>
+      </div>
+    </div>
+
+    <div class="nl-subscribe-bar">
+      <p>Like what you see? Join free — your first issue arrives this week.</p>
+      <form id="nlBarForm">
+        <input type="text" placeholder="First name" id="nlBarFirst" required>
+        <input type="text" placeholder="Last name" id="nlBarLast" required>
+        <input type="email" placeholder="Email address" id="nlBarEmail" required>
+        <button type="submit" id="nlBarBtn">Subscribe Free &rarr;</button>
+      </form>
+      <p class="nl-bar-success" id="nlBarSuccess">&#10003; You're in! Check your inbox for the welcome guide.</p>
+    </div>
+
+    <div class="nl-container">
+
+      <h2 class="nl-section-title">Weekly Roundups</h2>
+      <div class="nl-grid">
+        <a class="nl-card" href="blog/latam-weekly-apr-26-may-2-2026.html">
+          <div class="nl-card-icon">📰</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">April 26 – May 2, 2026</div>
+            <div class="nl-card-title">Latin America Real Estate Weekly — April 26 – May 2, 2026</div>
+            <div class="nl-card-desc">This week's market moves: Panama transaction highs, Argentina peso dynamics, Costa Rica coastal demand, and Colombia urban growth data.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/latam-weekly-apr-21-25-2026.html">
+          <div class="nl-card-icon">📰</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">April 21–25, 2026</div>
+            <div class="nl-card-title">Latin America Real Estate Weekly — April 21–25, 2026</div>
+            <div class="nl-card-desc">Five market updates: Nicaragua foreign buyer surge, Santiago supply squeeze, Buenos Aires UVA mortgage revival, and more.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/latam-weekly-apr-14-18-2026.html">
+          <div class="nl-card-icon">📰</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">April 14–18, 2026</div>
+            <div class="nl-card-title">Latin America Real Estate Weekly — April 14–18, 2026</div>
+            <div class="nl-card-desc">Medellín rental yields at 5-year high, Guanacaste beachfront sellout, Panama dollarised demand, and Argentina price recovery data.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+      </div>
+
+      <h2 class="nl-section-title">Market Deep-Dives</h2>
+      <div class="nl-grid">
+        <a class="nl-card" href="blog/panama-city-2026-dollar-yield.html">
+          <div class="nl-card-icon">🇵🇦</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Panama · April 28, 2026</div>
+            <div class="nl-card-title">Panama City: Latin America's Most Underrated Dollar-Denominated Yield Play</div>
+            <div class="nl-card-desc">7–10% yields, zero currency risk, transaction volume at 5-year highs. Why Panama is our top-ranked market right now.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/medellin-real-estate-2026.html">
+          <div class="nl-card-icon">🇨🇴</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Colombia · April 25, 2026</div>
+            <div class="nl-card-title">Medellín Real Estate in 2026: Latin America's Smartest Value Play</div>
+            <div class="nl-card-desc">$1,200–$2,400/m², 6.5–9% rental yields, 18%/yr appreciation. The case for Medellín as the decade's best risk-adjusted bet.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/buenos-aires-best-value-2026.html">
+          <div class="nl-card-icon">🇦🇷</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Argentina · March 31, 2026</div>
+            <div class="nl-card-title">Buenos Aires Is the Best-Value Capital City in the World</div>
+            <div class="nl-card-desc">Prices 50–70% below pre-crisis levels. UVA mortgages back. Q1 2026 transactions at 5,500+/month. The asymmetric Argentina thesis.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/guanacaste-hottest-market-2026.html">
+          <div class="nl-card-icon">🇨🇷</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Costa Rica · March 24, 2026</div>
+            <div class="nl-card-title">Why Guanacaste Is the Hottest Property Market in Central America</div>
+            <div class="nl-card-desc">6–8% yields, strong Airbnb demand, stable dollar economy. Guanacaste beachfront is selling out faster than any year since 2019.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/tbilisi-georgia-1-percent-tax-2026.html">
+          <div class="nl-card-icon">🇬🇪</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Georgia · April 25, 2026</div>
+            <div class="nl-card-title">Tbilisi in 2026: The 1% Tax Loophole Quietly Drawing Global Investors</div>
+            <div class="nl-card-desc">$800/m², 8.5–12% yields, 1% rental income tax, instant residency by ownership. The most overlooked market of 2026.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/santiago-supply-squeeze-2026.html">
+          <div class="nl-card-icon">🇨🇱</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Chile · April 19, 2026</div>
+            <div class="nl-card-title">Santiago's Housing Shortage Is the Best News for Investors in 2026</div>
+            <div class="nl-card-desc">Supply deficit, strong fundamentals, most stable economy in Latin America. The quiet case for Santiago real estate.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+        <a class="nl-card" href="blog/granada-nicaraguas-colonial-gem-2026.html">
+          <div class="nl-card-icon">🇳🇮</div>
+          <div class="nl-card-body">
+            <div class="nl-card-meta">Nicaragua · April 7, 2026</div>
+            <div class="nl-card-title">Granada, Nicaragua: The Colonial City Quietly Becoming Latin America's Top Value Play</div>
+            <div class="nl-card-desc">$600–$1,500/m², 9–13% yields, cheapest beachfront in Central America. The under-the-radar market for contrarian buyers.</div>
+          </div>
+          <span class="nl-card-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="nl-what-you-get">
+        <div>
+          <h2 class="nl-wyg-heading">What subscribers get every week</h2>
+          <p class="nl-wyg-p">One focused email. No filler. Real data from real markets — not press releases or agent pitches.</p>
+          <a href="/#subscribe" class="nl-wyg-btn">Subscribe Free &rarr;</a>
+        </div>
+        <ul class="nl-wyg-list">
+          <li><span class="nl-wyg-check">✓</span> Live price-per-m² updates across 11 markets</li>
+          <li><span class="nl-wyg-check">✓</span> Rental yield ranges — gross and net</li>
+          <li><span class="nl-wyg-check">✓</span> Legal updates: foreign buyer rules, tax changes</li>
+          <li><span class="nl-wyg-check">✓</span> One market deep-dive per week</li>
+          <li><span class="nl-wyg-check">✓</span> Free 2026 Market Entry Guide on signup</li>
+          <li><span class="nl-wyg-check">✓</span> No ads. No broker relationships. Independent.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+          <p>Your weekly guide to Latin American real estate markets.</p>
+          <p class="footer-domain">internationalre.org</p>
+        </div>
+        <div class="footer-links">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="/#costa-rica">Costa Rica</a></li>
+            <li><a href="/#nicaragua">Nicaragua</a></li>
+            <li><a href="/#argentina">Argentina</a></li>
+            <li><a href="/#chile">Chile</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="newsletter.html">Newsletter Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nlBarForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nlBarBtn');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      const payload = {
+        firstName: document.getElementById('nlBarFirst').value.trim(),
+        lastName: document.getElementById('nlBarLast').value.trim(),
+        email: document.getElementById('nlBarEmail').value.trim()
+      };
+      try {
+        const res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const data = await res.json();
+        if (res.ok || /already subscribed/i.test(data.error || '')) {
+          localStorage.setItem('subscribed', 'true');
+          document.getElementById('nlBarForm').style.display = 'none';
+          document.getElementById('nlBarSuccess').style.display = 'block';
+        } else { alert(data.error || 'Something went wrong.'); btn.disabled = false; btn.textContent = 'Subscribe Free →'; }
+      } catch { alert('Network error.'); btn.disabled = false; btn.textContent = 'Subscribe Free →'; }
+    });
+    const t = document.getElementById('mobileToggle'), n = document.querySelector('.nav-links');
+    t.addEventListener('click', () => n.classList.toggle('active'));
+    n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n.classList.remove('active')));
+  </script>
+  <script src="lead_capture.js" defer></script>
+</body>
+</html>

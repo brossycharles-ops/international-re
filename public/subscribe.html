@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Latin America Real Estate Newsletter | International RE</title>
+  <meta name="description" content="Get weekly Latin American real estate intelligence — prices, yields, legal guides, and market moves across 11 countries. Free. No spam.">
+  <link rel="canonical" href="https://www.internationalre.org/subscribe.html">
+  <meta property="og:title" content="Free Latin America Real Estate Newsletter">
+  <meta property="og:description" content="Weekly market intelligence: live prices, rental yields, legal updates across Costa Rica, Panama, Colombia, Argentina, Chile and 6 more markets. Free.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout_updates.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0a1628; }
+
+    .sub-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      background: linear-gradient(160deg, #0a1628 0%, #132039 50%, #0d1e38 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .sub-page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .sub-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #c9a84c;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .sub-card {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      padding: 48px 44px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .sub-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .sub-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2rem);
+      color: #0a1628;
+      line-height: 1.25;
+      margin: 0 0 14px;
+    }
+    .sub-subline {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin: 0 0 28px;
+    }
+
+    .sub-proof {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding: 14px 16px;
+      background: #f7f5f0;
+      border-radius: 8px;
+    }
+    .sub-proof-avatars {
+      display: flex;
+    }
+    .sub-proof-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #c9a84c;
+      color: #0a1628;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      margin-left: -8px;
+    }
+    .sub-proof-avatar:first-child { margin-left: 0; }
+    .sub-proof-text { font-size: 0.82rem; color: #555; line-height: 1.4; }
+    .sub-proof-text strong { color: #0a1628; }
+
+    .sub-form { display: grid; gap: 12px; }
+    .sub-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .sub-form input {
+      padding: 14px 16px;
+      border: 2px solid #e8e3d9;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #0a1628;
+      outline: none;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    .sub-form input:focus { border-color: #c9a84c; }
+    .sub-form button {
+      padding: 16px;
+      background: linear-gradient(180deg, #d4b05a, #c9a84c);
+      color: #0a1628;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .sub-form button:hover { opacity: 0.92; }
+    .sub-form button:disabled { opacity: 0.5; cursor: default; }
+
+    .sub-fineprint {
+      font-size: 0.75rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .sub-success {
+      display: none;
+      text-align: center;
+      padding: 16px 0;
+    }
+    .sub-success-icon { font-size: 3rem; margin-bottom: 12px; }
+    .sub-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #0a1628;
+      margin: 0 0 8px;
+    }
+    .sub-success p { color: #555; font-size: 0.9rem; line-height: 1.6; }
+
+    .sub-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+      display: grid;
+      gap: 8px;
+    }
+    .sub-checklist li {
+      display: flex;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #444;
+      align-items: flex-start;
+    }
+    .sub-check { color: #c9a84c; flex-shrink: 0; font-weight: 700; }
+
+    .sub-footer {
+      margin-top: 32px;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.78rem;
+    }
+    .sub-footer a { color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 500px) {
+      .sub-card { padding: 36px 24px; }
+      .sub-form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sub-page">
+    <a href="/" class="sub-logo">&#9670; International RE</a>
+
+    <div class="sub-card">
+      <span class="sub-eyebrow">Free Weekly Newsletter</span>
+      <h1 class="sub-headline">The insider's guide to Latin American real estate</h1>
+      <p class="sub-subline">Live prices, rental yields, and legal updates across 11 markets — delivered free every week. Plus your <strong>2026 Market Entry Guide</strong> instantly on signup.</p>
+
+      <div class="sub-proof">
+        <div class="sub-proof-avatars">
+          <div class="sub-proof-avatar">C</div>
+          <div class="sub-proof-avatar">M</div>
+          <div class="sub-proof-avatar">J</div>
+          <div class="sub-proof-avatar">+</div>
+        </div>
+        <div class="sub-proof-text"><strong>Investors from 12 countries</strong> already subscribe — expats, retirees, and portfolio builders.</div>
+      </div>
+
+      <ul class="sub-checklist">
+        <li><span class="sub-check">✓</span> Weekly market deep-dive — one country, real data</li>
+        <li><span class="sub-check">✓</span> Live price-per-m² across Costa Rica, Panama, Colombia, Mexico, Argentina, Chile + 5 more</li>
+        <li><span class="sub-check">✓</span> Rental yield ranges — gross and net</li>
+        <li><span class="sub-check">✓</span> Legal changes: foreign buyer rules, tax updates</li>
+        <li><span class="sub-check">✓</span> Free 2026 Market Entry Guide (38 pages) on signup</li>
+      </ul>
+
+      <form class="sub-form" id="subPageForm">
+        <div class="sub-form-row">
+          <input type="text" name="firstName" placeholder="First name" required>
+          <input type="text" name="lastName" placeholder="Last name" required>
+        </div>
+        <input type="email" name="email" placeholder="Email address" required>
+        <button type="submit" id="subPageBtn">Get Free Access &rarr;</button>
+        <p class="sub-fineprint">No spam. Unsubscribe anytime. We never share your data.</p>
+      </form>
+
+      <div class="sub-success" id="subSuccess">
+        <div class="sub-success-icon">🎉</div>
+        <h3>You're in!</h3>
+        <p>Check your inbox — your 2026 Market Entry Guide is on its way. Your first newsletter arrives this week.</p>
+        <p style="margin-top:16px;"><a href="/newsletter.html" style="color:#c9a84c;font-weight:600;">Browse past issues →</a></p>
+      </div>
+    </div>
+
+    <div class="sub-footer">
+      <a href="/">internationalre.org</a> &nbsp;·&nbsp;
+      <a href="/newsletter.html">Past Issues</a> &nbsp;·&nbsp;
+      <a href="/quiz.html">Market Quiz</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('subPageForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('subPageBtn');
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      const payload = {
+        firstName: this.firstName.value.trim(),
+        lastName: this.lastName.value.trim(),
+        email: this.email.value.trim()
+      };
+      try {
+        const res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const data = await res.json();
+        if (res.ok || /already subscribed/i.test(data.error || '')) {
+          localStorage.setItem('subscribed', 'true');
+          this.style.display = 'none';
+          document.getElementById('subSuccess').style.display = 'block';
+        } else { alert(data.error || 'Something went wrong.'); btn.disabled = false; btn.textContent = 'Get Free Access →'; }
+      } catch { alert('Network error.'); btn.disabled = false; btn.textContent = 'Get Free Access →'; }
+    });
+  </script>
+  <script src="lead_capture.js" defer></script>
+</body>
+</html>

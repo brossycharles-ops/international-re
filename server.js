@@ -150,6 +150,9 @@ app.post('/api/subscribe', async (req, res) => {
                 <li>Legal updates and buyer guides</li>
               </ul>
               <p>Your first newsletter arrives this week.</p>
+              <div style="background:#f7f5f0;border-radius:8px;padding:16px 20px;margin:20px 0;">
+                <p style="margin:0;font-size:13px;color:#555;">&#128279; <strong>Know someone researching Latin American real estate?</strong> Forward this email or share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — they'll get the same free guide.</p>
+              </div>
               <p style="color:#666;font-size:13px;margin-top:30px;border-top:1px solid #eee;padding-top:15px;">
                 You're receiving this because you subscribed at internationalre.org.<br>
                 <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit our website</a>
@@ -371,7 +374,7 @@ const DRIP_EMAILS = [
           </p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>
+            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br><br>You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
       </div>`
@@ -400,7 +403,7 @@ const DRIP_EMAILS = [
           <p>Also worth checking: our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will match you to the market that fits your budget and goals.</p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>
+            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br><br>You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
       </div>`
@@ -435,7 +438,7 @@ const DRIP_EMAILS = [
           <p>You'll now receive our regular weekly newsletter. Reply to any email — we read them all.</p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>
+            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br><br>You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
       </div>`

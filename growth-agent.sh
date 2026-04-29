@@ -138,7 +138,7 @@ TASK: Write this week's featured blog post in public/blog/.
 - Next writer rotation: Sofia Mendez → James Whitfield → Carolina Vega → repeat.
 - Pick a market NOT in the last 3 posts. Rotate across: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia (Medellín or Cartagena), Mexico (Playa del Carmen, CDMX, or Tulum), Uruguay, Ecuador, Peru, Brazil.
 - Web search for 3-5 real current data points as of $DATE (price/sqm, rental yield, one notable development, USD exchange context).
-- Write a 700-900 word HTML post matching public/blog/guanacaste-hottest-market-2026.html (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
+- Write a 700-900 word HTML post matching public/blog/guanacaste-hottest-market-2026.html (nav, Unsplash hero, article, subscribe banner, footer). Include one natural inline text link to /quiz.html and one to /newsletter.html somewhere in the article body. Publish date: $DATE.
 - Update public/blog.html: move current featured post to grid, make new post featured.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add weekly blog: [title]' && git push"
@@ -152,7 +152,7 @@ TASK: Create one new legal or FAQ guide in public/guides/.
 - Run: ls public/guides/ — do NOT duplicate any existing topic.
 - Pick an uncovered topic. Good options: property taxes, closing costs, residency through investment, or a 'Can foreigners buy in X?' guide for a country not yet covered. Countries to consider: Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil, Nicaragua, Argentina, Chile, Costa Rica.
 - Web search for the real current rules and numbers as of $DATE.
-- Write a 600-800 word HTML guide matching existing guides (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
+- Write a 600-800 word HTML guide matching existing guides (nav, Unsplash hero, article, subscribe banner, footer). Include one natural inline text link to /quiz.html and one to /newsletter.html somewhere in the article body. Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add legal guide: [title]' && git push"
     ;;
@@ -165,7 +165,7 @@ TASK: Create one market comparison page in public/guides/.
 - Run: ls public/guides/ public/blog/ — do NOT duplicate any existing comparison.
 - Pick an uncovered pairing. Examples: 'Medellín vs Buenos Aires for expat investors', 'Panama City vs San José', 'Mexico Beach Towns vs Costa Rica', 'Uruguay vs Chile for retirees', 'Best value beach markets: Nicaragua, Ecuador, or Brazil'.
 - Web search for real price data and rental yields as of $DATE to include in a simple comparison table.
-- Write a 600-800 word HTML page matching existing guide style (nav, hero, article with table, subscribe banner, footer). Publish date: $DATE.
+- Write a 600-800 word HTML page matching existing guide style (nav, hero, article with table, subscribe banner, footer). Include one natural inline text link to /quiz.html and one to /newsletter.html somewhere in the article body. Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add comparison: [title]' && git push"
     ;;
@@ -178,7 +178,7 @@ TASK: Improve the weakest existing page.
 - Run: ls -lS public/blog/ public/guides/ to find the smallest files (weakest content).
 - Pick the smallest one. Read it.
 - Web search for one current stat as of $DATE relevant to that page's topic.
-- Add 150-200 words of updated data, improve the meta description to be more compelling, add 2-3 internal links to related pages.
+- Add 150-200 words of updated data, improve the meta description to be more compelling, add 2-3 internal links to related pages. Always link to /quiz.html as "Find your best market →" and /newsletter.html as "Browse past issues →".
 - git add -A && git commit -m 'SEO: strengthen [filename]' && git push"
     ;;
 
@@ -190,7 +190,7 @@ TASK: Create one new location guide in public/guides/.
 - Run: ls public/guides/ public/blog/ — do NOT duplicate any existing topic.
 - Pick one not yet covered. Rotate across: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil. Types: neighborhood guide, cost-of-living breakdown, or rental-yield analysis for a specific city.
 - Web search for 3-5 real current data points as of $DATE (price/sqm, rental yield, one recent development).
-- Write a 600-800 word HTML guide matching public/guides/can-foreigners-buy-property-costa-rica.html (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
+- Write a 600-800 word HTML guide matching public/guides/can-foreigners-buy-property-costa-rica.html (nav, Unsplash hero, article, subscribe banner, footer). Include one natural inline text link to /quiz.html and one to /newsletter.html somewhere in the article body. Publish date: $DATE.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add guide: [title]' && git push"
     ;;
@@ -201,7 +201,7 @@ TASK: Create one new location guide in public/guides/.
 
 TASK: Create a weekly Latin America real estate news roundup post.
 - Web search for 4-5 real recent news items (as of $DATE) about real estate across Latin America — cover at least 3 different countries from: Costa Rica, Nicaragua, Argentina, Chile, Panama, Colombia, Mexico, Uruguay, Ecuador, Peru, Brazil.
-- Write a 500-700 word HTML post in public/blog/ titled 'Latin America Real Estate Weekly — [date range]'. Same structure as existing posts (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
+- Write a 500-700 word HTML post in public/blog/ titled 'Latin America Real Estate Weekly — [date range]'. Same structure as existing posts (nav, Unsplash hero, article, subscribe banner, footer). Include one natural inline text link to /quiz.html and one to /newsletter.html somewhere in the article body. Publish date: $DATE.
 - Update public/blog.html: move current featured post to grid, make new post featured.
 - Add to public/sitemap.xml with lastmod $DATE.
 - git add -A && git commit -m 'Add weekly roundup: [date range]' && git push"
@@ -215,7 +215,7 @@ TASK: Refresh the single oldest page on the site with current data.
 - Run: ls -lt public/blog/ public/guides/ | tail -6 to find the oldest files.
 - Pick the oldest one. Read it.
 - Web search for one or two updates for that topic as of $DATE — new prices, policy changes, market shifts.
-- Add 100-150 words of fresh data, update the 'Updated' date to $DATE, add one internal link to a recently created page.
+- Add 100-150 words of fresh data, update the 'Updated' date to $DATE, add one internal link to a recently created page. Also add a short inline text link to /quiz.html ("Not sure which market fits you? Take our 5-question quiz →").
 - git add -A && git commit -m 'Refresh: [filename] with $(date +%B) 2026 data' && git push"
     ;;
 esac

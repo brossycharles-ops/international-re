@@ -113,6 +113,37 @@
     </div>
   </article>
 
+<!-- quiz-share-injected -->
+
+  <!-- Quiz CTA -->
+  <section class="quiz-cta-block">
+    <div class="container">
+      <div class="quiz-cta-inner">
+        <div class="quiz-cta-text">
+          <span class="quiz-cta-eyebrow">Free · 5 Questions</span>
+          <h3>Not sure which market fits your goals?</h3>
+          <p>Answer 5 quick questions and get a personalised market match with live prices and rental yields.</p>
+        </div>
+        <a href="/quiz.html" class="quiz-cta-btn">Take the Market Quiz &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Share -->
+  <section class="share-block">
+    <div class="container">
+      <div class="share-inner">
+        <span class="share-label">Share this article</span>
+        <div class="share-buttons">
+          <a class="share-btn share-twitter" id="shareTwitter" href="#" target="_blank" rel="noopener">&#120143; Post</a>
+          <a class="share-btn share-facebook" id="shareFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
+          <a class="share-btn share-whatsapp" id="shareWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="share-btn share-copy" id="shareCopy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy Link'},2000)})">Copy Link</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="inline-subscribe-banner">
     <div class="container">
       <div class="inline-subscribe-inner">
@@ -152,5 +183,17 @@
     const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
   <script src="../lead_capture.js" defer></script>
+
+  <script>
+    (function(){
+      var t=document.title,u=encodeURIComponent(window.location.href),tt=encodeURIComponent(t);
+      var tw=document.getElementById('shareTwitter');
+      var fb=document.getElementById('shareFacebook');
+      var wa=document.getElementById('shareWhatsapp');
+      if(tw) tw.href='https://twitter.com/intent/tweet?text='+tt+'&url='+u;
+      if(fb) fb.href='https://www.facebook.com/sharer/sharer.php?u='+u;
+      if(wa) wa.href='https://wa.me/?text='+tt+' '+u;
+    })();
+  </script>
 </body>
 </html>
