@@ -166,14 +166,14 @@
         <button class="modal-close" aria-label="Close">&times;</button>
         <img class="modal-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Latin American skyline at golden hour" loading="lazy">
         <div class="modal-body">
-          <span class="modal-eyebrow">Free PDF · 38 pages</span>
-          <h2 id="exitTitle">Get the 2026 Global Investment Report</h2>
-          <p>Live price, yield and growth data for 11 Latin American markets. Sent to your inbox in seconds.</p>
+          <span class="modal-eyebrow">Free · 2026 Edition</span>
+          <h2 id="exitTitle">Get the Latin America Expat Starter Kit</h2>
+          <p>8-country comparison table, visa requirements, cost of living for 12 cities, and a 47-item relocation checklist — free.</p>
           <form class="modal-form" data-form="exit">
             <input type="text" name="firstName" placeholder="First name" required>
             <input type="text" name="lastName" placeholder="Last name" required>
             <input type="email" name="email" placeholder="Email address" required>
-            <button type="submit">Send Me the Report</button>
+            <button type="submit">Send Me the Starter Kit</button>
             <p class="modal-fineprint">By submitting you agree to receive the report and our weekly newsletter. Unsubscribe anytime. We never share your data.</p>
           </form>
         </div>
@@ -309,10 +309,10 @@
     bar.setAttribute('aria-label', 'Subscribe prompt');
     bar.innerHTML = `
       <div class="sticky-bar-inner">
-        <span class="sticky-bar-text">&#9670; Get free weekly Latin America real estate intel</span>
+        <span class="sticky-bar-text">&#9670; Free: 2026 Latin America Expat Starter Kit — country table, visa guide &amp; relocation checklist</span>
         <form class="sticky-bar-form" autocomplete="off">
           <input type="email" name="email" placeholder="Your email" required>
-          <button type="submit">Subscribe Free</button>
+          <button type="submit">Get Free Kit</button>
         </form>
         <button class="sticky-bar-close" aria-label="Dismiss">&times;</button>
       </div>`;
