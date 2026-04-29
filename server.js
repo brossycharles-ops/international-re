@@ -374,7 +374,8 @@ const DRIP_EMAILS = [
           </p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br><br>You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
       </div>`
@@ -403,7 +404,8 @@ const DRIP_EMAILS = [
           <p>Also worth checking: our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will match you to the market that fits your budget and goals.</p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br><br>You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
       </div>`
@@ -438,7 +440,92 @@ const DRIP_EMAILS = [
           <p>You'll now receive our regular weekly newsletter. Reply to any email — we read them all.</p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br><br>You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+          </p>
+        </div>
+      </div>`
+  },
+  {
+    id: 'day21',
+    dayOffset: 21,
+    subject: 'The market I\'d buy in today (if I had $200K)',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">MARKET PICK · DAY 21</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, if I had $200K today — here's where I'd put it</h2>
+          <p>Three weeks in, so let me be direct. Based on the data we track every week, here's the honest answer:</p>
+          <div style="background:#f7f5f0;border-left:4px solid #c9a84c;padding:20px 24px;border-radius:0 8px 8px 0;margin:20px 0;">
+            <p style="margin:0 0 6px;font-weight:700;color:#0a1628;">&#127464;&#127476; Medellín, Colombia — El Poblado or Laureles</p>
+            <p style="margin:0;color:#555;font-size:0.9rem;line-height:1.7;">
+              <strong>Why:</strong> $1,500–1,800/sqm buys a 100–130sqm apartment in a walkable, high-demand neighborhood.
+              8,300 digital nomads arriving monthly. Gross yield 7–9%. City of Eternal Spring climate.
+              No currency risk for the buyer (USD buys COP at favorable rates). 18% price appreciation in El Poblado in 2024.<br><br>
+              <strong>Budget allocation:</strong> $150K property + $12K closing costs + $20K reserve + $18K furnish for short-term rental = $200K total.<br><br>
+              <strong>Expected year-1 income:</strong> $12,000–15,000 gross STR / $9,500–11,000 gross LTR.
+            </p>
+          </div>
+          <p>The runner-up is <strong>Panama City (Casco Viejo)</strong> — higher certainty, lower yield, fully dollarized. If you want less volatility, Panama wins. If you want more upside, Medellín wins.</p>
+          <p>Check our <a href="https://www.internationalre.org/blog/medellin-real-estate-2026.html" style="color:#c9a84c;">full Medellín deep-dive</a> for the neighborhood breakdown.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/quiz.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Find Your Best Market Match &rarr;</a>
+          </p>
+          <p>Best,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+          </p>
+        </div>
+      </div>`
+  },
+  {
+    id: 'day30',
+    dayOffset: 30,
+    subject: 'One month in — the 5 questions to answer before you buy',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">ONE MONTH · DAY 30</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, 5 questions to answer before you buy anything</h2>
+          <p>You've been with us for a month. By now you've read about several markets. Before you take the next step, make sure you can answer these five questions clearly:</p>
+          <div style="margin:20px 0;">
+            <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+              <p style="margin:0;font-weight:700;color:#0a1628;">1. What is this property's net yield?</p>
+              <p style="margin:6px 0 0;color:#555;font-size:0.88rem;">Gross yield minus management (12%), vacancy (10%), maintenance (2%), taxes. If you can't model this, you're not ready to buy.</p>
+            </div>
+            <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+              <p style="margin:0;font-weight:700;color:#0a1628;">2. Who is your attorney — and is it yours, not the seller's?</p>
+              <p style="margin:6px 0 0;color:#555;font-size:0.88rem;">Never use the seller's lawyer or the agent's recommended lawyer. Hire your own. Budget $1,500–3,000.</p>
+            </div>
+            <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+              <p style="margin:0;font-weight:700;color:#0a1628;">3. Have you visited the neighborhood at night?</p>
+              <p style="margin:6px 0 0;color:#555;font-size:0.88sf;">Every expat zone looks great at noon on a Saturday. Go back Tuesday night at 10pm. Walk the surrounding blocks. You'll learn more in 20 minutes than in 10 site visits.</p>
+            </div>
+            <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+              <p style="margin:0;font-weight:700;color:#0a1628;">4. Who will manage the property, and what does it cost?</p>
+              <p style="margin:6px 0 0;color:#555;font-size:0.88rem;">If you're renting short-term, you need a local co-host or property manager. Get quotes from 3 providers before you close. Rates: 10–20% of revenue.</p>
+            </div>
+            <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+              <p style="margin:0;font-weight:700;color:#0a1628;">5. What is your exit strategy?</p>
+              <p style="margin:6px 0 0;color:#555;font-size:0.88rem;">Markets like Panama, Medellín, and Guanacaste have real liquidity. Markets like rural Nicaragua or the Dominican Republic interior do not. Know how long it takes to sell before you buy.</p>
+            </div>
+          </div>
+          <p>If you can answer all five clearly — you're ready. If not, reply to this email and tell us where you're stuck. We read every reply.</p>
+          <div style="background:#0a1628;color:#fff;padding:20px 24px;border-radius:8px;margin:24px 0;text-align:center;">
+            <p style="margin:0 0 12px;color:rgba(255,255,255,0.85);font-size:0.95rem;">Not sure which market fits your situation?</p>
+            <a href="https://www.internationalre.org/quiz.html" style="background:#c9a84c;color:#0a1628;padding:12px 24px;text-decoration:none;border-radius:6px;font-weight:700;display:inline-block;">Take the 5-Question Market Quiz</a>
+          </div>
+          <p>Best,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
       </div>`
