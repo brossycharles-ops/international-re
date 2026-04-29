@@ -336,6 +336,169 @@ app.get('/feed.xml', (req, res) => {
   res.type('application/xml').send(rss);
 });
 
+// ─── Email drip sequence ───
+//
+// 3 emails sent automatically after subscription:
+//   Day 3  — "3 things to know before you buy"
+//   Day 7  — "Market spotlight: best entry right now"
+//   Day 14 — "Your complete buying checklist"
+//
+// Triggered by drip-agent.sh (daily LaunchAgent at 10am).
+// Each subscriber gets a `drip` array tracking sent email IDs.
+
+const DRIP_EMAILS = [
+  {
+    id: 'day3',
+    dayOffset: 3,
+    subject: '3 things to know before you buy property abroad',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">MARKET INTELLIGENCE · DAY 3</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, 3 things most buyers learn too late</h2>
+          <p>You've been subscribed for a few days. Before you go any further in your research, here are the three things that trip up foreign buyers most often:</p>
+          <h3 style="color:#c9a84c;">1. Currency risk is the silent killer</h3>
+          <p>Most Latin American markets price in USD, but local costs (maintenance, taxes, management fees) are in local currency. In Argentina and Colombia, this works in your favour. In Brazil, it can surprise you. Always model your returns in USD.</p>
+          <h3 style="color:#c9a84c;">2. Gross yield ≠ net yield</h3>
+          <p>A "9% yield" headline usually means gross. Deduct property management (10–15%), vacancy (8–15%), maintenance (1–2%), and local taxes. Net yield is typically 30–40% lower. Still excellent — but model it honestly.</p>
+          <h3 style="color:#c9a84c;">3. The lawyer matters more than the agent</h3>
+          <p>In Costa Rica, Panama, and Mexico, the notary/lawyer is legally central to the transaction. Hire your own — never use the seller's. Budget $1,500–$3,000 for a competent bilingual attorney. It's the best money you'll spend.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/guide/2026-market-entry-guide.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Read the Full Market Entry Guide &rarr;</a>
+          </p>
+          <p>More next week,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>
+          </p>
+        </div>
+      </div>`
+  },
+  {
+    id: 'day7',
+    dayOffset: 7,
+    subject: 'This week\'s best market entry — our current top pick',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">MARKET SPOTLIGHT · DAY 7</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, one market we're watching closely right now</h2>
+          <p>Every week we track 11 Latin American markets. Right now, <strong>Panama City</strong> stands out as the strongest risk-adjusted entry.</p>
+          <div style="background:#f7f5f0;border-left:4px solid #c9a84c;padding:20px 24px;border-radius:0 8px 8px 0;margin:20px 0;">
+            <p style="margin:0 0 8px;font-weight:700;color:#0a1628;">Panama City — April 2026</p>
+            <p style="margin:0;color:#555;font-size:0.9rem;">Avg. yield: <strong>7–10%</strong> · Price/m²: <strong>$1,500–$3,000</strong> · Currency: <strong>USD (zero risk)</strong><br>Rental demand driven by multinationals and regional HQs. Transactions at 5-year high.</p>
+          </div>
+          <p>Why Panama right now? Three reasons: (1) it's the only major Latin American city fully dollarised, (2) the new metro line is pushing valuations in Casco Viejo and El Cangrejo, and (3) transaction volume is at a 5-year high — meaning liquidity if you want to exit.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/blog/panama-city-2026-dollar-yield.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Read the Panama Deep-Dive &rarr;</a>
+          </p>
+          <p>Also worth checking: our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will match you to the market that fits your budget and goals.</p>
+          <p>More next week,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>
+          </p>
+        </div>
+      </div>`
+  },
+  {
+    id: 'day14',
+    dayOffset: 14,
+    subject: 'Your step-by-step buying checklist (save this)',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">BUYING GUIDE · DAY 14</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, your step-by-step buying checklist</h2>
+          <p>Two weeks in. Here's the checklist we give every first-time foreign buyer before they wire a single dollar:</p>
+          <ol style="padding-left:20px;color:#333;line-height:2;">
+            <li><strong>Define your market</strong> — use our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">market quiz</a> if you haven't already</li>
+            <li><strong>Set a realistic budget</strong> — purchase price + 5–8% for closing costs + 3 months reserve</li>
+            <li><strong>Hire a local attorney before you tour</strong> — not after you fall in love with a property</li>
+            <li><strong>Run a title search</strong> — verify no liens, encumbrances, or ownership disputes</li>
+            <li><strong>Open a local bank account</strong> — required in Panama and Costa Rica; recommended everywhere</li>
+            <li><strong>Understand the tax treaty</strong> — most Latin American countries have no treaty with the US; you'll report rental income domestically</li>
+            <li><strong>Visit before you buy</strong> — two trips minimum: one to explore, one to negotiate</li>
+            <li><strong>Model net yield, not gross</strong> — management (12%), vacancy (10%), maintenance (2%) = subtract ~24%</li>
+          </ol>
+          <div style="background:#0a1628;color:#fff;padding:20px 24px;border-radius:8px;margin:24px 0;text-align:center;">
+            <p style="margin:0 0 12px;font-size:1rem;">Ready to go deeper?</p>
+            <a href="https://www.internationalre.org/guide/2026-market-entry-guide.html" style="background:#c9a84c;color:#0a1628;padding:12px 24px;text-decoration:none;border-radius:6px;font-weight:700;display:inline-block;">Download the Full Market Entry Guide</a>
+          </div>
+          <p>You'll now receive our regular weekly newsletter. Reply to any email — we read them all.</p>
+          <p>Best,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a>
+          </p>
+        </div>
+      </div>`
+  }
+];
+
+app.post('/api/drip-check', async (req, res) => {
+  const key = req.query.key || req.body.key;
+  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  if (!resend) {
+    return res.status(500).json({ error: 'Email not configured.' });
+  }
+
+  const subscribers = readSubscribers();
+  const now = Date.now();
+  let sent = 0;
+  let skipped = 0;
+  const updated = [];
+
+  for (const sub of subscribers) {
+    const subTime = sub.subscribedAt
+      ? new Date(sub.subscribedAt).getTime()
+      : sub.dateSubscribed
+        ? new Date(sub.dateSubscribed + 'T12:00:00Z').getTime()
+        : null;
+
+    if (!subTime || !sub.email || !sub.firstName) { updated.push(sub); continue; }
+
+    const daysSince = (now - subTime) / (1000 * 60 * 60 * 24);
+    const dripSent = sub.drip || [];
+    const newDrip = [...dripSent];
+
+    for (const email of DRIP_EMAILS) {
+      if (dripSent.includes(email.id)) { skipped++; continue; }
+      if (daysSince >= email.dayOffset) {
+        try {
+          await resend.emails.send({
+            from: EMAIL_FROM,
+            to: sub.email,
+            subject: email.subject,
+            html: email.html(sub.firstName)
+          });
+          newDrip.push(email.id);
+          sent++;
+          console.log(`Drip ${email.id} sent to ${sub.email}`);
+        } catch (err) {
+          console.error(`Drip ${email.id} failed for ${sub.email}:`, err.message);
+        }
+      }
+    }
+
+    updated.push({ ...sub, drip: newDrip });
+  }
+
+  await acquireLock();
+  try { writeSubscribers(updated); } finally { releaseLock(); }
+
+  console.log(`Drip check complete: ${sent} sent, ${skipped} already sent`);
+  res.json({ sent, skipped, total: subscribers.length });
+});
+
 // ─── Error handling ───
 
 process.on('uncaughtException', (err) => {
