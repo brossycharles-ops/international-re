@@ -7,14 +7,10 @@ from pathlib import Path
 PUB = Path(__file__).resolve().parent.parent / "public"
 WIDTHS = [640, 1024, 1600, 1920]
 IMG_RE = re.compile(r'<img\b([^>]*?)\bsrc="(https://images\.unsplash\.com/[^"]+?)"([^>]*)>', re.IGNORECASE)
-W_PARAM = re.compile(r"[?&]w=\d+")
-
 
 def build_srcset(base_url: str) -> str:
-    # Strip existing w= so we can substitute
-    clean = W_PARAM.sub("", base_url)
-    sep = "&" if "?" in clean else "?"
-    return ", ".join(f"{clean}{sep}w={w}&q=80 {w}w" for w in WIDTHS)
+    clean = base_url.split("?")[0]
+    return ", ".join(f"{clean}?w={w}&q=80 {w}w" for w in WIDTHS)
 
 
 changed = 0
