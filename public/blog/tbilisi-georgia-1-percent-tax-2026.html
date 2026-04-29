@@ -16,19 +16,35 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../layout_updates.css">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Tbilisi, Georgia in 2026: The 1% Tax Loophole Quietly Drawing Global Investors",
-    "datePublished": "2026-04-25",
-    "dateModified": "2026-04-25",
-    "author": {"@type": "Person", "name": "James Whitfield"},
-    "publisher": {"@type": "Organization", "name": "International RE", "url": "https://www.internationalre.org"},
-    "image": "https://images.unsplash.com/photo-1565008576549-57569a49371d?w=1920&q=80",
-    "mainEntityOfPage": "https://www.internationalre.org/blog/tbilisi-georgia-1-percent-tax-2026.html",
-    "description": "Tbilisi offers $800/sqm freehold for foreigners, 8.5–12% rental yields, a 1% small-business tax on rental income, and residency by ownership."
-  }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tbilisi, Georgia in 2026: The 1% Tax Loophole Quietly Drawing Global Investors",
+  "description": "$800/sqm freehold ownership for foreigners, 8.5–12% rental yields, a 1% small-business tax on rental income.",
+  "image": "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=1200&q=80",
+  "datePublished": "2026-04-22",
+  "dateModified": "2026-04-29",
+  "author": {
+    "@type": "Organization",
+    "name": "International RE",
+    "url": "https://www.internationalre.org"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "International RE",
+    "url": "https://www.internationalre.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.internationalre.org/favicon.ico"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.internationalre.org/blog/tbilisi-georgia-1-percent-tax-2026.html"
+  },
+  "keywords": "Tbilisi real estate, Georgia property investment, buy apartment Tbilisi"
+}
+</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,6 +67,22 @@
   <meta name="twitter:title" content="Tbilisi, Georgia in 2026: The 1% Tax Loophole Quietly Drawing Global Investors">
   <meta name="twitter:description" content="$800/sqm freehold ownership, 1% rental income tax, instant residency. Tbilisi is the most overlooked international real estate market of 2026.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=1200&q=80">
+
+  <style>
+    .related-articles { padding: 40px 0; border-top: 1px solid #e8e3d9; background: #f7f5f0; }
+    .related-heading { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; font-weight: 600; margin: 0 0 18px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card {
+      display: flex; flex-direction: column; gap: 6px;
+      background: #fff; border: 1px solid #e8e3d9; border-radius: 10px;
+      padding: 18px 20px; text-decoration: none; color: #0a1628;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .related-card:hover { border-color: #c9a84c; box-shadow: 0 4px 16px rgba(10,22,40,0.08); }
+    .related-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
+    .related-card-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; flex: 1; }
+    .related-card-arrow { font-size: 1rem; color: #c9a84c; }
+  </style>
 </head>
 <body>
 
@@ -209,6 +241,31 @@
     </div>
   </section>
 
+  
+  <!-- Related Articles -->
+  <section class="related-articles">
+    <div class="container">
+      <h4 class="related-heading">More Market Intelligence</h4>
+      <div class="related-grid">
+    <a class="related-card" href="/blog/medellin-real-estate-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Medellín Real Estate in 2026: Latin America's Smartest Value Play</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/panama-city-real-estate-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Panama City in 2026: Latin America's Most Underrated Dollar-Denominated Yield Play</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/buenos-aires-best-value-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Buenos Aires Is the Best-Value Capital City in the World</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <p>&copy; <script>document.write(new Date().getFullYear())</script> International RE — internationalre.org</p>
@@ -231,7 +288,7 @@
         try {
           const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) });
           const data = await res.json();
-          if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); }
+          if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; }
           else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; }
         } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; }
       });

@@ -18,51 +18,53 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "RealEstateListing",
-  "name": "Tamarindo (Costa Rica) \u2014 Representative Property Listings",
-  "url": "https://www.internationalre.org/blog/guanacaste-hottest-market-2026.html",
-  "description": "Representative price and yield range for residential property in Tamarindo, Costa Rica. Equal foreign-ownership rights, lowest property tax in the hemisphere",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Tamarindo",
-    "addressCountry": "Costa Rica"
+  "@type": "BlogPosting",
+  "headline": "Why Guanacaste Is the Hottest Property Market in Central America",
+  "description": "LIR airport just hit its busiest quarter ever. Rental yields 9–11%, post-correction entry prices, and a $1.2B development underway.",
+  "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-29",
+  "author": {
+    "@type": "Organization",
+    "name": "International RE",
+    "url": "https://www.internationalre.org"
   },
-  "image": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=80",
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "lowPrice": 1800,
-    "highPrice": 3200,
-    "offerCount": 25
-  },
-  "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "Rental Yield Low",
-      "value": "6.5%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Rental Yield High",
-      "value": "8.0%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Annual Appreciation",
-      "value": "8-12%%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Property Tax",
-      "value": "0.25%%"
+  "publisher": {
+    "@type": "Organization",
+    "name": "International RE",
+    "url": "https://www.internationalre.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.internationalre.org/favicon.ico"
     }
-  ]
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.internationalre.org/blog/guanacaste-hottest-market-2026.html"
+  },
+  "keywords": "Guanacaste real estate, Costa Rica property investment, Tamarindo beachfront"
 }
 </script>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Why Guanacaste Is the Hottest Property Market in Central America">
   <meta name="twitter:description" content="LIR airport hit its busiest quarter ever (+12% YoY). Rental yields 9–11%, post-correction entry prices, and a $1.2B development pipeline. Why Guanacaste is Central America's top market in 2026.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=1200&q=80">
+
+  <style>
+    .related-articles { padding: 40px 0; border-top: 1px solid #e8e3d9; background: #f7f5f0; }
+    .related-heading { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; font-weight: 600; margin: 0 0 18px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card {
+      display: flex; flex-direction: column; gap: 6px;
+      background: #fff; border: 1px solid #e8e3d9; border-radius: 10px;
+      padding: 18px 20px; text-decoration: none; color: #0a1628;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .related-card:hover { border-color: #c9a84c; box-shadow: 0 4px 16px rgba(10,22,40,0.08); }
+    .related-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
+    .related-card-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; flex: 1; }
+    .related-card-arrow { font-size: 1rem; color: #c9a84c; }
+  </style>
 </head>
 <body>
 
@@ -221,6 +223,31 @@
     </div>
   </section>
 
+  
+  <!-- Related Articles -->
+  <section class="related-articles">
+    <div class="container">
+      <h4 class="related-heading">More Market Intelligence</h4>
+      <div class="related-grid">
+    <a class="related-card" href="/blog/granada-nicaraguas-colonial-gem-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Granada, Nicaragua: The Colonial City Quietly Becoming Latin America's Top Value Play</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/san-juan-del-sur-affordable-beach.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">San Juan del Sur: Central America's Last Affordable Beach Town</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/medellin-real-estate-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Medellín Real Estate in 2026: Latin America's Smartest Value Play</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -278,7 +305,7 @@
         try {
           const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) });
           const data = await res.json();
-          if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); }
+          if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; }
           else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; }
         } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; }
       });

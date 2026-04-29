@@ -19,25 +19,52 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "LATAM Weekly: April 14\u201318, 2026",
+  "headline": "Latin America Real Estate Weekly — April 14–18, 2026",
+  "description": "Costa Rica raises its residency investment bar, Argentina's mortgage revival accelerates, Nicaragua's coast heats up.",
+  "image": "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=1200&q=80",
   "datePublished": "2026-04-18",
   "dateModified": "2026-04-18",
   "author": {
     "@type": "Organization",
-    "name": "International RE"
+    "name": "International RE",
+    "url": "https://www.internationalre.org"
   },
   "publisher": {
     "@type": "Organization",
     "name": "International RE",
-    "url": "https://www.internationalre.org"
+    "url": "https://www.internationalre.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.internationalre.org/favicon.ico"
+    }
   },
-  "url": "https://www.internationalre.org/blog/latam-weekly-apr-14-18-2026.html"
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.internationalre.org/blog/latam-weekly-apr-14-18-2026.html"
+  },
+  "keywords": "Latin America real estate news, weekly roundup, LatAm property market"
 }
 </script>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Latin America Real Estate Weekly — April 14–18, 2026">
   <meta name="twitter:description" content="Costa Rica raises its residency bar, Argentina's mortgage market revives, Nicaragua's coast heats up, and Chile tips further into buyer's-market territory.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1200&q=80">
+
+  <style>
+    .related-articles { padding: 40px 0; border-top: 1px solid #e8e3d9; background: #f7f5f0; }
+    .related-heading { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; font-weight: 600; margin: 0 0 18px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card {
+      display: flex; flex-direction: column; gap: 6px;
+      background: #fff; border: 1px solid #e8e3d9; border-radius: 10px;
+      padding: 18px 20px; text-decoration: none; color: #0a1628;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .related-card:hover { border-color: #c9a84c; box-shadow: 0 4px 16px rgba(10,22,40,0.08); }
+    .related-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
+    .related-card-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; flex: 1; }
+    .related-card-arrow { font-size: 1rem; color: #c9a84c; }
+  </style>
 </head>
 <body>
 
@@ -168,6 +195,31 @@
     </div>
   </section>
 
+  
+  <!-- Related Articles -->
+  <section class="related-articles">
+    <div class="container">
+      <h4 class="related-heading">More Market Intelligence</h4>
+      <div class="related-grid">
+    <a class="related-card" href="/blog/latam-weekly-apr-21-25-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Latin America Real Estate Weekly — April 21–25, 2026</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/guanacaste-hottest-market-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Why Guanacaste Is the Hottest Property Market in Central America</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/buenos-aires-best-value-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Buenos Aires Is the Best-Value Capital City in the World</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -183,7 +235,7 @@
 
   <script>
     const inlineForm = document.getElementById('inlineSubscribeForm');
-    if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!firstName || !lastName || !email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
+    if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!firstName || !lastName || !email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
     const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
   <script src="../lead_capture.js" defer></script>

@@ -18,51 +18,53 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "RealEstateListing",
-  "name": "Panama City — Representative Property Listings",
-  "url": "https://www.internationalre.org/blog/panama-city-real-estate-2026.html",
-  "description": "Representative price and yield range for residential property in Panama City, Panama. Full foreign ownership rights, USD legal tender, no currency risk.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Panama City",
-    "addressCountry": "Panama"
+  "@type": "BlogPosting",
+  "headline": "Panama City in 2026: Latin America's Most Underrated Dollar-Denominated Yield Play",
+  "description": "Apartments from $1,900/sqm, gross rental yields of 6.5–9%, zero currency risk, and Metro Line 3 reshaping western suburbs.",
+  "image": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1200&q=80",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-29",
+  "author": {
+    "@type": "Organization",
+    "name": "International RE",
+    "url": "https://www.internationalre.org"
   },
-  "image": "https://images.unsplash.com/photo-1571893544028-06bfb9d1c2ec?w=1920&q=80",
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "USD",
-    "lowPrice": 1700,
-    "highPrice": 3700,
-    "offerCount": 30
-  },
-  "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "Rental Yield Low",
-      "value": "6.5%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Rental Yield High",
-      "value": "9.0%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Annual Appreciation",
-      "value": "3-7%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Currency",
-      "value": "USD (legal tender)"
+  "publisher": {
+    "@type": "Organization",
+    "name": "International RE",
+    "url": "https://www.internationalre.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.internationalre.org/favicon.ico"
     }
-  ]
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.internationalre.org/blog/panama-city-real-estate-2026.html"
+  },
+  "keywords": "Panama City real estate, Panama property investment, buy apartment Panama"
 }
 </script>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Panama City in 2026: Latin America's Most Underrated Dollar-Denominated Yield Play">
   <meta name="twitter:description" content="7%+ rental yields, USD legal tender, Metro Line 3 open, and a Qualified Investor Visa deadline in October. The case for Panama City is compelling.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1571893544028-06bfb9d1c2ec?w=1200&q=80">
+
+  <style>
+    .related-articles { padding: 40px 0; border-top: 1px solid #e8e3d9; background: #f7f5f0; }
+    .related-heading { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; font-weight: 600; margin: 0 0 18px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card {
+      display: flex; flex-direction: column; gap: 6px;
+      background: #fff; border: 1px solid #e8e3d9; border-radius: 10px;
+      padding: 18px 20px; text-decoration: none; color: #0a1628;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .related-card:hover { border-color: #c9a84c; box-shadow: 0 4px 16px rgba(10,22,40,0.08); }
+    .related-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
+    .related-card-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; flex: 1; }
+    .related-card-arrow { font-size: 1rem; color: #c9a84c; }
+  </style>
 </head>
 <body>
 
@@ -208,6 +210,31 @@
     </div>
   </section>
 
+  
+  <!-- Related Articles -->
+  <section class="related-articles">
+    <div class="container">
+      <h4 class="related-heading">More Market Intelligence</h4>
+      <div class="related-grid">
+    <a class="related-card" href="/blog/guanacaste-hottest-market-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Why Guanacaste Is the Hottest Property Market in Central America</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/medellin-real-estate-2026.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">Medellín Real Estate in 2026: Latin America's Smartest Value Play</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+    <a class="related-card" href="/blog/san-juan-del-sur-affordable-beach.html">
+      <span class="related-card-label">Related</span>
+      <span class="related-card-title">San Juan del Sur: Central America's Last Affordable Beach Town</span>
+      <span class="related-card-arrow">&rarr;</span>
+    </a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -265,7 +292,7 @@
         try {
           const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) });
           const data = await res.json();
-          if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); }
+          if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; }
           else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; }
         } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; }
       });
