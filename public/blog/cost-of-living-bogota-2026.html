@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cost of Living in Bogotá 2026: Real Expat Budgets by Neighborhood</title>
+  <meta name="description" content="How much does it cost to live in Bogotá, Colombia in 2026? Real rent data for Chapinero, Usaquén, Zona Rosa, and Candelaria — plus food, transport, healthcare, and three monthly budgets.">
+  <meta name="keywords" content="cost of living Bogotá 2026, Bogotá expat budget, rent Chapinero Bogotá, living in Bogotá Colombia, Bogotá monthly expenses, Bogotá vs Medellín cost">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.internationalre.org/blog/cost-of-living-bogota-2026.html">
+
+  <meta property="og:title" content="Cost of Living in Bogotá 2026: Real Expat Budgets by Neighborhood">
+  <meta property="og:description" content="Bogotá has world-class museums, restaurants, and nightlife — at prices well below New York or London. Real 2026 rent data for Chapinero, Usaquén, and Zona Rosa, plus monthly budgets from $1,200 to $3,500.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.internationalre.org/blog/cost-of-living-bogota-2026.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80">
+  <meta property="og:site_name" content="International RE">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cost of Living in Bogotá Colombia 2026: Rent, Food & Real Budgets">
+  <meta name="twitter:description" content="Chapinero 1BR: $500–900/month. Usaquén: $700–1,300/month. Real 2026 data on food, Transmilenio, healthcare, and what expats actually spend in Colombia's capital city.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../layout_updates.css">
+
+  <style>
+    .blog-post-hero{position:relative;height:480px;overflow:hidden}
+    .blog-post-hero img{width:100%;height:100%;object-fit:cover}
+    .blog-post-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,40,.3) 0%,rgba(10,20,40,.75) 100%)}
+    .blog-post-hero-content{position:absolute;bottom:0;left:0;right:0;padding:48px 24px;max-width:860px;margin:0 auto}
+    .blog-post-hero-content h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.2;margin-bottom:16px}
+    .blog-post-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.8)}
+    .post-tag{background:rgba(212,175,55,.9);color:#0a1428;padding:3px 10px;border-radius:3px;font-weight:600;font-size:.75rem;letter-spacing:.05em}
+    .blog-post-body{max-width:780px;margin:0 auto;padding:48px 24px 80px}
+    .blog-post-body h2{font-family:'Playfair Display',serif;font-size:1.7rem;color:#0a1428;margin:40px 0 16px}
+    .blog-post-body h3{font-size:1.15rem;font-weight:600;color:#0a1428;margin:28px 0 12px}
+    .blog-post-body p{font-size:1.05rem;line-height:1.8;color:#374151;margin-bottom:20px}
+    .blog-post-body ul{margin:0 0 20px 20px}
+    .blog-post-body li{font-size:1.05rem;line-height:1.75;color:#374151;margin-bottom:6px}
+    .data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:.95rem}
+    .data-table th{background:#0a1428;color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.85rem;letter-spacing:.04em}
+    .data-table td{padding:10px 14px;border-bottom:1px solid #e5e7eb;color:#374151}
+    .data-table tr:nth-child(even) td{background:#f9fafb}
+    .data-table tr:last-child td{border-bottom:none}
+    .highlight-box{background:#f0f4ff;border-left:4px solid #3b5bdb;border-radius:0 8px 8px 0;padding:20px 24px;margin:28px 0}
+    .highlight-box p{margin:0;color:#1e3a5f;font-size:.98rem}
+    .highlight-box strong{color:#0a1428}
+    .warning-box{background:#fff8e1;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:20px 24px;margin:28px 0}
+    .warning-box p{margin:0;color:#78350f;font-size:.98rem}
+    .neighborhood-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:28px 0}
+    .neighborhood-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+    .neighborhood-card h3{margin:0 0 4px;font-size:1rem;color:#0a1428}
+    .neighborhood-card .rent{font-size:1.25rem;font-weight:700;color:#d4af37;margin:4px 0 8px}
+    .neighborhood-card p{font-size:.86rem;color:#6b7280;margin:0;line-height:1.5}
+    .neighborhood-card .ntag{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:8px}
+    .tag-upscale{background:#fef3c7;color:#92400e}
+    .tag-nomad{background:#e0f2fe;color:#0369a1}
+    .tag-historic{background:#f0fdf4;color:#166534}
+    .tag-local{background:#f3f4f6;color:#374151}
+    .budget-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:28px 0}
+    .budget-card{border-radius:12px;padding:24px;border:2px solid}
+    .budget-card.tight{background:#f9fafb;border-color:#d1d5db}
+    .budget-card.comfortable{background:#f0f9ff;border-color:#7dd3fc}
+    .budget-card.premium{background:#faf5ff;border-color:#c4b5fd}
+    .budget-card h3{margin:0 0 6px;font-size:1rem;color:#0a1428}
+    .budget-card .total{font-size:1.6rem;font-weight:700;color:#0a1428;margin:4px 0 12px}
+    .budget-card ul{margin:0;padding:0;list-style:none}
+    .budget-card li{font-size:.85rem;color:#6b7280;padding:3px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+    .budget-card li:last-child{border-bottom:none}
+    .faq-block{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin:28px 0}
+    .faq-item{border-bottom:1px solid #e5e7eb;padding:20px 24px}
+    .faq-item:last-child{border-bottom:none}
+    .faq-item h3{margin:0 0 8px;font-size:1.02rem;color:#0a1428}
+    .faq-item p{margin:0;font-size:.95rem;color:#374151;line-height:1.7}
+    .inline-subscribe{background:linear-gradient(135deg,#0a1428 0%,#1e3a5f 100%);border-radius:16px;padding:40px;text-align:center;margin:48px 0}
+    .inline-subscribe h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;margin:0 0 10px}
+    .inline-subscribe p{color:rgba(255,255,255,.8);font-size:.95rem;margin:0 0 24px}
+    .inline-subscribe form{display:flex;gap:12px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .inline-subscribe input{flex:1;min-width:200px;padding:12px 16px;border-radius:6px;border:none;font-size:.95rem}
+    .inline-subscribe button{background:#d4af37;color:#0a1428;border:none;padding:12px 24px;border-radius:6px;font-weight:700;font-size:.95rem;cursor:pointer;white-space:nowrap}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:16px 0 0}
+    .related-card{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;text-decoration:none;transition:box-shadow .2s}
+    .related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+    .related-card img{width:100%;height:120px;object-fit:cover}
+    .related-card-body{padding:14px}
+    .related-card-body span{font-size:.75rem;color:#d4af37;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+    .related-card-body p{font-size:.88rem;color:#0a1428;font-weight:600;margin:4px 0 0;line-height:1.4}
+    .share-row{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0}
+    .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:6px;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;border:none}
+    .share-btn-twitter{background:#000;color:#fff}
+    .share-btn-whatsapp{background:#25d366;color:#fff}
+    .share-btn-copy{background:#f3f4f6;color:#374151}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Cost of Living in Bogotá 2026: Real Expat Budgets by Neighborhood",
+    "description": "Real 2026 data on cost of living in Bogotá, Colombia. Rent by neighborhood (Chapinero, Usaquén, Zona Rosa, La Candelaria), food, Transmilenio, healthcare, and three monthly budget scenarios.",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    "datePublished": "2026-04-29",
+    "dateModified": "2026-04-29",
+    "author": {"@type": "Organization", "name": "International RE"},
+    "publisher": {"@type": "Organization", "name": "International RE", "url": "https://www.internationalre.org"},
+    "url": "https://www.internationalre.org/blog/cost-of-living-bogota-2026.html",
+    "keywords": ["cost of living Bogotá 2026", "Bogotá expat budget", "rent Chapinero", "Bogotá monthly expenses", "living Bogotá Colombia"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does it cost to live in Bogotá Colombia per month?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A single person can live comfortably in Bogotá for $1,400–2,200/month USD in 2026. Budget living in Chapinero or La Candelaria is possible from $1,000/month. A couple lives comfortably for $2,000–3,200/month. Premium living in Usaquén or Zona Rosa runs $2,500–4,000/month for a couple. Bogotá is roughly 10–20% more expensive than Medellín but has significantly more city amenities and cultural offerings."}
+      },
+      {
+        "@type": "Question",
+        "name": "How much is rent in Bogotá in 2026?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Furnished 1BR apartment rentals in Bogotá 2026: La Candelaria / Teusaquillo $400–700/month, Chapinero Alto $500–900/month, Zona Rosa / Chicó $700–1,200/month, Usaquén $800–1,400/month, Rosales / El Nogal $1,000–1,800/month. Long-term leases (6+ months) reduce costs 15–20% vs. short-term furnished rates."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is Bogotá cheaper than Medellín?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Bogotá is generally 10–20% more expensive than Medellín for comparable accommodation and daily life. Upscale neighborhoods like Usaquén and Rosales carry premium prices. However, Bogotá's salary levels and freelance rates are higher for those working locally, and the city's cultural offerings — world-class museums, the Gold Museum, a diverse restaurant scene — are unmatched in Colombia. For cost optimization, Medellín wins. For big-city cultural life, Bogotá's premium is worth it."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is the altitude in Bogotá and does it affect expats?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Bogotá sits at 8,661 feet (2,640 meters) above sea level — higher than Denver, Colorado. Most people experience mild altitude adjustment symptoms (fatigue, shortness of breath, headaches) for 3–7 days upon arrival. Strenuous exercise should be reduced initially. The altitude also means Bogotá has a cool climate year-round (average 55–65°F / 13–18°C) — you will need sweaters and a jacket year-round, which surprises many tropical-expecting visitors."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">International <span>RE</span></a>
+      <ul class="nav-links">
+        <li><a href="/blog.html">Insights</a></li>
+        <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="blog-post-hero">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80" alt="Bogotá Colombia skyline with mountains">
+    <div class="blog-post-hero-overlay"></div>
+    <div class="blog-post-hero-content">
+      <div class="blog-post-meta" style="margin-bottom:16px">
+        <span class="post-tag">Cost of Living</span>
+        <span class="post-tag">Colombia</span>
+      </div>
+      <h1>Cost of Living in Bogotá 2026: Real Expat Budgets by Neighborhood</h1>
+      <div class="blog-post-meta">
+        <span>April 29, 2026</span>
+        <span>·</span>
+        <span>11 min read</span>
+        <span>·</span>
+        <span>By International RE Research</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-post-body">
+
+    <p>Bogotá often gets overlooked in favor of Medellín in the digital nomad and expat conversation — but Colombia's capital is a genuinely world-class city. Eight million people, the Gold Museum, a restaurant scene that rivals Buenos Aires, and a cultural density that no other Colombian city touches. And it's still dramatically cheaper than comparable Western capitals.</p>
+
+    <p>Here's what it actually costs to live in Bogotá in 2026 — by neighborhood, category, and lifestyle level.</p>
+
+    <div class="highlight-box">
+      <p><strong>The altitude reality:</strong> Bogotá is at 8,661 feet — higher than Denver. The climate is cool year-round (55–65°F), not tropical. You'll need sweaters and a jacket permanently. Most expats adjust within a week, but it genuinely affects energy levels initially. Factor this in before choosing Bogotá over Medellín's eternal spring.</p>
+    </div>
+
+    <h2>Rent by Neighborhood (2026)</h2>
+
+    <div class="neighborhood-grid">
+      <div class="neighborhood-card">
+        <span class="ntag tag-upscale">Most Upscale</span>
+        <h3>Usaquén</h3>
+        <div class="rent">$800–$1,400/mo</div>
+        <p>Northern Bogotá's most charming neighborhood. Colonial Sunday market, boutique restaurants, tree-lined streets. Popular with diplomats and expats. 1BR furnished.</p>
+      </div>
+      <div class="neighborhood-card">
+        <span class="ntag tag-upscale">Business / Luxury</span>
+        <h3>Rosales / El Nogal</h3>
+        <div class="rent">$1,000–$1,800/mo</div>
+        <p>Bogotá's premium residential enclave. Embassy row, private clubs, top-tier restaurants. Most expensive area. Security-conscious with private guards common.</p>
+      </div>
+      <div class="neighborhood-card">
+        <span class="ntag tag-nomad">Expat Hub</span>
+        <h3>Zona Rosa / Chicó</h3>
+        <div class="rent">$700–$1,200/mo</div>
+        <p>Andino mall, restaurant row on Zona T, vibrant nightlife. Most international feel in Bogotá. Walkable to many amenities. Best for newcomers.</p>
+      </div>
+      <div class="neighborhood-card">
+        <span class="ntag tag-nomad">Digital Nomad Favorite</span>
+        <h3>Chapinero Alto</h3>
+        <div class="rent">$500–$900/mo</div>
+        <p>Hilly neighborhood with stunning views, indie cafés, LGBTQ+ friendly scene. Best value-for-quality in Bogotá. Steep streets — not for everyone but loved by many expats.</p>
+      </div>
+      <div class="neighborhood-card">
+        <span class="ntag tag-historic">Historic</span>
+        <h3>La Candelaria</h3>
+        <div class="rent">$350–$650/mo</div>
+        <p>Bogotá's historic center. Museums, colonial architecture, university students. Budget-friendly but less safe at night. Good for short stays, less ideal for long-term living.</p>
+      </div>
+      <div class="neighborhood-card">
+        <span class="ntag tag-local">Residential</span>
+        <h3>Teusaquillo / Quinta Camacho</h3>
+        <div class="rent">$450–$800/mo</div>
+        <p>Classic mid-century Bogotá architecture, parks, local restaurants. Good value, safe, residential. Less international infrastructure but authentic city life.</p>
+      </div>
+    </div>
+
+    <h2>Food and Groceries</h2>
+
+    <p>Bogotá has Colombia's most diverse food scene — arepas and bandeja paisa alongside sushi, fine French cuisine, and everything in between. Eating locally is very cheap; international restaurant dining is still a fraction of Western prices.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Item</th><th>Cost (USD)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Weekly groceries (1 person, home cooking)</td><td>$30–50</td></tr>
+        <tr><td>Menú del día (set lunch, includes soup + main + drink)</td><td>$3.50–6</td></tr>
+        <tr><td>Mid-range restaurant dinner for two</td><td>$20–40</td></tr>
+        <tr><td>Fine dining (Usaquén / Zona Rosa) for two</td><td>$50–120</td></tr>
+        <tr><td>Café cortado at a specialty coffee shop</td><td>$2–4</td></tr>
+        <tr><td>Ajiaco (Bogotá's signature soup, restaurant)</td><td>$4–8</td></tr>
+        <tr><td>Craft beer at a bar</td><td>$3–6</td></tr>
+        <tr><td>Delivery via Rappi</td><td>$8–20 incl. delivery</td></tr>
+        <tr><td>Monthly groceries (1 person, mixed cooking/eating out)</td><td>$200–350</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Transport</h2>
+
+    <p>Bogotá has one of Latin America's most extensive public transit systems — the Transmilenio BRT network and local SITP buses cover the entire city. The city is also building a metro line (expected 2028). Cycling infrastructure (Ciclovía on Sundays, permanent bike lanes) is world-class.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Transport</th><th>Cost (USD/month est.)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Transmilenio / SITP monthly (heavy use)</td><td>$20–35</td></tr>
+        <tr><td>InDriver / Cabify (5–10 km ride)</td><td>$3–6</td></tr>
+        <tr><td>Monthly transport (no car, mixed)</td><td>$40–80</td></tr>
+        <tr><td>Car ownership (fuel, insurance, parking, tolls)</td><td>$300–600</td></tr>
+        <tr><td>Bike share (BiciRed, monthly)</td><td>$5–10</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Traffic is Bogotá's biggest quality-of-life issue:</strong> The city has some of Latin America's worst traffic congestion. Most expats who live in Chapinero, Zona Rosa, or Usaquén choose neighborhoods specifically to walk or cycle to daily needs rather than deal with driving. If you need to commute across the city regularly, budget significant time and consider living near a Transmilenio trunk line.</p>
+    </div>
+
+    <h2>Healthcare</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Option</th><th>Monthly Cost</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>EPS (Sura / Sanitas)</td><td>$70–160/mo</td><td>Based on declared income. Legal residents must enroll.</td></tr>
+        <tr><td>Colsanitas prepaga</td><td>$90–200/mo</td><td>Private network access, faster specialists.</td></tr>
+        <tr><td>Fundación Santa Fe (top hospital)</td><td>OOP / with insurance</td><td>Best hospital in Colombia — in Bogotá.</td></tr>
+        <tr><td>GP visit (out of pocket)</td><td>$15–35</td><td>Direct payment, no wait.</td></tr>
+        <tr><td>International insurance (Cigna)</td><td>+$130–250/mo</td><td>Mainly for travel, US access, evac.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <p><strong>Bogotá has Colombia's best hospitals:</strong> Fundación Santa Fe de Bogotá and Clínica del Country are consistently ranked among South America's top medical institutions. If you're choosing Colombia for long-term living and have complex medical needs, Bogotá has the edge over Medellín and Cartagena on specialist availability and hospital infrastructure.</p>
+    </div>
+
+    <h2>Utilities and Internet</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Utility</th><th>Monthly Cost (USD)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Electricity (1BR — cool climate, minimal AC)</td><td>$20–45</td></tr>
+        <tr><td>Gas (heating, hot water)</td><td>$10–25</td></tr>
+        <tr><td>Water</td><td>$8–15</td></tr>
+        <tr><td>Fiber internet (100–300 Mbps)</td><td>$25–40</td></tr>
+        <tr><td>Mobile plan (unlimited data)</td><td>$15–25</td></tr>
+        <tr><td>Total utilities + internet</td><td>$75–145</td></tr>
+      </tbody>
+    </table>
+
+    <p>Bogotá's cool climate means almost no AC costs — a significant saving vs. Cartagena or Panama City. Heating costs are modest. Total utilities are among the lowest of any Colombian city precisely because the altitude keeps temperatures comfortable year-round without mechanical cooling.</p>
+
+    <h2>Three Monthly Budget Scenarios</h2>
+
+    <div class="budget-grid">
+      <div class="budget-card tight">
+        <h3>Budget Single</h3>
+        <div class="total">$1,000–1,500/mo</div>
+        <ul>
+          <li>Rent: $450–700 (Chapinero / Teusaquillo)</li>
+          <li>Food: $200–300 (menú del día + home cooking)</li>
+          <li>Transport: $30–50 (Transmilenio)</li>
+          <li>Healthcare: $70–130 (EPS)</li>
+          <li>Utilities: $75–110</li>
+          <li>Entertainment: $80–130</li>
+          <li>Misc: $80–120</li>
+        </ul>
+      </div>
+      <div class="budget-card comfortable">
+        <h3>Comfortable Single</h3>
+        <div class="total">$1,500–2,500/mo</div>
+        <ul>
+          <li>Rent: $750–1,200 (Zona Rosa / Chicó)</li>
+          <li>Food: $350–550 (dining out regularly)</li>
+          <li>Transport: $50–100 (mixed)</li>
+          <li>Healthcare: $150–300 (EPS + prepaga)</li>
+          <li>Utilities: $90–145</li>
+          <li>Entertainment: $200–350</li>
+          <li>Misc: $150–250</li>
+        </ul>
+      </div>
+      <div class="budget-card premium">
+        <h3>Premium Couple</h3>
+        <div class="total">$2,800–4,500/mo</div>
+        <ul>
+          <li>Rent: $1,200–2,000 (Usaquén / Rosales)</li>
+          <li>Food: $600–1,000 (fine dining regularly)</li>
+          <li>Transport: $120–250 (car or heavy rideshare)</li>
+          <li>Healthcare: $300–550 (EPS + prepaga ×2)</li>
+          <li>Utilities: $120–200</li>
+          <li>Entertainment: $400–700</li>
+          <li>Misc: $300–500</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Bogotá vs. Medellín vs. Cartagena</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Factor</th><th>Bogotá</th><th>Medellín</th><th>Cartagena</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Comfortable single/mo</td><td>$1,500–2,500</td><td>$1,200–1,800</td><td>$1,500–2,500</td></tr>
+        <tr><td>Climate</td><td>Cool, 55–65°F year-round</td><td>Spring, 72°F year-round</td><td>Hot, humid 88°F+</td></tr>
+        <tr><td>Beach access</td><td>None (4+ hrs)</td><td>3 hrs to coast</td><td>Immediate</td></tr>
+        <tr><td>Best hospitals</td><td>Best in Colombia</td><td>Excellent</td><td>Good (major care → Bogotá)</td></tr>
+        <tr><td>Expat community</td><td>Large, professional</td><td>Large, growing fast</td><td>Mid-size, tourism-focused</td></tr>
+        <tr><td>Cultural life</td><td>World-class</td><td>Very good</td><td>Colonial, tourist-oriented</td></tr>
+        <tr><td>Internet / coworking</td><td>Excellent</td><td>Excellent</td><td>Good</td></tr>
+      </tbody>
+    </table>
+
+    <div class="faq-block">
+      <div class="faq-item">
+        <h3>How much does it cost to live in Bogotá per month?</h3>
+        <p>A single expat lives comfortably in Bogotá for $1,500–2,500/month in 2026. Budget living starts around $1,000/month in Chapinero or Teusaquillo. A couple lives comfortably for $2,200–3,500/month. Premium living in Usaquén or Rosales runs $3,000–4,500/month for a couple. Bogotá is 10–20% more expensive than Medellín but has significantly more big-city cultural and professional infrastructure.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much is rent in Bogotá in 2026?</h3>
+        <p>Furnished 1BR apartments: La Candelaria $350–650/month, Teusaquillo $450–800/month, Chapinero Alto $500–900/month, Zona Rosa $700–1,200/month, Usaquén $800–1,400/month, Rosales/El Nogal $1,000–1,800/month. Long-term leases (6+ months) reduce costs 15–20% vs. short-term furnished rates quoted above.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is Bogotá cheaper than Medellín?</h3>
+        <p>No — Bogotá is generally 10–20% more expensive than Medellín for comparable accommodation and dining. Medellín's eternal spring climate also eliminates heating costs (Bogotá needs year-round jackets). For cost optimization, Medellín wins. Bogotá's premium buys Colombia's best hospitals, most diverse food scene, world-class museums, and the biggest professional and diplomatic community in the country.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the altitude in Bogotá and does it affect expats?</h3>
+        <p>Bogotá is at 8,661 feet (2,640 meters) — significantly higher than Denver. Expect 3–7 days of altitude adjustment with fatigue, shortness of breath, and headaches. Avoid strenuous exercise your first week. The altitude also means a cool climate year-round (55–65°F) — bring sweaters. Most expats adapt fully within 2 weeks and find the cool weather a refreshing change from tropical Colombia.</p>
+      </div>
+    </div>
+
+    <div class="share-row">
+      <a href="https://twitter.com/intent/tweet?text=Cost+of+living+in+Bogot%C3%A1+2026+%E2%80%94+real+budgets+by+neighborhood&url=https://www.internationalre.org/blog/cost-of-living-bogota-2026.html" target="_blank" class="share-btn share-btn-twitter">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Share on X
+      </a>
+      <a href="https://wa.me/?text=Cost+of+living+in+Bogot%C3%A1+2026+%E2%80%94+real+expat+budgets%3A+https://www.internationalre.org/blog/cost-of-living-bogota-2026.html" target="_blank" class="share-btn share-btn-whatsapp">WhatsApp</a>
+      <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!'">Copy Link</button>
+    </div>
+
+    <div class="inline-subscribe">
+      <h3>Get the Full Colombia City Comparison</h3>
+      <p>Bogotá, Medellín, Cartagena, and Santa Marta side-by-side — rent, healthcare, visa requirements, and property yields. Free in the Expat Starter Kit.</p>
+      <form onsubmit="handleInlineSub(event, this)">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Get Free Starter Kit</button>
+      </form>
+      <p id="inline-msg" style="margin:12px 0 0;font-size:.88rem;color:rgba(255,255,255,.8);min-height:20px"></p>
+    </div>
+
+    <h2>Related Guides</h2>
+    <div class="related-grid">
+      <a href="/blog/cost-of-living-medellin-2026.html" class="related-card">
+        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=80" alt="Medellín">
+        <div class="related-card-body">
+          <span>Colombia</span>
+          <p>Cost of Living in Medellín 2026: Rent, Food & Real Budget</p>
+        </div>
+      </a>
+      <a href="/blog/cost-of-living-cartagena-2026.html" class="related-card">
+        <img src="https://images.unsplash.com/photo-1583005032018-ac65fbe60f7c?w=400&q=80" alt="Cartagena">
+        <div class="related-card-body">
+          <span>Colombia</span>
+          <p>Cost of Living in Cartagena 2026: Real Expat Budgets</p>
+        </div>
+      </a>
+      <a href="/blog/retire-in-colombia-2026.html" class="related-card">
+        <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&q=80" alt="Colombia retirement">
+        <div class="related-card-body">
+          <span>Colombia</span>
+          <p>Retire in Colombia 2026: Visa, Cost of Living & Best Cities</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2026 International RE · <a href="/privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    async function handleInlineSub(e, form) {
+      e.preventDefault();
+      const email = form.querySelector('input').value;
+      const msg = document.getElementById('inline-msg');
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email, source: 'blog-bogota-inline'})
+        });
+        if (res.ok) {
+          msg.textContent = 'Check your inbox — welcome aboard!';
+          form.querySelector('input').value = '';
+          setTimeout(() => { window.location.href = '/thankyou.html'; }, 1600);
+        } else {
+          msg.textContent = 'Something went wrong. Try again.';
+        }
+      } catch {
+        msg.textContent = 'Network error. Please try again.';
+      }
+    }
+  </script>
+  <script src="../lead_capture.js"></script>
+</body>
+</html>
