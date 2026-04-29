@@ -16,21 +16,5 @@
     "lastName": "Brossy",
     "email": "cbrossy@yahoo.com",
     "dateSubscribed": "2026-03-24"
-  },
-  {
-    "firstName": "Audit",
-    "lastName": "Bot",
-    "email": "audit-bot@example.com",
-    "dateSubscribed": "2026-04-25",
-    "subscribedAt": "2026-04-25T15:47:51.427Z",
-    "city": "Test City"
-  },
-  {
-    "firstName": "Audit",
-    "lastName": "Test",
-    "email": "audit-1777141415@example.com",
-    "dateSubscribed": "2026-04-25",
-    "subscribedAt": "2026-04-25T18:23:35.439Z",
-    "city": "Lisbon"
   }
 ]
