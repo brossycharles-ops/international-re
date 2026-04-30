@@ -44,45 +44,6 @@ section { padding-block: 96px; }
   border-bottom: 1px solid var(--hairline);
 }
 
-/* Trust bar (between hero and markets) */
-.trust-bar {
-  background: var(--charcoal);
-  border-block: 1px solid var(--hairline);
-  padding: 28px 0;
-}
-.trust-bar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 28px 56px;
-}
-.trust-bar-label {
-  color: var(--gold);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-}
-.trust-bar-logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px 44px;
-  align-items: center;
-  opacity: 0.85;
-}
-.trust-bar-logos span {
-  color: var(--offwhite);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  white-space: nowrap;
-}
-
 /* CTA polish — gold buttons with refined hover */
 .btn-primary {
   background: linear-gradient(180deg, var(--gold-soft), var(--gold)) !important;
