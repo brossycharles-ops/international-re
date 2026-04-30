@@ -424,7 +424,7 @@ const DRIP_EMAILS = [
           </div>
           <p>Why Panama right now? Three reasons: (1) it's the only major Latin American city fully dollarised, (2) the new metro line is pushing valuations in Casco Viejo and El Cangrejo, and (3) transaction volume is at a 5-year high — meaning liquidity if you want to exit.</p>
           <p style="text-align:center;margin:28px 0;">
-            <a href="https://www.internationalre.org/blog/panama-city-2026-dollar-yield.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Read the Panama Deep-Dive &rarr;</a>
+            <a href="https://www.internationalre.org/blog/panama-city-real-estate-2026.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Read the Panama Deep-Dive &rarr;</a>
           </p>
           <p>Also worth checking: our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will match you to the market that fits your budget and goals.</p>
           <p>More next week,<br><strong>International RE</strong></p>
@@ -531,7 +531,7 @@ const DRIP_EMAILS = [
             </div>
             <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
               <p style="margin:0;font-weight:700;color:#0a1628;">3. Have you visited the neighborhood at night?</p>
-              <p style="margin:6px 0 0;color:#555;font-size:0.88sf;">Every expat zone looks great at noon on a Saturday. Go back Tuesday night at 10pm. Walk the surrounding blocks. You'll learn more in 20 minutes than in 10 site visits.</p>
+              <p style="margin:6px 0 0;color:#555;font-size:0.88rem;">Every expat zone looks great at noon on a Saturday. Go back Tuesday night at 10pm. Walk the surrounding blocks. You'll learn more in 20 minutes than in 10 site visits.</p>
             </div>
             <div style="border:1px solid #e8e3d9;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
               <p style="margin:0;font-weight:700;color:#0a1628;">4. Who will manage the property, and what does it cost?</p>
