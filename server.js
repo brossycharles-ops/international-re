@@ -91,10 +91,10 @@ function releaseLock() {
 // ─── Subscribe endpoint ───
 
 app.post('/api/subscribe', async (req, res) => {
-  const { firstName, lastName, email } = req.body;
+  const { firstName, lastName, email, source } = req.body;
 
-  if (!firstName || !lastName || !email) {
-    return res.status(400).json({ error: 'All fields are required.' });
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required.' });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -113,16 +113,18 @@ app.post('/api/subscribe', async (req, res) => {
 
     const now = new Date();
     subscribers.push({
-      firstName: firstName.trim(),
-      lastName: lastName.trim(),
+      firstName: (firstName && firstName.trim()) || '',
+      lastName: (lastName && lastName.trim()) || '',
       email: normalizedEmail,
+      source: (source && String(source).trim().slice(0, 64)) || null,
       dateSubscribed: now.toISOString().split('T')[0],
       subscribedAt: now.toISOString(),
       city: (req.body.city && String(req.body.city).trim().slice(0, 64)) || null
     });
 
     writeSubscribers(subscribers);
-    console.log(`New subscriber: ${firstName} ${lastName} <${normalizedEmail}> (total: ${subscribers.length})`);
+    const displayName = (firstName && firstName.trim()) || 'there';
+    console.log(`New subscriber: ${displayName} <${normalizedEmail}> (total: ${subscribers.length})`);
 
     // Send welcome email (non-blocking — don't fail the subscribe if email fails)
     if (resend) {
@@ -136,7 +138,7 @@ app.post('/api/subscribe', async (req, res) => {
               <h1 style="color:#c9a84c;margin:0;font-size:24px;">&#9670; International RE</h1>
             </div>
             <div style="padding:30px;background:#fff;">
-              <h2 style="color:#1a1a2e;">Welcome, ${firstName.trim()}!</h2>
+              <h2 style="color:#1a1a2e;">Welcome, ${displayName}!</h2>
               <p>Thanks for subscribing to International RE. You've joined a growing community of investors exploring Latin American real estate.</p>
               <h3 style="color:#c9a84c;">Your Free Guide Is Ready</h3>
               <p>Download your <strong>2026 Latin America Market Entry Guide</strong> — covering Costa Rica, Nicaragua, Argentina & Chile with real price data, legal processes, and investment strategies.</p>
@@ -577,7 +579,7 @@ app.post('/api/drip-check', async (req, res) => {
         ? new Date(sub.dateSubscribed + 'T12:00:00Z').getTime()
         : null;
 
-    if (!subTime || !sub.email || !sub.firstName) { updated.push(sub); continue; }
+    if (!subTime || !sub.email) { updated.push(sub); continue; }
 
     const daysSince = (now - subTime) / (1000 * 60 * 60 * 24);
     const dripSent = sub.drip || [];
@@ -591,7 +593,7 @@ app.post('/api/drip-check', async (req, res) => {
             from: EMAIL_FROM,
             to: sub.email,
             subject: email.subject,
-            html: email.html(sub.firstName)
+            html: email.html(sub.firstName || 'there')
           });
           newDrip.push(email.id);
           sent++;
