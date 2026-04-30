@@ -13,24 +13,26 @@ if (subscriberCountEl) {
 
 // ===== Navbar Scroll Effect =====
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+}
 
 // ===== Mobile Menu Toggle =====
 const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.querySelector('.nav-links');
 
-mobileToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
+if (mobileToggle && navLinks) {
+  mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
   });
-});
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+}
 
 // ===== Scroll Animations =====
 const observerOptions = {
@@ -56,134 +58,112 @@ document.querySelectorAll('.market-card, .fact, .why-card, .subscribe-text, .sub
 const popupOverlay = document.getElementById('popupOverlay');
 const popupClose = document.getElementById('popupClose');
 const popupForm = document.getElementById('popupForm');
-const popupSuccess = document.getElementById('popupSuccess');
 
-// Show popup after delay on first visit (8s gives visitors time to see value)
-function showPopup() {
-  if (localStorage.getItem('subscribed')) return;
-  if (sessionStorage.getItem('popupShown')) return;
-
-  setTimeout(() => {
+if (popupOverlay && popupClose && popupForm) {
+  function showPopup() {
+    if (localStorage.getItem('subscribed')) return;
     if (sessionStorage.getItem('popupShown')) return;
-    popupOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    sessionStorage.setItem('popupShown', 'true');
-  }, 8000);
-}
-
-// Close popup
-function closePopup() {
-  popupOverlay.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-popupClose.addEventListener('click', closePopup);
-
-// Close on overlay click (not the popup itself)
-popupOverlay.addEventListener('click', (e) => {
-  if (e.target === popupOverlay) closePopup();
-});
-
-// Close on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-    closePopup();
+    setTimeout(() => {
+      if (sessionStorage.getItem('popupShown')) return;
+      popupOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      sessionStorage.setItem('popupShown', 'true');
+    }, 8000);
   }
-});
 
-// Popup form submission
-popupForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  function closePopup() {
+    popupOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-  const firstName = document.getElementById('popupFirstName').value.trim();
-  const lastName = document.getElementById('popupLastName').value.trim();
-  const email = document.getElementById('popupEmail').value.trim();
+  popupClose.addEventListener('click', closePopup);
+  popupOverlay.addEventListener('click', (e) => {
+    if (e.target === popupOverlay) closePopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popupOverlay.classList.contains('active')) closePopup();
+  });
 
-  if (!firstName || !lastName || !email) return;
-
-  const btnText = popupForm.querySelector('.popup-btn-text');
-  const btnLoading = popupForm.querySelector('.popup-btn-loading');
-  const submitBtn = popupForm.querySelector('button[type="submit"]');
-
-  btnText.style.display = 'none';
-  btnLoading.style.display = 'inline';
-  submitBtn.disabled = true;
-
-  try {
-    const response = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, email })
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      localStorage.setItem('subscribed', 'true');
-      window.location.href = '/thankyou.html';
-    } else {
-      alert(data.error || 'Something went wrong. Please try again.');
+  popupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const firstName = document.getElementById('popupFirstName').value.trim();
+    const lastName = document.getElementById('popupLastName').value.trim();
+    const email = document.getElementById('popupEmail').value.trim();
+    if (!email) return;
+    const btnText = popupForm.querySelector('.popup-btn-text');
+    const btnLoading = popupForm.querySelector('.popup-btn-loading');
+    const submitBtn = popupForm.querySelector('button[type="submit"]');
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    submitBtn.disabled = true;
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email, source: 'homepage-popup' })
+      });
+      const data = await response.json();
+      if (response.ok || /already subscribed/i.test(data.error || '')) {
+        localStorage.setItem('subscribed', 'true');
+        window.location.href = '/thankyou.html';
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
+      }
+    } catch {
+      alert('Network error. Please check your connection and try again.');
       btnText.style.display = 'inline';
       btnLoading.style.display = 'none';
       submitBtn.disabled = false;
     }
-  } catch (err) {
-    alert('Network error. Please check your connection and try again.');
-    btnText.style.display = 'inline';
-    btnLoading.style.display = 'none';
-    submitBtn.disabled = false;
-  }
-});
+  });
 
-// Trigger popup on page load
-showPopup();
+  showPopup();
+}
 
 // ===== Newsletter Form Submission (main page form) =====
 const form = document.getElementById('subscribeForm');
-const submitBtn = document.getElementById('submitBtn');
-const btnText = submitBtn.querySelector('.btn-text');
-const btnLoading = submitBtn.querySelector('.btn-loading');
-const successMessage = document.getElementById('successMessage');
+const submitBtnEl = document.getElementById('submitBtn');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+if (form && submitBtnEl) {
+  const btnText = submitBtnEl.querySelector('.btn-text');
+  const btnLoading = submitBtnEl.querySelector('.btn-loading');
 
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
-  const email = document.getElementById('email').value.trim();
-
-  if (!firstName || !lastName || !email) return;
-
-  // Show loading state
-  btnText.style.display = 'none';
-  btnLoading.style.display = 'inline';
-  submitBtn.disabled = true;
-
-  try {
-    const response = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, email })
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      localStorage.setItem('subscribed', 'true');
-      window.location.href = '/thankyou.html';
-    } else {
-      alert(data.error || 'Something went wrong. Please try again.');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!email) return;
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    submitBtnEl.disabled = true;
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email, source: 'homepage-main-form' })
+      });
+      const data = await response.json();
+      if (response.ok || /already subscribed/i.test(data.error || '')) {
+        localStorage.setItem('subscribed', 'true');
+        window.location.href = '/thankyou.html';
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtnEl.disabled = false;
+      }
+    } catch {
+      alert('Network error. Please check your connection and try again.');
       btnText.style.display = 'inline';
       btnLoading.style.display = 'none';
-      submitBtn.disabled = false;
+      submitBtnEl.disabled = false;
     }
-  } catch (err) {
-    alert('Network error. Please check your connection and try again.');
-    btnText.style.display = 'inline';
-    btnLoading.style.display = 'none';
-    submitBtn.disabled = false;
-  }
-});
+  });
+}
 
 // ===== Smooth Scroll for anchor links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -203,35 +183,29 @@ const stickyCta = document.getElementById('stickyCta');
 const heroSection = document.querySelector('.hero');
 const subscribeSection = document.getElementById('subscribe');
 
-if (stickyCta) {
+if (stickyCta && heroSection && subscribeSection) {
   window.addEventListener('scroll', () => {
     const heroBottom = heroSection.getBoundingClientRect().bottom;
     const subscribeTop = subscribeSection.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
-
-    if (heroBottom < 0 && subscribeTop > windowHeight) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
-    }
+    stickyCta.classList.toggle('visible', heroBottom < 0 && subscribeTop > windowHeight);
   });
-
-  // Hide sticky CTA when subscribe button is clicked
-  stickyCta.querySelector('a').addEventListener('click', () => {
-    stickyCta.classList.remove('visible');
-  });
+  const stickyBtn = stickyCta.querySelector('a');
+  if (stickyBtn) stickyBtn.addEventListener('click', () => stickyCta.classList.remove('visible'));
 }
 
-// ===== Exit Intent Popup =====
-let exitIntentShown = false;
-document.addEventListener('mouseout', (e) => {
-  if (e.clientY < 5 && !exitIntentShown && !localStorage.getItem('subscribed') && !popupOverlay.classList.contains('active')) {
-    popupOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    sessionStorage.setItem('popupShown', 'true');
-    exitIntentShown = true;
-  }
-});
+// ===== Exit Intent Popup (homepage only) =====
+if (popupOverlay) {
+  let exitIntentShown = false;
+  document.addEventListener('mouseout', (e) => {
+    if (e.clientY < 5 && !exitIntentShown && !localStorage.getItem('subscribed') && !popupOverlay.classList.contains('active')) {
+      popupOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      sessionStorage.setItem('popupShown', 'true');
+      exitIntentShown = true;
+    }
+  });
+}
 
 // ===== Parallax Hero =====
 window.addEventListener('scroll', () => {
