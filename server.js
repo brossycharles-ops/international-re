@@ -88,9 +88,37 @@ function releaseLock() {
   }
 }
 
+// ─── Simple in-memory rate limiter (no extra dep) ───
+
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+const RATE_LIMIT_MAX = 5;
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip) || { count: 0, resetAt: now + RATE_LIMIT_WINDOW };
+  if (now > entry.resetAt) {
+    entry.count = 0;
+    entry.resetAt = now + RATE_LIMIT_WINDOW;
+  }
+  entry.count++;
+  rateLimitMap.set(ip, entry);
+  if (rateLimitMap.size > 10000) {
+    for (const [k, v] of rateLimitMap) {
+      if (now > v.resetAt) rateLimitMap.delete(k);
+    }
+  }
+  return entry.count <= RATE_LIMIT_MAX;
+}
+
 // ─── Subscribe endpoint ───
 
 app.post('/api/subscribe', async (req, res) => {
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  if (!checkRateLimit(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+  }
+
   const { firstName, lastName, email, source } = req.body;
 
   if (!email) {
@@ -276,15 +304,16 @@ app.post('/api/send-newsletter', async (req, res) => {
   let sent = 0;
   let failed = 0;
 
-  // Send in batches of 10 to stay under rate limits
+  // Send in batches of 10 with a 1-second pause between batches
   for (let i = 0; i < subscribers.length; i += 10) {
+    if (i > 0) await new Promise(r => setTimeout(r, 1000));
     const batch = subscribers.slice(i, i + 10);
     const promises = batch.map(sub =>
       resend.emails.send({
         from: EMAIL_FROM,
         to: sub.email,
         subject,
-        html: html.replace(/{{firstName}}/g, sub.firstName)
+        html: html.replace(/{{firstName}}/g, sub.firstName || 'there')
       }).then(() => { sent++; }).catch(err => {
         console.error(`Failed to send to ${sub.email}:`, err);
         failed++;
@@ -352,9 +381,9 @@ app.get('/feed.xml', (req, res) => {
     <language>en-us</language>
     <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
     ${items.map(item => `<item>
-      <title>${item.title.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;')}</title>
+      <title>${item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</title>
       <link>${item.link}</link>
-      <description>${item.description.replace(/&/g, '&amp;').replace(/[<]/g, '&lt;')}</description>
+      <description>${item.description.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</description>
       <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
       <guid>${item.link}</guid>
     </item>`).join('\n    ')}

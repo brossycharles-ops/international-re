@@ -129,6 +129,8 @@
   function initExitIntent() {
     if (alreadySubscribed()) return;
     if (sessionStorage.getItem(EXIT_SHOWN_KEY) === 'true') return;
+    // Homepage uses its own #popupOverlay — don't stack a second modal on top
+    if (document.getElementById('popupOverlay')) return;
     let modal = document.getElementById('exitIntentModal');
     if (!modal) {
       modal = buildExitModal();
@@ -329,7 +331,7 @@
       if (!email) return;
       const btn = bar.querySelector('button[type="submit"]');
       btn.disabled = true; btn.textContent = 'Subscribing…';
-      const { ok, data } = await postSubscribe({ firstName: 'Reader', lastName: '', email });
+      const { ok, data } = await postSubscribe({ firstName: '', lastName: '', email });
       if (ok || (data && /already subscribed/i.test(data.error || ''))) {
         markSubscribed();
         window.location.href = '/thankyou.html';

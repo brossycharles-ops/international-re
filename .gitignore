@@ -8,3 +8,8 @@ growth-output/
 __pycache__/
 *.pyc
 .pending-tasks.txt
+drip-agent.sh
+growth-agent.sh
+catchup-agent.sh
+retry-agent.sh
+start-server.command
