@@ -1,3 +1,7 @@
+// ===== Footer Year =====
+const footerYear = document.getElementById('footerYear');
+if (footerYear) footerYear.textContent = new Date().getFullYear();
+
 // ===== Live Subscriber Count =====
 const subscriberCountEl = document.getElementById('subscriberCount');
 if (subscriberCountEl) {

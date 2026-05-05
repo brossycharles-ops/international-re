@@ -7,18 +7,19 @@ if (mapContainer) {
     minZoom: 2,
     maxZoom: 6,
     scrollWheelZoom: false,
-    attributionControl: false,
     zoomControl: true
   });
 
+  const cartoAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+
   // Clean, dark tile layer
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: ''
+    attribution: cartoAttrib
   }).addTo(map);
 
   // Add labels on top
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
-    attribution: '',
+    attribution: cartoAttrib,
     pane: 'overlayPane'
   }).addTo(map);
 

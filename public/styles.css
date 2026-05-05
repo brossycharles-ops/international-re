@@ -1266,11 +1266,12 @@ a {
   letter-spacing: 0.5px;
 }
 
+.newsletter-preview-card h3,
 .newsletter-preview-card h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   color: #fff;
   margin-bottom: 8px;
+  line-height: 1.4;
 }
 
 .newsletter-date {
@@ -1297,6 +1298,11 @@ a {
   border: 1px solid #333;
   padding: 4px 12px;
   border-radius: 20px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.newsletter-tag:hover {
+  color: #c9a54e;
+  border-color: #c9a54e;
 }
 
 .newsletter-cta {
@@ -1785,6 +1791,18 @@ a {
 .leaflet-popup-tip {
   background: #1a1a2e !important;
   border: 1px solid rgba(201, 165, 78, 0.3) !important;
+}
+
+/* Attribution control — styled to match dark map */
+.leaflet-control-attribution {
+  background: rgba(10, 14, 26, 0.75) !important;
+  color: rgba(255,255,255,0.45) !important;
+  font-size: 10px !important;
+  padding: 2px 6px !important;
+  border-radius: 4px 0 0 0 !important;
+}
+.leaflet-control-attribution a {
+  color: rgba(201, 168, 76, 0.7) !important;
 }
 
 .map-stats {
