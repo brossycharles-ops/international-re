@@ -12,14 +12,30 @@ if (mapContainer) {
 
   const cartoAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
-  // Clean, dark tile layer
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: cartoAttrib
-  }).addTo(map);
+  // Dark tile layer with fallback
+  var baseTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+    attribution: cartoAttrib,
+    subdomains: 'abcd',
+    maxZoom: 19
+  });
 
-  // Add labels on top
+  baseTiles.on('tileerror', function() {
+    if (!map._fallbackLoaded) {
+      map._fallbackLoaded = true;
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: cartoAttrib,
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+    }
+  });
+
+  baseTiles.addTo(map);
+
+  // Labels on top
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
     attribution: cartoAttrib,
+    subdomains: 'abcd',
     pane: 'overlayPane'
   }).addTo(map);
 
