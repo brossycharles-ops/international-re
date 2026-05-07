@@ -4,6 +4,7 @@ newsletter_subscribers.xlsx
 .DS_Store
 .env
 *.log
+data/subscribers.json
 growth-output/
 __pycache__/
 *.pyc
