@@ -65,6 +65,8 @@
     .related-card-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; flex: 1; }
     .related-card-arrow { font-size: 1rem; color: #c9a84c; }
   </style>
+  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
+  <script defer src="/js/analytics.js"></script>
 </head>
 <body>
 
@@ -85,7 +87,7 @@
 
   <article class="blog-post">
     <div class="blog-post-hero">
-      <img fetchpriority="high" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80" srcset="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=640&q=80 640w, https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1024&q=80 1024w, https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80 1600w, https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80 1920w" sizes="(max-width: 768px) 100vw, 1200px" alt="Punta del Este Uruguay Atlantic coastline" class="blog-post-hero-img">
+      <img fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80" srcset="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=640&q=80 640w, https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1024&q=80 1024w, https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80 1600w, https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80 1920w" sizes="(max-width: 768px) 100vw, 1200px" alt="Punta del Este Uruguay Atlantic coastline" class="blog-post-hero-img">
       <div class="blog-post-hero-overlay"></div>
       <div class="blog-post-hero-content">
         <span class="blog-card-tag">Investment Guide · Uruguay</span>
@@ -280,7 +282,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> International RE — internationalre.org. All rights reserved.</p>
+        <p>&copy; <span id="footerYear"></span> International RE — internationalre.org. All rights reserved.</p>
       </div>
     </div>
   </footer>

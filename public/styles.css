@@ -139,7 +139,11 @@ a {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-toggle span {
@@ -155,9 +159,11 @@ a {
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .hero-bg {
@@ -280,6 +286,17 @@ a {
 }
 
 .btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1.5px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.75);
+  background: transparent;
+}
+.btn-secondary:hover {
   border-color: var(--gold);
   color: var(--gold);
   transform: translateY(-2px);
@@ -997,6 +1014,30 @@ a {
   }
 }
 
+/* ===== MOBILE HERO FIXES ===== */
+@media (max-width: 768px) {
+  /* Tighter padding on small screens */
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  /* Hide domain label — logo already identifies the brand */
+  .hero-label {
+    display: none;
+  }
+
+  /* Hide scroll indicator — it collides with the social proof bar */
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* Give social proof a bit less top margin so it doesn't push overflow */
+  .social-proof {
+    margin-top: 28px;
+  }
+}
+
 /* ===== EMAIL CAPTURE POPUP ===== */
 .popup-overlay {
   position: fixed;
@@ -1296,8 +1337,9 @@ a {
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px solid #333;
-  padding: 4px 12px;
+  padding: 11px 16px;
   border-radius: 20px;
+  min-height: 44px;
   transition: color 0.2s, border-color 0.2s;
 }
 .newsletter-tag:hover {

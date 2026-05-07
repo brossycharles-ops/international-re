@@ -26,6 +26,7 @@ app.use(helmet({
   },
   crossOriginEmbedderPolicy: false,
   referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+  hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
 }));
 const PORT = process.env.PORT || 3000;
 const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
@@ -33,11 +34,14 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 const EMAIL_FROM = process.env.EMAIL_FROM || 'International RE <onboarding@resend.dev>';
 
 app.use(compression());
-app.use(express.json());
+app.use(express.json({ limit: '50kb' }));
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: '7d',
+  maxAge: '1d',
   setHeaders: (res, filePath) => {
-    if (/\.(css|js|png|jpe?g|webp|svg|woff2?)$/i.test(filePath)) {
+    if (/\.(css|js)$/i.test(filePath)) {
+      // No immutable — filenames aren't content-hashed, so must revalidate daily
+      res.setHeader('Cache-Control', 'public, max-age=86400, must-revalidate');
+    } else if (/\.(png|jpe?g|webp|svg|woff2?)$/i.test(filePath)) {
       res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
     }
   },
@@ -204,6 +208,8 @@ app.post('/api/subscribe', async (req, res) => {
 // ─── Unsubscribe endpoint ───
 
 app.post('/api/unsubscribe', async (req, res) => {
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  if (!checkRateLimit(ip)) return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   const { email } = req.body;
   if (!email) return res.status(400).json({ error: 'Email is required.' });
   const normalizedEmail = email.trim().toLowerCase();
@@ -282,7 +288,7 @@ app.get('/api/subscribers', (req, res) => {
 // ─── Send newsletter to all subscribers ───
 
 app.post('/api/send-newsletter', async (req, res) => {
-  const key = req.query.key || req.body.key;
+  const key = req.body.key;
   if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -587,7 +593,7 @@ const DRIP_EMAILS = [
 ];
 
 app.post('/api/drip-check', async (req, res) => {
-  const key = req.query.key || req.body.key;
+  const key = req.body.key;
   if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
   }

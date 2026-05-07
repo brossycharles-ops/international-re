@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Real Estate Advisory | Personalized Buyer Support | International RE</title>
+  <meta name="description" content="Personalized advisory services for international real estate buyers. Strategy calls, market deep-dives, and deal sourcing across Latin America. Independent guidance with no broker commissions.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.internationalre.org/advisory.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="International Real Estate Advisory | Personalized Buyer Support">
+  <meta property="og:description" content="Personalized advisory for international real estate buyers. Strategy calls, market deep-dives, and deal sourcing across Latin America.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.internationalre.org/advisory.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80">
+  <meta property="og:site_name" content="International RE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="International Real Estate Advisory | International RE">
+  <meta name="twitter:description" content="Personalized advisory for international real estate buyers. Independent guidance, no broker commissions.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout_updates.css">
+
+  <style>
+    /* ===== ADVISORY PAGE STYLES ===== */
+
+    /* Hero */
+    .advisory-hero {
+      background: linear-gradient(135deg, #0a1628 0%, #132039 50%, #0a1628 100%);
+      padding: 160px 24px 100px;
+      text-align: center;
+    }
+    .advisory-hero .section-label {
+      color: var(--gold);
+    }
+    .advisory-hero h1 {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fff;
+      line-height: 1.2;
+      max-width: 780px;
+      margin: 0 auto 24px;
+    }
+    .advisory-hero .hero-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .advisory-hero .hero-sub strong {
+      color: var(--gold);
+    }
+
+    /* Who This Is For */
+    .who-section {
+      background: var(--white);
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .who-card {
+      background: var(--gray-100);
+      border-radius: 16px;
+      padding: 36px 28px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .who-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .who-card-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .who-card h3 {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .who-card p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Service Tiers */
+    .tiers-section {
+      background: var(--gray-100);
+    }
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .tier-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px 32px;
+      border: 2px solid var(--gray-200);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .tier-card.featured {
+      border-color: var(--gold);
+    }
+    .tier-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .tier-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+    }
+    .tier-card h3 {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .tier-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .tier-price-note {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin-bottom: 20px;
+    }
+    .tier-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+    }
+    .tier-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .tier-features li:last-child {
+      border-bottom: none;
+    }
+    .tier-features li::before {
+      content: '\25C6';
+      color: var(--gold);
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      margin-top: 4px;
+    }
+    .tier-card .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Process */
+    .process-section {
+      background: var(--navy);
+    }
+    .process-section .section-header h2 {
+      color: #fff;
+    }
+    .process-section .section-label {
+      color: var(--gold);
+    }
+    .process-section .section-desc {
+      color: rgba(255,255,255,0.6);
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: rgba(201,168,76,0.25);
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    .process-num {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.12);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .process-step h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .process-step p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Credentials */
+    .credentials-section {
+      background: var(--white);
+    }
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .credential-card {
+      padding: 36px 28px;
+      background: var(--gray-100);
+      border-radius: 16px;
+      border-left: 4px solid var(--gold);
+    }
+    .credential-card h3 {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .credential-card p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--gray-100);
+    }
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      background: var(--gray-100);
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform 0.3s ease;
+    }
+    .faq-item[open] .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      padding: 0 24px 20px;
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* Application Form */
+    .form-section {
+      background: var(--navy);
+    }
+    .form-section .section-header h2 {
+      color: #fff;
+    }
+    .form-section .section-label {
+      color: var(--gold);
+    }
+    .form-section .section-desc {
+      color: rgba(255,255,255,0.6);
+    }
+    .advisory-form-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .advisory-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .advisory-form .form-group {
+      margin-bottom: 20px;
+    }
+    .advisory-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    .advisory-form input,
+    .advisory-form select,
+    .advisory-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--gray-200);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: var(--font-body);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      background: var(--white);
+      color: var(--gray-800);
+    }
+    .advisory-form input:focus,
+    .advisory-form select:focus,
+    .advisory-form textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+    }
+    .advisory-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .advisory-form select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a1a1aa' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .form-submit-btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+    .form-error-msg {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    /* Footer CTA */
+    .footer-cta-section {
+      background: var(--cream);
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .footer-cta-section p {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      margin-bottom: 20px;
+    }
+    .footer-cta-section a {
+      color: var(--gold-dark);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .footer-cta-section a:hover {
+      color: var(--gold);
+    }
+
+    /* Compliance */
+    .compliance-text {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      line-height: 1.6;
+      max-width: 680px;
+      margin: 24px auto 0;
+      text-align: center;
+    }
+    .footer-compliance {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 24px auto 0;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .who-grid,
+      .tiers-grid,
+      .credentials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .process-grid::before {
+        display: none;
+      }
+    }
+    @media (max-width: 768px) {
+      .advisory-hero {
+        padding: 120px 24px 72px;
+      }
+      .who-grid,
+      .tiers-grid,
+      .process-grid,
+      .credentials-grid {
+        grid-template-columns: 1fr;
+      }
+      .advisory-form-wrap {
+        padding: 32px 24px;
+      }
+      .advisory-form .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
+  <script defer src="js/analytics.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <span class="logo-icon">&#9670;</span>
+        International <span class="logo-accent">RE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#markets">Markets</a></li>
+        <li><a href="/#newsletters">Newsletters</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="/quiz.html">Market Quiz</a></li>
+        <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="advisory-hero">
+    <div class="container">
+      <p class="section-label">Advisory Services</p>
+      <h1>Personalized guidance for international real estate buyers</h1>
+      <p class="hero-sub">
+        Charles has bought, researched, and walked markets across <strong>30+ countries on 4 continents</strong>. He publishes a weekly newsletter read by <strong>100+ subscribers</strong>. This is independent advisory &mdash; no broker commissions, no referral fees. You get unbiased guidance backed by real-deal experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="who-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Who This Is For</p>
+        <h2>Built for buyers with a plan</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card">
+          <span class="who-card-icon" aria-hidden="true">&#128200;</span>
+          <h3>Pre-Retirement Diversifier</h3>
+          <p>Building a portfolio outside your home market before you retire. You want real assets in stable or high-growth economies and a plan to get there.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-card-icon" aria-hidden="true">&#127758;</span>
+          <h3>Remote Work Relocator</h3>
+          <p>Moving abroad and want to buy, not rent, in the right neighborhood. You need someone who knows which blocks appreciate and which ones tourists overpay for.</p>
+        </div>
+        <div class="who-card">
+          <span class="who-card-icon" aria-hidden="true">&#128188;</span>
+          <h3>Portfolio Investor</h3>
+          <p>Deploying capital across multiple Latin American markets for yield and appreciation. You want deal flow, market data, and trusted local contacts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="tiers-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Service Tiers</p>
+        <h2>Choose your level of engagement</h2>
+      </div>
+      <div class="tiers-grid">
+
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <p class="tier-label">Tier 1</p>
+          <h3>Strategy Call</h3>
+          <p class="tier-price">$TBD</p>
+          <p class="tier-price-note">60-minute one-time call</p>
+          <ul class="tier-features">
+            <li>Country shortlist based on your goals</li>
+            <li>Buyer profile fit assessment</li>
+            <li>High-level budget and timeline check</li>
+            <li>Actionable next steps and resources</li>
+          </ul>
+          <a href="#intake-form" class="btn btn-primary">Book a Strategy Call</a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card featured">
+          <span class="tier-badge">Most Popular</span>
+          <p class="tier-label">Tier 2</p>
+          <h3>Market Deep-Dive</h3>
+          <p class="tier-price">$TBD</p>
+          <p class="tier-price-note">2-week engagement, one country</p>
+          <ul class="tier-features">
+            <li>Custom research brief for your target market</li>
+            <li>Neighborhood-level data and analysis</li>
+            <li>Vetted broker and attorney introductions</li>
+            <li>Written deliverable with recommendations</li>
+          </ul>
+          <a href="#intake-form" class="btn btn-primary">Apply for Deep-Dive</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card">
+          <p class="tier-label">Tier 3</p>
+          <h3>Deal Sourcing</h3>
+          <p class="tier-price">$TBD</p>
+          <p class="tier-price-note">Retainer + success fee</p>
+          <ul class="tier-features">
+            <li>Full-cycle buyer representation</li>
+            <li>Deal pipeline review and scoring</li>
+            <li>Closing support and coordination</li>
+            <li>Ongoing advisory through transaction</li>
+          </ul>
+          <a href="#intake-form" class="btn btn-primary">Apply for Deal Sourcing</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">How It Works</p>
+        <h2>From application to deliverables</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <h4>Apply</h4>
+          <p>Submit the intake form below with your goals, budget, and timeline.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h4>Discovery Call</h4>
+          <p>20-minute video call to understand your goals and confirm fit.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h4>Engagement</h4>
+          <p>Charles delivers the scope of your chosen tier with direct access throughout.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">4</div>
+          <h4>Deliverables</h4>
+          <p>Written report, introductions, and ongoing support as needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="credentials-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Credentials</p>
+        <h2>Why work with Charles</h2>
+      </div>
+      <div class="credentials-grid">
+        <div class="credential-card">
+          <h3>Background in institutional real estate</h3>
+          <p>Currently at IceCap Group, with prior experience at Newmark, Armada Hoffler, and Cochran Booth. Institutional-grade analysis applied to international markets.</p>
+        </div>
+        <div class="credential-card">
+          <h3>30+ countries, 4 continents</h3>
+          <p>First-hand market knowledge from extensive travel and on-the-ground research. Not just data &mdash; real context from walking neighborhoods, meeting brokers, and understanding local dynamics.</p>
+        </div>
+        <div class="credential-card">
+          <h3>Independent &amp; unbiased</h3>
+          <p>No broker commissions, no referral fees. Advisory fees are the only revenue. Recommendations are based solely on what fits your goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">FAQ</p>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>Are you a licensed real estate advisor?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>No. International RE provides educational research and introduction services. We are not licensed in any jurisdiction. All transactions require local licensed counsel.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>Do you take referral fees from brokers?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>No. Our fee is the only fee. This ensures recommendations are unbiased.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>What countries do you cover?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Primary coverage: Costa Rica, Panama, Colombia, Mexico, Argentina, Chile, Nicaragua, Uruguay, Dominican Republic, and Ecuador. We are expanding to Peru, Brazil, and select European and Asian markets.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>What if I want a country you don't cover?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>We'll be upfront about our coverage limits and can recommend trusted contacts in markets we don't cover directly.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>What's the refund policy?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Tier 1 strategy calls are non-refundable. Tier 2 and 3 engagements have a satisfaction clause &mdash; if the deliverable doesn't meet the agreed scope, we'll revise or issue a partial refund.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>How is this different from the free newsletter?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>The newsletter covers markets broadly. Advisory is personalized to YOUR budget, timeline, risk tolerance, and target markets. You also get direct broker and attorney introductions.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>Can you help with financing?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>We can introduce you to banks that lend to foreigners in certain markets (notably Chile and Panama). We do not provide financial advice or arrange financing.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question" aria-expanded="false">
+            <span>I'm not ready for advisory. What should I do?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Subscribe to the <a href="/free-guide.html" style="color: var(--gold-dark); text-decoration: underline;">free newsletter</a> and take the <a href="/quiz.html" style="color: var(--gold-dark); text-decoration: underline;">market quiz</a>. When you're ready, we'll be here.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <p class="compliance-text">International RE provides educational research and introduction services. We are not a licensed real estate broker, attorney, tax advisor, or investment advisor in any jurisdiction. All transactions require local licensed counsel. Past performance of covered markets does not predict future results.</p>
+    </div>
+  </section>
+
+  <!-- Application / Intake Form -->
+  <section class="form-section" id="intake-form">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Get Started</p>
+        <h2>Submit your application</h2>
+        <p class="section-desc">Fill out the form below and we'll be in touch within 48 hours.</p>
+      </div>
+      <div class="advisory-form-wrap">
+        <form class="advisory-form" id="advisoryIntakeForm" action="/advisory-intake" method="POST">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="advisory-name">Name</label>
+              <input type="text" id="advisory-name" name="name" required aria-label="Your full name" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="advisory-email">Email</label>
+              <input type="email" id="advisory-email" name="email" required aria-label="Your email address" placeholder="you@example.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="advisory-country">Target Country</label>
+              <select id="advisory-country" name="target_country" required aria-label="Target country for investment">
+                <option value="" disabled selected>Select a country</option>
+                <option value="Costa Rica">Costa Rica</option>
+                <option value="Panama">Panama</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Chile">Chile</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Dominican Republic">Dominican Republic</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Other">Other</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="advisory-budget">Budget Range</label>
+              <select id="advisory-budget" name="budget_range" required aria-label="Your budget range">
+                <option value="" disabled selected>Select budget</option>
+                <option value="Under $200K">Under $200K</option>
+                <option value="$200K-$500K">$200K &ndash; $500K</option>
+                <option value="$500K-$1M">$500K &ndash; $1M</option>
+                <option value="$1M-$3M">$1M &ndash; $3M</option>
+                <option value="$3M+">$3M+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="advisory-timeline">Timeline</label>
+              <select id="advisory-timeline" name="timeline" required aria-label="Your purchase timeline">
+                <option value="" disabled selected>Select timeline</option>
+                <option value="Within 3 months">Within 3 months</option>
+                <option value="3-6 months">3 &ndash; 6 months</option>
+                <option value="6-12 months">6 &ndash; 12 months</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="advisory-tier">Tier Interest</label>
+              <select id="advisory-tier" name="tier_interest" required aria-label="Which service tier interests you">
+                <option value="" disabled selected>Select tier</option>
+                <option value="Strategy Call">Strategy Call</option>
+                <option value="Market Deep-Dive">Market Deep-Dive</option>
+                <option value="Deal Sourcing">Deal Sourcing</option>
+                <option value="Not sure">Not sure &mdash; help me decide</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="advisory-motivation">What's prompting this now? <span style="font-weight: 400; color: var(--gray-400);">(optional)</span></label>
+            <textarea id="advisory-motivation" name="motivation" aria-label="What is prompting you to explore international real estate now" placeholder="Tell us about your situation, goals, or any specific questions you have..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit-btn">Submit Application</button>
+
+          <div class="form-error-msg" id="formError" role="alert">
+            Something went wrong. Please try again or email us directly.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta-section">
+    <p>Not ready? Subscribe to the newsletter and revisit when you are.</p>
+    <a href="/free-guide.html">Get the Free Starter Kit &rarr;</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-icon">&#9670;</span>
+            International <span class="logo-accent">RE</span>
+          </a>
+          <p>Your weekly guide to Latin American real estate markets. Expert insights, market data, and investment opportunities.</p>
+          <p class="footer-domain">internationalre.org</p>
+        </div>
+        <div class="footer-links">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="/#costa-rica">Costa Rica</a></li>
+            <li><a href="/#nicaragua">Nicaragua</a></li>
+            <li><a href="/#argentina">Argentina</a></li>
+            <li><a href="/#chile">Chile</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="/free-guide.html">Newsletter</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter / X</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> International RE &mdash; internationalre.org. All rights reserved.</p>
+        <p class="footer-compliance">International RE provides educational research and introduction services. We are not a licensed real estate broker, attorney, tax advisor, or investment advisor in any jurisdiction. All transactions require local licensed counsel. Past performance of covered markets does not predict future results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="lead_capture.js" defer></script>
+  <script>
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+      });
+    }
+
+    // Footer year
+    const footerYear = document.getElementById('footerYear');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // FAQ accordion — using native <details>, update aria-expanded
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('toggle', () => {
+        const summary = item.querySelector('.faq-question');
+        if (summary) {
+          summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+        }
+      });
+    });
+
+    // Advisory Intake Form Submission
+    const advisoryForm = document.getElementById('advisoryIntakeForm');
+    const formError = document.getElementById('formError');
+
+    if (advisoryForm) {
+      advisoryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        formError.style.display = 'none';
+
+        const formData = {
+          name: document.getElementById('advisory-name').value.trim(),
+          email: document.getElementById('advisory-email').value.trim(),
+          target_country: document.getElementById('advisory-country').value,
+          budget_range: document.getElementById('advisory-budget').value,
+          timeline: document.getElementById('advisory-timeline').value,
+          tier_interest: document.getElementById('advisory-tier').value,
+          motivation: document.getElementById('advisory-motivation').value.trim()
+        };
+
+        // Validate required fields
+        if (!formData.name || !formData.email || !formData.target_country || !formData.budget_range || !formData.timeline || !formData.tier_interest) {
+          formError.textContent = 'Please fill in all required fields.';
+          formError.style.display = 'block';
+          return;
+        }
+
+        // Since the endpoint does not exist yet, redirect to success page
+        // In production, this would POST to /advisory-intake as JSON
+        try {
+          // Store form data in sessionStorage for the success page
+          sessionStorage.setItem('advisoryApplication', JSON.stringify(formData));
+          window.location.href = '/advisory-success.html';
+        } catch (err) {
+          formError.textContent = 'Something went wrong. Please try again or email us directly.';
+          formError.style.display = 'block';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

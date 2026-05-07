@@ -104,20 +104,20 @@
     if (unlockForm) {
       unlockForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const fn = unlockForm.querySelector('input[name="firstName"]').value.trim();
-        const ln = unlockForm.querySelector('input[name="lastName"]').value.trim();
         const em = unlockForm.querySelector('input[name="email"]').value.trim();
-        if (!fn || !ln || !em) { unlockMsg.textContent = 'Please fill in all fields.'; return; }
+        if (!em) { unlockMsg.textContent = 'Please enter your email.'; return; }
         const btn = unlockForm.querySelector('button');
         btn.disabled = true;
         btn.textContent = 'Unlocking…';
-        const { ok, data } = await postSubscribe({ firstName: fn, lastName: ln, email: em });
+        const { ok, data } = await postSubscribe({ firstName: '', lastName: '', email: em });
         btn.disabled = false;
         btn.textContent = 'Unlock Results';
         if (ok || (data && /already subscribed/i.test(data.error || ''))) {
           markSubscribed();
           result.classList.remove('roi-locked');
           unlockMsg.textContent = 'Unlocked. Welcome.';
+          var advCta = document.getElementById('roiAdvisoryCta');
+          if (advCta) advCta.style.display = 'block';
         } else {
           unlockMsg.textContent = (data && data.error) || 'Something went wrong.';
         }
@@ -377,6 +377,8 @@
     boot();
   }
   function boot() {
+    const fy = document.getElementById('footerYear');
+    if (fy) fy.textContent = new Date().getFullYear();
     initROICalculator();
     initExitIntent();
     initVIP();

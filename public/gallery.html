@@ -36,6 +36,8 @@
   "description": "Property and travel photography across Latin America."
 }
 </script>
+  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
+  <script defer src="/js/analytics.js"></script>
 </head>
 <body>
 
@@ -210,7 +212,7 @@
     <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
     <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
     <div class="lightbox-content">
-      <img decoding="async" loading="lazy" src="" alt="" id="lightboxImg">
+      <img decoding="async" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Gallery image" id="lightboxImg">
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
   </div>
@@ -283,7 +285,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> International RE — internationalre.org. All rights reserved.</p>
+        <p>&copy; <span id="footerYear"></span> International RE — internationalre.org. All rights reserved.</p>
       </div>
     </div>
   </footer>

@@ -140,6 +140,8 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="layout_updates.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
+  <script defer src="/js/analytics.js"></script>
 </head>
 <body>
 
@@ -257,7 +259,7 @@
       <div class="section-header">
         <p class="section-label">Investor Tool</p>
         <h2>Latin America Real Estate<br>ROI Calculator</h2>
-        <p class="section-desc">Estimate your projected rental income, appreciation, and total return across our 8 covered markets. Built from our 2026 dataset.</p>
+        <p class="section-desc">Estimate your projected rental income, appreciation, and total return across our 17 covered markets. Built from our 2026 dataset.</p>
       </div>
       <div class="roi-calc">
         <div class="roi-calc-form">
@@ -307,13 +309,15 @@
           <h3>Unlock Your Full Projection</h3>
           <p>Enter your email to reveal yields, income, and total return — plus our 2026 weekly market intelligence newsletter, free.</p>
           <form class="roi-unlock-form" id="roiUnlockForm">
-            <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
-            <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
-            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" required>
             <button type="submit" class="btn btn-primary">Unlock Results</button>
             <p class="roi-unlock-msg" aria-live="polite"></p>
             <p class="roi-fineprint">Free forever. Unsubscribe in one click. GDPR/CCPA compliant.</p>
           </form>
+        </div>
+        <div class="roi-advisory-cta" style="text-align:center;margin-top:24px;display:none;" id="roiAdvisoryCta">
+          <p style="color:rgba(250,248,243,0.7);font-size:0.92rem;margin-bottom:10px;">Want a custom analysis for your situation?</p>
+          <a href="/advisory.html" class="btn btn-outline" style="font-size:0.9rem;padding:12px 24px;">Book a 30-min advisory call &rarr;</a>
         </div>
       </div>
     </div>
@@ -724,6 +728,7 @@
           <li>Off-market estate &amp; portfolio opportunities</li>
           <li>Direct introductions to vetted local counsel</li>
         </ul>
+        <p style="margin-top:20px;font-size:0.9rem;color:rgba(250,248,243,0.6);">Looking for personalized property sourcing? <a href="/advisory.html" style="color:#c9a84c;font-weight:600;">Learn about our advisory service &rarr;</a></p>
       </div>
       <div class="vip-listings vip-locked" id="vipListings">
         <div class="vip-listing-card">
@@ -755,9 +760,9 @@
             <h3>Request VIP Access</h3>
             <p>Subscribe to unlock this week's off-market shortlist plus our weekly intelligence newsletter.</p>
             <form class="vip-gate-form">
-              <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required>
-              <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required>
-              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" aria-label="First name" required>
+              <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" aria-label="Last name" required>
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" required>
               <button type="submit">Unlock VIP Listings</button>
               <p class="vip-fineprint" style="font-size:0.75rem;color:rgba(250,248,243,0.5);margin-top:8px;">Free. Unsubscribe anytime. GDPR/CCPA compliant.</p>
             </form>
@@ -895,10 +900,10 @@
         </div>
         <form id="popupForm" class="popup-form">
           <div class="popup-form-row">
-            <input type="text" id="popupFirstName" placeholder="First Name" autocomplete="given-name" required>
-            <input type="text" id="popupLastName" placeholder="Last Name" autocomplete="family-name" required>
+            <input type="text" id="popupFirstName" placeholder="First Name" autocomplete="given-name" aria-label="First name" required>
+            <input type="text" id="popupLastName" placeholder="Last Name" autocomplete="family-name" aria-label="Last name" required>
           </div>
-          <input type="email" id="popupEmail" placeholder="Enter your email address" autocomplete="email" required>
+          <input type="email" id="popupEmail" placeholder="Enter your email address" autocomplete="email" aria-label="Email address" required>
           <button type="submit" class="btn btn-primary btn-full popup-btn">
             <span class="popup-btn-text">Get Free Starter Kit + Subscribe</span>
             <span class="popup-btn-loading" style="display:none;">Subscribing...</span>

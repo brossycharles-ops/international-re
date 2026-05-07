@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} | International RE</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.internationalre.org/blog/{{SLUG}}.html">
+
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{OG_DESCRIPTION}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.internationalre.org/blog/{{SLUG}}.html">
+  <meta property="og:site_name" content="International RE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
+  <meta name="twitter:image" content="{{OG_IMAGE}}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "image": "{{OG_IMAGE}}",
+    "datePublished": "{{DATE_PUBLISHED}}",
+    "dateModified": "{{DATE_MODIFIED}}",
+    "author": {
+      "@type": "Person",
+      "name": "Charles Brossy",
+      "url": "https://www.internationalre.org/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "International RE",
+      "url": "https://www.internationalre.org",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.internationalre.org/images/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.internationalre.org/blog/{{SLUG}}.html"
+    },
+    "keywords": "{{KEYWORDS}}"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../layout_updates.css">
+
+  <style>
+    .blog-toc { background: #f7f5f0; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .blog-toc h3 { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin: 0 0 14px; }
+    .blog-toc ol { margin: 0; padding-left: 20px; }
+    .blog-toc li { margin-bottom: 6px; }
+    .blog-toc a { color: #0a1628; font-size: 0.9rem; font-weight: 500; text-decoration: none; }
+    .blog-toc a:hover { color: #c9a84c; }
+    .blog-reading-time { font-size: 0.82rem; color: #888; margin-bottom: 4px; }
+    .blog-dates { font-size: 0.82rem; color: #888; }
+    .blog-dates time { font-weight: 500; }
+    .blog-inline-cta { background: linear-gradient(135deg, #0a1628, #132039); border-radius: 12px; padding: 28px 32px; margin: 40px 0; color: #fff; }
+    .blog-inline-cta h3 { font-size: 1.1rem; margin: 0 0 8px; color: #fff; }
+    .blog-inline-cta p { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin: 0 0 16px; }
+    .blog-inline-cta form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .blog-inline-cta input { flex: 1; min-width: 200px; padding: 12px 14px; border-radius: 6px; border: none; font-size: 0.9rem; }
+    .blog-inline-cta button { background: linear-gradient(180deg, #d4b05a, #c9a84c); color: #0a1628; border: none; padding: 12px 22px; border-radius: 6px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .blog-sources { background: #f7f5f0; border-radius: 12px; padding: 24px 28px; margin: 40px 0; }
+    .blog-sources h3 { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #c9a84c; font-weight: 700; margin: 0 0 14px; }
+    .blog-sources ul { margin: 0; padding-left: 20px; }
+    .blog-sources li { font-size: 0.85rem; color: #666; margin-bottom: 6px; line-height: 1.5; }
+    .related-articles { padding: 40px 0; border-top: 1px solid #e8e3d9; background: #f7f5f0; }
+    .related-heading { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; font-weight: 600; margin: 0 0 18px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card { display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid #e8e3d9; border-radius: 10px; padding: 18px 20px; text-decoration: none; color: #0a1628; transition: border-color 0.15s; }
+    .related-card:hover { border-color: #c9a84c; }
+    .related-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c9a84c; }
+    .related-card-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+      <ul class="nav-links">
+        <li><a href="/#markets">Markets</a></li>
+        <li><a href="/#newsletters">Newsletters</a></li>
+        <li><a href="../blog.html" class="active-link">Blog</a></li>
+        <li><a href="../guides.html">Guides</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="/quiz.html">Market Quiz</a></li>
+        <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <article class="blog-post">
+    <div class="blog-post-hero">
+      <img fetchpriority="high" decoding="async" src="{{HERO_IMAGE}}" alt="{{HERO_ALT}}" class="blog-post-hero-img">
+      <div class="blog-post-hero-overlay"></div>
+      <div class="blog-post-hero-content">
+        <span class="blog-card-tag">{{CATEGORY}}</span>
+        <h1>{{TITLE}}</h1>
+        <div class="blog-post-meta">
+          <span class="blog-post-author">By <a href="/about.html"><strong>Charles Brossy</strong></a></span>
+          <span class="blog-post-date">{{DISPLAY_DATE}}</span>
+          <span class="blog-post-read">{{READING_TIME}} min read</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-post-body">
+      <div class="container blog-container">
+
+        <div class="blog-dates">
+          Published <time datetime="{{DATE_PUBLISHED}}">{{DISPLAY_DATE}}</time>
+          &middot; Last updated <time datetime="{{DATE_MODIFIED}}">{{DISPLAY_DATE_MODIFIED}}</time>
+        </div>
+
+        <!-- Table of Contents (auto-generate from H2s) -->
+        <div class="blog-toc" id="blogToc">
+          <h3>In This Guide</h3>
+          <ol>
+            <!-- JS auto-populates from H2 headings -->
+          </ol>
+        </div>
+
+        {{CONTENT}}
+
+        <!-- Inline CTA #1 — placed after ~40% scroll depth -->
+        <div class="blog-inline-cta">
+          <h3>Free weekly Latin America real estate intel</h3>
+          <p>Live prices, rental yields, and legal updates across 11 markets. Join free.</p>
+          <form class="inline-sub-form" data-source="blog-inline-1">
+            <input type="email" name="email" placeholder="Your email" aria-label="Email address" required>
+            <button type="submit">Subscribe Free</button>
+          </form>
+        </div>
+
+        {{CONTENT_CONTINUED}}
+
+        <!-- Inline CTA #2 — placed after ~75% scroll depth -->
+        <div class="blog-inline-cta">
+          <h3>Get the 2026 Expat Starter Kit</h3>
+          <p>Country comparison table, visa requirements, and cost of living data for 12 cities — free.</p>
+          <form class="inline-sub-form" data-source="blog-inline-2">
+            <input type="email" name="email" placeholder="Your email" aria-label="Email address" required>
+            <button type="submit">Send Me the Kit</button>
+          </form>
+        </div>
+
+        {{CONTENT_FINAL}}
+
+        <!-- Sources / Methodology -->
+        <div class="blog-sources">
+          <h3>Sources &amp; Methodology</h3>
+          <ul>
+            {{SOURCES}}
+          </ul>
+        </div>
+
+        <div class="blog-author-box">
+          <div class="blog-author-info">
+            <strong><a href="/about.html">Charles Brossy</a></strong>
+            <p>Founder, International RE. 30+ countries visited across 4 continents. Covering Latin American real estate markets with primary-source data.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Articles -->
+  <section class="related-articles">
+    <div class="container">
+      <p class="related-heading">Related Reading</p>
+      <div class="related-grid">
+        <a href="{{RELATED_1_URL}}" class="related-card">
+          <span class="related-card-label">{{RELATED_1_TAG}}</span>
+          <span class="related-card-title">{{RELATED_1_TITLE}}</span>
+        </a>
+        <a href="{{RELATED_2_URL}}" class="related-card">
+          <span class="related-card-label">{{RELATED_2_TAG}}</span>
+          <span class="related-card-title">{{RELATED_2_TITLE}}</span>
+        </a>
+        <a href="{{RELATED_3_URL}}" class="related-card">
+          <span class="related-card-label">{{RELATED_3_TAG}}</span>
+          <span class="related-card-title">{{RELATED_3_TITLE}}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz CTA -->
+  <section class="quiz-cta-block">
+    <div class="container">
+      <div class="quiz-cta-inner">
+        <div class="quiz-cta-text">
+          <span class="quiz-cta-eyebrow">Free &middot; 5 Questions</span>
+          <h3>Not sure which market fits your goals?</h3>
+          <p>Answer 5 quick questions and get a personalised market match with live prices and rental yields.</p>
+        </div>
+        <a href="/quiz.html" class="quiz-cta-btn">Take the Market Quiz &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Share -->
+  <section class="share-block">
+    <div class="container">
+      <div class="share-inner">
+        <span class="share-label">Share this article</span>
+        <div class="share-buttons">
+          <a class="share-btn share-twitter" id="shareTwitter" href="#" target="_blank" rel="noopener">&#120143; Post</a>
+          <a class="share-btn share-facebook" id="shareFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
+          <a class="share-btn share-whatsapp" id="shareWhatsApp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy Link'},2000)})">Copy Link</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+          <p>Weekly intelligence on Latin American real estate markets.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="/#costa-rica">Costa Rica</a></li>
+            <li><a href="/#nicaragua">Nicaragua</a></li>
+            <li><a href="/#argentina">Argentina</a></li>
+            <li><a href="/#chile">Chile</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/guides.html">Guides</a></li>
+            <li><a href="/newsletter.html">Newsletter</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> International RE. For informational purposes only. Not financial or legal advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script src="../lead_capture.js" defer></script>
+  <script>
+    // Auto-generate TOC from H2 headings
+    (function(){
+      var toc = document.querySelector('.blog-toc ol');
+      if (!toc) return;
+      var headings = document.querySelectorAll('.blog-post-body h2');
+      headings.forEach(function(h, i) {
+        var id = 'section-' + (i + 1);
+        h.id = id;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + id;
+        a.textContent = h.textContent;
+        li.appendChild(a);
+        toc.appendChild(li);
+      });
+    })();
+
+    // Inline subscribe forms
+    document.querySelectorAll('.inline-sub-form').forEach(function(form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var email = this.querySelector('input[name="email"]').value.trim();
+        if (!email) return;
+        var btn = this.querySelector('button');
+        btn.disabled = true; btn.textContent = 'Subscribing...';
+        try {
+          var res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({email: email, source: this.dataset.source || 'blog-inline'}) });
+          var data = await res.json();
+          if (res.ok || /already/i.test(data.error || '')) {
+            localStorage.setItem('subscribed', 'true');
+            this.innerHTML = '<p style="color:#c9a84c;font-weight:600;">You\'re subscribed. Welcome.</p>';
+          } else { btn.disabled = false; btn.textContent = 'Subscribe Free'; }
+        } catch { btn.disabled = false; btn.textContent = 'Subscribe Free'; }
+      });
+    });
+
+    // Social share links
+    var url = encodeURIComponent(window.location.href);
+    var title = encodeURIComponent(document.title);
+    var tw = document.getElementById('shareTwitter');
+    var fb = document.getElementById('shareFacebook');
+    var wa = document.getElementById('shareWhatsApp');
+    if (tw) tw.href = 'https://twitter.com/intent/tweet?text=' + title + '&url=' + url;
+    if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    if (wa) wa.href = 'https://wa.me/?text=' + title + ' ' + url;
+  </script>
+</body>
+</html>
