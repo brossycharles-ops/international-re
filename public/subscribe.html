@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Latin America Real Estate Newsletter | International RE</title>
-  <meta name="description" content="Get weekly Latin American real estate intelligence — prices, yields, legal guides, and market moves across 11 countries. Free. No spam.">
+  <meta name="description" content="Get weekly Latin American real estate intelligence — prices, yields, legal guides, and market moves across 12 countries. Free. No spam.">
   <link rel="canonical" href="https://www.internationalre.org/subscribe.html">
   <meta property="og:title" content="Free Latin America Real Estate Newsletter">
   <meta property="og:description" content="Weekly market intelligence: live prices, rental yields, legal updates across Costa Rica, Panama, Colombia, Argentina, Chile and 6 more markets. Free.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.internationalre.org/subscribe.html">
   <meta property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,8 +195,13 @@
       .sub-form-row { grid-template-columns: 1fr; }
     }
   </style>
-  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
   <script defer src="/js/analytics.js"></script>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
 </head>
 <body>
   <div class="sub-page">
@@ -204,16 +210,13 @@
     <div class="sub-card">
       <span class="sub-eyebrow">Free Weekly Newsletter</span>
       <h1 class="sub-headline">The insider's guide to Latin American real estate</h1>
-      <p class="sub-subline">Live prices, rental yields, and legal updates across 11 markets — delivered free every week. Plus your <strong>2026 Market Entry Guide</strong> instantly on signup.</p>
+      <p class="sub-subline">Live prices, rental yields, and legal updates across 12 markets — delivered free every week. Plus your <strong>2026 Market Entry Guide</strong> instantly on signup.</p>
 
       <div class="sub-proof">
         <div class="sub-proof-avatars">
-          <div class="sub-proof-avatar">C</div>
-          <div class="sub-proof-avatar">M</div>
-          <div class="sub-proof-avatar">J</div>
-          <div class="sub-proof-avatar">+</div>
+          <div class="sub-proof-avatar">CB</div>
         </div>
-        <div class="sub-proof-text"><strong>Investors from 12 countries</strong> already subscribe — expats, retirees, and portfolio builders.</div>
+        <div class="sub-proof-text"><strong>Independent research by Charles Brossy</strong> &mdash; 30+ countries walked, institutional real estate background, no broker commissions.</div>
       </div>
 
       <ul class="sub-checklist">
@@ -225,18 +228,14 @@
       </ul>
 
       <form class="sub-form" id="subPageForm">
-        <div class="sub-form-row">
-          <input type="text" name="firstName" placeholder="First name" required>
-          <input type="text" name="lastName" placeholder="Last name" required>
-        </div>
-        <input type="email" name="email" placeholder="Email address" required>
+        <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
         <button type="submit" id="subPageBtn">Get Free Access &rarr;</button>
         <p class="sub-fineprint">No spam. Unsubscribe anytime. We never share your data.</p>
       </form>
 
       <div class="sub-success" id="subSuccess">
         <div class="sub-success-icon">🎉</div>
-        <h3>You're in!</h3>
+        <h2>You're in!</h2>
         <p>Check your inbox — your 2026 Market Entry Guide is on its way. Your first newsletter arrives this week.</p>
         <p style="margin-top:16px;"><a href="/newsletter.html" style="color:#c9a84c;font-weight:600;">Browse past issues →</a></p>
       </div>
@@ -254,11 +253,7 @@
       e.preventDefault();
       const btn = document.getElementById('subPageBtn');
       btn.disabled = true; btn.textContent = 'Subscribing…';
-      const payload = {
-        firstName: this.firstName.value.trim(),
-        lastName: this.lastName.value.trim(),
-        email: this.email.value.trim()
-      };
+      const payload = { email: this.email.value.trim(), source: 'subscribe-page' };
       try {
         const res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
         const data = await res.json();

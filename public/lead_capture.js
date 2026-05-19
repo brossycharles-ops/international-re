@@ -172,8 +172,6 @@
           <h2 id="exitTitle">Get the Latin America Expat Starter Kit</h2>
           <p>8-country comparison table, visa requirements, cost of living for 12 cities, and a 47-item relocation checklist — free.</p>
           <form class="modal-form" data-form="exit">
-            <input type="text" name="firstName" placeholder="First name" required>
-            <input type="text" name="lastName" placeholder="Last name" required>
             <input type="email" name="email" placeholder="Email address" required>
             <button type="submit">Send Me the Starter Kit</button>
             <p class="modal-fineprint">By submitting you agree to receive the report and our weekly newsletter. Unsubscribe anytime. We never share your data.</p>
@@ -185,11 +183,7 @@
     wrap.querySelector('form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const f = e.target;
-      const payload = {
-        firstName: f.firstName.value.trim(),
-        lastName: f.lastName.value.trim(),
-        email: f.email.value.trim()
-      };
+      const payload = { email: f.email.value.trim() };
       const btn = f.querySelector('button');
       btn.disabled = true; btn.textContent = 'Sending…';
       const { ok, data } = await postSubscribe(payload);
@@ -218,13 +212,11 @@
     if (!form) return;
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const fn = form.querySelector('input[name="firstName"]').value.trim();
-      const ln = form.querySelector('input[name="lastName"]').value.trim();
       const em = form.querySelector('input[name="email"]').value.trim();
-      if (!fn || !ln || !em) return;
+      if (!em) return;
       const btn = form.querySelector('button');
       btn.disabled = true; btn.textContent = 'Verifying…';
-      const { ok, data } = await postSubscribe({ firstName: fn, lastName: ln, email: em });
+      const { ok, data } = await postSubscribe({ email: em });
       if (ok || (data && /already subscribed/i.test(data.error || ''))) {
         markSubscribed();
         listings.classList.remove('vip-locked');

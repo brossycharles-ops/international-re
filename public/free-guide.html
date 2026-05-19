@@ -77,8 +77,13 @@
     .bottom-cta button { background: #d4af37; color: #0a1428; border: none; padding: 13px 28px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; white-space: nowrap; }
     #guideMsg, #unlockMsg, #bottomMsg { display: none; margin-top: 12px; font-size: 0.9rem; }
   </style>
-  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
   <script defer src="/js/analytics.js"></script>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
 </head>
 <body>
 
@@ -88,9 +93,10 @@
       <ul class="nav-links">
         <li><a href="/#markets">Markets</a></li>
         <li><a href="/#newsletters">Newsletters</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="/quiz.html">Market Quiz</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/guides.html">Guides</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/about.html">About</a></li>
         <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
@@ -104,10 +110,10 @@
     <p>Everything you need before you make a move: country comparison table, visa requirements, real cost of living data, and a month-by-month relocation checklist.</p>
 
     <div class="guide-form-wrap">
-      <h3>Get the Free Starter Kit</h3>
+      <h2>Get the Free Starter Kit</h2>
       <p>Sent instantly. No spam. Unsubscribe anytime.</p>
       <form id="heroForm">
-        <input type="email" placeholder="Your email address" required id="heroEmail">
+        <input type="email" placeholder="Your email address" required id="heroEmail" aria-label="Email address">
         <button type="submit">Send Me the Starter Kit &rarr;</button>
       </form>
       <p id="guideMsg"></p>
@@ -250,7 +256,7 @@
       <div class="unlock-banner">
         <p>Unlock all 8 countries + 6 additional columns (healthcare rating, language ease, internet speed, tax friendliness, citizenship timeline, expat community size)</p>
         <form id="unlockForm">
-          <input type="email" placeholder="Your email" required id="unlockEmail">
+          <input type="email" placeholder="Your email" required id="unlockEmail" aria-label="Email address">
           <button type="submit">Unlock Full Table</button>
         </form>
         <p id="unlockMsg" style="color:#d4af37; font-size:0.85rem;"></p>
@@ -291,7 +297,7 @@
       <div class="unlock-banner">
         <p>Unlock all 47 checklist items across 6 months — plus the Property Due Diligence Checklist and Visa Document Master List</p>
         <form id="unlock2Form">
-          <input type="email" placeholder="Your email" required id="unlock2Email">
+          <input type="email" placeholder="Your email" required id="unlock2Email" aria-label="Email address">
           <button type="submit">Get the Full Checklist</button>
         </form>
         <p id="unlock2Msg" style="color:#d4af37; font-size:0.85rem;"></p>
@@ -303,7 +309,7 @@
       <h2>Get the Complete Starter Kit</h2>
       <p>The full comparison table, all 47 checklist items, visa requirements by country, cost of living data for 12 cities, and weekly market intelligence — free, delivered to your inbox.</p>
       <form id="bottomForm">
-        <input type="email" placeholder="Your email address" required id="bottomEmail">
+        <input type="email" placeholder="Your email address" required id="bottomEmail" aria-label="Email address">
         <button type="submit">Send Me the Kit &rarr;</button>
       </form>
       <p id="bottomMsg" style="color:#d4af37;"></p>
@@ -325,8 +331,7 @@
             <li><a href="/#costa-rica">Costa Rica</a></li>
             <li><a href="/#nicaragua">Nicaragua</a></li>
             <li><a href="/#argentina">Argentina</a></li>
-            <li><a href="/#colombia">Colombia</a></li>
-            <li><a href="/#panama">Panama</a></li>
+            <li><a href="/#chile">Chile</a></li>
           </ul>
         </div>
         <div class="footer-links">
@@ -388,5 +393,6 @@
       handleSub(document.getElementById('bottomEmail').value.trim(), 'free-guide-bottom', document.getElementById('bottomMsg'));
     });
   </script>
+  <script src="/lead_capture.js" defer></script>
 </body>
 </html>

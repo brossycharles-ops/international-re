@@ -90,8 +90,6 @@ if (popupOverlay && popupClose && popupForm) {
 
   popupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const firstName = document.getElementById('popupFirstName').value.trim();
-    const lastName = document.getElementById('popupLastName').value.trim();
     const email = document.getElementById('popupEmail').value.trim();
     if (!email) return;
     const btnText = popupForm.querySelector('.popup-btn-text');
@@ -104,7 +102,7 @@ if (popupOverlay && popupClose && popupForm) {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, source: 'homepage-popup' })
+        body: JSON.stringify({ email, source: 'homepage-popup' })
       });
       const data = await response.json();
       if (response.ok || /already subscribed/i.test(data.error || '')) {
@@ -137,8 +135,6 @@ if (form && submitBtnEl) {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
     if (!email) return;
     btnText.style.display = 'none';
@@ -148,7 +144,7 @@ if (form && submitBtnEl) {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, lastName, email, source: 'homepage-main-form' })
+        body: JSON.stringify({ email, source: 'homepage-main-form' })
       });
       const data = await response.json();
       if (response.ok || /already subscribed/i.test(data.error || '')) {

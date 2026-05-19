@@ -196,8 +196,13 @@
       .nl-hero-stats { gap: 24px; }
     }
   </style>
-  <script defer data-domain="internationalre.org" src="https://plausible.io/js/script.js"></script>
   <script defer src="/js/analytics.js"></script>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
 </head>
 <body>
   <nav class="navbar scrolled" id="navbar">
@@ -220,10 +225,10 @@
     <div class="nl-hero">
       <span class="nl-hero-eyebrow">Free Weekly Newsletter</span>
       <h1>Latin America Real Estate Intelligence</h1>
-      <p>Every week: live price data, rental yields, legal updates, and market moves across 11 countries. Read past issues below — then subscribe.</p>
+      <p>Every week: live price data, rental yields, legal updates, and market moves across 12 countries. Read past issues below — then subscribe.</p>
       <div class="nl-hero-stats">
         <div class="nl-stat"><div class="nl-stat-value">Weekly</div><div class="nl-stat-label">Delivery</div></div>
-        <div class="nl-stat"><div class="nl-stat-value">11</div><div class="nl-stat-label">Markets Covered</div></div>
+        <div class="nl-stat"><div class="nl-stat-value">12</div><div class="nl-stat-label">Markets Covered</div></div>
         <div class="nl-stat"><div class="nl-stat-value">Free</div><div class="nl-stat-label">Always</div></div>
         <div class="nl-stat"><div class="nl-stat-value">0</div><div class="nl-stat-label">Ads or Sponsors</div></div>
       </div>
@@ -232,8 +237,6 @@
     <div class="nl-subscribe-bar">
       <p>Like what you see? Join free — your first issue arrives this week.</p>
       <form id="nlBarForm">
-        <input type="text" placeholder="First name" id="nlBarFirst" required>
-        <input type="text" placeholder="Last name" id="nlBarLast" required>
         <input type="email" placeholder="Email address" id="nlBarEmail" required>
         <button type="submit" id="nlBarBtn">Subscribe Free &rarr;</button>
       </form>
@@ -347,7 +350,7 @@
           <a href="/free-guide.html" class="nl-wyg-btn">Subscribe Free &rarr;</a>
         </div>
         <ul class="nl-wyg-list">
-          <li><span class="nl-wyg-check">✓</span> Live price-per-m² updates across 11 markets</li>
+          <li><span class="nl-wyg-check">✓</span> Live price-per-m² updates across 12 markets</li>
           <li><span class="nl-wyg-check">✓</span> Rental yield ranges — gross and net</li>
           <li><span class="nl-wyg-check">✓</span> Legal updates: foreign buyer rules, tax changes</li>
           <li><span class="nl-wyg-check">✓</span> One market deep-dive per week</li>
@@ -394,11 +397,7 @@
       e.preventDefault();
       const btn = document.getElementById('nlBarBtn');
       btn.disabled = true; btn.textContent = 'Subscribing…';
-      const payload = {
-        firstName: document.getElementById('nlBarFirst').value.trim(),
-        lastName: document.getElementById('nlBarLast').value.trim(),
-        email: document.getElementById('nlBarEmail').value.trim()
-      };
+      const payload = { email: document.getElementById('nlBarEmail').value.trim(), source: 'newsletter-page-bar' };
       try {
         const res = await fetch('/api/subscribe', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
         const data = await res.json();

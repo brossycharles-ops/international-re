@@ -12,11 +12,11 @@ app.use(helmet({
     useDefaults: true,
     directives: {
       'default-src': ["'self'"],
-      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com'],
+      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com', 'https://plausible.io'],
       'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://unpkg.com'],
       'font-src': ["'self'", 'https://fonts.gstatic.com'],
-      'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com', 'https://*.tile.openstreetmap.org'],
-      'connect-src': ["'self'"],
+      'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com', 'https://*.tile.openstreetmap.org', 'https://*.basemaps.cartocdn.com'],
+      'connect-src': ["'self'", 'https://plausible.io'],
       'frame-ancestors': ["'none'"],
       'object-src': ["'none'"],
       'base-uri': ["'self'"],
@@ -285,6 +285,42 @@ app.get('/api/subscribers', (req, res) => {
   res.json(readSubscribers());
 });
 
+// ─── Plausible traffic snapshot (admin-only) ───
+// Set PLAUSIBLE_API_KEY in env. Hit: /api/admin/traffic?key=ADMIN_KEY&period=30d
+// period: 7d | 30d | 6mo | 12mo (Plausible API values)
+app.get('/api/admin/traffic', async (req, res) => {
+  if (!process.env.ADMIN_KEY || req.query.key !== process.env.ADMIN_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  if (!process.env.PLAUSIBLE_API_KEY) {
+    return res.status(503).json({ error: 'PLAUSIBLE_API_KEY not configured. Generate one at plausible.io/settings/api-keys' });
+  }
+
+  const site = process.env.PLAUSIBLE_SITE_ID || 'internationalre.org';
+  const period = ['7d','30d','6mo','12mo'].includes(req.query.period) ? req.query.period : '30d';
+  const base = 'https://plausible.io/api/v1/stats';
+  const auth = { Authorization: `Bearer ${process.env.PLAUSIBLE_API_KEY}` };
+
+  try {
+    const [aggR, srcR, pageR] = await Promise.all([
+      fetch(`${base}/aggregate?site_id=${site}&period=${period}&metrics=visitors,pageviews,bounce_rate,visit_duration`, { headers: auth }),
+      fetch(`${base}/breakdown?site_id=${site}&period=${period}&property=visit:source&limit=10`, { headers: auth }),
+      fetch(`${base}/breakdown?site_id=${site}&period=${period}&property=event:page&limit=10`, { headers: auth }),
+    ]);
+    if (!aggR.ok) return res.status(aggR.status).json({ error: `Plausible aggregate ${aggR.status}: ${await aggR.text()}` });
+    const [agg, src, pages] = await Promise.all([aggR.json(), srcR.json(), pageR.json()]);
+    res.json({
+      site, period,
+      summary: agg.results,
+      top_sources: src.results || [],
+      top_pages: pages.results || [],
+      subscribers_total: readSubscribers().length,
+    });
+  } catch (err) {
+    res.status(502).json({ error: `Plausible fetch failed: ${err.message}` });
+  }
+});
+
 // ─── Send newsletter to all subscribers ───
 
 app.post('/api/send-newsletter', async (req, res) => {
@@ -334,6 +370,7 @@ app.post('/api/send-newsletter', async (req, res) => {
 
 // ─── RSS Feed — scans all content directories for dlvr.it auto-posting ───
 
+app.get('/rss.xml', (req, res) => res.redirect(301, '/feed.xml'));
 app.get('/feed.xml', (req, res) => {
   const contentDirs = [
     { dir: 'blog', urlPrefix: 'blog' },

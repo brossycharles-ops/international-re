@@ -86,6 +86,13 @@
     }
     .err-link:hover { text-decoration: underline; }
   </style>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script defer src="/js/analytics.js"></script>
+  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
 </head>
 <body>
   <div class="page-404">
@@ -100,12 +107,10 @@
     <p class="err-sub">The page you're looking for may have moved. But while you're here — the newsletter is free and worth your time.</p>
 
     <div class="err-card">
-      <h3>Get the free weekly market report</h3>
-      <p>Live prices, rental yields &amp; legal guides across 11 Latin American markets. Plus your 2026 Market Entry Guide on signup.</p>
+      <h2>Get the free weekly market report</h2>
+      <p>Live prices, rental yields &amp; legal guides across 12 Latin American markets. Plus your 2026 Market Entry Guide on signup.</p>
       <form class="err-form" id="err404Form">
-        <input type="text" name="firstName" placeholder="First name" required>
-        <input type="text" name="lastName" placeholder="Last name" required>
-        <input type="email" name="email" placeholder="Email address" required>
+        <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
         <button type="submit" id="err404Btn">Subscribe Free &rarr;</button>
       </form>
       <div class="err-success" id="err404Success">
@@ -130,7 +135,7 @@
       try {
         const res = await fetch('/api/subscribe', {
           method: 'POST', headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ firstName: this.firstName.value.trim(), lastName: this.lastName.value.trim(), email: this.email.value.trim() })
+          body: JSON.stringify({ email: this.email.value.trim(), source: '404-page' })
         });
         const data = await res.json();
         if (res.ok || /already subscribed/i.test(data.error || '')) {
