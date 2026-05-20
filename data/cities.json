@@ -1,0 +1,276 @@
+{
+  "cities": [
+    {
+      "slug": "medellin-colombia",
+      "city": "Medellín",
+      "country": "Colombia",
+      "countryFlag": "🇨🇴",
+      "tagline": "Latin America's smartest value play — apartments from $1,500/sqm and 8,300 digital nomads arriving monthly.",
+      "heroImage": "https://images.unsplash.com/photo-1555993539-1732b0258235",
+      "stats": {
+        "pricePerSqm": "$1,500–$2,400",
+        "rentalYield": "6.5–9%",
+        "costOfLiving": "$1,400–$2,200/mo",
+        "currency": "Colombian Peso (COP)"
+      },
+      "matchSlugs": ["medellin", "colombia"],
+      "metaDescription": "Everything we know about Medellín real estate in 2026 — current prices per m², rental yields, best neighborhoods, foreign buyer rules, and cost of living."
+    },
+    {
+      "slug": "cartagena-colombia",
+      "city": "Cartagena",
+      "country": "Colombia",
+      "countryFlag": "🇨🇴",
+      "tagline": "Walled colonial beauty on the Caribbean with strong Airbnb demand and beachfront condos 68% below Miami.",
+      "heroImage": "https://images.unsplash.com/photo-1555993539-1732b0258235",
+      "stats": {
+        "pricePerSqm": "$2,000–$3,500",
+        "rentalYield": "6–8%",
+        "costOfLiving": "$1,500–$2,400/mo",
+        "currency": "Colombian Peso (COP)"
+      },
+      "matchSlugs": ["cartagena", "colombia"],
+      "metaDescription": "Cartagena, Colombia real estate guide 2026 — prices, yields, Old City vs Bocagrande, foreign buyer rules, and Airbnb income data."
+    },
+    {
+      "slug": "panama-city-panama",
+      "city": "Panama City",
+      "country": "Panama",
+      "countryFlag": "🇵🇦",
+      "tagline": "Dollar economy, world-class skyline, and the most generous residency program in the Americas.",
+      "heroImage": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071",
+      "stats": {
+        "pricePerSqm": "$1,800–$3,800",
+        "rentalYield": "5.5–8%",
+        "costOfLiving": "$1,800–$3,000/mo",
+        "currency": "US Dollar (USD)"
+      },
+      "matchSlugs": ["panama"],
+      "metaDescription": "Panama City real estate 2026 — current prices per m², rental yields, pensionado visa, foreign ownership rules, and best neighborhoods."
+    },
+    {
+      "slug": "san-jose-costa-rica",
+      "city": "San José",
+      "country": "Costa Rica",
+      "countryFlag": "🇨🇷",
+      "tagline": "Central Valley capital with deep expat infrastructure and political stability since 1948.",
+      "heroImage": "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
+      "stats": {
+        "pricePerSqm": "$1,400–$2,800",
+        "rentalYield": "5–8%",
+        "costOfLiving": "$1,800–$3,200/mo",
+        "currency": "Costa Rican Colón (CRC)"
+      },
+      "matchSlugs": ["costa-rica", "san-jose"],
+      "metaDescription": "San José, Costa Rica real estate guide 2026 — current prices, yields, foreign buyer rules, residency pathways, and expat-favored neighborhoods."
+    },
+    {
+      "slug": "guanacaste-costa-rica",
+      "city": "Guanacaste",
+      "country": "Costa Rica",
+      "countryFlag": "🇨🇷",
+      "tagline": "Pacific surf-and-sun region — LIR airport's busiest quarter ever and a $1.2B development pipeline.",
+      "heroImage": "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
+      "stats": {
+        "pricePerSqm": "$2,200–$4,500",
+        "rentalYield": "9–11%",
+        "costOfLiving": "$2,000–$3,500/mo",
+        "currency": "Costa Rican Colón (CRC)"
+      },
+      "matchSlugs": ["guanacaste", "tamarindo", "costa-rica"],
+      "metaDescription": "Guanacaste, Costa Rica real estate 2026 — Tamarindo, Nosara, Papagayo. Current prices per m², 9-11% rental yields, and foreign buyer rules."
+    },
+    {
+      "slug": "buenos-aires-argentina",
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "countryFlag": "🇦🇷",
+      "tagline": "World-class architecture at $2,800/m². Capital controls gone, UVA mortgages back, and 7%+ gross yields.",
+      "heroImage": "https://images.unsplash.com/photo-1589909202802-8f4aadce1849",
+      "stats": {
+        "pricePerSqm": "$2,000–$3,500",
+        "rentalYield": "6–8%",
+        "costOfLiving": "$1,200–$2,000/mo",
+        "currency": "Argentine Peso (ARS)"
+      },
+      "matchSlugs": ["buenos-aires", "argentina"],
+      "metaDescription": "Buenos Aires real estate 2026 — Palermo, Recoleta, Puerto Madero. Current prices per m², 6-8% gross yields, foreign buyer rules and UVA mortgages."
+    },
+    {
+      "slug": "mexico-city-mexico",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "countryFlag": "🇲🇽",
+      "tagline": "Latin America's biggest economy hub — Polanco, Roma, Condesa drawing waves of remote workers.",
+      "heroImage": "https://images.unsplash.com/photo-1518638150340-f706e86654de",
+      "stats": {
+        "pricePerSqm": "$2,400–$4,200",
+        "rentalYield": "5.5–7.5%",
+        "costOfLiving": "$1,400–$2,500/mo",
+        "currency": "Mexican Peso (MXN)"
+      },
+      "matchSlugs": ["mexico-city", "mexico"],
+      "metaDescription": "Mexico City (CDMX) real estate 2026 — Polanco, Roma, Condesa prices, rental yields, foreign buyer rules, and expat cost of living."
+    },
+    {
+      "slug": "playa-del-carmen-mexico",
+      "city": "Playa del Carmen",
+      "country": "Mexico",
+      "countryFlag": "🇲🇽",
+      "tagline": "Riviera Maya's beach-town hub — fideicomiso ownership, dollar income from Airbnb tourists.",
+      "heroImage": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a",
+      "stats": {
+        "pricePerSqm": "$2,500–$4,800",
+        "rentalYield": "7–10%",
+        "costOfLiving": "$1,800–$3,000/mo",
+        "currency": "Mexican Peso (MXN)"
+      },
+      "matchSlugs": ["playa-del-carmen", "mexico"],
+      "metaDescription": "Playa del Carmen real estate 2026 — Riviera Maya condo prices, Airbnb yields 7-10%, fideicomiso rules for foreigners."
+    },
+    {
+      "slug": "tulum-mexico",
+      "city": "Tulum",
+      "country": "Mexico",
+      "countryFlag": "🇲🇽",
+      "tagline": "High-yield jungle-beach market with the strongest STR income per dollar in Latin America.",
+      "heroImage": "https://images.unsplash.com/photo-1682687982501-1e58ab814714",
+      "stats": {
+        "pricePerSqm": "$2,800–$5,500",
+        "rentalYield": "8–12%",
+        "costOfLiving": "$2,200–$3,500/mo",
+        "currency": "Mexican Peso (MXN)"
+      },
+      "matchSlugs": ["tulum", "mexico"],
+      "metaDescription": "Tulum real estate 2026 — Aldea Zama, Region 15, La Veleta prices, 8-12% Airbnb yields, fideicomiso requirements."
+    },
+    {
+      "slug": "santiago-chile",
+      "city": "Santiago",
+      "country": "Chile",
+      "countryFlag": "🇨🇱",
+      "tagline": "Andean capital with the most stable peso in Latin America and supply-constrained luxury market.",
+      "heroImage": "https://images.unsplash.com/photo-1518638150340-f706e86654de",
+      "stats": {
+        "pricePerSqm": "$2,200–$4,500",
+        "rentalYield": "4.5–6.5%",
+        "costOfLiving": "$1,800–$3,200/mo",
+        "currency": "Chilean Peso (CLP)"
+      },
+      "matchSlugs": ["santiago", "chile"],
+      "metaDescription": "Santiago, Chile real estate 2026 — Las Condes, Providencia, Vitacura. Prices per m², rental yields, foreign buyer rules and visa pathways."
+    },
+    {
+      "slug": "montevideo-uruguay",
+      "city": "Montevideo",
+      "country": "Uruguay",
+      "countryFlag": "🇺🇾",
+      "tagline": "Latin America's most stable democracy — 10-year zero-tax holiday on foreign income for new residents.",
+      "heroImage": "https://images.unsplash.com/photo-1585208798174-6cedd86e019a",
+      "stats": {
+        "pricePerSqm": "$2,400–$4,500",
+        "rentalYield": "5–7%",
+        "costOfLiving": "$1,800–$2,800/mo",
+        "currency": "Uruguayan Peso (UYU)"
+      },
+      "matchSlugs": ["montevideo", "uruguay"],
+      "metaDescription": "Montevideo, Uruguay real estate 2026 — Pocitos, Punta Carretas prices, 5-7% yields, 10-year tax holiday, residency program."
+    },
+    {
+      "slug": "punta-del-este-uruguay",
+      "city": "Punta del Este",
+      "country": "Uruguay",
+      "countryFlag": "🇺🇾",
+      "tagline": "South America's Hamptons — peak-season rentals, year-round capital appreciation, and Mediterranean climate.",
+      "heroImage": "https://images.unsplash.com/photo-1585208798174-6cedd86e019a",
+      "stats": {
+        "pricePerSqm": "$3,500–$8,000",
+        "rentalYield": "4–6%",
+        "costOfLiving": "$2,200–$4,500/mo",
+        "currency": "Uruguayan Peso (UYU)"
+      },
+      "matchSlugs": ["punta-del-este", "uruguay"],
+      "metaDescription": "Punta del Este, Uruguay real estate 2026 — beachfront condo prices, seasonal rental yields, foreign buyer rules, and Brava vs Mansa peninsula guide."
+    },
+    {
+      "slug": "lima-peru",
+      "city": "Lima",
+      "country": "Peru",
+      "countryFlag": "🇵🇪",
+      "tagline": "Coastal capital with Pacific cliffs and the cheapest entry price among Latin American capitals.",
+      "heroImage": "https://images.unsplash.com/photo-1531218150217-54595bc2b934",
+      "stats": {
+        "pricePerSqm": "$1,500–$2,800",
+        "rentalYield": "6–8%",
+        "costOfLiving": "$1,200–$2,000/mo",
+        "currency": "Peruvian Sol (PEN)"
+      },
+      "matchSlugs": ["lima", "peru"],
+      "metaDescription": "Lima, Peru real estate 2026 — Miraflores, Barranco, San Isidro prices, rental yields, foreign ownership rules and cost of living."
+    },
+    {
+      "slug": "sao-paulo-brazil",
+      "city": "São Paulo",
+      "country": "Brazil",
+      "countryFlag": "🇧🇷",
+      "tagline": "Latin America's financial capital — dollar buys 40-60% more than comparable global cities.",
+      "heroImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64",
+      "stats": {
+        "pricePerSqm": "$2,500–$5,000",
+        "rentalYield": "6–7.5%",
+        "costOfLiving": "$1,500–$2,800/mo",
+        "currency": "Brazilian Real (BRL)"
+      },
+      "matchSlugs": ["sao-paulo", "brazil"],
+      "metaDescription": "São Paulo real estate 2026 — Jardins, Itaim Bibi, Vila Madalena prices, 6-7.5% yields, foreign buyer rules and dollar advantage."
+    },
+    {
+      "slug": "florianopolis-brazil",
+      "city": "Florianópolis",
+      "country": "Brazil",
+      "countryFlag": "🇧🇷",
+      "tagline": "Brazil's island capital — 42 beaches, year-round tourism, surfer-and-tech enclave.",
+      "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5",
+      "stats": {
+        "pricePerSqm": "$2,200–$4,200",
+        "rentalYield": "7–10%",
+        "costOfLiving": "$1,500–$2,500/mo",
+        "currency": "Brazilian Real (BRL)"
+      },
+      "matchSlugs": ["florianopolis", "brazil"],
+      "metaDescription": "Florianópolis, Brazil real estate 2026 — Jurerê, Lagoa, Praia Mole prices, 7-10% Airbnb yields, foreign buyer rules."
+    },
+    {
+      "slug": "granada-nicaragua",
+      "city": "Granada",
+      "country": "Nicaragua",
+      "countryFlag": "🇳🇮",
+      "tagline": "Central America's oldest colonial city — restored haciendas under $200K and 9-11% yields.",
+      "heroImage": "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
+      "stats": {
+        "pricePerSqm": "$800–$1,800",
+        "rentalYield": "9–11%",
+        "costOfLiving": "$900–$1,500/mo",
+        "currency": "US Dollar (USD)"
+      },
+      "matchSlugs": ["granada", "nicaragua"],
+      "metaDescription": "Granada, Nicaragua real estate 2026 — colonial home prices, 9-11% rental yields, foreign buyer rules and Lake Nicaragua proximity."
+    },
+    {
+      "slug": "san-juan-del-sur-nicaragua",
+      "city": "San Juan del Sur",
+      "country": "Nicaragua",
+      "countryFlag": "🇳🇮",
+      "tagline": "Pacific surf town with the lowest beachfront prices in Central America.",
+      "heroImage": "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
+      "stats": {
+        "pricePerSqm": "$1,200–$2,500",
+        "rentalYield": "8–12%",
+        "costOfLiving": "$1,000–$1,800/mo",
+        "currency": "US Dollar (USD)"
+      },
+      "matchSlugs": ["san-juan-del-sur", "nicaragua"],
+      "metaDescription": "San Juan del Sur, Nicaragua real estate 2026 — Pacific beachfront prices, 8-12% surf-rental yields, residency and foreign buyer rules."
+    }
+  ]
+}
