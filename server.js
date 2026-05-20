@@ -402,10 +402,12 @@ app.get('/feed.xml', (req, res) => {
         const dateStr = dateMatch ? dateMatch[1].trim() : '';
         const fileStat = fs.statSync(path.join(fullPath, file));
 
+        const baseLink = `https://www.internationalre.org/${urlPrefix}/${file}`;
         items.push({
           title: titleMatch ? titleMatch[1].trim() : file.replace('.html', ''),
           description: descMatch ? descMatch[1] : '',
-          link: `https://www.internationalre.org/${urlPrefix}/${file}`,
+          link: `${baseLink}?utm_source=rss&utm_medium=social&utm_campaign=dlvr`,
+          guid: baseLink,
           date: dateStr || fileStat.mtime.toISOString().split('T')[0]
         });
       } catch (e) { /* skip */ }
@@ -425,10 +427,10 @@ app.get('/feed.xml', (req, res) => {
     <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
     ${items.map(item => `<item>
       <title>${item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</title>
-      <link>${item.link}</link>
+      <link>${item.link.replace(/&/g, '&amp;')}</link>
       <description>${item.description.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</description>
       <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
-      <guid>${item.link}</guid>
+      <guid isPermaLink="false">${item.guid}</guid>
     </item>`).join('\n    ')}
   </channel>
 </rss>`;
