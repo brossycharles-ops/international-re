@@ -453,6 +453,25 @@ def render_index(cities_list):
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Latin America City Real Estate Guides 2026",
+    "description": "Comprehensive city-by-city Latin American real estate guides covering 17 markets across 9 countries.",
+    "url": "{SITE}/cities/",
+    "isPartOf": {{
+      "@type": "WebSite",
+      "name": "International RE",
+      "url": "{SITE}"
+    }},
+    "publisher": {{
+      "@type": "Organization",
+      "name": "International RE",
+      "logo": {{ "@type": "ImageObject", "url": "{SITE}/favicon.svg" }}
+    }}
+  }}
+  </script>
   <style>
     body {{ background: #f7f5f0; }}
     .cities-hero {{
