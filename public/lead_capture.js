@@ -138,7 +138,7 @@
     }
     let armed = false;
     const arm = () => { armed = true; };
-    setTimeout(arm, 8000);
+    setTimeout(arm, 4000);
 
     function trigger() {
       if (!armed) return;
@@ -157,6 +157,20 @@
         lastScroll = s;
       }, { passive: true });
     }
+    // Scroll-depth trigger: fires when reader is 70% through (highest engagement moment).
+    // Only on article-style pages — skip homepage/forms.
+    const isArticle = /\/(blog|guides|quick-reads|tips|landing)\//.test(window.location.pathname);
+    if (isArticle) {
+      const onScroll = () => {
+        const scrolled = window.scrollY + window.innerHeight;
+        const total = document.documentElement.scrollHeight;
+        if (total > 0 && scrolled / total >= 0.7) {
+          trigger();
+          window.removeEventListener('scroll', onScroll);
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
   }
 
   function buildExitModal() {
@@ -169,12 +183,12 @@
         <img class="modal-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Latin American skyline at golden hour" loading="lazy">
         <div class="modal-body">
           <span class="modal-eyebrow">Free · 2026 Edition</span>
-          <h2 id="exitTitle">Get the Latin America Expat Starter Kit</h2>
-          <p>8-country comparison table, visa requirements, cost of living for 12 cities, and a 47-item relocation checklist — free.</p>
+          <h2 id="exitTitle">Before you go — get the Latin America Starter Kit</h2>
+          <p><strong>38 pages, free.</strong> Real price-per-m² across 12 markets, current rental yields, visa requirements for 8 countries, and a 47-item relocation checklist. Sent instantly.</p>
           <form class="modal-form" data-form="exit">
-            <input type="email" name="email" placeholder="Email address" required>
-            <button type="submit">Send Me the Starter Kit</button>
-            <p class="modal-fineprint">By submitting you agree to receive the report and our weekly newsletter. Unsubscribe anytime. We never share your data.</p>
+            <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
+            <button type="submit">Send My Free Starter Kit →</button>
+            <p class="modal-fineprint">Plus our weekly market intel email. Unsubscribe anytime. No spam — ever.</p>
           </form>
         </div>
       </div>`;
@@ -303,10 +317,10 @@
     bar.setAttribute('aria-label', 'Subscribe prompt');
     bar.innerHTML = `
       <div class="sticky-bar-inner">
-        <span class="sticky-bar-text">&#9670; Free: 2026 Latin America Expat Starter Kit — country table, visa guide &amp; relocation checklist</span>
+        <span class="sticky-bar-text">&#9670; <strong>Free 38-page Starter Kit</strong> — prices, yields &amp; visa rules for 12 Latin American markets</span>
         <form class="sticky-bar-form" autocomplete="off">
-          <input type="email" name="email" placeholder="Your email" required>
-          <button type="submit">Get Free Kit</button>
+          <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
+          <button type="submit">Get It Free →</button>
         </form>
         <button class="sticky-bar-close" aria-label="Dismiss">&times;</button>
       </div>`;
@@ -348,7 +362,7 @@
     window.addEventListener('scroll', checkScroll, { passive: true });
   }
 
-  /* ---------- 6. TIME-ON-PAGE EXIT INTENT (45s) ---------- */
+  /* ---------- 6. TIME-ON-PAGE EXIT INTENT (25s) ---------- */
   function initTimeOnPage() {
     if (alreadySubscribed()) return;
     if (sessionStorage.getItem('exitModalShown') === 'true') return;
@@ -359,7 +373,7 @@
       if (alreadySubscribed()) return;
       modal.classList.add('show');
       sessionStorage.setItem('exitModalShown', 'true');
-    }, 45000);
+    }, 25000);
   }
 
   /* ---------- BOOT ---------- */
