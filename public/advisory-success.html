@@ -64,13 +64,7 @@
   </footer>
 
   <script src="script.js" defer></script>
-  <script>
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.querySelector('.nav-links');
-    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
-  </script>
+  <!-- mobile menu toggle is handled by script.js (removed duplicate that threw
+       "Identifier 'mobileToggle' has already been declared"). -->
 </body>
 </html>

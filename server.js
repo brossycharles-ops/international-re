@@ -134,6 +134,18 @@ app.post('/api/subscribe', async (req, res) => {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
 
+  // Reject reserved test/example domains so smoke tests and bots don't
+  // pollute the real subscriber list. RFC 2606 (.test/.example/.invalid/.localhost)
+  // plus the common @example.com/.org/.net and @test.com sentinels.
+  const TEST_DOMAIN_RE = /@(?:example\.(?:com|org|net)|test\.com|localhost|.+\.(?:test|example|invalid|localhost))$/i;
+  if (TEST_DOMAIN_RE.test(email)) {
+    return res.status(400).json({ error: 'Please use a real email address.' });
+  }
+
+  // ?dryrun=1 — validate everything end-to-end without writing or sending.
+  // Used by scripts/test_subscribe.sh to verify the pipeline without polluting prod.
+  const dryrun = req.query.dryrun === '1' || req.query.dryrun === 'true';
+
   await acquireLock();
   try {
     const subscribers = readSubscribers();
@@ -141,6 +153,11 @@ app.post('/api/subscribe', async (req, res) => {
 
     if (subscribers.some(s => s.email === normalizedEmail)) {
       return res.status(409).json({ error: 'This email is already subscribed.' });
+    }
+
+    if (dryrun) {
+      // finally{} at end of this try-block releases the lock; no double release here.
+      return res.json({ message: 'Dryrun OK — validation passed, no write.', dryrun: true });
     }
 
     const now = new Date();
@@ -284,6 +301,38 @@ app.get('/api/subscribers', (req, res) => {
   }
   res.json(readSubscribers());
 });
+
+// ─── One-shot cleanup: remove test/sentinel emails the smoke test or audits
+//      accidentally seeded into the real list. Admin-only. ───
+//   POST /api/admin/cleanup-test-subscribers?key=ADMIN_KEY
+//   Optional ?dryrun=1 → returns what WOULD be removed without writing.
+const CLEANUP_PATTERNS = [
+  /@example\.(com|org|net)$/i,
+  /@test\.com$/i,
+  /@.+\.(test|example|invalid|localhost)$/i,
+  /^smoketest\+/i,
+  /^audit-test-/i,
+  /^brossycharles\+audit\d+@gmail\.com$/i, // emails my audit run accidentally created
+];
+async function handleCleanupTestSubscribers(req, res) {
+  const key = req.query.key || req.body?.key;
+  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const dryrun = req.query.dryrun === '1' || req.query.dryrun === 'true';
+  await acquireLock();
+  try {
+    const subs = readSubscribers();
+    const isTest = (s) => CLEANUP_PATTERNS.some(re => re.test(s.email || ''));
+    const removed = subs.filter(isTest).map(s => s.email);
+    const kept = subs.filter(s => !isTest(s));
+    if (!dryrun && removed.length) writeSubscribers(kept);
+    return res.json({ dryrun, before: subs.length, removed: removed.length, after: kept.length, removed_emails: removed });
+  } finally {
+    releaseLock();
+  }
+}
+app.post('/api/admin/cleanup-test-subscribers', handleCleanupTestSubscribers);
 
 // ─── Plausible traffic snapshot (admin-only) ───
 // Set PLAUSIBLE_API_KEY in env. Hit: /api/admin/traffic?key=ADMIN_KEY&period=30d
