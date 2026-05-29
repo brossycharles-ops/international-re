@@ -396,8 +396,9 @@ app.get('/feed.xml', (req, res) => {
         const content = fs.readFileSync(path.join(fullPath, file), 'utf-8');
         const titleMatch = content.match(/<title>([^<|]*)/);
         const descMatch = content.match(/<meta name="description" content="([^"]*)"/);
-        const dateMatch = content.match(/<span class="blog-post-date">([^<]*)<\/span>/) ||
-                          content.match(new RegExp('<meta property="article:published_time" content="([^"]*)"')) ||
+        const dateMatch = content.match(new RegExp('<meta property="article:published_time" content="([^"]*)"')) ||
+                          content.match(/"datePublished"\s*:\s*"([^"]+)"/) ||
+                          content.match(/<span class="blog-post-date">([^<]*)<\/span>/) ||
                           content.match(/Updated\s+(\d{4}-\d{2}-\d{2})/);
         const dateStr = dateMatch ? dateMatch[1].trim() : '';
         const fileStat = fs.statSync(path.join(fullPath, file));

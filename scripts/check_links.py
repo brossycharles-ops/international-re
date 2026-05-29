@@ -6,6 +6,10 @@ from pathlib import Path
 
 PUB = Path(__file__).resolve().parent.parent / "public"
 HREF_RE = re.compile(r'href=["\']([^"\']+)["\']', re.IGNORECASE)
+# Strip <script>...</script> and <style>...</style> blocks before scanning —
+# JS template literals like href="${market.link}" are runtime-rendered, not static links.
+SCRIPT_STYLE_RE = re.compile(r'<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>',
+                             re.IGNORECASE | re.DOTALL)
 
 def resolve(src: Path, href: str) -> Path | None:
     if href.startswith(("http://", "https://", "mailto:", "tel:", "#", "javascript:", "data:")):
@@ -25,6 +29,7 @@ broken: list[tuple[str, str]] = []
 checked = 0
 for path in PUB.rglob("*.html"):
     html = path.read_text(encoding="utf-8")
+    html = SCRIPT_STYLE_RE.sub("", html)
     for m in HREF_RE.finditer(html):
         href = m.group(1)
         target = resolve(path, href)

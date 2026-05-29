@@ -7,7 +7,13 @@ from pathlib import Path
 PUB = Path(__file__).resolve().parent.parent / "public"
 BASE = "https://www.internationalre.org"
 EXCLUDE_DIRS = {"images", "landing"}
-EXCLUDE_FILES = {"internationalre.txt", "robots.txt", "sitemap.xml"}
+# Exclude noindex / utility pages from sitemap (Google flags noindex-in-sitemap as a conflict).
+EXCLUDE_FILES = {
+    "internationalre.txt", "robots.txt", "sitemap.xml",
+    "404.html", "thankyou.html", "unsubscribe.html",
+    "advisory-success.html", "outreach-templates.html",
+    "privacy.html", "terms.html",  # noindex legal pages
+}
 
 PRIORITY = {
     "index.html": ("1.0", "weekly"),
