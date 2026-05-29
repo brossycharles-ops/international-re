@@ -924,9 +924,8 @@
     // duplicate `const mobileToggle` declaration that was throwing
     // "Identifier 'mobileToggle' has already been declared".
 
-    // Footer year
-    const footerYear = document.getElementById('footerYear');
-    if (footerYear) footerYear.textContent = new Date().getFullYear();
+    // Footer year is set by script.js (removed duplicate const footerYear that
+    // was throwing "Identifier 'footerYear' has already been declared").
 
     // FAQ accordion — using native <details>, update aria-expanded
     document.querySelectorAll('.faq-item').forEach(item => {
