@@ -29,7 +29,11 @@ app.use(helmet({
   hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
 }));
 const PORT = process.env.PORT || 3000;
-const SUBSCRIBERS_FILE = path.join(__dirname, 'data', 'subscribers.json');
+// CRITICAL: on Railway / Fly / Render the container filesystem is ephemeral and
+// every deploy wipes this file. Mount a persistent Volume in the platform
+// dashboard (e.g. Railway → Volumes → mount at /data) and set
+// SUBSCRIBERS_FILE=/data/subscribers.json so subscribers survive redeploys.
+const SUBSCRIBERS_FILE = process.env.SUBSCRIBERS_FILE || path.join(__dirname, 'data', 'subscribers.json');
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const EMAIL_FROM = process.env.EMAIL_FROM || 'International RE <onboarding@resend.dev>';
 
@@ -47,10 +51,13 @@ app.use(express.static(path.join(__dirname, 'public'), {
   },
 }));
 
-// ─── Subscriber Storage (JSON file, persists across deploys via git) ───
+// ─── Subscriber Storage ───
+// On Railway/Fly/Render, mount a persistent Volume and set SUBSCRIBERS_FILE
+// to a path on it (e.g. /data/subscribers.json), otherwise subscribers get
+// wiped on every redeploy because the container fs is ephemeral.
 
 function ensureDataDir() {
-  const dataDir = path.join(__dirname, 'data');
+  const dataDir = path.dirname(SUBSCRIBERS_FILE);
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 }
 
@@ -768,6 +775,8 @@ function shutdown(signal) {
 
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n  International RE is running at http://0.0.0.0:${PORT}`);
+  const isEphemeralPath = !process.env.SUBSCRIBERS_FILE;
+  console.log(`  Subscribers file: ${SUBSCRIBERS_FILE}${isEphemeralPath ? '  (⚠ ephemeral — set SUBSCRIBERS_FILE to a volume path on Railway)' : ''}`);
   console.log(`  Subscribers: ${readSubscribers().length}\n`);
 });
 
