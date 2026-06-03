@@ -14,3 +14,4 @@ growth-agent.sh
 catchup-agent.sh
 retry-agent.sh
 start-server.command
+.pending-tasks.txt.tmp.*
