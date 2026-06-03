@@ -241,11 +241,16 @@ app.post('/api/unsubscribe', async (req, res) => {
   try {
     const subscribers = readSubscribers();
     const idx = subscribers.findIndex(s => s.email === normalizedEmail);
-    if (idx === -1) return res.status(404).json({ error: 'Email not found on our list.' });
-    subscribers.splice(idx, 1);
-    writeSubscribers(subscribers);
-    console.log(`Unsubscribed: ${normalizedEmail} (remaining: ${subscribers.length})`);
-    res.json({ message: 'Successfully unsubscribed.' });
+    if (idx !== -1) {
+      subscribers.splice(idx, 1);
+      writeSubscribers(subscribers);
+      console.log(`Unsubscribed: ${normalizedEmail} (remaining: ${subscribers.length})`);
+    } else {
+      console.log(`Unsubscribe attempt for non-existent email (intentionally returning 200 to prevent enumeration)`);
+    }
+    // Always return 200 regardless of whether the email was on the list — otherwise
+    // a 404 vs 200 mismatch lets a third party probe subscriber existence.
+    res.json({ message: 'If that email was on our list, it has been removed.' });
   } catch (err) {
     console.error('Unsubscribe error:', err);
     res.status(500).json({ error: 'Server error. Please try again.' });

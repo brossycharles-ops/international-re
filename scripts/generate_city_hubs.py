@@ -424,7 +424,7 @@ def render_index(cities_list):
         <div class="city-card-img" style="background-image:url('{c["heroImage"]}?w=800&q=80');"></div>
         <div class="city-card-body">
           <span class="city-card-country">{c["countryFlag"]} {c["country"]}</span>
-          <h3>{c["city"]}</h3>
+          <h2>{c["city"]}</h2>
           <p>{c["tagline"][:140]}</p>
         </div>
       </a>'''

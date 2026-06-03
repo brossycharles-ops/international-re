@@ -2,7 +2,7 @@
 # Smoke test for /api/subscribe and /api/subscriber-count.
 # Uses ?dryrun=1 so the real subscriber list is NEVER touched in production.
 # Assumes server is running at http://localhost:3000 (or $BASE_URL).
-set -u
+set -uo pipefail
 BASE="${BASE_URL:-http://localhost:3000}"
 # Use a unique +tag inside a deliverable-shaped domain — but always sent with ?dryrun=1.
 EMAIL="smoketest+$(date +%s)@gmail.com"

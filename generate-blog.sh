@@ -1,5 +1,6 @@
 #!/bin/bash
 # Weekly featured blog post — runs every Monday at 8am via LaunchAgent
+set -uo pipefail
 
 export PATH="$HOME/.local/bin:$HOME/.nvm/versions/node/v22.22.2/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:$PATH"
 
@@ -28,12 +29,12 @@ $HOME/.local/bin/claude -p --dangerously-skip-permissions \
 
 TASK: Write the weekly featured blog post in public/blog/.
 - Run: ls public/blog/ and read the last 2 blog post filenames to find recent market and writer.
-- Next writer rotation: Sofia Mendez → James Whitfield → Carolina Vega → repeat.
+- Byline: Charles Brossy (founder, International RE). Always use this byline — no other personas.
 - Pick a market NOT in the last 2 posts (Costa Rica, Nicaragua, Argentina, Chile).
 - Web search for 3-5 real current data points (price/sqm, rental yield, one notable development).
 - Write a 700-900 word HTML post matching public/blog/guanacaste-hottest-market-2026.html (nav, Unsplash hero, article, subscribe banner, footer). Publish date: $DATE.
 - Update public/blog.html: move current featured post to grid, make new post featured.
-- Add URL to public/sitemap.xml with lastmod $DATE.
+- Run: npm run sitemap (regenerates public/sitemap.xml from filesystem — DO NOT hand-edit sitemap.xml).
 - git add -A && git commit -m 'Add weekly blog: [title]' && git push" >> "$LOG_FILE" 2>&1
 
 if [ $? -eq 0 ]; then
