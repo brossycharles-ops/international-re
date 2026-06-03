@@ -1,3 +1,23 @@
+/* ===== Skip-link (a11y) — first focusable element; invisible until focused ===== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 8px;
+  background: #0a1628;
+  color: #c9a84c;
+  padding: 10px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 10000;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 8px;
+  outline: 2px solid #c9a84c;
+  outline-offset: 2px;
+}
+
 /* ===== RESET & BASE ===== */
 *, *::before, *::after {
   margin: 0;

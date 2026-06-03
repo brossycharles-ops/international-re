@@ -103,7 +103,10 @@ function releaseLock() {
 
 const rateLimitMap = new Map();
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
-const RATE_LIMIT_MAX = 5;
+// 5 was too tight — shared NATs / corporate networks could lock out legitimate
+// users in a few minutes. 20 still blocks rapid bot enumeration but leaves
+// headroom for retries, mistyped emails, and multiple users behind one IP.
+const RATE_LIMIT_MAX = 20;
 
 function checkRateLimit(ip) {
   const now = Date.now();
