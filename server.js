@@ -436,14 +436,16 @@ app.post('/api/send-newsletter', async (req, res) => {
 
 app.get('/rss.xml', (req, res) => res.redirect(301, '/feed.xml'));
 app.get('/feed.xml', (req, res) => {
+  // NOTE: 'landing' is deliberately excluded — those are conversion pages with
+  // no publish date; they all inherit the same file mtime, flood the top of the
+  // date-sorted feed, and dlvr.it ends up tweeting landing pages instead of
+  // actual articles.
   const contentDirs = [
     { dir: 'blog', urlPrefix: 'blog' },
     { dir: 'guides', urlPrefix: 'guides' },
     { dir: 'tips', urlPrefix: 'tips' },
-    { dir: 'landing', urlPrefix: 'landing' },
     { dir: 'case-studies', urlPrefix: 'case-studies' },
     { dir: 'spotlights', urlPrefix: 'spotlights' },
-    { dir: 'tools', urlPrefix: 'tools' },
     { dir: 'quick-reads', urlPrefix: 'quick-reads' },
     { dir: 'stories', urlPrefix: 'stories' },
   ];
