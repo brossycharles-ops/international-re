@@ -859,6 +859,49 @@ const DRIP_EMAILS = [
 
 const DRIP_SEND_WINDOW_DAYS = 7;
 
+// ─── Weekly newsletter ───
+// The content agents write each Monday issue to data/newsletters/YYYY-MM-DD.json
+// as {"subject": "...", "html": "..."}. The daily drip-check sends the newest
+// issue dated within the last NEWSLETTER_WINDOW_DAYS once per subscriber
+// (tracked in sub.newsletters, like sub.drip), so a missed day still goes out
+// and a redeploy never resends.
+const NEWSLETTER_DIR = path.join(__dirname, 'data', 'newsletters');
+const NEWSLETTER_WINDOW_DAYS = 3;
+
+function dueNewsletter(now) {
+  if (!fs.existsSync(NEWSLETTER_DIR)) return null;
+  const ids = fs.readdirSync(NEWSLETTER_DIR)
+    .filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+    .map(f => f.slice(0, 10))
+    .sort()
+    .reverse();
+  for (const id of ids) {
+    const ageDays = (now - new Date(id + 'T00:00:00Z').getTime()) / 864e5;
+    if (ageDays < 0) continue;
+    if (ageDays > NEWSLETTER_WINDOW_DAYS) return null;
+    try {
+      const issue = JSON.parse(fs.readFileSync(path.join(NEWSLETTER_DIR, id + '.json'), 'utf-8'));
+      if (typeof issue.subject !== 'string' || typeof issue.html !== 'string' || !issue.subject.trim() || issue.html.length < 200) {
+        console.error(`Newsletter ${id} skipped: needs a subject and html`);
+        return null;
+      }
+      return { id, subject: issue.subject.slice(0, 150), html: issue.html };
+    } catch (err) {
+      console.error(`Newsletter ${id} unreadable:`, err.message);
+      return null;
+    }
+  }
+  return null;
+}
+
+function newsletterEmail(issue, firstName) {
+  const body = issue.html.replace(/{{firstName}}/g, firstName || 'there');
+  return `${body}
+      <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;font-family:Inter,Arial,sans-serif;text-align:center;">
+        You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org/newsletter.html" style="color:#c9a84c;">Past issues</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
+      </p>`;
+}
+
 app.post('/api/drip-check', async (req, res) => {
   if (!requireAdminKey(req, res, req.body.key)) return;
   if (!resend) {
@@ -867,9 +910,11 @@ app.post('/api/drip-check', async (req, res) => {
 
   const subscribers = readSubscribers();
   const now = Date.now();
+  const issue = dueNewsletter(now);
   let sent = 0;
   let skipped = 0;
-  const updated = [];
+  let newsletterSent = 0;
+  const progress = new Map(); // email -> { drip, newsletters }
 
   for (const sub of subscribers) {
     const subTime = sub.subscribedAt
@@ -878,11 +923,12 @@ app.post('/api/drip-check', async (req, res) => {
         ? new Date(sub.dateSubscribed + 'T12:00:00Z').getTime()
         : null;
 
-    if (!subTime || !sub.email) { updated.push(sub); continue; }
+    if (!subTime || !sub.email) continue;
 
     const daysSince = (now - subTime) / (1000 * 60 * 60 * 24);
     const dripSent = sub.drip || [];
     const newDrip = [...dripSent];
+    const newsletters = [...(sub.newsletters || [])];
 
     for (const email of DRIP_EMAILS) {
       if (dripSent.includes(email.id)) { skipped++; continue; }
@@ -907,14 +953,34 @@ app.post('/api/drip-check', async (req, res) => {
       }
     }
 
-    updated.push({ ...sub, drip: newDrip });
+    if (issue && !newsletters.includes(issue.id)) {
+      try {
+        await resend.emails.send({
+          from: EMAIL_FROM,
+          to: sub.email,
+          subject: issue.subject,
+          html: newsletterEmail(issue, sub.firstName)
+        });
+        newsletters.push(issue.id);
+        newsletterSent++;
+      } catch (err) {
+        console.error(`Newsletter ${issue.id} failed for ${sub.email}:`, err.message);
+      }
+    }
+
+    progress.set(sub.email, { drip: newDrip, newsletters });
   }
 
+  // Merge into the current file rather than writing back the list read at the
+  // start — sending can take a while and a signup in between must not be lost.
   await acquireLock();
-  try { writeSubscribers(updated); } finally { releaseLock(); }
+  try {
+    const current = readSubscribers();
+    writeSubscribers(current.map(s => progress.has(s.email) ? { ...s, ...progress.get(s.email) } : s));
+  } finally { releaseLock(); }
 
-  console.log(`Drip check complete: ${sent} sent, ${skipped} already sent`);
-  res.json({ sent, skipped, total: subscribers.length });
+  console.log(`Drip check complete: ${sent} drip sent, ${skipped} already sent, newsletter ${issue ? issue.id : 'none due'}: ${newsletterSent} sent`);
+  res.json({ sent, skipped, total: subscribers.length, newsletter: issue ? issue.id : null, newsletterSent });
 });
 
 // ─── 404 handler ───
