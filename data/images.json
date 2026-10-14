@@ -1,0 +1,145 @@
+{
+  "_about": "Verified Unsplash photos. Every image on the site must come from this list (scripts/verify_site.sh enforces it). Place photos were checked against Unsplash's location tag and by eye. To add one, confirm the location on its Unsplash page first.",
+  "places": {
+    "athens": {
+      "id": "photo-1555993539-1732b0258235",
+      "alt": "The Parthenon in Athens, Greece"
+    },
+    "bali": {
+      "id": "photo-1537996194471-e657df975ab4",
+      "alt": "Pura Ulun Danu Bratan temple in Bali, Indonesia"
+    },
+    "belize": {
+      "id": "photo-1722761478075-720dc58e63d1",
+      "alt": "The Great Blue Hole off the coast of Belize"
+    },
+    "bogota": {
+      "id": "photo-1720067392108-89b9485aa090",
+      "alt": "Bogotá, Colombia seen from Monserrate hill"
+    },
+    "brazilne": {
+      "id": "photo-1693927193025-71dcd241608e",
+      "alt": "Sunset over the beach at Jericoacoara in northeast Brazil"
+    },
+    "buenosaires": {
+      "id": "photo-1725499267114-15531716d101",
+      "alt": "Buenos Aires, Argentina skyline with the Obelisco"
+    },
+    "cartagena": {
+      "id": "photo-1714686495394-73e2bb1bbd39",
+      "alt": "Colorful colonial street in Cartagena, Colombia"
+    },
+    "chilelakes": {
+      "id": "photo-1654562870473-4db211e0e927",
+      "alt": "Puerto Varas on Lake Llanquihue in Chile's Lake District"
+    },
+    "costarica": {
+      "id": "photo-1580259679654-9276b39fd2d5",
+      "alt": "Rainforest-covered mountains near La Fortuna, Costa Rica"
+    },
+    "cuenca": {
+      "id": "photo-1504037738139-b281049f760e",
+      "alt": "Cuenca, Ecuador's New Cathedral domes"
+    },
+    "ecuadorcoast": {
+      "id": "photo-1669718613908-73c6e3bfabdc",
+      "alt": "Beach at Montañita on Ecuador's Pacific coast"
+    },
+    "florianopolis": {
+      "id": "photo-1565574337618-b08146e94992",
+      "alt": "Florianópolis, Brazil waterfront with high-rise buildings"
+    },
+    "granada": {
+      "id": "photo-1742513225200-a3fe34ea1d2a",
+      "alt": "Granada, Nicaragua cathedral and colonial center"
+    },
+    "guanacaste": {
+      "id": "photo-1643122542535-1326d7658ff1",
+      "alt": "Aerial view of a Guanacaste beach on Costa Rica's Pacific coast"
+    },
+    "lima": {
+      "id": "photo-1660521844005-015733ce411e",
+      "alt": "Lima, Peru clifftop neighborhoods above the Pacific"
+    },
+    "lisbon": {
+      "id": "photo-1585208798174-6cedd86e019a",
+      "alt": "Yellow tram on a historic street in Lisbon, Portugal"
+    },
+    "medellin": {
+      "id": "photo-1715503234327-b57d32e5da0f",
+      "alt": "Medellín, Colombia skyline with the Aburrá Valley mountains"
+    },
+    "mendoza": {
+      "id": "photo-1665254369274-4b459f3ce48c",
+      "alt": "Vineyards below the Andes in Mendoza, Argentina"
+    },
+    "mexicocity": {
+      "id": "photo-1518659526054-190340b32735",
+      "alt": "Palacio de Bellas Artes in Mexico City"
+    },
+    "montevideo": {
+      "id": "photo-1667846788406-15622c02fe4d",
+      "alt": "Montevideo, Uruguay skyline along the Río de la Plata"
+    },
+    "panama": {
+      "id": "photo-1773424216455-a936cba886c3",
+      "alt": "Panama City skyline at sunset over the Pacific"
+    },
+    "patagonia": {
+      "id": "photo-1658312627438-30d1299683fd",
+      "alt": "Torres del Paine peaks above a lake in Chilean Patagonia"
+    },
+    "playadelcarmen": {
+      "id": "photo-1640617547871-15e4fb41d0c5",
+      "alt": "Palm-lined beach in Playa del Carmen, Mexico"
+    },
+    "puntacana": {
+      "id": "photo-1692017827893-f97d95397b49",
+      "alt": "Palm-lined beach in Punta Cana, Dominican Republic"
+    },
+    "puntadeleste": {
+      "id": "photo-1616959313137-186688889054",
+      "alt": "Punta del Este, Uruguay high-rises along the beach"
+    },
+    "quito": {
+      "id": "photo-1628004581461-13dd6f81ed07",
+      "alt": "Aerial view of Quito, Ecuador in the Andes"
+    },
+    "rio": {
+      "id": "photo-1483729558449-99ef09a8c325",
+      "alt": "Aerial view of Rio de Janeiro with Sugarloaf Mountain"
+    },
+    "sanjosecr": {
+      "id": "photo-1699385600854-5b2137d14cfd",
+      "alt": "Aerial view of San José, Costa Rica with mountains behind"
+    },
+    "sanjuandelsur": {
+      "id": "photo-1648878077157-661c11bbe371",
+      "alt": "San Juan del Sur, Nicaragua bay and beach"
+    },
+    "santiago": {
+      "id": "photo-1689850543263-01a52ccc6943",
+      "alt": "Santiago, Chile skyline with the Andes behind"
+    },
+    "saopaulo": {
+      "id": "photo-1561592390-42c07289e9cb",
+      "alt": "Aerial view of São Paulo, Brazil high-rise neighborhoods"
+    },
+    "tbilisi": {
+      "id": "photo-1603350576276-24747f7bbf40",
+      "alt": "Aerial view of Tbilisi, Georgia"
+    },
+    "tulum": {
+      "id": "photo-1605216663980-b7ca6e9f2451",
+      "alt": "Tulum, Mexico rocky Caribbean shoreline"
+    }
+  },
+  "generic": {
+    "photo-1486406146926-c627a92ad1ab": "Modern glass skyscrapers seen from below",
+    "photo-1506905925346-21bda4d32df4": "Mountain peaks rising above the clouds",
+    "photo-1507525428034-b723cf961d3e": "Tropical beach at sunset",
+    "photo-1519046904884-53103b34b206": "Palm tree and umbrella on a white-sand beach",
+    "photo-1526778548025-fa2f459cd5c1": "World map on a wooden wall",
+    "photo-1576091160550-2173dba999ef": "Person planning on a laptop"
+  }
+}

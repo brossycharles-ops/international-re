@@ -129,7 +129,7 @@
                 https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1600&q=80 1600w,
                 https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&q=80 1920w"
         sizes="(max-width: 768px) 100vw, 1200px"
-        alt="Tropical beach with crystal-clear water in Latin America"
+        alt="Palm tree and umbrella on a white-sand beach"
         class="blog-post-hero-img">
       <div class="blog-post-hero-overlay"></div>
       <div class="blog-post-hero-content">
@@ -323,11 +323,22 @@
         <div class="footer-brand"><a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a><p>Your weekly guide to Latin American real estate markets.</p><p class="footer-domain">internationalre.org</p></div>
         <div class="footer-links"><h4>Markets</h4><ul><li><a href="/#costa-rica">Costa Rica</a></li><li><a href="/#nicaragua">Nicaragua</a></li><li><a href="/#argentina">Argentina</a></li><li><a href="/#chile">Chile</a></li></ul></div>
         <div class="footer-links"><h4>Company</h4><ul><li><a href="../about.html">About</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../guides.html">Guides</a></li><li><a href="/free-guide.html">Newsletter</a></li></ul></div>
-        <div class="footer-links"><h4>Connect</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Twitter / X</a></li></ul></div>
+        <div class="footer-links"><h4>Connect</h4><ul><li><a href="/feed.xml">RSS Feed</a></li><li><a href="/quiz.html">Market Quiz</a></li><li><a href="/newsletter.html">Past Issues</a></li></ul></div>
       </div>
       <div class="footer-bottom"><p>&copy; 2026 International RE. All rights reserved.</p><p><a href="../privacy.html">Privacy Policy</a> &middot; <a href="../terms.html">Terms</a></p></div>
     </div>
   </footer>
 <script src="/lead_capture.js" defer></script>
+  <script>
+    (function(){
+      var t=document.title,u=encodeURIComponent(window.location.href),tt=encodeURIComponent(t);
+      var tw=document.getElementById('shareTwitter');
+      var fb=document.getElementById('shareFacebook');
+      var wa=document.getElementById('shareWhatsapp');
+      if(tw) tw.href='https://twitter.com/intent/tweet?text='+tt+'&url='+u;
+      if(fb) fb.href='https://www.facebook.com/sharer/sharer.php?u='+u;
+      if(wa) wa.href='https://wa.me/?text='+tt+' '+u;
+    })();
+  </script>
 </body>
 </html>

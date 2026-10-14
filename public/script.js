@@ -64,15 +64,25 @@ const popupClose = document.getElementById('popupClose');
 const popupForm = document.getElementById('popupForm');
 
 if (popupOverlay && popupClose && popupForm) {
+  // Full-screen popups on phones count as intrusive interstitials for Google's
+  // mobile ranking, and mobile visitors already get the sticky subscribe bar.
   function showPopup() {
     if (localStorage.getItem('subscribed')) return;
     if (sessionStorage.getItem('popupShown')) return;
-    setTimeout(() => {
-      if (sessionStorage.getItem('popupShown')) return;
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+    const open = () => {
+      if (sessionStorage.getItem('popupShown') || popupOverlay.classList.contains('active')) return;
       popupOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
       sessionStorage.setItem('popupShown', 'true');
-    }, 8000);
+      window.removeEventListener('scroll', onScroll);
+    };
+    const onScroll = () => {
+      const depth = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (depth >= 0.5) open();
+    };
+    setTimeout(open, 45000);
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
   function closePopup() {

@@ -147,6 +147,19 @@
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
   </script>
+  <style>/* brand + navigation consistency patch for standalone-template pages */
+    .skip-link{position:absolute;left:-9999px;top:0;z-index:1000;background:#0a1628;color:#fff;padding:10px 16px;border-radius:4px}
+    .skip-link:focus{left:12px;top:12px}
+    .hero{background:linear-gradient(135deg,#0a1628 0%,#1c2f4f 100%)}
+    .hero .hero-subtitle,.hero .hero-meta,.hero p{color:#fff}
+    .nav-cta{background:#c9a84c;color:#0a1628}
+    .nav-cta:hover{background:#b8963d;color:#0a1628}
+    .nav-links-mini{display:flex;gap:18px;align-items:center;font-size:.9rem}
+    .nav-links-mini a:not(.nav-cta){color:#1a1a1a}
+    @media(max-width:640px){.nav-links-mini .hide-sm{display:none}}
+    .site-footer{background:#0a1628;color:rgba(255,255,255,.7);padding:40px 24px 90px;text-align:center;font-size:.9rem;margin-top:48px;line-height:2}
+    .site-footer a{color:#c9a84c;margin:0 10px;white-space:nowrap}
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -155,14 +168,16 @@
     <div class="nav-container">
       <a href="/" class="nav-logo">International <span>RE</span></a>
       <ul class="nav-links">
+        <li><a href="/cities/">City Guides</a></li>
         <li><a href="/blog.html">Insights</a></li>
+        <li><a href="/guides.html">Guides</a></li>
         <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="blog-post-hero" id="main">
-    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80" alt="Healthcare and medical planning for expats">
+    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80" alt="Person planning on a laptop">
     <div class="blog-post-hero-overlay"></div>
     <div class="blog-post-hero-content">
       <div class="blog-post-meta" style="margin-bottom:16px">
@@ -464,21 +479,21 @@
     <h2>Related Guides</h2>
     <div class="related-grid">
       <a href="/blog/cost-of-living-panama-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=400&q=80" alt="Panama City">
+        <img src="https://images.unsplash.com/photo-1773424216455-a936cba886c3?w=400&q=80" alt="Panama City skyline at sunset over the Pacific">
         <div class="related-card-body">
           <span>Panama</span>
           <p>Cost of Living in Panama 2026: The Real Numbers</p>
         </div>
       </a>
       <a href="/blog/cost-of-living-medellin-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=400&q=80" alt="Medellín">
+        <img src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
         <div class="related-card-body">
           <span>Colombia</span>
           <p>Cost of Living in Medellín 2026: Rent, Food & Real Budget</p>
         </div>
       </a>
       <a href="/blog/cost-of-living-costa-rica-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Costa Rica">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Tropical beach at sunset">
         <div class="related-card-body">
           <span>Costa Rica</span>
           <p>Cost of Living in Costa Rica 2026: The Real Numbers</p>
