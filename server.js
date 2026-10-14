@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const compression = require('compression');
 const helmet = require('helmet');
+const crypto = require('crypto');
 
 const { Resend } = require('resend');
 
@@ -123,6 +124,52 @@ function checkRateLimit(ip) {
     }
   }
   return entry.count <= RATE_LIMIT_MAX;
+}
+
+// ─── Admin auth: constant-time key compare + its own (tighter) rate limit ───
+// The admin key guards subscriber export, newsletter send, drip-check, and
+// traffic stats — a brute-force or timing attack here is worse than on
+// public endpoints, so it gets its own stricter budget and a constant-time
+// compare instead of `!==` (which short-circuits on the first differing byte).
+
+const adminRateLimitMap = new Map();
+const ADMIN_RATE_LIMIT_MAX = 10;
+
+function checkAdminRateLimit(ip) {
+  const now = Date.now();
+  const entry = adminRateLimitMap.get(ip) || { count: 0, resetAt: now + RATE_LIMIT_WINDOW };
+  if (now > entry.resetAt) {
+    entry.count = 0;
+    entry.resetAt = now + RATE_LIMIT_WINDOW;
+  }
+  entry.count++;
+  adminRateLimitMap.set(ip, entry);
+  return entry.count <= ADMIN_RATE_LIMIT_MAX;
+}
+
+function constantTimeEqual(a, b) {
+  const bufA = Buffer.from(String(a ?? ''));
+  const bufB = Buffer.from(String(b ?? ''));
+  if (bufA.length !== bufB.length) {
+    crypto.timingSafeEqual(bufA, bufA); // still spend the time, don't leak length early
+    return false;
+  }
+  return crypto.timingSafeEqual(bufA, bufB);
+}
+
+// Returns true and lets the caller proceed, or sends the error response and
+// returns false. Callers must `if (!requireAdminKey(...)) return;`.
+function requireAdminKey(req, res, providedKey) {
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  if (!checkAdminRateLimit(ip)) {
+    res.status(429).json({ error: 'Too many admin requests. Please try again later.' });
+    return false;
+  }
+  if (!process.env.ADMIN_KEY || !constantTimeEqual(providedKey, process.env.ADMIN_KEY)) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return false;
+  }
+  return true;
 }
 
 // ─── Subscribe endpoint ───
@@ -310,10 +357,7 @@ app.get('/api/recent-subscribers', (req, res) => {
 // ─── Subscriber list (for sending newsletters — protected by simple key) ───
 
 app.get('/api/subscribers', (req, res) => {
-  const key = req.query.key;
-  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  if (!requireAdminKey(req, res, req.query.key)) return;
   res.json(readSubscribers());
 });
 
@@ -327,13 +371,9 @@ const CLEANUP_PATTERNS = [
   /@.+\.(test|example|invalid|localhost)$/i,
   /^smoketest\+/i,
   /^audit-test-/i,
-  /^brossycharles\+audit\d+@gmail\.com$/i, // emails my audit run accidentally created
 ];
 async function handleCleanupTestSubscribers(req, res) {
-  const key = req.query.key || req.body?.key;
-  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  if (!requireAdminKey(req, res, req.query.key || req.body?.key)) return;
   const dryrun = req.query.dryrun === '1' || req.query.dryrun === 'true';
   await acquireLock();
   try {
@@ -353,9 +393,7 @@ app.post('/api/admin/cleanup-test-subscribers', handleCleanupTestSubscribers);
 // Set PLAUSIBLE_API_KEY in env. Hit: /api/admin/traffic?key=ADMIN_KEY&period=30d
 // period: 7d | 30d | 6mo | 12mo (Plausible API values)
 app.get('/api/admin/traffic', async (req, res) => {
-  if (!process.env.ADMIN_KEY || req.query.key !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  if (!requireAdminKey(req, res, req.query.key)) return;
   if (!process.env.PLAUSIBLE_API_KEY) {
     return res.status(503).json({ error: 'PLAUSIBLE_API_KEY not configured. Generate one at plausible.io/settings/api-keys' });
   }
@@ -388,10 +426,7 @@ app.get('/api/admin/traffic', async (req, res) => {
 // ─── Send newsletter to all subscribers ───
 
 app.post('/api/send-newsletter', async (req, res) => {
-  const key = req.body.key;
-  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  if (!requireAdminKey(req, res, req.body.key)) return;
 
   if (!resend) {
     return res.status(500).json({ error: 'Email not configured. Set RESEND_API_KEY environment variable.' });
@@ -507,15 +542,52 @@ app.get('/feed.xml', (req, res) => {
 
 // ─── Email drip sequence ───
 //
-// 3 emails sent automatically after subscription:
+// Emails sent automatically after subscription:
+//   Day 1  — "Welcome — what to expect"
 //   Day 3  — "3 things to know before you buy"
 //   Day 7  — "Market spotlight: best entry right now"
 //   Day 14 — "Your complete buying checklist"
+//   Day 21 — "If I had $200K today"
+//   Day 30 — "One month in — 5 questions to answer"
+//   Day 45 — "The permit/visa paths nobody explains clearly"
+//   Day 60 — "Two months in — case study of a real close"
+//   Day 90 — "Still deciding? Here's what changed this quarter"
 //
 // Triggered by drip-agent.sh (daily LaunchAgent at 10am).
 // Each subscriber gets a `drip` array tracking sent email IDs.
 
 const DRIP_EMAILS = [
+  {
+    id: 'day1',
+    dayOffset: 1,
+    subject: 'Welcome — here\'s what to expect from us',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">WELCOME · DAY 1</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, welcome — here's what to expect</h2>
+          <p>Thanks for subscribing. Over the next few weeks we'll send a short, focused sequence — no daily spam, just the things that actually matter when buying property abroad:</p>
+          <ul style="padding-left:20px;color:#333;line-height:1.9;">
+            <li><strong>Day 3</strong> — the three things most buyers learn too late</li>
+            <li><strong>Day 7</strong> — the market we're watching closely right now</li>
+            <li><strong>Day 14</strong> — a complete step-by-step buying checklist</li>
+            <li>After that — a weekly market intelligence email on 11 Latin American markets</li>
+          </ul>
+          <p>In the meantime, if you already know roughly what you're looking for, our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will point you at the city that fits your budget and goals.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/cities/" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Browse All 17 Markets &rarr;</a>
+          </p>
+          <p>Talk soon,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+          </p>
+        </div>
+      </div>`
+  },
   {
     id: 'day3',
     dayOffset: 3,
@@ -695,14 +767,98 @@ const DRIP_EMAILS = [
           </p>
         </div>
       </div>`
+  },
+  {
+    id: 'day45',
+    dayOffset: 45,
+    subject: 'The residency/visa question nobody explains clearly',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">LEGAL &amp; RESIDENCY · DAY 45</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, does buying property get you residency?</h2>
+          <p>This is the single most-asked question we get, and the honest answer is: <strong>it depends entirely on the country</strong>, and a real estate agent is usually the wrong person to ask.</p>
+          <p>Some countries tie residency directly to a minimum property investment. Others separate the two completely — you can own property as a pure foreigner with zero residency rights, or get residency through a route that has nothing to do with real estate (pension income, remote-work income, or a rentista visa).</p>
+          <p>Before you buy with residency in mind, get the current minimum investment thresholds and processing times confirmed by an immigration attorney in that specific country — these rules change, and general guides (ours included) can lag behind the latest regulation.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/guides/" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Browse Our Country-Specific Legal Guides &rarr;</a>
+          </p>
+          <p>More next week,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+          </p>
+        </div>
+      </div>`
+  },
+  {
+    id: 'day60',
+    dayOffset: 60,
+    subject: 'Two months in — still on the fence?',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">CHECK-IN · DAY 60</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, two months in — where are you in the process?</h2>
+          <p>You've had two months of market data, checklists, and guides. At this point most readers are in one of three places:</p>
+          <ol style="padding-left:20px;color:#333;line-height:1.9;">
+            <li><strong>Still comparing markets</strong> — if this is you, the <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">market quiz</a> narrows it down in five questions.</li>
+            <li><strong>Have a market, need a property</strong> — read our city-specific hub pages for neighborhood-level detail and current listings context.</li>
+            <li><strong>Have a property, working the legal side</strong> — reply to this email and tell us what you're stuck on. We read every reply and will point you to the right guide.</li>
+          </ol>
+          <p>Whichever stage you're at, the biggest mistake we see is rushing the attorney step to "keep momentum" on a deal. Slow that part down — everything else can move fast.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/cities/" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Browse City-Specific Market Data &rarr;</a>
+          </p>
+          <p>Best,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+          </p>
+        </div>
+      </div>`
+  },
+  {
+    id: 'day90',
+    dayOffset: 90,
+    subject: 'One quarter later — what actually changed',
+    html: (firstName) => `
+      <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
+        <div style="background:#1a1a2e;padding:30px;text-align:center;">
+          <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
+        </div>
+        <div style="padding:32px;background:#fff;">
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">QUARTERLY REVIEW · DAY 90</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, still deciding? Here's what's worth re-checking</h2>
+          <p>Three months is long enough that the specific numbers you first read may have moved. Before you make a final call on a market, re-verify three things rather than relying on your first impression:</p>
+          <ul style="padding-left:20px;color:#333;line-height:1.9;">
+            <li><strong>Price per sqm</strong> in your target neighborhood — ask a local agent for this week's comparables, not a national average.</li>
+            <li><strong>Currency movement</strong> against the USD since you started looking, if the market isn't dollarized.</li>
+            <li><strong>Any new rule changes</strong> on foreign ownership, residency thresholds, or short-term rental licensing in that city.</li>
+          </ul>
+          <p>We keep our market pages updated, but a 15-minute call with a local contact beats any website the week before you wire money.</p>
+          <p style="text-align:center;margin:28px 0;">
+            <a href="https://www.internationalre.org/newsletter.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Browse Past Newsletter Issues &rarr;</a>
+          </p>
+          <p>You'll keep getting our regular weekly newsletter after this. Reply any time — we read every email.</p>
+          <p>Best,<br><strong>International RE</strong></p>
+          <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
+          </p>
+        </div>
+      </div>`
   }
 ];
 
 app.post('/api/drip-check', async (req, res) => {
-  const key = req.body.key;
-  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  if (!requireAdminKey(req, res, req.body.key)) return;
   if (!resend) {
     return res.status(500).json({ error: 'Email not configured.' });
   }
