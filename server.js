@@ -560,15 +560,15 @@ const DRIP_EMAILS = [
   {
     id: 'day1',
     dayOffset: 1,
-    subject: 'Welcome — here\'s what to expect from us',
+    subject: 'Start here: what\'s coming over the next two weeks',
     html: (firstName) => `
       <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
         <div style="background:#1a1a2e;padding:30px;text-align:center;">
           <h1 style="color:#c9a84c;margin:0;font-size:22px;">&#9670; International RE</h1>
         </div>
         <div style="padding:32px;background:#fff;">
-          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">WELCOME · DAY 1</p>
-          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, welcome — here's what to expect</h2>
+          <p style="color:#888;font-size:0.85rem;margin:0 0 20px;">START HERE · DAY 1</p>
+          <h2 style="color:#0a1628;margin:0 0 16px;font-size:1.5rem;">Hi ${firstName}, here's what's coming your way</h2>
           <p>Thanks for subscribing. Over the next few weeks we'll send a short, focused sequence — no daily spam, just the things that actually matter when buying property abroad:</p>
           <ul style="padding-left:20px;color:#333;line-height:1.9;">
             <li><strong>Day 3</strong> — the three things most buyers learn too late</li>
@@ -857,6 +857,8 @@ const DRIP_EMAILS = [
   }
 ];
 
+const DRIP_SEND_WINDOW_DAYS = 7;
+
 app.post('/api/drip-check', async (req, res) => {
   if (!requireAdminKey(req, res, req.body.key)) return;
   if (!resend) {
@@ -884,7 +886,10 @@ app.post('/api/drip-check', async (req, res) => {
 
     for (const email of DRIP_EMAILS) {
       if (dripSent.includes(email.id)) { skipped++; continue; }
-      if (daysSince >= email.dayOffset) {
+      // Only send inside a window after the offset, and at most one email per
+      // subscriber per run — otherwise adding a new step to the sequence would
+      // blast every older subscriber with all the steps they "missed" at once.
+      if (daysSince >= email.dayOffset && daysSince < email.dayOffset + DRIP_SEND_WINDOW_DAYS) {
         try {
           await resend.emails.send({
             from: EMAIL_FROM,
@@ -898,6 +903,7 @@ app.post('/api/drip-check', async (req, res) => {
         } catch (err) {
           console.error(`Drip ${email.id} failed for ${sub.email}:`, err.message);
         }
+        break;
       }
     }
 
