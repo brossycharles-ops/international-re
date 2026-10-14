@@ -646,36 +646,62 @@
         <p class="section-desc">Real price data, rental yields, legal updates, and market moves across 12 Latin American countries — free every week. Read recent issues below.</p>
       </div>
       <div class="newsletter-coming">
-        <div class="newsletter-preview-grid">
+        <div class="newsletter-preview-grid" id="latestGrid">
           <div class="newsletter-preview-card">
             <div class="newsletter-issue-badge">Latest</div>
-            <h3>Panama City: Latin America's Best Dollar Yield</h3>
-            <p class="newsletter-date">April 28, 2026</p>
-            <p>7–10% yields, zero currency risk, transactions at 5-year highs. Why Panama tops our rankings right now.</p>
-            <a href="/blog/panama-city-real-estate-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read Issue →</a>
+            <h3>Latin America Real Estate — October 2026 Market Update</h3>
+            <p class="newsletter-date">October 14, 2026</p>
+            <p>What changed since summer: yields compressing, credit tightening, rents still rising across five markets.</p>
+            <a href="/blog/latin-america-market-update-october-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read &rarr;</a>
           </div>
           <div class="newsletter-preview-card">
-            <div class="newsletter-issue-badge">Weekly</div>
-            <h3>Latin America Weekly — Apr 26–May 2</h3>
-            <p class="newsletter-date">April 26, 2026</p>
-            <p>5 market updates: Argentina mortgage revival, Santiago supply squeeze, Nicaragua buyer surge, Colombia growth data.</p>
-            <a href="/blog/latam-weekly-apr-26-may-2-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read Issue →</a>
+            <div class="newsletter-issue-badge">Guide</div>
+            <h3>Cuenca, Ecuador Neighborhood Guide for Property Buyers</h3>
+            <p class="newsletter-date">June 12, 2026</p>
+            <p>Where foreign buyers actually purchase in Cuenca, with prices and trade-offs by neighborhood.</p>
+            <a href="/guides/cuenca-ecuador-neighborhood-guide-property-buyers-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read &rarr;</a>
           </div>
           <div class="newsletter-preview-card">
-            <div class="newsletter-issue-badge">Deep Dive</div>
-            <h3>Medellín: Latin America's Smartest Value Play</h3>
-            <p class="newsletter-date">April 25, 2026</p>
-            <p>$1,200–$2,400/m², 18%/yr appreciation, 6.5–9% yields. The full Medellín investment case.</p>
-            <a href="/blog/medellin-real-estate-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read Issue →</a>
+            <div class="newsletter-issue-badge">Comparison</div>
+            <h3>Florianópolis vs Punta del Este: Beach Property Comparison</h3>
+            <p class="newsletter-date">June 10, 2026</p>
+            <p>Two South Atlantic beach markets side by side: prices, seasonality and rental yields.</p>
+            <a href="/guides/florianopolis-vs-punta-del-este-beach-buyers-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read &rarr;</a>
           </div>
           <div class="newsletter-preview-card">
-            <div class="newsletter-issue-badge">Deep Dive</div>
-            <h3>Tbilisi: The 1% Tax Loophole Drawing Global Investors</h3>
-            <p class="newsletter-date">April 25, 2026</p>
-            <p>$800/m², 8.5–12% yields, 1% rental income tax, instant residency. The most overlooked market of 2026.</p>
-            <a href="/blog/tbilisi-georgia-1-percent-tax-2026.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read Issue →</a>
+            <div class="newsletter-issue-badge">Quick Read</div>
+            <h3>Cost of Living in Buenos Aires Per Month</h3>
+            <p class="newsletter-date">June 10, 2026</p>
+            <p>A realistic monthly budget for living in Buenos Aires in 2026.</p>
+            <a href="/quick-reads/cost-of-living-buenos-aires-per-month.html" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read &rarr;</a>
           </div>
         </div>
+        <script>
+          // Keep "latest" current without anyone editing this page: pull the 4 newest items from the RSS feed.
+          (function () {
+            var grid = document.getElementById('latestGrid');
+            if (!grid || !window.fetch || !window.DOMParser) return;
+            fetch('/feed.xml').then(function (r) { return r.ok ? r.text() : Promise.reject(); }).then(function (xml) {
+              var items = new DOMParser().parseFromString(xml, 'application/xml').querySelectorAll('item');
+              if (items.length < 4) return;
+              var esc = function (v) { var d = document.createElement('div'); d.textContent = v || ''; return d.innerHTML; };
+              var text = function (it, tag) { var n = it.querySelector(tag); return n ? n.textContent.trim() : ''; };
+              var badge = function (link) { return /\/guides\//.test(link) ? 'Guide' : /\/quick-reads\//.test(link) ? 'Quick Read' : /\/tips\//.test(link) ? 'Tip' : 'Article'; };
+              var out = '';
+              for (var i = 0; i < 4; i++) {
+                var it = items[i], link = text(it, 'link'), date = new Date(text(it, 'pubDate'));
+                if (!/^https:\/\/www\.internationalre\.org\//.test(link)) return;
+                var desc = text(it, 'description'); if (desc.length > 150) desc = desc.slice(0, 147).replace(/\s+\S*$/, '') + '…';
+                out += '<div class="newsletter-preview-card"><div class="newsletter-issue-badge">' + (i === 0 ? 'Latest' : badge(link)) + '</div>' +
+                  '<h3>' + esc(text(it, 'title').replace(/\s*\|.*$/, '')) + '</h3>' +
+                  '<p class="newsletter-date">' + (isNaN(date) ? '' : date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })) + '</p>' +
+                  '<p>' + esc(desc) + '</p>' +
+                  '<a href="' + esc(link.replace('https://www.internationalre.org', '').split('?')[0]) + '" class="newsletter-tag" style="text-decoration:none;cursor:pointer;">Read &rarr;</a></div>';
+              }
+              grid.innerHTML = out;
+            }).catch(function () {});
+          })();
+        </script>
         <div class="newsletter-cta">
           <p>&#128233; A new issue every Monday — free. One concise briefing on Latin American real estate, delivered to your inbox.</p>
           <a href="/newsletter.html" class="btn btn-secondary" style="margin-right:12px;">Browse All Issues</a>
