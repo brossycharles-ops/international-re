@@ -11,11 +11,14 @@ HREF_RE = re.compile(r'href=["\']([^"\']+)["\']', re.IGNORECASE)
 SCRIPT_STYLE_RE = re.compile(r'<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>',
                              re.IGNORECASE | re.DOTALL)
 
+# Served by server.js routes rather than files in public/.
+SERVER_ROUTES = {"/feed.xml"}
+
 def resolve(src: Path, href: str) -> Path | None:
     if href.startswith(("http://", "https://", "mailto:", "tel:", "#", "javascript:", "data:")):
         return None
     href = href.split("#", 1)[0].split("?", 1)[0]
-    if not href:
+    if not href or href in SERVER_ROUTES or href.startswith("/api/"):
         return None
     if href.startswith("/"):
         target = PUB / href.lstrip("/")

@@ -331,6 +331,7 @@ def render_city_hub(city):
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <nav class="hub-nav">
     <a class="logo" href="/"><span>&#9670;</span> International RE</a>
     <div class="hub-nav-links">
@@ -354,7 +355,7 @@ def render_city_hub(city):
 {stat_blocks}
   </section>
 
-  <main class="hub-body">
+  <main class="hub-body" id="main">
     <section class="hub-section">
       <h2 class="hub-section-h2">About {city["city"]} for Foreign Buyers</h2>
       <p style="max-width:760px;color:#444;line-height:1.75;font-size:1.02rem;">
@@ -419,6 +420,7 @@ def render_city_hub(city):
 '''
 
 def render_index(cities_list):
+    coverage = f"{len(cities_list)} markets across {len({c['country'] for c in cities_list})} countries"
     cards = '\n'.join(
         f'''      <a class="city-card" href="/cities/{c["slug"]}/">
         <div class="city-card-img" style="background-image:url('{c["heroImage"]}?w=800&q=80');"></div>
@@ -436,10 +438,10 @@ def render_index(cities_list):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Latin America City Real Estate Guides 2026 | International RE</title>
-  <meta name="description" content="Comprehensive city-by-city Latin American real estate guides — Medellín, Panama City, Buenos Aires, São Paulo, Mexico City, and 12 more markets.">
+  <meta name="description" content="Comprehensive city-by-city Latin American real estate guides — Medellín, Panama City, Buenos Aires, São Paulo, Mexico City, and {len(cities_list) - 5} more markets.">
   <link rel="canonical" href="{SITE}/cities/">
   <meta property="og:title" content="Latin America City Real Estate Guides 2026">
-  <meta property="og:description" content="Comprehensive city-by-city Latin American real estate guides — 17 markets across 9 countries.">
+  <meta property="og:description" content="Comprehensive city-by-city Latin American real estate guides — {coverage}.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80">
   <meta property="og:url" content="{SITE}/cities/">
   <meta property="og:type" content="website">
@@ -458,7 +460,7 @@ def render_index(cities_list):
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Latin America City Real Estate Guides 2026",
-    "description": "Comprehensive city-by-city Latin American real estate guides covering 17 markets across 9 countries.",
+    "description": "Comprehensive city-by-city Latin American real estate guides covering {coverage}.",
     "url": "{SITE}/cities/",
     "isPartOf": {{
       "@type": "WebSite",
@@ -529,6 +531,7 @@ def render_index(cities_list):
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <nav class="cities-nav">
     <a class="logo" href="/"><span>&#9670;</span> International RE</a>
     <div class="cities-nav-links">
@@ -541,10 +544,10 @@ def render_index(cities_list):
 
   <header class="cities-hero">
     <h1>Latin America City Real Estate Guides</h1>
-    <p>17 markets across 9 countries. Each guide aggregates our market analysis, legal guides, rental-yield data, and cost-of-living breakdowns for foreign buyers.</p>
+    <p>{coverage}. Each guide aggregates our market analysis, legal guides, rental-yield data, and cost-of-living breakdowns for foreign buyers.</p>
   </header>
 
-  <main class="cities-grid">
+  <main class="cities-grid" id="main">
 {cards}
   </main>
 
