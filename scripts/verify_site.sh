@@ -21,7 +21,7 @@ from pathlib import Path
 lib = json.load(open("data/images.json"))
 ok = {v["id"] for v in lib["places"].values()} | set(lib["generic"])
 bad = {}
-for f in Path("public").rglob("*.html"):
+for f in [p for ext in ("*.html", "*.css", "*.js") for p in Path("public").rglob(ext)]:
     for i in re.findall(r"images\.unsplash\.com/(photo-[A-Za-z0-9_-]+?)(?=[?'\")\s])", f.read_text(errors="ignore")):
         if i not in ok: bad.setdefault(i, []).append(str(f))
 for i, fs in bad.items(): print(f"unapproved image {i} in {fs[:3]}")

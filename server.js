@@ -41,6 +41,20 @@ const EMAIL_FROM = process.env.EMAIL_FROM || 'International RE <onboarding@resen
 app.use(compression());
 app.use(express.json({ limit: '50kb' }));
 
+// Client IP for rate limits and visitor hashing. Railway's edge appends the
+// address it saw to X-Forwarded-For, so the rightmost entry is the one a client
+// cannot forge (anything to its left came from the client itself).
+function clientIp(req) {
+  const parts = String(req.headers['x-forwarded-for'] || '').split(',').map(s => s.trim()).filter(Boolean);
+  return parts.length ? parts[parts.length - 1] : (req.socket.remoteAddress || '');
+}
+
+// Admin key from a header (preferred: never ends up in access logs), the JSON
+// body, or — for old callers — the query string.
+function adminKeyFrom(req) {
+  return req.get('x-admin-key') || req.body?.key || req.query.key;
+}
+
 // ─── Built-in visitor counts ───
 // Cookieless and private: a visitor is a hash of IP + user agent + a salt that
 // changes daily and is never stored with the counts, so nobody can be tracked
@@ -70,7 +84,7 @@ function countPageview(req) {
   if (!ua || BOT_UA.test(ua) || /prefetch|prerender/i.test(req.get('sec-purpose') || req.get('purpose') || '')) return;
   const date = new Date().toISOString().slice(0, 10);
   const day = trafficDay(date);
-  const ip = String(req.get('x-forwarded-for') || req.socket.remoteAddress || '').split(',')[0].trim();
+  const ip = clientIp(req);
   const id = crypto.createHash('sha256').update(traffic.today.salt + ip + ua).digest('hex').slice(0, 16);
   if (!traffic.today.seen.includes(id)) { traffic.today.seen.push(id); day.visitors++; }
   day.views++;
@@ -241,7 +255,7 @@ function constantTimeEqual(a, b) {
 // Returns true and lets the caller proceed, or sends the error response and
 // returns false. Callers must `if (!requireAdminKey(...)) return;`.
 function requireAdminKey(req, res, providedKey) {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  const ip = clientIp(req);
   if (!checkAdminRateLimit(ip)) {
     res.status(429).json({ error: 'Too many admin requests. Please try again later.' });
     return false;
@@ -256,7 +270,7 @@ function requireAdminKey(req, res, providedKey) {
 // ─── Subscribe endpoint ───
 
 app.post('/api/subscribe', async (req, res) => {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  const ip = clientIp(req);
   if (!checkRateLimit(ip)) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
@@ -364,7 +378,7 @@ app.post('/api/subscribe', async (req, res) => {
 // ─── Unsubscribe endpoint ───
 
 app.post('/api/unsubscribe', async (req, res) => {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  const ip = clientIp(req);
   if (!checkRateLimit(ip)) return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   const { email } = req.body;
   if (!email) return res.status(400).json({ error: 'Email is required.' });
@@ -400,7 +414,7 @@ const contactRateLimitMap = new Map();
 const CONTACT_KINDS = { correction: 'Correction', question: 'Question', privacy: 'Data / privacy request', other: 'Other' };
 
 app.post('/api/contact', async (req, res) => {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  const ip = clientIp(req);
   const now = Date.now();
   const rl = contactRateLimitMap.get(ip) || { count: 0, resetAt: now + 60 * 60 * 1000 };
   if (now > rl.resetAt) { rl.count = 0; rl.resetAt = now + 60 * 60 * 1000; }
@@ -500,7 +514,7 @@ app.get('/api/recent-subscribers', (req, res) => {
 // ─── Subscriber list (for sending newsletters — protected by simple key) ───
 
 app.get('/api/subscribers', (req, res) => {
-  if (!requireAdminKey(req, res, req.query.key)) return;
+  if (!requireAdminKey(req, res, adminKeyFrom(req))) return;
   res.json(readSubscribers());
 });
 
@@ -516,7 +530,7 @@ const CLEANUP_PATTERNS = [
   /^audit-test-/i,
 ];
 async function handleCleanupTestSubscribers(req, res) {
-  if (!requireAdminKey(req, res, req.query.key || req.body?.key)) return;
+  if (!requireAdminKey(req, res, adminKeyFrom(req))) return;
   const dryrun = req.query.dryrun === '1' || req.query.dryrun === 'true';
   await acquireLock();
   try {
@@ -539,7 +553,7 @@ app.post('/api/admin/cleanup-test-subscribers', handleCleanupTestSubscribers);
 // signup date and drip history so the welcome sequence resumes rather than
 // restarting. Existing emails are never overwritten.
 app.post('/api/admin/restore-subscribers', async (req, res) => {
-  if (!requireAdminKey(req, res, req.body?.key)) return;
+  if (!requireAdminKey(req, res, req.get('x-admin-key') || req.body?.key)) return;
   const incoming = Array.isArray(req.body?.subscribers) ? req.body.subscribers : null;
   if (!incoming || incoming.length === 0 || incoming.length > 5000) {
     return res.status(400).json({ error: 'subscribers must be a non-empty array (max 5000).' });
@@ -581,7 +595,7 @@ app.post('/api/admin/restore-subscribers', async (req, res) => {
 // Set PLAUSIBLE_API_KEY in env. Hit: /api/admin/traffic?key=ADMIN_KEY&period=30d
 // period: 7d | 30d | 6mo | 12mo (Plausible API values)
 app.get('/api/admin/traffic', async (req, res) => {
-  if (!requireAdminKey(req, res, req.query.key)) return;
+  if (!requireAdminKey(req, res, adminKeyFrom(req))) return;
   if (!process.env.PLAUSIBLE_API_KEY) {
     return res.status(503).json({ error: 'PLAUSIBLE_API_KEY not configured. Generate one at plausible.io/settings/api-keys' });
   }
@@ -618,7 +632,7 @@ app.get('/api/admin/traffic', async (req, res) => {
 // ─── Send newsletter to all subscribers ───
 
 app.post('/api/send-newsletter', async (req, res) => {
-  if (!requireAdminKey(req, res, req.body.key)) return;
+  if (!requireAdminKey(req, res, req.get('x-admin-key') || req.body?.key)) return;
 
   if (!resend) {
     return res.status(500).json({ error: 'Email not configured. Set RESEND_API_KEY environment variable.' });
@@ -1181,7 +1195,7 @@ async function dripCheckOnce(source) {
 }
 
 app.post('/api/drip-check', async (req, res) => {
-  if (!requireAdminKey(req, res, req.body.key)) return;
+  if (!requireAdminKey(req, res, req.get('x-admin-key') || req.body?.key)) return;
   if (!resend) {
     return res.status(500).json({ error: 'Email not configured.' });
   }

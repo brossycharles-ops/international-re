@@ -7,7 +7,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | Score | Page | Verified | Words | Sources | Problems |
 |---|---|---|---|---|---|
 | 39 | blog/guanacaste-hottest-market-2026.html | — | 841 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 841 words (min 900) |
-| 39 | guides/florianopolis-vs-punta-del-este-beach-buyers-2026.html | — | 1297 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; meta description length 167 (110-165) |
 | 51 | blog/10-cheapest-beach-towns-latin-america-2026.html | — | 1244 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/best-places-retire-latin-america-2026.html | — | 1259 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/buenos-aires-best-value-2026.html | — | 1095 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -27,13 +26,14 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | blog/santiago-vs-lake-district.html | — | 994 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/sao-paulo-real-estate-2026.html | — | 1437 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/tbilisi-georgia-1-percent-tax-2026.html | — | 1081 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | guides/can-foreigners-buy-property-colombia-2026.html | — | 1441 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | guides/can-foreigners-buy-property-colombia-2026.html | — | 1445 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-costa-rica.html | — | 1787 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-brazil-2026.html | — | 1308 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-chile-2026.html | — | 1303 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-panama-2026.html | — | 1427 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-mexico-2026.html | — | 1516 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/cuenca-ecuador-neighborhood-guide-property-buyers-2026.html | — | 1212 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | guides/florianopolis-vs-punta-del-este-beach-buyers-2026.html | — | 1297 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/lima-peru-rental-yield-analysis-2026.html | — | 1413 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/medellin-neighborhood-guide-property-buyers-2026.html | — | 1532 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | — | 1053 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -55,13 +55,13 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | quick-reads/lisbon-property-buying-timeline.html | — | 461 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-colombia-foreigners-2026.html | — | 588 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-mexico-foreigners-2026.html | — | 532 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/property-tax-panama-foreigners-2026.html | — | 431 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | quick-reads/property-tax-panama-foreigners-2026.html | — | 437 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-uruguay-foreigners-2026.html | — | 600 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 63 | blog/argentina-real-estate-foreigners-2026.html | — | 2002 | 0 | needs a Sources section with 3+ external https links (has 0) |
+| 63 | blog/argentina-real-estate-foreigners-2026.html | — | 2010 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/belize-real-estate-2026.html | — | 1930 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/best-neighborhoods-panama-city-2026.html | — | 1754 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/best-places-retire-mexico-2026.html | — | 1667 | 0 | needs a Sources section with 3+ external https links (has 0) |
-| 63 | blog/colombia-real-estate-foreigners-2026.html | — | 1685 | 0 | needs a Sources section with 3+ external https links (has 0) |
+| 63 | blog/colombia-real-estate-foreigners-2026.html | — | 1687 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/cost-of-living-bogota-2026.html | — | 1357 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/cost-of-living-buenos-aires-2026.html | — | 1705 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/cost-of-living-cartagena-2026.html | — | 1300 | 0 | needs a Sources section with 3+ external https links (has 0) |

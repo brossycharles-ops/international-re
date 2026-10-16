@@ -101,6 +101,12 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   const saved = JSON.parse(fs.readFileSync(path.join(dir, 'messages.json')));
   check('contact keeps a copy on the volume', saved.some(m => m.email === 'reader@realmail.io' && m.kind === 'correction'));
 
+  // A forged leftmost X-Forwarded-For entry must not reset the rate limit.
+  const spoof = async n => (await fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': `10.0.0.${n}, 198.51.100.9` }, body: JSON.stringify({ email: 'r@realmail.io', message: 'Testing the rate limit here.' }) })).status;
+  const codes = []; for (let n = 0; n < 6; n++) codes.push(await spoof(n));
+  check('rate limit keys on the proxy-added IP, not a forged one', codes[5] === 429, codes.join(','));
+  check('admin key accepted from the X-Admin-Key header', (await fetch(B + '/api/drip-check', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Key': 'test-admin-key' }, body: '{}' })).status === 200);
+
   if (createdNl) fs.unlinkSync(nlFile);
   fs.rmSync(dir, { recursive: true, force: true });
   console.log(failures ? `[test_server] ${failures} FAILED` : '[test_server] all passed');
