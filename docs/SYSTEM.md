@@ -14,6 +14,12 @@ local development.
 | Monday (first email run) | **Weekly owner report**: subscribers, growth, traffic, CSV backup to `BACKUP_EMAIL` | Railway server |
 | Sunday 15:00 | **Strategy & CTO review**: reviews traffic, research quality and auditor PRs, re-checks the fact-checkers' work, updates `docs/PLAYBOOK.md` and `docs/IDEAS.md`, writes `docs/reports/weekly-<date>.md` | Anthropic cloud routine |
 
+| Sunday 19:00 | **Newsletter Editor**: writes and fact-checks Monday's issue (`data/newsletters/<Monday>.json` + web version); the server emails it Monday 10:00 | Anthropic cloud routine |
+| Wednesday 4:00 | **Market Data Refresher**: refreshes price/m², yields, cost of living for the 6 stalest city guides (`stats`, `statsSources`, `statsUpdated` in `data/cities.json`) | Anthropic cloud routine |
+| Friday 10:00 | **Distribution Kit**: ready-to-post X, LinkedIn, Pinterest and forum copy for the week's articles (`data/distribution/<date>.json`, shown on the dashboard with Copy buttons) | Anthropic cloud routine |
+
+Live status for all agents: the Mission Control dashboard (Claude artifact, reads `/api/status`).
+
 Routines are managed at https://claude.ai/code/routines.
 
 ## How content ships
