@@ -49,7 +49,7 @@
         "pricePerSqm": "$1,800–$3,800",
         "rentalYield": "5.5–8%",
         "costOfLiving": "$1,800–$3,000/mo",
-        "currency": "US Dollar (USD)"
+        "currency": "US Dollar (USD) and Balboa (PAB)"
       },
       "matchSlugs": [
         "panama"
@@ -296,13 +296,55 @@
         "pricePerSqm": "$800–$1,800",
         "rentalYield": "9–11%",
         "costOfLiving": "$900–$1,500/mo",
-        "currency": "US Dollar (USD)"
+        "currency": "Córdoba (NIO); property priced in USD"
       },
       "matchSlugs": [
         "granada",
         "nicaragua"
       ],
-      "metaDescription": "Granada, Nicaragua real estate 2026 — colonial home prices, 9-11% rental yields, foreign buyer rules and Lake Nicaragua proximity."
+      "metaDescription": "Granada, Nicaragua real estate 2026 — colonial home prices, 9-11% rental yields, foreign buyer rules and Lake Nicaragua proximity.",
+      "about": [
+        "Granada, on the shore of Lake Nicaragua, is one of Central America's oldest colonial cities, and its restored courtyard houses are what draw most foreign buyers. Foreigners can buy property here in their own name: Nicaragua's Constitution gives foreigners the same civil rights as citizens (Article 27) and guarantees the right to property (Article 40), and a standard purchase needs no residency permit, local partner or minimum investment.",
+        "The real work is the title. Purchases are signed as an escritura pública before a Nicaraguan notary and then entered in the Registro Público under Law 698 of 2009. The US Embassy estimates about 28,000 properties were confiscated between 1979 and 1990 and many remain disputed, and colonial houses tend to have the longest ownership chains, so a full title study by your own lawyer is essential before any deposit.",
+        "Buyers should also weigh the political backdrop. As of May 2026 the US State Department rates Nicaragua Level 3, 'Reconsider travel', citing crime, limited healthcare, wrongful detention and other risks. Granada's prices are low by regional standards, but liquidity is thinner than in Costa Rica or Panama, so plan for a longer hold and a slower resale."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Granada, Nicaragua?",
+          "a": "Yes. On ordinary private land foreigners have the same property rights as Nicaraguans and can hold title in their own name, with no residency, local partner or minimum investment required. Land in restricted border zones is the main exception."
+        },
+        {
+          "q": "What is the biggest risk when buying in Granada?",
+          "a": "Title history. The US Embassy estimates around 28,000 properties were confiscated between 1979 and 1990 and many are still disputed. Hire your own lawyer, order a full title study at the Registro Público, and never rely on an unregistered deed."
+        },
+        {
+          "q": "Is it safe to buy property in Nicaragua right now?",
+          "a": "The US State Department rated Nicaragua Level 3, 'Reconsider travel', in its May 2026 advisory, citing crime, limited healthcare and the risk of wrongful detention. Many foreigners do own property there, but it is a higher-risk market than Costa Rica or Panama."
+        },
+        {
+          "q": "Can I get residency in Nicaragua as a retiree?",
+          "a": "Yes, through the pensionado category under Law 694. The law sets a low pension threshold, but practitioners reported authorities asking for roughly US$1,000 to US$1,200 a month in 2025-2026, so confirm the current figure with an immigration lawyer before applying."
+        }
+      ],
+      "sources": [
+        {
+          "title": "US State Department — Nicaragua Travel Advisory (Level 3, May 2026)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/nicaragua.html"
+        },
+        {
+          "title": "US Embassy Managua — Buying Property and Property Disputes in Nicaragua",
+          "url": "https://ni.usembassy.gov/buying-property-and-property-disputes-in-nicaragua/"
+        },
+        {
+          "title": "The Rio Times — Buying Property in Nicaragua as a Foreigner (2026)",
+          "url": "https://www.riotimesonline.com/buying-property-nicaragua-foreigners-2026/"
+        },
+        {
+          "title": "The Rio Times — Retire in Nicaragua 2026: Residency After Law 694",
+          "url": "https://www.riotimesonline.com/retire-in-nicaragua-foreigners-2026/"
+        }
+      ],
+      "updated": "2026-10-16"
     },
     {
       "slug": "san-juan-del-sur-nicaragua",
@@ -315,7 +357,7 @@
         "pricePerSqm": "$1,200–$2,500",
         "rentalYield": "8–12%",
         "costOfLiving": "$1,000–$1,800/mo",
-        "currency": "US Dollar (USD)"
+        "currency": "Córdoba (NIO); property priced in USD"
       },
       "matchSlugs": [
         "san-juan-del-sur",
