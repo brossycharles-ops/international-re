@@ -304,7 +304,7 @@
       ],
       "metaDescription": "Granada, Nicaragua real estate 2026 — colonial home prices, 9-11% rental yields, foreign buyer rules and Lake Nicaragua proximity.",
       "about": [
-        "Granada, on the shore of Lake Nicaragua, is one of Central America's oldest colonial cities, and its restored courtyard houses are what draw most foreign buyers. Foreigners can buy property here in their own name: Nicaragua's Constitution gives foreigners the same civil rights as citizens (Article 27) and guarantees the right to property (Article 40), and a standard purchase needs no residency permit, local partner or minimum investment.",
+        "Granada, on the shore of Lake Nicaragua, is one of Central America's oldest colonial cities, and its restored courtyard houses are what draw most foreign buyers. Foreigners can buy property here in their own name: Nicaragua's Constitution gives foreigners the same civil rights as citizens (Article 27) and guarantees the right to property (Article 44), and a standard purchase needs no residency permit, local partner or minimum investment.",
         "The real work is the title. Purchases are signed as an escritura pública before a Nicaraguan notary and then entered in the Registro Público under Law 698 of 2009. The US Embassy estimates about 28,000 properties were confiscated between 1979 and 1990 and many remain disputed, and colonial houses tend to have the longest ownership chains, so a full title study by your own lawyer is essential before any deposit.",
         "Buyers should also weigh the political backdrop. As of May 2026 the US State Department rates Nicaragua Level 3, 'Reconsider travel', citing crime, limited healthcare, wrongful detention and other risks. Granada's prices are low by regional standards, but liquidity is thinner than in Costa Rica or Panama, so plan for a longer hold and a slower resale."
       ],
@@ -342,6 +342,10 @@
         {
           "title": "The Rio Times — Retire in Nicaragua 2026: Residency After Law 694",
           "url": "https://www.riotimesonline.com/retire-in-nicaragua-foreigners-2026/"
+        },
+        {
+          "title": "Constitución Política de Nicaragua — Arts. 27 and 44, official text (Policía Nacional CEDOC)",
+          "url": "https://www.policia.gob.ni/cedoc/sector/bl/constpol/fbl3.htm"
         }
       ],
       "updated": "2026-10-16"
@@ -351,19 +355,85 @@
       "city": "San Juan del Sur",
       "country": "Nicaragua",
       "countryFlag": "🇳🇮",
-      "tagline": "Pacific surf town with the lowest beachfront prices in Central America.",
+      "tagline": "Pacific surf town in Rivas with USD-priced homes and condos — but check coastal-zone, border and title rules first.",
       "heroImage": "https://images.unsplash.com/photo-1648878077157-661c11bbe371",
       "stats": {
-        "pricePerSqm": "$1,200–$2,500",
-        "rentalYield": "8–12%",
-        "costOfLiving": "$1,000–$1,800/mo",
-        "currency": "Córdoba (NIO); property priced in USD"
+        "pricePerSqm": "$1,000–$2,600 (asking, 2026 listings)",
+        "rentalYield": "No reliable published data",
+        "costOfLiving": "~$1,050–$1,100/mo (est.: Numbeo Managua costs + local rent)",
+        "currency": "Córdoba (NIO), C$36.62 per US$ in 2026; property priced in USD"
       },
       "matchSlugs": [
         "san-juan-del-sur",
         "nicaragua"
       ],
-      "metaDescription": "San Juan del Sur, Nicaragua real estate 2026 — Pacific beachfront prices, 8-12% surf-rental yields, residency and foreign buyer rules."
+      "metaDescription": "San Juan del Sur, Nicaragua real estate 2026: asking prices, coastal-zone law 690, title and confiscation risks, border-strip rules and the US travel advisory.",
+      "about": [
+        "San Juan del Sur is a small Pacific bay town in Nicaragua's Rivas department, and its surf beaches and ocean-view hillsides are what draw most foreign buyers. Homes and condos are listed in US dollars: asking prices on Encuentra24 run from roughly US$1,000 per square metre for modest houses to about US$2,600 at the top end for beachfront condos. Foreigners can hold title in their own name, because the Constitution gives foreigners the same civil rights as Nicaraguans (Article 27) and guarantees private property (Article 44).",
+        "Coastal land has its own rules. Under Ley 690 of 2009, the Coastal Zones Development Law, the beach between low and high tide plus 50 metres inland from the average high-tide mark is state-owned public-use land where homes are prohibited, and the next 200 metres inland is a restricted zone where the state regulates use. Neither strip can be sold, only granted by concession, although rights legally acquired before the law and already-established urban centres are exempt. Purchases are recorded in the Registro Público de la Propiedad, part of the national registry system set up by Law 698 of 2009. The US Embassy says about 28,000 properties were expropriated between 1979 and 1990, many are still disputed, and it urges extreme caution with coastal property in particular.",
+        "The country risk is real. The US State Department rates Nicaragua Level 3, 'Reconsider travel', citing crime, health, wrongful detention and arbitrary enforcement of local laws. In August 2025 the National Assembly passed Law 1258, which declares a 15-kilometre strip along Nicaragua's borders state property, and the State Department called it a 'massive confiscation'. The town itself is roughly 25–30 km from the Costa Rican border, outside the strip, but the municipality's southern beaches (El Ostional, La Flor, Playa El Coco) lie within or close to it, so have a lawyer confirm where any lot sits. Nicaragua publishes no sales-price data and no reliable rental-yield figures, so treat agents' yield claims with caution and plan for a long hold."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy beachfront property in San Juan del Sur?",
+          "a": "Foreigners can own private land in their own name, but not the beach itself. Ley 690 makes the area between the tides plus 50 metres inland from the average high-tide mark public-use state land where homes are banned, and the next 200 metres inland is a restricted zone. Rights legally acquired before 2009 are respected, so your lawyer must check exactly where any lot sits."
+        },
+        {
+          "q": "How much does property cost in San Juan del Sur?",
+          "a": "There is no official price index. Asking prices on Encuentra24 in 2026 range from about US$1,000 per square metre for modest houses to about US$2,600 at the top end for beachfront condos. Treat these as asking prices, not sale prices."
+        },
+        {
+          "q": "What are the biggest risks of buying in San Juan del Sur?",
+          "a": "Title and politics. The US Embassy says about 28,000 properties were expropriated in 1979-1990, many are still disputed, and it urges extreme caution with coastal property. Law 1258 of 2025 also made a 15 km strip along Nicaragua's borders state property: the town is outside it, but the southern beaches such as El Ostional, La Flor and Playa El Coco are within or close to it. Order a full title study at the Registro Público before paying any deposit."
+        },
+        {
+          "q": "Is it safe to buy property in Nicaragua right now?",
+          "a": "The US State Department rates Nicaragua Level 3, 'Reconsider travel', citing crime, health, wrongful detention and arbitrary enforcement of local laws, and the US Embassy urges extreme caution when buying coastal property. Weigh that risk, and the slow resale market, before committing."
+        }
+      ],
+      "sources": [
+        {
+          "title": "US Embassy Managua — Buying Property and Property Disputes in Nicaragua (incl. current Level 3 advisory banner)",
+          "url": "https://ni.usembassy.gov/buying-property-and-property-disputes-in-nicaragua/"
+        },
+        {
+          "title": "US State Department — Nicaragua Travel Advisory",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/nicaragua.html"
+        },
+        {
+          "title": "Constitución Política de Nicaragua — Arts. 27 (rights of foreigners) and 44 (private property), official text (Policía Nacional CEDOC)",
+          "url": "https://www.policia.gob.ni/cedoc/sector/bl/constpol/fbl3.htm"
+        },
+        {
+          "title": "Ley 690, Ley para el Desarrollo de las Zonas Costeras — consolidated text, La Gaceta 189 of 2021 (FAOLEX)",
+          "url": "https://faolex.fao.org/docs/pdf/nic90630.pdf"
+        },
+        {
+          "title": "Ley 698, Ley General de los Registros Públicos (2009) — FAOLEX",
+          "url": "https://faolex.fao.org/docs/pdf/nic97875.pdf"
+        },
+        {
+          "title": "Bloomberg Línea — EE.UU. califica como 'confiscación masiva' nueva ley territorial de Nicaragua (Law 1258, Aug 2025)",
+          "url": "https://www.bloomberglinea.com/2025/08/11/eeuu-califica-como-confiscacion-masiva-nueva-ley-territorial-de-nicaragua/"
+        },
+        {
+          "title": "Encuentra24 — San Juan del Sur real estate for sale (asking prices)",
+          "url": "https://www.encuentra24.com/nicaragua-en/real-estate-for-sale/rivas-san-juan-del-sur"
+        },
+        {
+          "title": "Numbeo — Cost of Living in San Juan del Sur (rents)",
+          "url": "https://www.numbeo.com/cost-of-living/in/San-Juan-Del-Sur-Nicaragua"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Managua (monthly costs excluding rent)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Managua"
+        },
+        {
+          "title": "Banco Central de Nicaragua — 0% crawling peg, C$36.6243 per US$ for 2026",
+          "url": "https://www.bcn.gob.ni/sites/default/files/noticias/notas_prensa/2025/np_tcdeslizamineto201025.pdf"
+        }
+      ],
+      "updated": "2026-10-16"
     }
   ]
 }
