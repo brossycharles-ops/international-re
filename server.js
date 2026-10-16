@@ -389,6 +389,51 @@ async function handleCleanupTestSubscribers(req, res) {
 }
 app.post('/api/admin/cleanup-test-subscribers', handleCleanupTestSubscribers);
 
+// ─── Restore subscribers (admin-only, sends no email) ───
+//   POST /api/admin/restore-subscribers  { key, subscribers: [{ email, firstName,
+//   lastName?, subscribedAt, drip?: [ids], newsletters?: [ids] }], dryrun? }
+// Adds records that aren't already on the list, keeping their original
+// signup date and drip history so the welcome sequence resumes rather than
+// restarting. Existing emails are never overwritten.
+app.post('/api/admin/restore-subscribers', async (req, res) => {
+  if (!requireAdminKey(req, res, req.body?.key)) return;
+  const incoming = Array.isArray(req.body?.subscribers) ? req.body.subscribers : null;
+  if (!incoming || incoming.length === 0 || incoming.length > 5000) {
+    return res.status(400).json({ error: 'subscribers must be a non-empty array (max 5000).' });
+  }
+  const dripIds = new Set(DRIP_EMAILS.map(e => e.id));
+  const clean = [];
+  const rejected = [];
+  for (const s of incoming) {
+    const email = typeof s?.email === 'string' ? s.email.trim().toLowerCase() : '';
+    const when = new Date(s?.subscribedAt);
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || isNaN(when.getTime()) || when.getTime() > Date.now()) {
+      rejected.push(email || '(missing email)');
+      continue;
+    }
+    clean.push({
+      email,
+      firstName: String(s.firstName || '').trim().slice(0, 80),
+      lastName: String(s.lastName || '').trim().slice(0, 80),
+      subscribedAt: when.toISOString(),
+      drip: Array.isArray(s.drip) ? s.drip.filter(id => dripIds.has(id)) : [],
+      newsletters: Array.isArray(s.newsletters) ? s.newsletters.filter(id => /^\d{4}-\d{2}-\d{2}$/.test(id)) : [],
+      restored: true
+    });
+  }
+  await acquireLock();
+  try {
+    const current = readSubscribers();
+    const existing = new Set(current.map(s => (s.email || '').toLowerCase()));
+    const toAdd = clean.filter(s => !existing.has(s.email) && existing.add(s.email));
+    if (!req.body?.dryrun && toAdd.length) writeSubscribers([...current, ...toAdd]);
+    console.log(`Restore: ${toAdd.length} added, ${clean.length - toAdd.length} already present, ${rejected.length} rejected${req.body?.dryrun ? ' (dry run)' : ''}`);
+    res.json({ dryrun: !!req.body?.dryrun, added: toAdd.length, alreadyPresent: clean.length - toAdd.length, rejected, total: current.length + (req.body?.dryrun ? 0 : toAdd.length) });
+  } finally {
+    releaseLock();
+  }
+});
+
 // ─── Plausible traffic snapshot (admin-only) ───
 // Set PLAUSIBLE_API_KEY in env. Hit: /api/admin/traffic?key=ADMIN_KEY&period=30d
 // period: 7d | 30d | 6mo | 12mo (Plausible API values)
@@ -987,6 +1032,14 @@ app.post('/api/drip-check', async (req, res) => {
 
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
+// Express's default error page includes a stack trace with server file paths.
+app.use((err, req, res, next) => {
+  if (res.headersSent) return next(err);
+  const status = err.status || err.statusCode || 500;
+  if (status >= 500) console.error('Unhandled error:', err);
+  res.status(status).json({ error: status === 400 ? 'Invalid request.' : status === 413 ? 'Request too large.' : 'Server error.' });
 });
 
 // ─── Error handling ───
