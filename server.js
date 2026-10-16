@@ -40,10 +40,91 @@ const EMAIL_FROM = process.env.EMAIL_FROM || 'International RE <onboarding@resen
 
 app.use(compression());
 app.use(express.json({ limit: '50kb' }));
+
+// ─── Built-in visitor counts ───
+// Cookieless and private: a visitor is a hash of IP + user agent + a salt that
+// changes daily and is never stored with the counts, so nobody can be tracked
+// across days. Replaces the lapsed Plausible trial for the owner report and
+// gives the agents a /api/stats/summary of what people actually read.
+const TRAFFIC_FILE = path.join(path.dirname(SUBSCRIBERS_FILE), 'traffic.json');
+const BOT_UA = /bot|crawl|spider|slurp|facebookexternalhit|preview|monitor|uptime|curl|wget|python|node-fetch|axios|go-http|java\/|headless|lighthouse|pagespeed|semrush|ahrefs|scrapy|httpclient/i;
+const OWN_HOST = /(^|\.)internationalre\.org$/i;
+let traffic = (() => { try { return JSON.parse(fs.readFileSync(TRAFFIC_FILE, 'utf-8')); } catch { return { days: {} }; } })();
+let trafficDirty = false;
+
+function trafficDay(date) {
+  if (!traffic.today || traffic.today.date !== date) {
+    traffic.today = { date, salt: crypto.randomBytes(16).toString('hex'), seen: [] };
+    const cutoff = new Date(Date.now() - 120 * 864e5).toISOString().slice(0, 10);
+    for (const d of Object.keys(traffic.days)) if (d < cutoff) delete traffic.days[d];
+  }
+  return (traffic.days[date] ||= { views: 0, visitors: 0, pages: {}, refs: {} });
+}
+
+function bump(map, key, limit) {
+  if (key in map || Object.keys(map).length < limit) map[key] = (map[key] || 0) + 1;
+}
+
+function countPageview(req) {
+  const ua = req.get('user-agent') || '';
+  if (!ua || BOT_UA.test(ua) || /prefetch|prerender/i.test(req.get('sec-purpose') || req.get('purpose') || '')) return;
+  const date = new Date().toISOString().slice(0, 10);
+  const day = trafficDay(date);
+  const ip = String(req.get('x-forwarded-for') || req.socket.remoteAddress || '').split(',')[0].trim();
+  const id = crypto.createHash('sha256').update(traffic.today.salt + ip + ua).digest('hex').slice(0, 16);
+  if (!traffic.today.seen.includes(id)) { traffic.today.seen.push(id); day.visitors++; }
+  day.views++;
+  bump(day.pages, req.path.replace(/index\.html$/, '').slice(0, 200), 500);
+  let ref = '';
+  try { ref = new URL(req.get('referer') || '').hostname.replace(/^www\./, ''); } catch {}
+  if (ref && !OWN_HOST.test(ref)) bump(day.refs, ref.slice(0, 100), 200);
+  trafficDirty = true;
+}
+
+function saveTraffic() {
+  if (!trafficDirty) return;
+  try { ensureDataDir(); fs.writeFileSync(TRAFFIC_FILE + '.tmp', JSON.stringify(traffic)); fs.renameSync(TRAFFIC_FILE + '.tmp', TRAFFIC_FILE); trafficDirty = false; }
+  catch (err) { console.error('Traffic write failed:', err.message); }
+}
+
+// Totals for the last `days` days (including today); visitors are summed daily uniques.
+function trafficSummary(days, top = 10) {
+  const from = new Date(Date.now() - (days - 1) * 864e5).toISOString().slice(0, 10);
+  const out = { days, since: from, visitors: 0, pageviews: 0, pages: {}, sources: {} };
+  for (const [d, v] of Object.entries(traffic.days)) {
+    if (d < from) continue;
+    out.visitors += v.visitors; out.pageviews += v.views;
+    for (const [k, n] of Object.entries(v.pages)) out.pages[k] = (out.pages[k] || 0) + n;
+    for (const [k, n] of Object.entries(v.refs)) out.sources[k] = (out.sources[k] || 0) + n;
+  }
+  const rank = m => Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, top);
+  out.pages = rank(out.pages).map(([page, views]) => ({ page, views }));
+  out.sources = rank(out.sources).map(([source, views]) => ({ source, views }));
+  return out;
+}
+
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api/') && (/\/$|\.html$/.test(req.path) || !path.extname(req.path))) {
+    res.on('finish', () => {
+      if ((res.statusCode === 200 || res.statusCode === 304) && /html/.test(res.get('content-type') || 'text/html')) countPageview(req);
+    });
+  }
+  next();
+});
+
+app.get('/api/stats/summary', (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.json({ last7: trafficSummary(7), last28: trafficSummary(28), note: 'Built-in cookieless counts; bots excluded. Visitors are daily unique visitors summed over the period.' });
+});
+
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '1d',
   setHeaders: (res, filePath) => {
-    if (/\.(css|js)$/i.test(filePath)) {
+    if (/\.html$/i.test(filePath)) {
+      // Revalidate HTML on every visit (cheap 304s) so new articles show up at
+      // once and every page view reaches the visitor counter.
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    } else if (/\.(css|js)$/i.test(filePath)) {
       // No immutable — filenames aren't content-hashed, so must revalidate daily
       res.setHeader('Cache-Control', 'public, max-age=86400, must-revalidate');
     } else if (/\.(png|jpe?g|webp|svg|woff2?)$/i.test(filePath)) {
@@ -1067,7 +1148,10 @@ function csvCell(v) {
 
 // Plausible snapshot for the owner report; null when no API key is configured.
 async function trafficSnapshot(period) {
-  if (!process.env.PLAUSIBLE_API_KEY) return null;
+  if (!process.env.PLAUSIBLE_API_KEY) {
+    const t = trafficSummary(period === '7d' ? 7 : 30, 5);
+    return { visitors: t.visitors, pageviews: t.pageviews, pages: t.pages.map(r => ({ page: r.page, visitors: r.views })), sources: t.sources.map(r => ({ source: r.source, visitors: r.views })) };
+  }
   const site = process.env.PLAUSIBLE_SITE_ID || 'internationalre.org';
   const base = 'https://plausible.io/api/v1/stats';
   const headers = { Authorization: `Bearer ${process.env.PLAUSIBLE_API_KEY}` };
@@ -1091,17 +1175,17 @@ async function sendSubscriberBackup(today) {
   const subs = readSubscribers();
   const weekAgo = Date.now() - 7 * 864e5;
   const joined = subs.filter(s => new Date(s.subscribedAt || s.dateSubscribed || 0).getTime() >= weekAgo).length;
-  let traffic = '<p style="color:#888">Traffic: add a <code>PLAUSIBLE_API_KEY</code> variable in Railway to include visitor numbers here.</p>';
+  let trafficHtml = '<p style="color:#888">Traffic unavailable.</p>';
   let headline = '';
   try {
     const [w, m] = await Promise.all([trafficSnapshot('7d'), trafficSnapshot('30d')]);
     if (w && m) {
       headline = `, ${w.visitors} visitors this week`;
       const list = rows => rows.map(r => `<li>${escapeHtml(r.page || r.source)} — ${r.visitors}</li>`).join('') || '<li>none yet</li>';
-      traffic = `<h3>Traffic</h3><p><strong>${w.visitors}</strong> visitors this week (${w.pageviews} page views) · <strong>${m.visitors}</strong> in the last 30 days.</p>
-        <p><strong>Top pages (7 days)</strong></p><ul>${list(w.pages)}</ul><p><strong>Top sources (7 days)</strong></p><ul>${list(w.sources)}</ul>`;
+      trafficHtml = `<h3>Traffic</h3><p><strong>${w.visitors}</strong> visitors this week (${w.pageviews} page views) · <strong>${m.visitors}</strong> in the last 30 days.</p>
+        <p><strong>Top pages (7 days, views)</strong></p><ul>${list(w.pages)}</ul><p><strong>Top referring sites (7 days)</strong></p><ul>${list(w.sources)}</ul>`;
     }
-  } catch (err) { traffic = `<p style="color:#888">Traffic unavailable (${escapeHtml(err.message)}).</p>`; }
+  } catch (err) { trafficHtml = `<p style="color:#888">Traffic unavailable (${escapeHtml(err.message)}).</p>`; }
   const cols = ['email', 'firstName', 'lastName', 'subscribedAt', 'drip', 'newsletters'];
   const csv = [cols.join(','), ...subs.map(s => cols.map(c => csvCell(s[c] ?? (c === 'subscribedAt' ? s.dateSubscribed : ''))).join(','))].join('\n');
   await resend.emails.send({
@@ -1111,7 +1195,7 @@ async function sendSubscriberBackup(today) {
     html: `<div style="font-family:Inter,Arial,sans-serif;max-width:600px">
       <h2>Weekly report — ${today}</h2>
       <h3>Subscribers</h3><p><strong>${subs.length}</strong> total · <strong>+${joined}</strong> joined in the last 7 days.</p>
-      ${traffic}
+      ${trafficHtml}
       <p style="color:#888;font-size:13px;border-top:1px solid #eee;padding-top:12px">The full subscriber list is attached as a CSV backup. Keep this email: if the server's list is ever lost, it can be restored from this file.</p></div>`,
     attachments: [{ filename: `internationalre-subscribers-${today}.csv`, content: Buffer.from(csv, 'utf-8') }]
   });
@@ -1166,6 +1250,7 @@ process.on('unhandledRejection', (err) => {
 
 function shutdown(signal) {
   console.log(`\n  ${signal} received. Shutting down gracefully...`);
+  saveTraffic();
   server.close(() => {
     console.log('  Server closed.');
     process.exit(0);
@@ -1181,6 +1266,7 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`  Subscribers: ${readSubscribers().length}`);
   console.log(`  Email schedule: ${schedulerEnabled() ? 'on at ' + DRIP_HOURS_UTC.join(',') + ' UTC' : 'off'}${process.env.BACKUP_EMAIL ? ', weekly backup on' : ''}\n`);
   setInterval(schedulerTick, 5 * 60 * 1000).unref();
+  setInterval(saveTraffic, 5 * 60 * 1000).unref();
   setTimeout(schedulerTick, Number(process.env.SCHEDULER_FIRST_TICK_MS || 30000)).unref();
 });
 
