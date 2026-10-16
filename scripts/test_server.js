@@ -101,6 +101,10 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   const saved = JSON.parse(fs.readFileSync(path.join(dir, 'messages.json')));
   check('contact keeps a copy on the volume', saved.some(m => m.email === 'reader@realmail.io' && m.kind === 'correction'));
 
+  sent.length = 0;
+  await fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '192.0.2.77' }, body: JSON.stringify({ kind: 'advisory', name: 'A', email: 'client@realmail.io', message: 'ADVISORY APPLICATION\nTier: Strategy Call' }) });
+  check('advisory applications reach the owner, labelled', sent.some(m => m.to === 'owner@realmail.io' && /Advisory application/.test(m.subject)), JSON.stringify(sent.map(m => m.subject)));
+
   // A forged leftmost X-Forwarded-For entry must not reset the rate limit.
   const spoof = async n => (await fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': `10.0.0.${n}, 198.51.100.9` }, body: JSON.stringify({ email: 'r@realmail.io', message: 'Testing the rate limit here.' }) })).status;
   const codes = []; for (let n = 0; n < 6; n++) codes.push(await spoof(n));

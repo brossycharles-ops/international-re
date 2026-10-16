@@ -964,16 +964,33 @@
           return;
         }
 
-        // Since the endpoint does not exist yet, redirect to success page
-        // In production, this would POST to /advisory-intake as JSON
-        try {
-          // Store form data in sessionStorage for the success page
-          sessionStorage.setItem('advisoryApplication', JSON.stringify(formData));
-          window.location.href = '/advisory-success.html';
-        } catch (err) {
-          formError.textContent = 'Something went wrong. Please try again or email us directly.';
+        const btn = advisoryForm.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; }
+        const message = [
+          'ADVISORY APPLICATION',
+          'Tier: ' + formData.tier_interest,
+          'Target country: ' + formData.target_country,
+          'Budget: ' + formData.budget_range,
+          'Timeline: ' + formData.timeline,
+          '',
+          'Goals:',
+          formData.motivation || '(not given)'
+        ].join('\n');
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ kind: 'advisory', name: formData.name, email: formData.email, page: '/advisory.html', message: message })
+        }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            if (!res.ok) throw new Error(res.j.error || 'Could not send');
+            try { sessionStorage.setItem('advisoryApplication', JSON.stringify(formData)); } catch (e2) {}
+            window.location.href = '/advisory-success.html';
+          })
+          .catch(function (err) {
+            if (btn) { btn.disabled = false; }
+            formError.textContent = (err && err.message) || 'Something went wrong. Please try again or use our contact form.';
           formError.style.display = 'block';
-        }
+          });
       });
     }
   </script>

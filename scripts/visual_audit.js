@@ -27,7 +27,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 // Key templates: one of each page type, plus whatever the sitemap lists newest.
 const PAGES = ['/', '/about.html', '/contact.html', '/free-guide.html', '/guide/expat-starter-kit.html',
-  '/blog.html', '/guides.html', '/cities/', '/cities/medellin-colombia/', '/newsletter.html', '/quiz.html'];
+  '/blog.html', '/guides.html', '/cities/', '/cities/medellin-colombia/', '/newsletter.html', '/quiz.html', '/advisory.html'];
 const VIEWPORTS = [{ name: 'desktop', width: 1280, height: 900 }, { name: 'mobile', width: 375, height: 812, isMobile: true }];
 const findings = [];
 const add = (sev, page, msg) => findings.push({ sev, page, msg });

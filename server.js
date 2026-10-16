@@ -413,7 +413,7 @@ app.post('/api/unsubscribe', async (req, res) => {
 // the volume in case sending fails. The owner's address is never shown publicly.
 const CONTACT_FILE = path.join(path.dirname(SUBSCRIBERS_FILE), 'messages.json');
 const contactRateLimitMap = new Map();
-const CONTACT_KINDS = { correction: 'Correction', question: 'Question', privacy: 'Data / privacy request', other: 'Other' };
+const CONTACT_KINDS = { advisory: 'Advisory application', correction: 'Correction', question: 'Question', privacy: 'Data / privacy request', other: 'Other' };
 
 app.post('/api/contact', async (req, res) => {
   const ip = clientIp(req);
