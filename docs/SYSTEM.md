@@ -7,7 +7,7 @@ local development.
 
 | When | What | Runs on |
 |---|---|---|
-| Daily 0:00 | **Research Editor**: fact-checks 3 existing articles against official sources with an independent checker subagent, adds Sources/FAQs, corrects or removes unverifiable claims, logs them in `data/research-ledger.json`, link-checks citations; then re-verifies the stalest pages forever (every 90 days) | Anthropic cloud routine |
+| Daily 0:00 & 17:00 | **Research Editor**: fact-checks 3 existing articles per run against official sources with an independent checker subagent, adds Sources/FAQs, corrects or removes unverifiable claims, logs them in `data/research-ledger.json`, link-checks citations; then re-verifies the stalest pages forever (every 90 days) | Anthropic cloud routine |
 | Daily 6:00 | **Cloud Site Auditor**: checks every live page, images, SEO, security; 3 workers open fix PRs; writes `docs/cto-reports/<date>.md` | Anthropic cloud routine |
 | Daily 10:00 & 15:00 | **Email schedule**: welcome/drip sequence and the Monday newsletter | Railway server (`server.js`) |
 | Daily 13:00 | **Cloud Growth Engine**: publishes the day's content (each page fact-checked by an independent subagent), research-verifies one older page, FAQ and city queues, internal links, IndexNow | Anthropic cloud routine |
