@@ -75,7 +75,8 @@
     }
     .nbhd-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
     .nbhd-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #0a1628; margin: 0; }
-    .nbhd-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+    .nbhd-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; white-space: nowrap; max-width: 100%; }
+    @media (max-width: 480px) { .nbhd-badge { white-space: normal; } }
     .badge-buy { background: #e8f4ec; color: #2a7d4f; }
     .badge-watch { background: #fff8e7; color: #c9a84c; }
     .badge-niche { background: #e8e3d9; color: #555; }

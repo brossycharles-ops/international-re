@@ -597,7 +597,10 @@ app.get('/api/admin/traffic', async (req, res) => {
       fetch(`${base}/breakdown?site_id=${site}&period=${period}&property=visit:source&limit=10`, { headers: auth }),
       fetch(`${base}/breakdown?site_id=${site}&period=${period}&property=event:page&limit=10`, { headers: auth }),
     ]);
-    if (!aggR.ok) return res.status(aggR.status).json({ error: `Plausible aggregate ${aggR.status}: ${await aggR.text()}` });
+    if (!aggR.ok) {
+      console.error(`Plausible aggregate ${aggR.status}:`, (await aggR.text()).slice(0, 500));
+      return res.status(502).json({ error: 'Traffic data unavailable (upstream error).', upstream_status: aggR.status });
+    }
     const [agg, src, pages] = await Promise.all([aggR.json(), srcR.json(), pageR.json()]);
     res.json({
       site, period,
@@ -607,7 +610,8 @@ app.get('/api/admin/traffic', async (req, res) => {
       subscribers_total: readSubscribers().length,
     });
   } catch (err) {
-    res.status(502).json({ error: `Plausible fetch failed: ${err.message}` });
+    console.error('Plausible fetch failed:', err.message);
+    res.status(502).json({ error: 'Traffic data unavailable.' });
   }
 });
 
