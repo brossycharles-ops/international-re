@@ -2761,3 +2761,5 @@ a {
 .map-tooltip::before { display: none; }
 .map-container { background: #0f1a2b !important; }
 #worldMap.leaflet-container { background: #0f1a2b !important; }
+/* Keep Leaflet's controls (z-index 1000) under the fixed navbar */
+.map-container { position: relative; z-index: 0; isolation: isolate; }
