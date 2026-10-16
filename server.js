@@ -13,11 +13,11 @@ app.use(helmet({
     useDefaults: true,
     directives: {
       'default-src': ["'self'"],
-      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com', 'https://plausible.io'],
+      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com', 'https://plausible.io', 'https://static.cloudflareinsights.com'],
       'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://unpkg.com'],
       'font-src': ["'self'", 'https://fonts.gstatic.com'],
-      'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com', 'https://*.tile.openstreetmap.org', 'https://*.basemaps.cartocdn.com'],
-      'connect-src': ["'self'", 'https://plausible.io'],
+      'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com'],
+      'connect-src': ["'self'", 'https://plausible.io', 'https://cloudflareinsights.com'],
       'frame-ancestors': ["'none'"],
       'object-src': ["'none'"],
       'base-uri': ["'self'"],
@@ -138,9 +138,11 @@ app.use(express.static(path.join(__dirname, 'public'), {
       // Revalidate HTML on every visit (cheap 304s) so new articles show up at
       // once and every page view reaches the visitor counter.
       res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
-    } else if (/\.(css|js)$/i.test(filePath)) {
-      // No immutable — filenames aren't content-hashed, so must revalidate daily
-      res.setHeader('Cache-Control', 'public, max-age=86400, must-revalidate');
+    } else if (/\.(css|js|geojson)$/i.test(filePath)) {
+      // Filenames aren't content-hashed and Cloudflare caches these at the edge,
+      // so keep the lifetime short (a day-long cache kept the broken CARTO map
+      // live after it was fixed). Bump ?v= on links for instant changes.
+      res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate');
     } else if (/\.(png|jpe?g|webp|svg|woff2?)$/i.test(filePath)) {
       res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
     }
