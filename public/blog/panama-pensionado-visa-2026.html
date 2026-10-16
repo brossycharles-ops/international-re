@@ -291,8 +291,8 @@
         </div>
         <form class="inline-subscribe-form" id="inlineSubscribeForm">
           <div class="inline-form-fields">
-            <input type="text" placeholder="First Name" id="inlineFirstName" required>
-            <input type="text" placeholder="Last Name" id="inlineLastName" required>
+            <input aria-label="First name (optional)" type="text" placeholder="First name (optional)" id="inlineFirstName">
+            <input type="hidden" id="inlineLastName" value="">
             <input type="email" placeholder="Email Address" id="inlineEmail" required aria-label="Email address">
           </div>
           <button type="submit" class="btn btn-primary"><span class="inline-btn-text">Get Free Guide</span><span class="inline-btn-loading" style="display:none;">Subscribing...</span></button>
@@ -316,7 +316,7 @@
 
   <script>
     const inlineForm=document.getElementById('inlineSubscribeForm');
-    if(inlineForm){inlineForm.addEventListener('submit',async(e)=>{e.preventDefault();const fn=document.getElementById('inlineFirstName').value.trim();const ln=document.getElementById('inlineLastName').value.trim();const em=document.getElementById('inlineEmail').value.trim();if(!fn||!ln||!em)return;const btn=inlineForm.querySelector('button');const bt=inlineForm.querySelector('.inline-btn-text');const bl=inlineForm.querySelector('.inline-btn-loading');bt.style.display='none';bl.style.display='inline';btn.disabled=true;try{const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName:fn,lastName:ln,email:em})});const d=await r.json();if(r.ok){localStorage.setItem('subscribed','true');window.location.href='/thankyou.html';}else{alert(d.error||'Something went wrong.');bt.style.display='inline';bl.style.display='none';btn.disabled=false;}}catch{alert('Network error.');bt.style.display='inline';bl.style.display='none';btn.disabled=false;}});}
+    if(inlineForm){inlineForm.addEventListener('submit',async(e)=>{e.preventDefault();const fn=document.getElementById('inlineFirstName').value.trim();const ln=document.getElementById('inlineLastName').value.trim();const em=document.getElementById('inlineEmail').value.trim();if(!em)return;const btn=inlineForm.querySelector('button');const bt=inlineForm.querySelector('.inline-btn-text');const bl=inlineForm.querySelector('.inline-btn-loading');bt.style.display='none';bl.style.display='inline';btn.disabled=true;try{const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName:fn,lastName:ln,email:em})});const d=await r.json();if(r.ok){localStorage.setItem('subscribed','true');window.location.href='/thankyou.html';}else{alert(d.error||'Something went wrong.');bt.style.display='inline';bl.style.display='none';btn.disabled=false;}}catch{alert('Network error.');bt.style.display='inline';bl.style.display='none';btn.disabled=false;}});}
     const u=encodeURIComponent(location.href);const t=encodeURIComponent('Panama Pensionado Visa 2026 — $1,000/month, permanent residency day one, 20-50% discounts. Complete guide via @InternationalRE');
     document.getElementById('shareTw').href='https://twitter.com/intent/tweet?text='+t+'&url='+u;
     document.getElementById('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+u;

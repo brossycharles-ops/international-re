@@ -2740,3 +2740,10 @@ a {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* Mid-width screens (small laptops, tablets): the full nav crowded and the CTA wrapped onto 3 lines */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.82rem; white-space: nowrap; }
+  .nav-cta { padding: 8px 14px; }
+}

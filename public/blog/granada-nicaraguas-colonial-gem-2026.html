@@ -213,8 +213,8 @@
         </div>
         <form class="inline-subscribe-form" id="inlineSubscribeForm">
           <div class="inline-form-fields">
-            <input type="text" placeholder="First Name" id="inlineFirstName" required>
-            <input type="text" placeholder="Last Name" id="inlineLastName" required>
+            <input aria-label="First name (optional)" type="text" placeholder="First name (optional)" id="inlineFirstName">
+            <input type="hidden" id="inlineLastName" value="">
             <input type="email" placeholder="Email Address" id="inlineEmail" required aria-label="Email address">
           </div>
           <button type="submit" class="btn btn-primary">
@@ -304,7 +304,7 @@
         const firstName = document.getElementById('inlineFirstName').value.trim();
         const lastName = document.getElementById('inlineLastName').value.trim();
         const email = document.getElementById('inlineEmail').value.trim();
-        if (!firstName || !lastName || !email) return;
+        if (!email) return;
         const btn = inlineForm.querySelector('button');
         const btnText = inlineForm.querySelector('.inline-btn-text');
         const btnLoading = inlineForm.querySelector('.inline-btn-loading');

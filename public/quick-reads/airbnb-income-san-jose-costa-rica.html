@@ -164,8 +164,8 @@
         </div>
         <form class="inline-subscribe-form" id="inlineSubscribeForm">
           <div class="inline-form-fields">
-            <input type="text" placeholder="First Name" id="inlineFirstName" required>
-            <input type="text" placeholder="Last Name" id="inlineLastName" required>
+            <input aria-label="First name (optional)" type="text" placeholder="First name (optional)" id="inlineFirstName">
+            <input type="hidden" id="inlineLastName" value="">
             <input type="email" placeholder="Email Address" id="inlineEmail" required aria-label="Email address">
           </div>
           <button type="submit" class="btn btn-primary"><span class="inline-btn-text">Get Free Guide</span><span class="inline-btn-loading" style="display:none;">Subscribing...</span></button>
@@ -190,7 +190,7 @@
 
   <script>
     const inlineForm = document.getElementById('inlineSubscribeForm');
-    if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!firstName || !lastName || !email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
+    if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { inlineForm.style.display = 'none'; document.getElementById('inlineSuccess').style.display = 'flex'; localStorage.setItem('subscribed', 'true'); } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
     const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
   <script src="../lead_capture.js" defer></script>

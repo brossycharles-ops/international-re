@@ -177,8 +177,8 @@
     <h2>Get the Cuenca Brief — Free</h2>
     <p>Real prices, real yields, real listings. Weekly. From investors who actually buy here.</p>
     <form class="inline-subscribe-form" id="inlineSubscribeForm" style="max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:8px;">
-      <input type="text" placeholder="First name" id="inlineFirstName" required style="padding:12px 14px;border-radius:6px;border:1px solid #c9a84c;background:rgba(255,255,255,0.05);color:#faf8f3;">
-      <input type="text" placeholder="Last name" id="inlineLastName" required style="padding:12px 14px;border-radius:6px;border:1px solid #c9a84c;background:rgba(255,255,255,0.05);color:#faf8f3;">
+      <input aria-label="First name (optional)" type="text" placeholder="First name (optional)" id="inlineFirstName" style="padding:12px 14px;border-radius:6px;border:1px solid #c9a84c;background:rgba(255,255,255,0.05);color:#faf8f3;">
+      <input type="hidden" id="inlineLastName" value="">
       <input type="email" placeholder="Email address" id="inlineEmail" required style="padding:12px 14px;border-radius:6px;border:1px solid #c9a84c;background:rgba(255,255,255,0.05);color:#faf8f3;" aria-label="Email address">
       <button type="submit" class="btn btn-primary"><span class="inline-btn-text">Subscribe Free</span><span class="inline-btn-loading" style="display:none;">Subscribing…</span></button>
     </form>
@@ -203,7 +203,7 @@
         const fn = document.getElementById('inlineFirstName').value.trim();
         const ln = document.getElementById('inlineLastName').value.trim();
         const em = document.getElementById('inlineEmail').value.trim();
-        if (!fn || !ln || !em) return;
+        if (!em) return;
         const btnText = form.querySelector('.inline-btn-text');
         const btnLoad = form.querySelector('.inline-btn-loading');
         btnText.style.display='none'; btnLoad.style.display='inline';
