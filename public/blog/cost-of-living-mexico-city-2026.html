@@ -49,12 +49,14 @@
     ]
   }
   </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.7; }
     a { color: #2563eb; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    nav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    nav.top-nav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
     .nav-logo { font-weight: 700; font-size: 1.1rem; color: #1a1a1a; }
     .nav-cta { background: #2563eb; color: #fff; padding: 8px 18px; border-radius: 6px; font-size: 0.875rem; font-weight: 600; }
     .nav-cta:hover { background: #1d4ed8; text-decoration: none; }
@@ -131,12 +133,6 @@
     }
   </style>
   <script defer src="/js/analytics.js"></script>
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
-  </script>
   <meta property="og:title" content="Cost of Living in Mexico City 2026: Real Numbers for Expats">
   <meta property="og:description" content="Mexico City cost of living 2026: rent by neighborhood, food, transport, healthcare and 3 budget scenarios. Real numbers from expats living in CDMX .">
   <meta property="og:image" content="https://images.unsplash.com/photo-1518659526054-190340b32735?w=1200&q=80">
@@ -151,11 +147,19 @@
     .skip-link:focus{left:12px;top:12px}
     .hero{background:linear-gradient(135deg,#0a1628 0%,#1c2f4f 100%)}
     .hero .hero-subtitle,.hero .hero-meta,.hero p{color:#fff}
-    .nav-cta{background:#c9a84c;color:#0a1628}
+    nav.top-nav{background:rgba(10,22,40,.97);border-bottom:1px solid rgba(255,255,255,.08);height:64px;padding:0 max(24px,calc((100% - 1150px)/2))}
+    .top-nav .nav-logo{font-family:'Playfair Display',Georgia,serif;font-size:1.45rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;text-decoration:none}
+    .top-nav .logo-icon{color:#c9a84c;font-size:1.05rem}
+    .top-nav .logo-accent{color:#c9a84c}
+    .nav-links-mini{display:flex;gap:28px;align-items:center;font-size:.9rem;font-weight:500}
+    .nav-links-mini a:not(.nav-cta){color:rgba(255,255,255,.8);letter-spacing:.02em}
+    .nav-links-mini a:not(.nav-cta):hover{color:#c9a84c;text-decoration:none}
+    .nav-cta{background:#c9a84c;color:#0a1628;padding:10px 22px}
     .nav-cta:hover{background:#b8963d;color:#0a1628}
-    .nav-links-mini{display:flex;gap:18px;align-items:center;font-size:.9rem}
-    .nav-links-mini a:not(.nav-cta){color:#1a1a1a}
-    @media(max-width:640px){.nav-links-mini .hide-sm{display:none}}
+    @media(max-width:1000px){.nav-links-mini .hide-sm{display:none}}
+    body>nav.related-reading,body>p.report-error{max-width:732px;margin-left:auto!important;margin-right:auto!important}
+    @media(max-width:780px){body>nav.related-reading,body>p.report-error{margin-left:24px!important;margin-right:24px!important}}
+    @media(max-width:520px){nav.top-nav{padding:0 16px}.top-nav .nav-logo{font-size:1.15rem;gap:6px}.nav-cta{padding:8px 14px;font-size:.8rem;white-space:nowrap}}
     .site-footer{background:#0a1628;color:rgba(255,255,255,.7);padding:40px 24px 90px;text-align:center;font-size:.9rem;margin-top:48px;line-height:2}
     .site-footer a{color:#c9a84c;margin:0 10px;white-space:nowrap}
     .site-footer p:first-child{display:flex;flex-wrap:wrap;justify-content:center;row-gap:4px}
@@ -167,9 +171,9 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-<nav>
-  <a href="/" class="nav-logo">International RE</a>
-  <div class="nav-links-mini"><a class="hide-sm" href="/cities/">Cities</a><a class="hide-sm" href="/blog.html">Blog</a><a class="hide-sm" href="/guides.html">Guides</a><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></div>
+<nav class="top-nav" aria-label="Main">
+  <a href="/" class="nav-logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+  <div class="nav-links-mini"><a class="hide-sm" href="/#markets">Markets</a><a class="hide-sm" href="/#newsletters">Newsletters</a><a class="hide-sm" href="/blog.html">Blog</a><a class="hide-sm" href="/gallery.html">Gallery</a><a class="hide-sm" href="/about.html">About</a><a class="hide-sm" href="/quiz.html">Market Quiz</a><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></div>
 </nav>
 
 <div class="hero" id="main">

@@ -13,11 +13,11 @@ app.use(helmet({
     useDefaults: true,
     directives: {
       'default-src': ["'self'"],
-      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com', 'https://plausible.io', 'https://static.cloudflareinsights.com'],
+      'script-src': ["'self'", "'unsafe-inline'", 'https://unpkg.com', 'https://static.cloudflareinsights.com'],
       'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://unpkg.com'],
       'font-src': ["'self'", 'https://fonts.gstatic.com'],
       'img-src': ["'self'", 'data:', 'https://images.unsplash.com', 'https://unpkg.com'],
-      'connect-src': ["'self'", 'https://plausible.io', 'https://cloudflareinsights.com'],
+      'connect-src': ["'self'", 'https://cloudflareinsights.com'],
       'frame-ancestors': ["'none'"],
       'object-src': ["'none'"],
       'base-uri': ["'self'"],

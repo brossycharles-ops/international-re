@@ -213,11 +213,6 @@ def render_city_hub(city):
     .hub-hero {{ background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('{hero_img}'); }}
   </style>
   <script defer src="/js/analytics.js"></script>
-  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){{(plausible.q=plausible.q||[]).push(arguments)}},plausible.init=plausible.init||function(i){{plausible.o=i||{{}}}};
-    plausible.init()
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -407,11 +402,6 @@ def render_index(cities_list):
     .cities-nav-links a {{ color: #555; text-decoration: none; margin-left: 22px; font-size: 0.92rem; }}
   </style>
   <script defer src="/js/analytics.js"></script>
-  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){{(plausible.q=plausible.q||[]).push(arguments)}},plausible.init=plausible.init||function(i){{plausible.o=i||{{}}}};
-    plausible.init()
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
