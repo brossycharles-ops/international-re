@@ -128,10 +128,26 @@ def main():
 
     if "--queue" in sys.argv:
         n = int(sys.argv[sys.argv.index("--queue") + 1])
-        # Never-verified first (worst score first), then the stalest verifications.
-        todo = sorted(pages, key=lambda a: (bool(a["verified"]), a["verified"] or "", a["score"]))
+        # Pages with a deadline that has passed come first (they state a rule that is
+        # no longer true), then never-verified (worst score first), then the stalest.
+        try:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            from stale_claims import stale_pages
+            stale = stale_pages()
+        except Exception:
+            stale = {}
+        for a in pages:
+            if a["page"] in stale:
+                a["stale"] = stale[a["page"]]
+        todo = sorted(pages, key=lambda a: (a["page"] not in stale or (a["verified"] or "") >= str(date.today()), bool(a["verified"]), a["verified"] or "", a["score"]))
+        # Stale pages outside the article sections (e.g. /guide/) still need fixing first.
+        known = {a["page"] for a in pages}
+        for page, phrases in sorted(stale.items()):
+            if page not in known:
+                print(f"{page}\tscore=n/a\tverified=n/a\tdeadline passed: " + ", ".join(phrases))
         for a in todo[:n]:
-            print(f"{a['page']}\tscore={a['score']}\tverified={a['verified'] or 'never'}\t" + "; ".join(problems(a)))
+            extra = ["deadline passed: " + ", ".join(a["stale"])] if a.get("stale") else []
+            print(f"{a['page']}\tscore={a['score']}\tverified={a['verified'] or 'never'}\t" + "; ".join(extra + problems(a)))
         return 0
 
     if "--report" in sys.argv:

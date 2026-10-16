@@ -24,6 +24,26 @@ PATTERN = re.compile(
     r"(?:\s+(\d{1,2}))?,?\s+(20\d\d))[^.]{0,80})", re.I)
 
 
+def stale_pages(today=None):
+    """{relative page path: [matched date phrases]} for indexed pages with passed deadlines."""
+    today = today or date.today()
+    out = {}
+    for f in sorted(PUBLIC.rglob("*.html")):
+        html = f.read_text(errors="ignore")
+        if re.search(r'<meta name="robots" content="[^"]*noindex', html):
+            continue
+        text = re.sub(r"\s+", " ", unescape(re.sub(r"(?s)<(script|style)\b.*?</\1>|<[^>]+>", " ", html)))
+        for m in PATTERN.finditer(text):
+            month, year = MONTHS[m.group(3).lower()], int(m.group(5))
+            try:
+                when = date(year, month, int(m.group(4)) if m.group(4) else 28)
+            except ValueError:
+                continue
+            if when < today:
+                out.setdefault(str(f.relative_to(PUBLIC)), []).append(m.group(2))
+    return out
+
+
 def main():
     today = date.today()
     found = 0
