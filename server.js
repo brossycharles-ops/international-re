@@ -1499,13 +1499,23 @@ process.on('unhandledRejection', (err) => {
 
 // ─── Graceful shutdown ───
 
+// Railway sends SIGTERM to the old deployment when a new one goes live. Cloudflare
+// keeps idle keep-alive connections open, so a plain server.close() never finished,
+// Railway force-killed the process and reported every redeploy as a crash. Stop
+// accepting work, drop idle connections, and always exit 0 within a few seconds.
+let shuttingDown = false;
 function shutdown(signal) {
+  if (shuttingDown) return;
+  shuttingDown = true;
   console.log(`\n  ${signal} received. Shutting down gracefully...`);
   saveTraffic();
+  setTimeout(() => process.exit(0), 5000).unref();
   server.close(() => {
     console.log('  Server closed.');
     process.exit(0);
   });
+  if (typeof server.closeIdleConnections === 'function') server.closeIdleConnections();
+  setTimeout(() => { if (typeof server.closeAllConnections === 'function') server.closeAllConnections(); }, 2000).unref();
 }
 
 // ─── Start server ───
