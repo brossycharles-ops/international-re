@@ -153,7 +153,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
   <title>{title}</title>
   <meta name="description" content="{description}">
   <meta name="keywords" content="{keywords}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, follow"><!-- thin templated pages: kept out of search on purpose -->
   <link rel="canonical" href="{canonical}">
   <meta property="og:type" content="article">
   <meta property="og:title" content="{title}">

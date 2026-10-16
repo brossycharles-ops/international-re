@@ -8,6 +8,7 @@ subscribe CTA. Idempotent — safe to re-run.
 Also generates /cities/index.html (the hub-of-hubs).
 """
 
+import html
 import json
 import os
 import re
@@ -79,7 +80,52 @@ def group_related(related):
         groups.setdefault(r['kind'], []).append(r)
     return groups
 
+def render_city_content(city):
+    """Optional researched content in data/cities.json: about (paragraphs),
+    faq ([{q, a}]), sources ([{title, url}]), updated (YYYY-MM-DD).
+    Cities without it fall back to the generic intro."""
+    esc = html.escape
+    about = city.get('about') or []
+    if about:
+        intro = '\n'.join(f'      <p class="hub-about">{esc(par)}</p>' for par in about)
+    else:
+        intro = f'''      <p class="hub-about">
+        {city["city"]}, {city["country"]} is one of the markets we track closely at International RE.
+        This page aggregates everything we've published — in-depth market analysis, legal &amp; visa
+        guides, current rental-yield data, and cost-of-living breakdowns — so you can build a
+        complete picture before you fly out, hire a lawyer, or wire a deposit.
+        Below: the latest analysis, organized by depth.
+      </p>'''
+    faq = [f for f in (city.get('faq') or []) if f.get('q') and f.get('a')]
+    faq_html = faq_ld = ''
+    if faq:
+        items = '\n'.join(f'        <div class="hub-faq-item"><h3>{esc(f["q"])}</h3><p>{esc(f["a"])}</p></div>' for f in faq)
+        faq_html = f'''
+    <section class="hub-section">
+      <h2 class="hub-section-h2">{esc(city["city"])} Real Estate FAQ</h2>
+{items}
+    </section>'''
+        faq_ld = '\n  <script type="application/ld+json">\n  ' + json.dumps({
+            "@context": "https://schema.org", "@type": "FAQPage",
+            "mainEntity": [{"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in faq]
+        }, ensure_ascii=False) + '\n  </script>'
+    sources = [x for x in (city.get('sources') or []) if x.get('url', '').startswith('https://')]
+    sources_html = ''
+    if sources:
+        lis = '\n'.join(f'        <li><a href="{esc(x["url"])}" rel="noopener" target="_blank">{esc(x.get("title") or x["url"])}</a></li>' for x in sources)
+        sources_html = f'''
+    <section class="hub-section">
+      <h2 class="hub-section-h2">Sources</h2>
+      <ul class="hub-sources">
+{lis}
+      </ul>
+    </section>'''
+    return intro, faq_html, faq_ld, sources_html
+
+
 def render_city_hub(city):
+    intro, faq_html, faq_ld, sources_html = render_city_content(city)
+    updated = city.get('updated', '2026-05-20')
     related = find_related(city)
     groups = group_related(related)
     page_url = f"{SITE}/cities/{city['slug']}/"
@@ -148,7 +194,7 @@ def render_city_hub(city):
     "description": "{city["metaDescription"]}",
     "image": "{social_img}",
     "datePublished": "2026-05-20",
-    "dateModified": "2026-05-20",
+    "dateModified": "{updated}",
     "author": {{ "@type": "Organization", "name": "International RE" }},
     "publisher": {{
       "@type": "Organization",
@@ -156,9 +202,14 @@ def render_city_hub(city):
       "logo": {{ "@type": "ImageObject", "url": "{SITE}/favicon.svg" }}
     }}
   }}
-  </script>
+  </script>{faq_ld}
   <style>
     body {{ background: #fff; }}
+    .hub-about {{ max-width:760px;color:#444;line-height:1.75;font-size:1.02rem;margin:0 0 14px; }}
+    .hub-faq-item {{ max-width:760px;border-bottom:1px solid #eee;padding:14px 0; }}
+    .hub-faq-item h3 {{ font-size:1.02rem;margin:0 0 6px;color:#0a1628; }}
+    .hub-faq-item p {{ margin:0;color:#444;line-height:1.7; }}
+    .hub-sources {{ max-width:760px;color:#555;line-height:1.9;font-size:.92rem; }}
     .hub-hero {{
       background:
         linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)),
@@ -358,15 +409,9 @@ def render_city_hub(city):
   <main class="hub-body" id="main">
     <section class="hub-section">
       <h2 class="hub-section-h2">About {city["city"]} for Foreign Buyers</h2>
-      <p style="max-width:760px;color:#444;line-height:1.75;font-size:1.02rem;">
-        {city["city"]}, {city["country"]} is one of the markets we track closely at International RE.
-        This page aggregates everything we've published — in-depth market analysis, legal &amp; visa
-        guides, current rental-yield data, and cost-of-living breakdowns — so you can build a
-        complete picture before you fly out, hire a lawyer, or wire a deposit.
-        Below: the latest analysis, organized by depth.
-      </p>
+{intro}
     </section>
-{related_sections}
+{related_sections}{faq_html}{sources_html}
   </main>
 
   <section class="hub-cta">
