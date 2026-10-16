@@ -468,6 +468,122 @@ app.post('/api/contact', async (req, res) => {
   res.json({ message: 'Thanks — your message has been sent. We reply within a few days.' });
 });
 
+// ─── Status for the Mission Control dashboard ───
+// Everything here is already public (traffic totals, subscriber count, repo
+// history, docs/), gathered in one read-only JSON so the dashboard needs one call.
+const REPO = 'brossycharles-ops/international-re';
+const AGENTS = [
+  { id: 'research', name: 'Research Editor', cron: { hours: [4, 21] }, role: 'Fact-checks 3 articles per run against official sources, with an independent checker; logs every correction.', match: /^Research:/ },
+  { id: 'auditor', name: 'Site Auditor', cron: { hours: [10] }, role: 'Opens the live site in a real browser, tests forms, finds broken, stale or misleading things and fixes them.', match: /^(Audit |Cloud audit|Merge cloud audit)/ },
+  { id: 'growth', name: 'Growth Engine', cron: { hours: [17] }, role: 'Publishes 3 researched pages a day, verifies one older page, adds FAQs, links and city research; Monday newsletter.', match: /^(Add (blog|guide|quick-read|tip)|Quality:|City guide:|Growth:|Newsletter:)/ },
+  { id: 'review', name: 'Strategy Review', cron: { hours: [19], weekday: 0 }, role: 'Sunday: reviews traffic and research quality, re-checks the fact-checkers, rewrites the playbook and topic queue.', match: /^Weekly review/ },
+];
+const statusCache = { at: 0, commits: [] };
+
+function nextRun(cron, now = new Date()) {
+  for (let d = 0; d < 8; d++) {
+    for (const h of cron.hours) {
+      const t = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + d, h, 0, 0));
+      if (t > now && (cron.weekday === undefined || t.getUTCDay() === cron.weekday)) return t.toISOString();
+    }
+  }
+  return null;
+}
+
+function readDoc(rel) {
+  try { return fs.readFileSync(path.join(__dirname, rel), 'utf-8'); } catch { return ''; }
+}
+
+async function recentCommits() {
+  if (Date.now() - statusCache.at < 10 * 60 * 1000 && statusCache.commits.length) return statusCache.commits;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=60`, { headers: { 'User-Agent': 'internationalre-status', Accept: 'application/vnd.github+json' } });
+    if (!r.ok) throw new Error('GitHub ' + r.status);
+    const list = await r.json();
+    statusCache.commits = list.map(c => {
+      const message = (c.commit?.message || '').split('\n')[0].slice(0, 200);
+      const agent = AGENTS.find(a => a.match.test(message));
+      return { sha: c.sha.slice(0, 7), at: c.commit?.committer?.date, message, agent: agent ? agent.id : 'claude', url: c.html_url };
+    });
+    statusCache.at = Date.now();
+  } catch (err) { console.error('Status commits failed:', err.message); }
+  return statusCache.commits;
+}
+
+function qualitySnapshot() {
+  const md = readDoc('docs/QUALITY.md');
+  const head = md.match(/(\d+) indexed articles, average score (\d+)\/100, (\d+) research-verified \((\d+)%\), (\d+) with a Sources section, (\d+) with an FAQ/);
+  const rows = [...md.matchAll(/^\| (\d+) \| ([^|]+?) \| ([^|]+?) \| (\d+) \| (\d+) \| ([^|]*?) \|$/gm)]
+    .map(m => ({ score: +m[1], page: m[2].trim(), verified: m[3].trim() === '—' ? null : m[3].trim(), words: +m[4], sources: +m[5] }));
+  const bands = { '0-39': 0, '40-59': 0, '60-79': 0, '80-100': 0 };
+  rows.forEach(r => { bands[r.score < 40 ? '0-39' : r.score < 60 ? '40-59' : r.score < 80 ? '60-79' : '80-100']++; });
+  return head ? { articles: +head[1], average: +head[2], verified: +head[3], verifiedPct: +head[4], withSources: +head[5], withFaq: +head[6], bands, nextUp: rows.filter(r => !r.verified).slice(0, 5).map(r => r.page) } : null;
+}
+
+function ledgerSnapshot() {
+  try {
+    const l = JSON.parse(readDoc('data/research-ledger.json') || '{}');
+    const entries = Object.entries(l).map(([page, e]) => ({ page, verified: e.verified, claims: e.claims_checked || 0, corrected: e.corrected || 0, removed: e.removed || 0, sources: e.sources || 0, note: (e.notes || '').slice(0, 200) }));
+    entries.sort((a, b) => (b.verified || '').localeCompare(a.verified || ''));
+    const sum = k => entries.reduce((n, e) => n + e[k], 0);
+    return { pages: entries.length, claims: sum('claims'), corrected: sum('corrected'), removed: sum('removed'), recent: entries.slice(0, 12) };
+  } catch { return null; }
+}
+
+function latestAudit() {
+  try {
+    const dir = path.join(__dirname, 'docs', 'cto-reports');
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort().reverse();
+    if (!files.length) return null;
+    const text = fs.readFileSync(path.join(dir, files[0]), 'utf-8');
+    const status = (text.match(/## Status\s*\n+([^\n]+)/) || [])[1] || '';
+    const flagged = files.slice(0, 2).flatMap(f => {
+      const t = fs.readFileSync(path.join(dir, f), 'utf-8');
+      const sec = (t.split(/## For the Research Editor/)[1] || '').split(/\n## /)[0];
+      return [...sec.matchAll(/^- (public\/[^\s]+|data\/[^\s]+)/gm)].map(m => m[1]);
+    });
+    return { file: files[0], status: status.replace(/[*_`]/g, '').slice(0, 200), p0: (text.match(/\bP0\b/g) || []).length, p1: (text.match(/\bP1\b/g) || []).length, flaggedForResearch: [...new Set(flagged)] };
+  } catch { return null; }
+}
+
+function ideasSnapshot() {
+  const md = readDoc('docs/IDEAS.md');
+  const open = [...md.matchAll(/^- \[ \] ([^|]+)\|([^|]+)\|/gm)].map(m => ({ format: m[1].trim(), title: m[2].trim() }));
+  const done = (md.match(/^- \[x\]/gm) || []).length;
+  return { open: open.length, done, next: open.slice(0, 4) };
+}
+
+app.get('/api/status', async (req, res) => {
+  res.set('Cache-Control', 'no-store');
+  res.set('Access-Control-Allow-Origin', '*');
+  const now = new Date();
+  const commits = await recentCommits();
+  const subs = readSubscribers();
+  const weekAgo = Date.now() - 7 * 864e5;
+  const daily = [];
+  for (let i = 27; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
+    const v = traffic.days[d] || { visitors: 0, views: 0 };
+    daily.push({ day: d, visitors: v.visitors, views: v.views });
+  }
+  const t7 = trafficSummary(7, 5), t28 = trafficSummary(28, 10);
+  res.json({
+    generatedAt: now.toISOString(),
+    site: { up: true, uptimeHours: Math.round(process.uptime() / 360) / 10, emailSchedule: schedulerEnabled() },
+    subscribers: { total: subs.length, newThisWeek: subs.filter(s => new Date(s.subscribedAt || s.dateSubscribed || 0).getTime() >= weekAgo).length },
+    traffic: { last7: { visitors: t7.visitors, pageviews: t7.pageviews }, last28: { visitors: t28.visitors, pageviews: t28.pageviews }, daily, topPages: t28.pages, topSources: t28.sources },
+    quality: qualitySnapshot(),
+    research: ledgerSnapshot(),
+    audit: latestAudit(),
+    ideas: ideasSnapshot(),
+    agents: AGENTS.map(a => {
+      const mine = commits.filter(c => c.agent === a.id);
+      return { id: a.id, name: a.name, role: a.role, schedule: a.cron, nextRun: nextRun(a.cron, now), lastActivity: mine[0] || null, commitsLast7d: mine.filter(c => Date.parse(c.at) >= weekAgo).length };
+    }),
+    commits: commits.slice(0, 30),
+  });
+});
+
 // ─── Subscriber count endpoint ───
 
 app.get('/api/subscriber-count', (req, res) => {
