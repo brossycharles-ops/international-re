@@ -5,7 +5,8 @@
 // Cloudflare or browsers after a fix.
 //
 //   npx -y playwright@1.48.2 install chromium   (once per machine)
-//   NODE_PATH=$(npm root -g) node scripts/visual_audit.js [--base URL] [--out DIR]
+//   NODE_PATH=$(npm root -g) node scripts/visual_audit.js [--base URL] [--out DIR] [--all]
+//   --all checks every sitemap URL (screenshots only for pages with findings)
 //
 // Writes screenshots + report.json to --out (default /tmp/visual-audit) and
 // prints a findings list. Exit 1 if any P0/P1 finding. Look at the screenshots.
@@ -62,7 +63,12 @@ async function checkLiveAssets() {
 }
 
 (async () => {
-  const pages = [...PAGES, ...(await newestFromSitemap())];
+  const ALL = process.argv.includes('--all');
+  let pages = [...PAGES, ...(await newestFromSitemap())];
+  if (ALL) {
+    const xml = await (await fetch(BASE + '/sitemap.xml')).text();
+    pages = [...new Set([...pages, ...[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(/^https?:\/\/[^/]+/, ''))])];
+  }
   await checkLiveAssets();
   const browser = await chromium.launch();
   const report = [];
@@ -109,7 +115,8 @@ async function checkLiveAssets() {
       for (const e of errors) add(/Content Security Policy/.test(e) ? 'P1' : 'P1', p, `${vp.name}: console error: ${e}`);
       for (const f of [...new Set(failed)]) if (!/plausible\.io|cloudflareinsights|google-analytics/.test(f)) add('P1', p, `${vp.name}: request failed: ${f}`);
       const shot = path.join(OUT, `${vp.name}${p.replace(/[^a-z0-9]+/gi, '_') || '_home'}.png`);
-      await page.screenshot({ path: shot, fullPage: false });
+      const hadFinding = findings.some(f => f.page === p && f.msg.startsWith(vp.name));
+      if (!ALL || hadFinding) await page.screenshot({ path: shot, fullPage: false });
       // Popups opened by scrolling get their own screenshot, then are closed so the map is visible.
       if (await page.locator('.popup-overlay.active').count()) {
         await page.screenshot({ path: shot.replace('.png', '_popup.png') });

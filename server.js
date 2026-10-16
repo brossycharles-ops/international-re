@@ -503,11 +503,22 @@ async function recentCommits() {
     const r = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=60`, { headers: { 'User-Agent': 'internationalre-status', Accept: 'application/vnd.github+json' } });
     if (!r.ok) throw new Error('GitHub ' + r.status);
     const list = await r.json();
-    statusCache.commits = list.map(c => {
+    const rows = list.map(c => {
       const message = (c.commit?.message || '').split('\n')[0].slice(0, 200);
       const agent = AGENTS.find(a => a.match.test(message));
-      return { sha: c.sha.slice(0, 7), at: c.commit?.committer?.date, message, agent: agent ? agent.id : 'claude', url: c.html_url };
+      const cloud = /noreply@anthropic\.com/i.test(c.commit?.author?.email || '');
+      return { sha: c.sha.slice(0, 7), at: c.commit?.committer?.date, message, agent: agent ? agent.id : (cloud ? 'cloud' : 'claude'), url: c.html_url };
     });
+    // A cloud agent's unlabelled commits (e.g. 'Trust: ...') belong to the agent that
+    // pushed labelled work in the same run: credit the nearest labelled commit within 20 min.
+    rows.forEach(r => {
+      if (r.agent !== 'cloud') return;
+      const t = Date.parse(r.at);
+      const near = rows.filter(o => !['cloud', 'claude'].includes(o.agent) && Math.abs(Date.parse(o.at) - t) <= 20 * 60 * 1000)
+        .sort((a, b) => Math.abs(Date.parse(a.at) - t) - Math.abs(Date.parse(b.at) - t))[0];
+      if (near) r.agent = near.agent;
+    });
+    statusCache.commits = rows;
     statusCache.at = Date.now();
   } catch (err) { console.error('Status commits failed:', err.message); }
   return statusCache.commits;
@@ -545,7 +556,9 @@ function latestAudit() {
       const sec = (t.split(/## For the Research Editor/)[1] || '').split(/\n## /)[0];
       return [...sec.matchAll(/^- (public\/[^\s]+|data\/[^\s]+)/gm)].map(m => m[1]);
     });
-    return { file: files[0], status: status.replace(/[*_`]/g, '').slice(0, 200), p0: (text.match(/\bP0\b/g) || []).length, p1: (text.match(/\bP1\b/g) || []).length, flaggedForResearch: [...new Set(flagged)] };
+    const day = (files[0].match(/^(\d{4}-\d{2}-\d{2})/) || [])[1];
+    const ageHours = day ? (Date.now() - Date.parse(day + 'T10:00:00Z')) / 3.6e6 : null;
+    return { file: files[0], date: day, current: ageHours !== null && ageHours < 30, status: status.replace(/[*_`]/g, '').slice(0, 200), p0: (text.match(/\bP0\b/g) || []).length, p1: (text.match(/\bP1\b/g) || []).length, flaggedForResearch: [...new Set(flagged)] };
   } catch { return null; }
 }
 
