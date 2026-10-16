@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Regenerate public/sitemap.xml from the actual files in public/.
-Source of truth = filesystem. Pulls lastmod from file mtime."""
+Source of truth = filesystem. lastmod = last git commit touching the file
+(mtime is reset by every checkout, which would mark all pages as changed today).
+Pages carrying a robots noindex meta are skipped."""
 import datetime as dt
+import re
+import subprocess
 from pathlib import Path
 
 PUB = Path(__file__).resolve().parent.parent / "public"
@@ -23,6 +27,20 @@ PRIORITY = {
     "about.html": ("0.6", "monthly"),
 }
 
+NOINDEX = re.compile(r'<meta\s+name="robots"\s+content="[^"]*noindex', re.I)
+
+def is_noindex(path: Path) -> bool:
+    return bool(NOINDEX.search(path.read_text(encoding="utf-8", errors="ignore")[:5000]))
+
+def lastmod(path: Path) -> str:
+    out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(path)],
+                         cwd=PUB.parent, capture_output=True, text=True).stdout.strip()
+    dirty = subprocess.run(["git", "status", "--porcelain", "--", str(path)],
+                           cwd=PUB.parent, capture_output=True, text=True).stdout.strip()
+    if out and not dirty:
+        return out
+    return dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
+
 def url_for(rel: Path) -> str:
     s = str(rel).replace("\\", "/")
     return f"{BASE}/{s}"
@@ -34,7 +52,9 @@ for path in sorted(PUB.rglob("*.html")):
         continue
     if rel.name in EXCLUDE_FILES:
         continue
-    mtime = dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
+    if is_noindex(path):
+        continue
+    mtime = lastmod(path)
     name = rel.name
     if str(rel) in PRIORITY:
         prio, freq = PRIORITY[str(rel)]
@@ -57,7 +77,9 @@ landing = PUB / "landing"
 if landing.exists():
     for path in sorted(landing.rglob("*.html")):
         rel = path.relative_to(PUB)
-        mtime = dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
+        if is_noindex(path):
+            continue
+        mtime = lastmod(path)
         entries.append((url_for(rel), mtime, "monthly", "0.7"))
 
 # De-dupe
