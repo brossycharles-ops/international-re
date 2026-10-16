@@ -480,6 +480,8 @@ const AGENTS = [
   { id: 'newsletter', name: 'Newsletter Editor', cron: { hours: [23], weekday: 0 }, role: "Sunday night: writes and fact-checks Monday's newsletter from the week's best-read and newly verified articles.", match: /^Newsletter:/ },
   { id: 'market', name: 'Market Data', cron: { hours: [8], weekday: 3 }, role: 'Wednesdays: refreshes prices, rental yields and exchange rates in the city guides from current sources.', match: /^Market data:/ },
   { id: 'distribution', name: 'Distribution Kit', cron: { hours: [14], weekday: 5 }, role: 'Fridays: writes ready-to-post social, Pinterest and forum posts for the week\'s new and updated articles.', match: /^Distribution:/ },
+  { id: 'freshness', name: 'Freshness Keeper', cron: { hours: [13], weekday: 2 }, role: 'Tuesdays: updates passed deadlines, ageing figures, dead source links and site-wide counts; handles the new-year retitling.', match: /^Freshness:/ },
+  { id: 'design', name: 'Design Director', cron: { hours: [13], weekday: 4 }, role: 'Thursdays: screenshots every page type on desktop and phone, fixes inconsistencies and makes the site look and load better.', match: /^Design:/ },
 ];
 const statusCache = { at: 0, commits: [] };
 

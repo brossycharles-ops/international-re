@@ -13,10 +13,12 @@ local development.
 | Daily 13:00 | **Cloud Growth Engine**: publishes the day's content (each page fact-checked by an independent subagent), research-verifies one older page, FAQ and city queues, internal links, IndexNow | Anthropic cloud routine |
 | Monday (first email run) | **Weekly owner report**: subscribers, growth, traffic, CSV backup to `BACKUP_EMAIL` | Railway server |
 | Sunday 15:00 | **Strategy & CTO review**: reviews traffic, research quality and auditor PRs, re-checks the fact-checkers' work, updates `docs/PLAYBOOK.md` and `docs/IDEAS.md`, writes `docs/reports/weekly-<date>.md` | Anthropic cloud routine |
-
 | Sunday 19:00 | **Newsletter Editor**: writes and fact-checks Monday's issue (`data/newsletters/<Monday>.json` + web version); the server emails it Monday 10:00 | Anthropic cloud routine |
 | Wednesday 4:00 | **Market Data Refresher**: refreshes price/m², yields, cost of living for the 6 stalest city guides (`stats`, `statsSources`, `statsUpdated` in `data/cities.json`) | Anthropic cloud routine |
 | Friday 10:00 | **Distribution Kit**: ready-to-post X, LinkedIn, Pinterest and forum copy for the week's articles (`data/distribution/<date>.json`, shown on the dashboard with Copy buttons) | Anthropic cloud routine |
+| Tuesday 9:00 | **Freshness Keeper**: rewrites passed deadlines, re-checks ageing figures on the most-read pages, replaces dead source links, fixes drifting site-wide counts and orphaned pages; handles the January retitling of year-stamped pages (`docs/freshness/<date>.md`) | Anthropic cloud routine |
+| Thursday 9:00 | **Design Director**: full-page screenshots of every page type on desktop and phone plus speed metrics; ships the 3 highest-impact look/consistency/speed improvements in shared CSS and the article template (`docs/design/<date>.md`) | Anthropic cloud routine |
+| Every 30 min | **Uptime watchdog**: loads the homepage, status API and a city guide; opens a "Site down" GitHub issue (emailed to the owner) if they fail twice 2 minutes apart, closes it when back (`.github/workflows/uptime.yml`) | GitHub Actions (free) |
 
 Live status for all agents: the Mission Control dashboard (Claude artifact, reads `/api/status`).
 
