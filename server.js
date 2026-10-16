@@ -253,7 +253,7 @@ app.post('/api/subscribe', async (req, res) => {
               </p>
               <h3>What to Expect</h3>
               <ul>
-                <li>Weekly market intelligence on 4 Latin American markets</li>
+                <li>Weekly market intelligence on 11 Latin American markets</li>
                 <li>Real price data, rental yields, and investment analysis</li>
                 <li>Legal updates and buyer guides</li>
               </ul>
@@ -947,12 +947,17 @@ function newsletterEmail(issue, firstName) {
       </p>`;
 }
 
-app.post('/api/drip-check', async (req, res) => {
-  if (!requireAdminKey(req, res, req.body.key)) return;
-  if (!resend) {
-    return res.status(500).json({ error: 'Email not configured.' });
-  }
+let dripRunning = false;
 
+// Sends due drip steps and the current newsletter issue. Idempotent: every
+// send is recorded per subscriber, so overlapping or repeated runs are safe.
+async function runDripCheck(source) {
+  if (dripRunning) return { skippedRun: 'already running' };
+  dripRunning = true;
+  try { return await dripCheckOnce(source); } finally { dripRunning = false; }
+}
+
+async function dripCheckOnce(source) {
   const subscribers = readSubscribers();
   const now = Date.now();
   const issue = dueNewsletter(now);
@@ -1024,9 +1029,76 @@ app.post('/api/drip-check', async (req, res) => {
     writeSubscribers(current.map(s => progress.has(s.email) ? { ...s, ...progress.get(s.email) } : s));
   } finally { releaseLock(); }
 
-  console.log(`Drip check complete: ${sent} drip sent, ${skipped} already sent, newsletter ${issue ? issue.id : 'none due'}: ${newsletterSent} sent`);
-  res.json({ sent, skipped, total: subscribers.length, newsletter: issue ? issue.id : null, newsletterSent });
+  console.log(`Drip check (${source}) complete: ${sent} drip sent, ${skipped} already sent, newsletter ${issue ? issue.id : 'none due'}: ${newsletterSent} sent`);
+  return { sent, skipped, total: subscribers.length, newsletter: issue ? issue.id : null, newsletterSent };
+}
+
+app.post('/api/drip-check', async (req, res) => {
+  if (!requireAdminKey(req, res, req.body.key)) return;
+  if (!resend) {
+    return res.status(500).json({ error: 'Email not configured.' });
+  }
+  res.json(await runDripCheck('api'));
 });
+
+// ─── Built-in email schedule ───
+// The drip/newsletter check used to depend on a LaunchAgent on the owner's Mac
+// (drip-agent.sh), so nothing went out when the Mac was off. The server now
+// runs it itself at DRIP_HOURS_UTC (default 14,19 = 10am and 3pm New York), and
+// on Mondays emails a subscriber backup CSV to BACKUP_EMAIL if that is set.
+const DRIP_HOURS_UTC = (process.env.DRIP_HOURS_UTC || '14,19').split(',').map(Number).filter(h => h >= 0 && h < 24);
+const BACKUP_WEEKDAY_UTC = Number(process.env.BACKUP_WEEKDAY_UTC ?? 1); // 1 = Monday
+const STATE_FILE = path.join(path.dirname(SUBSCRIBERS_FILE), 'scheduler-state.json');
+const onRailway = !!(process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_ENVIRONMENT_NAME || process.env.RAILWAY_PROJECT_ID);
+const schedulerEnabled = () => !!resend && (onRailway || process.env.ENABLE_EMAIL_SCHEDULER === '1') && process.env.ENABLE_EMAIL_SCHEDULER !== '0';
+
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_FILE, 'utf-8')); } catch { return {}; }
+}
+function writeState(state) {
+  try { ensureDataDir(); fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2)); } catch (err) { console.error('Scheduler state write failed:', err.message); }
+}
+
+function csvCell(v) {
+  const t = Array.isArray(v) ? v.join(' ') : String(v ?? '');
+  return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
+}
+
+async function sendSubscriberBackup(today) {
+  const to = process.env.BACKUP_EMAIL;
+  if (!to) return 'BACKUP_EMAIL not set';
+  const subs = readSubscribers();
+  const cols = ['email', 'firstName', 'lastName', 'subscribedAt', 'drip', 'newsletters'];
+  const csv = [cols.join(','), ...subs.map(s => cols.map(c => csvCell(s[c] ?? (c === 'subscribedAt' ? s.dateSubscribed : ''))).join(','))].join('\n');
+  await resend.emails.send({
+    from: EMAIL_FROM,
+    to,
+    subject: `International RE subscriber backup — ${today} (${subs.length} subscribers)`,
+    html: `<p>Weekly backup of the International RE subscriber list: <strong>${subs.length}</strong> subscribers, attached as CSV.</p><p>Keep this email. If the server's list is ever lost, it can be restored from this file.</p>`,
+    attachments: [{ filename: `internationalre-subscribers-${today}.csv`, content: Buffer.from(csv, 'utf-8') }]
+  });
+  return `sent to backup address (${subs.length} subscribers)`;
+}
+
+async function schedulerTick() {
+  if (!schedulerEnabled()) return;
+  const now = new Date();
+  const hour = now.getUTCHours();
+  if (!DRIP_HOURS_UTC.includes(hour)) return;
+  const today = now.toISOString().slice(0, 10);
+  const slot = `${today}T${String(hour).padStart(2, '0')}`;
+  const state = readState();
+  if (state.lastDripSlot === slot) return;
+  writeState({ ...state, lastDripSlot: slot });
+  try { await runDripCheck('schedule'); } catch (err) { console.error('Scheduled drip check failed:', err.message); }
+  if (now.getUTCDay() === BACKUP_WEEKDAY_UTC && state.lastBackupDate !== today) {
+    try {
+      const result = await sendSubscriberBackup(today);
+      console.log(`Subscriber backup: ${result}`);
+      writeState({ ...readState(), lastBackupDate: today });
+    } catch (err) { console.error('Subscriber backup failed:', err.message); }
+  }
+}
 
 // ─── 404 handler ───
 
@@ -1068,7 +1140,10 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n  International RE is running at http://0.0.0.0:${PORT}`);
   const isEphemeralPath = !process.env.SUBSCRIBERS_FILE;
   console.log(`  Subscribers file: ${SUBSCRIBERS_FILE}${isEphemeralPath ? '  (⚠ ephemeral — set SUBSCRIBERS_FILE to a volume path on Railway)' : ''}`);
-  console.log(`  Subscribers: ${readSubscribers().length}\n`);
+  console.log(`  Subscribers: ${readSubscribers().length}`);
+  console.log(`  Email schedule: ${schedulerEnabled() ? 'on at ' + DRIP_HOURS_UTC.join(',') + ' UTC' : 'off'}${process.env.BACKUP_EMAIL ? ', weekly backup on' : ''}\n`);
+  setInterval(schedulerTick, 5 * 60 * 1000).unref();
+  setTimeout(schedulerTick, 30 * 1000).unref();
 });
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));
