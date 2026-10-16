@@ -310,7 +310,7 @@ section { padding-block: 96px; }
   padding: 96px 24px;
   background:
     linear-gradient(180deg, rgba(10, 14, 26, 0.85), rgba(10, 14, 26, 0.95)),
-    url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80') center/cover;
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80') center/cover;
   color: var(--offwhite);
 }
 .vip-inner {

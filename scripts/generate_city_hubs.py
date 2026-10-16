@@ -163,12 +163,17 @@ def render_city_hub(city):
         ]
     )
 
+    # Keep <title> within 65 chars: drop the brand suffix for long city names.
+    page_title = f'{city["city"]}, {city["country"]} Real Estate Guide 2026 | International RE'
+    if len(page_title) > 65:
+        page_title = f'{city["city"]}, {city["country"]} Real Estate Guide 2026'
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{city["city"]}, {city["country"]} Real Estate Guide 2026 | International RE</title>
+  <title>{page_title}</title>
   <meta name="description" content="{city["metaDescription"]}">
   <link rel="canonical" href="{page_url}">
   <meta property="og:title" content="{city["city"]}, {city["country"]} Real Estate Guide 2026">
