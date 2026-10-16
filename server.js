@@ -237,7 +237,7 @@ app.post('/api/subscribe', async (req, res) => {
       resend.emails.send({
         from: EMAIL_FROM,
         to: normalizedEmail,
-        subject: 'Welcome to International RE — Your Free Guide Is Ready',
+        subject: 'Your Latin America Expat Starter Kit is ready',
         html: `
           <div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e;">
             <div style="background:#1a1a2e;padding:30px;text-align:center;">
@@ -245,21 +245,22 @@ app.post('/api/subscribe', async (req, res) => {
             </div>
             <div style="padding:30px;background:#fff;">
               <h2 style="color:#1a1a2e;">Welcome, ${displayName}!</h2>
-              <p>Thanks for subscribing to International RE. You've joined a growing community of investors exploring Latin American real estate.</p>
-              <h3 style="color:#c9a84c;">Your Free Guide Is Ready</h3>
-              <p>Download your <strong>2026 Latin America Market Entry Guide</strong> — covering Costa Rica, Nicaragua, Argentina & Chile with real price data, legal processes, and investment strategies.</p>
+              <p>Thanks for subscribing to International RE.</p>
+              <h3 style="color:#c9a84c;">Your Expat Starter Kit</h3>
+              <p>A 17-city market comparison, residency routes for 10 countries, a 47-item relocation checklist and a six-month buying timeline — all on one page you can print or save.</p>
               <p style="text-align:center;margin:25px 0;">
-                <a href="https://www.internationalre.org/guide/2026-market-entry-guide.html" style="background:#c9a84c;color:#1a1a2e;padding:14px 28px;text-decoration:none;border-radius:6px;font-weight:600;">Download Free Guide &rarr;</a>
+                <a href="https://www.internationalre.org/guide/expat-starter-kit.html" style="background:#c9a84c;color:#1a1a2e;padding:14px 28px;text-decoration:none;border-radius:6px;font-weight:600;">Open the Starter Kit &rarr;</a>
               </p>
+              <p style="font-size:14px;color:#555;">Also yours: the <a href="https://www.internationalre.org/guide/2026-market-entry-guide.html" style="color:#c9a84c;">2026 Market Entry Guide</a>, and our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> if you haven't picked a country yet.</p>
               <h3>What to Expect</h3>
               <ul>
                 <li>Weekly market intelligence on 11 Latin American markets</li>
                 <li>Real price data, rental yields, and investment analysis</li>
                 <li>Legal updates and buyer guides</li>
               </ul>
-              <p>Your first newsletter arrives this week.</p>
+              <p>Our newsletter arrives every Monday. Reply to any email with a question — we read them all.</p>
               <div style="background:#f7f5f0;border-radius:8px;padding:16px 20px;margin:20px 0;">
-                <p style="margin:0;font-size:13px;color:#555;">&#128279; <strong>Know someone researching Latin American real estate?</strong> Forward this email or share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — they'll get the same free guide.</p>
+                <p style="margin:0;font-size:13px;color:#555;">&#128279; <strong>Know someone researching Latin American real estate?</strong> Forward this email or share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — they'll get the same free Starter Kit.</p>
               </div>
               <p style="color:#666;font-size:13px;margin-top:30px;border-top:1px solid #eee;padding-top:15px;">
                 You're receiving this because you subscribed at internationalre.org.<br>
@@ -1064,20 +1065,57 @@ function csvCell(v) {
   return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
 }
 
+// Plausible snapshot for the owner report; null when no API key is configured.
+async function trafficSnapshot(period) {
+  if (!process.env.PLAUSIBLE_API_KEY) return null;
+  const site = process.env.PLAUSIBLE_SITE_ID || 'internationalre.org';
+  const base = 'https://plausible.io/api/v1/stats';
+  const headers = { Authorization: `Bearer ${process.env.PLAUSIBLE_API_KEY}` };
+  const get = async (q) => { const r = await fetch(`${base}/${q}`, { headers }); if (!r.ok) throw new Error(`Plausible ${r.status}`); return r.json(); };
+  const [agg, pages, sources] = await Promise.all([
+    get(`aggregate?site_id=${site}&period=${period}&metrics=visitors,pageviews`),
+    get(`breakdown?site_id=${site}&period=${period}&property=event:page&limit=5`),
+    get(`breakdown?site_id=${site}&period=${period}&property=visit:source&limit=5`),
+  ]);
+  return { visitors: agg.results.visitors.value, pageviews: agg.results.pageviews.value, pages: pages.results || [], sources: sources.results || [] };
+}
+
+function escapeHtml(t) {
+  return String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+// Monday owner report: growth + traffic, with the full list attached as a backup.
 async function sendSubscriberBackup(today) {
   const to = process.env.BACKUP_EMAIL;
   if (!to) return 'BACKUP_EMAIL not set';
   const subs = readSubscribers();
+  const weekAgo = Date.now() - 7 * 864e5;
+  const joined = subs.filter(s => new Date(s.subscribedAt || s.dateSubscribed || 0).getTime() >= weekAgo).length;
+  let traffic = '<p style="color:#888">Traffic: add a <code>PLAUSIBLE_API_KEY</code> variable in Railway to include visitor numbers here.</p>';
+  let headline = '';
+  try {
+    const [w, m] = await Promise.all([trafficSnapshot('7d'), trafficSnapshot('30d')]);
+    if (w && m) {
+      headline = `, ${w.visitors} visitors this week`;
+      const list = rows => rows.map(r => `<li>${escapeHtml(r.page || r.source)} — ${r.visitors}</li>`).join('') || '<li>none yet</li>';
+      traffic = `<h3>Traffic</h3><p><strong>${w.visitors}</strong> visitors this week (${w.pageviews} page views) · <strong>${m.visitors}</strong> in the last 30 days.</p>
+        <p><strong>Top pages (7 days)</strong></p><ul>${list(w.pages)}</ul><p><strong>Top sources (7 days)</strong></p><ul>${list(w.sources)}</ul>`;
+    }
+  } catch (err) { traffic = `<p style="color:#888">Traffic unavailable (${escapeHtml(err.message)}).</p>`; }
   const cols = ['email', 'firstName', 'lastName', 'subscribedAt', 'drip', 'newsletters'];
   const csv = [cols.join(','), ...subs.map(s => cols.map(c => csvCell(s[c] ?? (c === 'subscribedAt' ? s.dateSubscribed : ''))).join(','))].join('\n');
   await resend.emails.send({
     from: EMAIL_FROM,
     to,
-    subject: `International RE subscriber backup — ${today} (${subs.length} subscribers)`,
-    html: `<p>Weekly backup of the International RE subscriber list: <strong>${subs.length}</strong> subscribers, attached as CSV.</p><p>Keep this email. If the server's list is ever lost, it can be restored from this file.</p>`,
+    subject: `International RE weekly report — ${subs.length} subscribers (+${joined})${headline}`,
+    html: `<div style="font-family:Inter,Arial,sans-serif;max-width:600px">
+      <h2>Weekly report — ${today}</h2>
+      <h3>Subscribers</h3><p><strong>${subs.length}</strong> total · <strong>+${joined}</strong> joined in the last 7 days.</p>
+      ${traffic}
+      <p style="color:#888;font-size:13px;border-top:1px solid #eee;padding-top:12px">The full subscriber list is attached as a CSV backup. Keep this email: if the server's list is ever lost, it can be restored from this file.</p></div>`,
     attachments: [{ filename: `internationalre-subscribers-${today}.csv`, content: Buffer.from(csv, 'utf-8') }]
   });
-  return `sent to backup address (${subs.length} subscribers)`;
+  return `report sent (${subs.length} subscribers, +${joined})`;
 }
 
 async function schedulerTick() {
@@ -1143,7 +1181,7 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`  Subscribers: ${readSubscribers().length}`);
   console.log(`  Email schedule: ${schedulerEnabled() ? 'on at ' + DRIP_HOURS_UTC.join(',') + ' UTC' : 'off'}${process.env.BACKUP_EMAIL ? ', weekly backup on' : ''}\n`);
   setInterval(schedulerTick, 5 * 60 * 1000).unref();
-  setTimeout(schedulerTick, 30 * 1000).unref();
+  setTimeout(schedulerTick, Number(process.env.SCHEDULER_FIRST_TICK_MS || 30000)).unref();
 });
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));

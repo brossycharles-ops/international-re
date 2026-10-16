@@ -8,6 +8,7 @@ check() { if "$@" > /tmp/verify_site_step.log 2>&1; then echo "  ok   $*"; else 
 
 echo "[verify] static checks"
 check node -c server.js
+check node scripts/test_server.js
 check python3 scripts/check_links.py
 check python3 scripts/validate_jsonld.py
 check python3 scripts/audit_a11y.py
