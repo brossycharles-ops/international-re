@@ -28,7 +28,10 @@ Goal: 500+ organic visitors/month, then grow; every visitor offered the Expat St
 16. The newsletter ends with a one-line forward-to-a-friend ask.
 
 ## Engineering
-17. City guides are generated from `data/cities.json` by `scripts/generate_city_hubs.py`; edit the data, not the HTML.
-18. Nothing ships unless `bash scripts/verify_site.sh` prints PASS.
-19. Never touch `SUBSCRIBERS_FILE` handling, `data/subscribers.json`, or delete pages.
-20. Google/Bing sitemap pings are dead; IndexNow covers Bing/Yandex.
+17. Never add a third-party service that needs an account, key or paid plan (the CARTO map tiles broke this way). Prefer files served from this site.
+18. When you change a .js or .css file, bump the ?v= query on every page that links it — Cloudflare and browsers cache those files.
+19. A statistic repeated across pages must be sourced on at least one of them; never copy a number from another page of this site without checking its source.
+20. City guides are generated from `data/cities.json` by `scripts/generate_city_hubs.py`; edit the data, not the HTML.
+21. Nothing ships unless `bash scripts/verify_site.sh` prints PASS.
+22. Never touch `SUBSCRIBERS_FILE` handling, `data/subscribers.json`, or delete pages.
+23. Google/Bing sitemap pings are dead; IndexNow covers Bing/Yandex.
