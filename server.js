@@ -475,8 +475,11 @@ const REPO = 'brossycharles-ops/international-re';
 const AGENTS = [
   { id: 'research', name: 'Research Editor', cron: { hours: [4, 21] }, role: 'Fact-checks 3 articles per run against official sources, with an independent checker; logs every correction.', match: /^Research:/ },
   { id: 'auditor', name: 'Site Auditor', cron: { hours: [10] }, role: 'Opens the live site in a real browser, tests forms, finds broken, stale or misleading things and fixes them.', match: /^(Audit |Cloud audit|Merge cloud audit)/ },
-  { id: 'growth', name: 'Growth Engine', cron: { hours: [17] }, role: 'Publishes 3 researched pages a day, verifies one older page, adds FAQs, links and city research; Monday newsletter.', match: /^(Add (blog|guide|quick-read|tip)|Quality:|City guide:|Growth:|Newsletter:)/ },
+  { id: 'growth', name: 'Growth Engine', cron: { hours: [17] }, role: 'Publishes 3 researched pages a day, verifies one older page, adds FAQs, links and city research.', match: /^(Add (blog|guide|quick-read|tip)|Quality:|City guide:|Growth:)/ },
   { id: 'review', name: 'Strategy Review', cron: { hours: [19], weekday: 0 }, role: 'Sunday: reviews traffic and research quality, re-checks the fact-checkers, rewrites the playbook and topic queue.', match: /^Weekly review/ },
+  { id: 'newsletter', name: 'Newsletter Editor', cron: { hours: [23], weekday: 0 }, role: "Sunday night: writes and fact-checks Monday's newsletter from the week's best-read and newly verified articles.", match: /^Newsletter:/ },
+  { id: 'market', name: 'Market Data', cron: { hours: [8], weekday: 3 }, role: 'Wednesdays: refreshes prices, rental yields and exchange rates in the city guides from current sources.', match: /^Market data:/ },
+  { id: 'distribution', name: 'Distribution Kit', cron: { hours: [14], weekday: 5 }, role: 'Fridays: writes ready-to-post social, Pinterest and forum posts for the week\'s new and updated articles.', match: /^Distribution:/ },
 ];
 const statusCache = { at: 0, commits: [] };
 
@@ -546,6 +549,32 @@ function latestAudit() {
   } catch { return null; }
 }
 
+function newsletterSnapshot() {
+  try {
+    const ids = fs.readdirSync(NEWSLETTER_DIR).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).map(f => f.slice(0, 10)).sort();
+    if (!ids.length) return { latest: null };
+    const id = ids[ids.length - 1];
+    const issue = JSON.parse(fs.readFileSync(path.join(NEWSLETTER_DIR, id + '.json'), 'utf-8'));
+    const sentTo = readSubscribers().filter(s => (s.newsletters || []).includes(id)).length;
+    return { latest: id, subject: String(issue.subject || '').slice(0, 150), sentTo, issues: ids.length };
+  } catch { return { latest: null }; }
+}
+
+function distributionSnapshot() {
+  try {
+    const dir = path.join(__dirname, 'data', 'distribution');
+    const files = fs.readdirSync(dir).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).sort();
+    if (!files.length) return null;
+    const kit = JSON.parse(fs.readFileSync(path.join(dir, files[files.length - 1]), 'utf-8'));
+    const items = (Array.isArray(kit.items) ? kit.items : []).slice(0, 10).map(i => ({
+      title: String(i.title || '').slice(0, 160), url: String(i.url || '').slice(0, 300),
+      x: String(i.x || '').slice(0, 300), linkedin: String(i.linkedin || '').slice(0, 1500),
+      pinterest: String(i.pinterest || '').slice(0, 600), forum: String(i.forum || '').slice(0, 2000),
+    }));
+    return { date: files[files.length - 1].slice(0, 10), items };
+  } catch { return null; }
+}
+
 function ideasSnapshot() {
   const md = readDoc('docs/IDEAS.md');
   const open = [...md.matchAll(/^- \[ \] ([^|]+)\|([^|]+)\|/gm)].map(m => ({ format: m[1].trim(), title: m[2].trim() }));
@@ -576,6 +605,8 @@ app.get('/api/status', async (req, res) => {
     research: ledgerSnapshot(),
     audit: latestAudit(),
     ideas: ideasSnapshot(),
+    newsletter: newsletterSnapshot(),
+    distribution: distributionSnapshot(),
     agents: AGENTS.map(a => {
       const mine = commits.filter(c => c.agent === a.id);
       return { id: a.id, name: a.name, role: a.role, schedule: a.cron, nextRun: nextRun(a.cron, now), lastActivity: mine[0] || null, commitsLast7d: mine.filter(c => Date.parse(c.at) >= weekAgo).length };
