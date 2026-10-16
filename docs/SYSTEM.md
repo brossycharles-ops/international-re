@@ -44,7 +44,8 @@ Code changes from the auditor's workers go through pull requests that a human me
 | `SUBSCRIBERS_FILE=/data/subscribers.json` | Subscriber list on the persistent volume. **Never remove** — without it every deploy wipes the list. |
 | `RESEND_API_KEY`, `EMAIL_FROM` | Email sending (domain `internationalre.org` is verified in Resend). |
 | `ADMIN_KEY` | Admin endpoints. |
-| `BACKUP_EMAIL` | Weekly owner report + CSV backup. |
+| `BACKUP_EMAIL` | Weekly owner report + CSV backup; also receives contact-form messages unless `CONTACT_EMAIL` is set. |
+| `CONTACT_EMAIL` (optional) | Where `/contact.html` messages go (Reply-To is the reader). There is no shared inbox — never publish an email address. |
 | `PLAUSIBLE_API_KEY` (optional) | Use Plausible instead of the built-in counts in the weekly report (the Plausible trial has lapsed). |
 | `DRIP_HOURS_UTC` (optional) | Email run hours, default `14,19`. `ENABLE_EMAIL_SCHEDULER=0` turns it off. |
 
