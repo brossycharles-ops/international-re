@@ -1,1 +1,29 @@
-{}
+{
+  "blog/medellin-neighborhoods-expats-2026.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 30,
+    "corrected": 9,
+    "removed": 13,
+    "sources": 14,
+    "notes": "Envigado is not the cheapest area (Metrocuadrado: ≈$2,500–2,900/m², above Medellín); invented 90%/18%/3–5x/safest claims, rents and STR yields removed; Level 3 advisory added",
+    "links_checked": "2026-10-16"
+  },
+  "guides/buenos-aires-rental-yield-analysis-2026.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 36,
+    "corrected": 14,
+    "removed": 8,
+    "sources": 19,
+    "notes": "Northern barrios yield ~4.6% not 6–7% (Zonaprop Sept 2026: city 5.70%, Núñez $3,409/m²); 15% cedular gains tax no longer applies to individuals from 2026",
+    "links_checked": "2026-10-16"
+  },
+  "guides/panama-city-vs-san-jose-expat-investors-2026.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 36,
+    "corrected": 19,
+    "removed": 8,
+    "sources": 20,
+    "notes": "San José out-yields Panama City (8.05% vs 7.66%, GPG) — thesis reversed; colón is a managed float, not USD-pegged; fake 40% foreign-buyer and 102% migration stats removed",
+    "links_checked": "2026-10-16"
+  }
+}
