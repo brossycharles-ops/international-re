@@ -339,13 +339,13 @@ app.post('/api/subscribe', async (req, res) => {
                 <li>Real price data, rental yields, and investment analysis</li>
                 <li>Legal updates and buyer guides</li>
               </ul>
-              <p>Our newsletter arrives every Monday. Reply to any email with a question — we read them all.</p>
+              <p>Our newsletter arrives every Monday. Questions? Send them through our <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">contact form</a> — we read every message.</p>
               <div style="background:#f7f5f0;border-radius:8px;padding:16px 20px;margin:20px 0;">
                 <p style="margin:0;font-size:13px;color:#555;">&#128279; <strong>Know someone researching Latin American real estate?</strong> Forward this email or share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — they'll get the same free Starter Kit.</p>
               </div>
               <p style="color:#666;font-size:13px;margin-top:30px;border-top:1px solid #eee;padding-top:15px;">
                 You're receiving this because you subscribed at internationalre.org.<br>
-                <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit our website</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
+                <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit our website</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
               </p>
             </div>
           </div>`
@@ -770,7 +770,7 @@ const DRIP_EMAILS = [
           </p>
           <p>Talk soon,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -800,7 +800,7 @@ const DRIP_EMAILS = [
           </p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -830,7 +830,7 @@ const DRIP_EMAILS = [
           <p>Also worth checking: our <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">5-question market quiz</a> will match you to the market that fits your budget and goals.</p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -863,10 +863,10 @@ const DRIP_EMAILS = [
             <p style="margin:0 0 12px;font-size:1rem;">Ready to go deeper?</p>
             <a href="https://www.internationalre.org/guide/2026-market-entry-guide.html" style="background:#c9a84c;color:#0a1628;padding:12px 24px;text-decoration:none;border-radius:6px;font-weight:700;display:inline-block;">Download the Full Market Entry Guide</a>
           </div>
-          <p>You'll now receive our regular weekly newsletter. Reply to any email — we read them all.</p>
+          <p>You'll now receive our regular weekly newsletter. Questions? Use our <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">contact form</a> — we read every message.</p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -902,7 +902,7 @@ const DRIP_EMAILS = [
           </p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -943,14 +943,14 @@ const DRIP_EMAILS = [
               <p style="margin:6px 0 0;color:#555;font-size:0.88rem;">Markets like Panama, Medellín, and Guanacaste have real liquidity. Markets like rural Nicaragua or the Dominican Republic interior do not. Know how long it takes to sell before you buy.</p>
             </div>
           </div>
-          <p>If you can answer all five clearly — you're ready. If not, reply to this email and tell us where you're stuck. We read every reply.</p>
+          <p>If you can answer all five clearly — you're ready. If not, tell us where you're stuck through our <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">contact form</a>. We read every message.</p>
           <div style="background:#0a1628;color:#fff;padding:20px 24px;border-radius:8px;margin:24px 0;text-align:center;">
             <p style="margin:0 0 12px;color:rgba(255,255,255,0.85);font-size:0.95rem;">Not sure which market fits your situation?</p>
             <a href="https://www.internationalre.org/quiz.html" style="background:#c9a84c;color:#0a1628;padding:12px 24px;text-decoration:none;border-radius:6px;font-weight:700;display:inline-block;">Take the 5-Question Market Quiz</a>
           </div>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -976,7 +976,7 @@ const DRIP_EMAILS = [
           </p>
           <p>More next week,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -998,7 +998,7 @@ const DRIP_EMAILS = [
           <ol style="padding-left:20px;color:#333;line-height:1.9;">
             <li><strong>Still comparing markets</strong> — if this is you, the <a href="https://www.internationalre.org/quiz.html" style="color:#c9a84c;">market quiz</a> narrows it down in five questions.</li>
             <li><strong>Have a market, need a property</strong> — read our city-specific hub pages for neighborhood-level detail and current listings context.</li>
-            <li><strong>Have a property, working the legal side</strong> — reply to this email and tell us what you're stuck on. We read every reply and will point you to the right guide.</li>
+            <li><strong>Have a property, working the legal side</strong> — tell us what you're stuck on through our <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">contact form</a>. We read every message and will point you to the right guide.</li>
           </ol>
           <p>Whichever stage you're at, the biggest mistake we see is rushing the attorney step to "keep momentum" on a deal. Slow that part down — everything else can move fast.</p>
           <p style="text-align:center;margin:28px 0;">
@@ -1006,7 +1006,7 @@ const DRIP_EMAILS = [
           </p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -1034,10 +1034,10 @@ const DRIP_EMAILS = [
           <p style="text-align:center;margin:28px 0;">
             <a href="https://www.internationalre.org/newsletter.html" style="background:#c9a84c;color:#1a1a2e;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:700;">Browse Past Newsletter Issues &rarr;</a>
           </p>
-          <p>You'll keep getting our regular weekly newsletter after this. Reply any time — we read every email.</p>
+          <p>You'll keep getting our regular weekly newsletter after this. Questions any time? Use our <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">contact form</a>.</p>
           <p>Best,<br><strong>International RE</strong></p>
           <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;">
-            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
+            You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org" style="color:#c9a84c;">Visit site</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a><br>
             &#128279; Know someone exploring Latin American real estate? Share <a href="https://www.internationalre.org/subscribe.html" style="color:#c9a84c;">internationalre.org/subscribe</a> — free, no spam.
           </p>
         </div>
@@ -1086,7 +1086,7 @@ function newsletterEmail(issue, firstName) {
   const body = issue.html.replace(/{{firstName}}/g, firstName || 'there');
   return `${body}
       <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;font-family:Inter,Arial,sans-serif;text-align:center;">
-        You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org/newsletter.html" style="color:#c9a84c;">Past issues</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
+        You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org/newsletter.html" style="color:#c9a84c;">Past issues</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
       </p>`;
 }
 

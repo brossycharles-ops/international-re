@@ -22,12 +22,13 @@ Goal: 500+ organic visitors/month, then grow; every visitor offered the Expat St
 12. Each new page links to 3 related pages and its city guide, and is linked from at least 2 existing pages.
 
 ## Conversion
-13. Signup forms ask for email only (first name optional). Never add required fields.
-14. Each article has one natural Starter Kit or newsletter call to action — not more.
-15. The newsletter ends with a one-line forward-to-a-friend ask.
+13. There is no shared inbox: never tell readers to email us or to reply to an email. Point them to `/contact.html` (it emails the owner).
+14. Signup forms ask for email only (first name optional). Never add required fields.
+15. Each article has one natural Starter Kit or newsletter call to action — not more.
+16. The newsletter ends with a one-line forward-to-a-friend ask.
 
 ## Engineering
-16. City guides are generated from `data/cities.json` by `scripts/generate_city_hubs.py`; edit the data, not the HTML.
-17. Nothing ships unless `bash scripts/verify_site.sh` prints PASS.
-18. Never touch `SUBSCRIBERS_FILE` handling, `data/subscribers.json`, or delete pages.
-19. Google/Bing sitemap pings are dead; IndexNow covers Bing/Yandex.
+17. City guides are generated from `data/cities.json` by `scripts/generate_city_hubs.py`; edit the data, not the HTML.
+18. Nothing ships unless `bash scripts/verify_site.sh` prints PASS.
+19. Never touch `SUBSCRIBERS_FILE` handling, `data/subscribers.json`, or delete pages.
+20. Google/Bing sitemap pings are dead; IndexNow covers Bing/Yandex.
