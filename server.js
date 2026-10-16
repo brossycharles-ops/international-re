@@ -1229,6 +1229,17 @@ function escapeHtml(t) {
   return String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
+// Contact-form messages from the last 7 days (each was also emailed when it arrived).
+function contactSummary() {
+  try {
+    const weekAgo = Date.now() - 7 * 864e5;
+    const recent = JSON.parse(fs.readFileSync(CONTACT_FILE, 'utf-8')).filter(m => new Date(m.at).getTime() >= weekAgo);
+    if (!recent.length) return '<h3>Reader messages</h3><p>None this week.</p>';
+    const rows = recent.map(m => `<li>${escapeHtml(CONTACT_KINDS[m.kind] || 'Other')} from ${escapeHtml(m.email)}${m.page ? ` about ${escapeHtml(m.page)}` : ''}</li>`).join('');
+    return `<h3>Reader messages</h3><p><strong>${recent.length}</strong> this week (each was emailed to you when it arrived):</p><ul>${rows}</ul>`;
+  } catch { return '<h3>Reader messages</h3><p>None this week.</p>'; }
+}
+
 // One line from the scorecard the agents regenerate (docs/QUALITY.md), if present.
 function researchSummary() {
   try {
@@ -1268,6 +1279,7 @@ async function sendSubscriberBackup(today) {
       <h3>Subscribers</h3><p><strong>${subs.length}</strong> total · <strong>+${joined}</strong> joined in the last 7 days.</p>
       ${trafficHtml}
       ${researchSummary()}
+      ${contactSummary()}
       <p style="color:#888;font-size:13px;border-top:1px solid #eee;padding-top:12px">The full subscriber list is attached as a CSV backup. Keep this email: if the server's list is ever lost, it can be restored from this file.</p></div>`,
     attachments: [{ filename: `internationalre-subscribers-${today}.csv`, content: Buffer.from(csv, 'utf-8') }]
   });
