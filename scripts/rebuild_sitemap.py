@@ -105,3 +105,4 @@ print(f"✓ sitemap.xml rebuilt with {len(unique)} entries")
 import subprocess, sys
 subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "related_links.py")], check=False)
 subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "latest_cards.py")], check=False)
+subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "breadcrumbs.py")], check=False)
