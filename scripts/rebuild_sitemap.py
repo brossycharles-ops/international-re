@@ -99,3 +99,8 @@ lines.append("</urlset>")
 
 (PUB / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
 print(f"✓ sitemap.xml rebuilt with {len(unique)} entries")
+
+# Every agent runs this script before publishing, so it also refreshes the other
+# derived page section: the "Related reading" boxes that keep new pages linked.
+import subprocess, sys
+subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "related_links.py")], check=False)
