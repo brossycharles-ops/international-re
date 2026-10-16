@@ -63,6 +63,7 @@ def analyse(path):
         "faq": "FAQPage" in html,
         "h1": bool(re.search(r"(?i)<h1\b", html)),
         "byline": "Charles Brossy" in html,
+        "other_byline": bool(re.search(r"By <strong>(?!Charles Brossy<)[^<]+</strong>", html)),
         "title_len": len(unescape(title.group(1)).strip()) if title else 0,
         "desc_len": len(unescape(desc.group(1))) if desc else 0,
         "published": pub.group(1) if pub else "",
@@ -83,6 +84,8 @@ def problems(a):
         p.append("no <h1>")
     if not a["byline"]:
         p.append("no byline")
+    if a["other_byline"]:
+        p.append("byline is not Charles Brossy (never invent authors)")
     if not 1 <= a["title_len"] <= 65:
         p.append(f"title length {a['title_len']} (max 65)")
     if not 110 <= a["desc_len"] <= 165:
@@ -154,6 +157,16 @@ def main():
         return 0
 
     failed = 0
+    # Site-wide rules that apply to every page, old or new.
+    for f in PUBLIC.rglob("*.html"):
+        html = f.read_text(errors="ignore")
+        if '"RealEstateListing"' in html:
+            print(f"FAIL {f.relative_to(PUBLIC)}: RealEstateListing structured data describes listings that do not exist")
+            failed += 1
+    for a in pages:
+        if a["other_byline"]:
+            print(f"FAIL {a['page']}: byline is not Charles Brossy (never invent authors)")
+            failed += 1
     for a in pages:
         bound = a["published"] >= STANDARD_SINCE or a["page"] in ledger
         if bound and problems(a):
