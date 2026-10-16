@@ -61,6 +61,7 @@ Code changes (server.js, scripts/) from the auditor go through pull requests; co
 - **Publishing stopped:** the auditor raises a P0 alert when `main` has no new pages for
   3+ days. Check the Growth Engine's run log at claude.ai/code/routines.
 - **A bad change went live:** revert the commit on GitHub; Railway redeploys.
+- **'Deployment crashed' emails right after a deploy:** the old copy didn't exit when Railway stopped it. server.js shutdown() must keep exiting 0 within 5 s (it drops Cloudflare's idle keep-alive connections).
 
 ## Local development
 ```
