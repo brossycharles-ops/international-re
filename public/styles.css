@@ -2747,3 +2747,17 @@ a {
   .nav-links a { font-size: 0.82rem; white-space: nowrap; }
   .nav-cta { padding: 8px 14px; }
 }
+
+/* Travel map tooltips (map.js draws countries itself; no tile service) */
+.map-tooltip {
+  background: rgba(10, 22, 40, 0.95);
+  color: #f5e6c0;
+  border: 1px solid rgba(201, 165, 78, 0.5);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.map-tooltip::before { display: none; }
+.map-container { background: #0f1a2b !important; }
+#worldMap.leaflet-container { background: #0f1a2b !important; }

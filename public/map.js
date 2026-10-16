@@ -1,186 +1,104 @@
 // ===== Interactive Travel Map =====
+// Countries are drawn from a world outline served by this site
+// (/data/world-110m.geojson, Natural Earth via world-atlas), so the map needs no
+// third-party tile service. CARTO's free basemaps started requiring an API key
+// and covered the old map in watermarks.
 const mapContainer = document.getElementById('worldMap');
-if (mapContainer) {
+if (mapContainer && window.L) {
+  // Names must match the "name" property in world-110m.geojson.
+  const visited = {
+    'United States of America': ['USA', 'Americas'], 'Canada': ['Canada', 'Americas'], 'Mexico': ['Mexico', 'Americas'],
+    'Belize': ['Belize', 'Americas'], 'Costa Rica': ['Costa Rica', 'Americas'], 'El Salvador': ['El Salvador', 'Americas'],
+    'Nicaragua': ['Nicaragua', 'Americas'], 'Panama': ['Panama', 'Americas'], 'Bahamas': ['Bahamas', 'Americas'],
+    'Chile': ['Chile', 'Americas'], 'Peru': ['Peru', 'Americas'], 'Jordan': ['Jordan', 'Middle East'],
+    'Albania': ['Albania', 'Europe'], 'Austria': ['Austria', 'Europe'], 'Belgium': ['Belgium', 'Europe'],
+    'Czechia': ['Czech Republic', 'Europe'], 'Denmark': ['Denmark', 'Europe'], 'France': ['France', 'Europe'],
+    'Germany': ['Germany', 'Europe'], 'Hungary': ['Hungary', 'Europe'], 'Iceland': ['Iceland', 'Europe'],
+    'Ireland': ['Ireland', 'Europe'], 'Italy': ['Italy', 'Europe'], 'Luxembourg': ['Luxembourg', 'Europe'],
+    'Netherlands': ['Netherlands', 'Europe'], 'Norway': ['Norway', 'Europe'], 'Portugal': ['Portugal', 'Europe'],
+    'Spain': ['Spain', 'Europe'], 'Sweden': ['Sweden', 'Europe'], 'Switzerland': ['Switzerland', 'Europe'],
+    'United Kingdom': ['United Kingdom', 'Europe']
+  };
+  const planned = {
+    'Guatemala': ['Guatemala', 'Americas'], 'Madagascar': ['Madagascar', 'Africa'], 'Brazil': ['Brazil', 'Americas'],
+    'Colombia': ['Colombia', 'Americas'], 'Romania': ['Romania', 'Europe'], 'Syria': ['Syria', 'Middle East']
+  };
+
+  const narrow = window.matchMedia('(max-width: 768px)').matches;
   const map = L.map('worldMap', {
-    center: [30, -20],
-    zoom: 2,
-    minZoom: 2,
+    center: narrow ? [25, -40] : [28, -30],
+    zoom: narrow ? 1 : 2,
+    minZoom: narrow ? 1 : 2,
     maxZoom: 6,
+    zoomSnap: 0.5,
     scrollWheelZoom: false,
-    zoomControl: true
+    worldCopyJump: false,
+    maxBounds: [[-75, -200], [88, 200]],
+    attributionControl: true
   });
+  map.attributionControl.setPrefix(false);
+  map.attributionControl.addAttribution('Map data: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
 
-  const cartoAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  const GOLD = '#c9a54e', RED = '#e74c3c';
+  const styleFor = name => visited[name]
+    ? { fillColor: GOLD, fillOpacity: 0.85, color: '#f0d58a', weight: 0.8 }
+    : planned[name]
+      ? { fillColor: RED, fillOpacity: 0.7, color: '#f19a90', weight: 0.8 }
+      : { fillColor: '#2c3550', fillOpacity: 1, color: '#3d4766', weight: 0.5 };
 
-  // Dark tile layer with fallback
-  var baseTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: cartoAttrib,
-    subdomains: 'abcd',
-    maxZoom: 19
-  });
+  const popupFor = (label, region, isVisited) => `
+    <div style="text-align:center;padding:4px 8px;">
+      <strong style="font-size:14px;">${label}</strong><br>
+      <span style="color:${isVisited ? GOLD : RED};font-size:12px;">${isVisited ? '&#10003; Visited' : '&#9733; On the list'}</span><br>
+      <span style="color:#888;font-size:11px;">${region}</span>
+    </div>`;
 
-  baseTiles.on('tileerror', function() {
-    if (!map._fallbackLoaded) {
-      map._fallbackLoaded = true;
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: cartoAttrib,
-        subdomains: 'abcd',
-        maxZoom: 19
+  fetch('/data/world-110m.geojson')
+    .then(r => (r.ok ? r.json() : Promise.reject(new Error('map data ' + r.status))))
+    .then(world => {
+      L.geoJSON(world, {
+        style: f => styleFor(f.properties.name),
+        onEachFeature: (f, layer) => {
+          const name = f.properties.name;
+          const entry = visited[name] || planned[name];
+          if (!entry) return;
+          const [label, region] = entry;
+          layer.bindTooltip(label, { sticky: true, direction: 'top', className: 'map-tooltip' });
+          layer.bindPopup(popupFor(label, region, !!visited[name]));
+          layer.on('mouseover', () => layer.setStyle({ fillOpacity: 1, weight: 1.5 }));
+          layer.on('mouseout', () => layer.setStyle(styleFor(name)));
+          // Countries too small to see at world zoom also get a dot.
+          const b = layer.getBounds();
+          if (Math.abs(b.getEast() - b.getWest()) < 3 && Math.abs(b.getNorth() - b.getSouth()) < 3) {
+            L.circleMarker(b.getCenter(), {
+              radius: 4, color: '#fff', weight: 1, fillColor: visited[name] ? GOLD : RED, fillOpacity: 1
+            }).bindTooltip(label, { direction: 'top', className: 'map-tooltip' })
+              .bindPopup(popupFor(label, region, !!visited[name]))
+              .addTo(map);
+          }
+        }
       }).addTo(map);
-    }
-  });
-
-  baseTiles.addTo(map);
-
-  // Labels on top
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
-    attribution: cartoAttrib,
-    subdomains: 'abcd',
-    pane: 'overlayPane'
-  }).addTo(map);
-
-  // Country data with coordinates and regions
-  const visited = [
-    { name: 'USA', lat: 39.8, lng: -98.5, region: 'Americas' },
-    { name: 'Canada', lat: 56.1, lng: -106.3, region: 'Americas' },
-    { name: 'Mexico', lat: 23.6, lng: -102.5, region: 'Americas' },
-    { name: 'Belize', lat: 17.2, lng: -88.5, region: 'Americas' },
-    { name: 'Costa Rica', lat: 9.7, lng: -83.7, region: 'Americas' },
-    { name: 'El Salvador', lat: 13.7, lng: -88.9, region: 'Americas' },
-    { name: 'Nicaragua', lat: 12.9, lng: -85.2, region: 'Americas' },
-    { name: 'Panama', lat: 8.5, lng: -80.8, region: 'Americas' },
-    { name: 'Bahamas', lat: 25.0, lng: -77.4, region: 'Americas' },
-    { name: 'Chile', lat: -35.7, lng: -71.5, region: 'Americas' },
-    { name: 'Peru', lat: -9.2, lng: -75.0, region: 'Americas' },
-    { name: 'Jordan', lat: 30.6, lng: 36.2, region: 'Middle East' },
-    { name: 'Albania', lat: 41.2, lng: 20.2, region: 'Europe' },
-    { name: 'Austria', lat: 47.5, lng: 14.6, region: 'Europe' },
-    { name: 'Belgium', lat: 50.8, lng: 4.5, region: 'Europe' },
-    { name: 'Czech Republic', lat: 49.8, lng: 15.5, region: 'Europe' },
-    { name: 'Denmark', lat: 56.3, lng: 9.5, region: 'Europe' },
-    { name: 'France', lat: 46.6, lng: 2.2, region: 'Europe' },
-    { name: 'Germany', lat: 51.2, lng: 10.4, region: 'Europe' },
-    { name: 'Hungary', lat: 47.2, lng: 19.5, region: 'Europe' },
-    { name: 'Iceland', lat: 64.9, lng: -19.0, region: 'Europe' },
-    { name: 'Ireland', lat: 53.1, lng: -7.7, region: 'Europe' },
-    { name: 'Italy', lat: 41.9, lng: 12.6, region: 'Europe' },
-    { name: 'Luxembourg', lat: 49.8, lng: 6.1, region: 'Europe' },
-    { name: 'Netherlands', lat: 52.1, lng: 5.3, region: 'Europe' },
-    { name: 'Norway', lat: 60.5, lng: 8.5, region: 'Europe' },
-    { name: 'Portugal', lat: 39.4, lng: -8.2, region: 'Europe' },
-    { name: 'Spain', lat: 40.5, lng: -3.7, region: 'Europe' },
-    { name: 'Sweden', lat: 60.1, lng: 18.6, region: 'Europe' },
-    { name: 'Switzerland', lat: 46.8, lng: 8.2, region: 'Europe' },
-    { name: 'United Kingdom', lat: 55.4, lng: -3.4, region: 'Europe' }
-  ];
-
-  const planned = [
-    { name: 'Guatemala', lat: 15.8, lng: -90.2, region: 'Americas' },
-    { name: 'Madagascar', lat: -18.8, lng: 46.9, region: 'Africa' },
-    { name: 'Brazil', lat: -14.2, lng: -51.9, region: 'Americas' },
-    { name: 'Colombia', lat: 4.6, lng: -74.3, region: 'Americas' },
-    { name: 'Romania', lat: 45.9, lng: 24.9, region: 'Europe' },
-    { name: 'Syria', lat: 34.8, lng: 38.9, region: 'Middle East' }
-  ];
-
-  // Larger, more visible custom markers
-  function createVisitedIcon(name) {
-    return L.divIcon({
-      className: 'map-marker-wrapper',
-      html: `<div class="map-pin visited-pin">
-               <div class="pin-inner"></div>
-             </div>
-             <div class="map-label">${name}</div>`,
-      iconSize: [20, 20],
-      iconAnchor: [10, 10]
+    })
+    .catch(() => {
+      mapContainer.innerHTML = '<p style="color:#aaa;text-align:center;padding:40px 16px;">The map could not load. Visited: '
+        + Object.values(visited).map(v => v[0]).join(', ') + '.</p>';
     });
+
+  // Keep the stats under the map in step with the lists above.
+  const continents = new Set(Object.values(visited).map(v => v[1] === 'Americas' ? null : v[1]));
+  continents.delete(null);
+  const americas = Object.values(visited).filter(v => v[1] === 'Americas').map(v => v[0]);
+  const hasNorth = americas.some(c => ['USA', 'Canada', 'Mexico', 'Belize', 'Costa Rica', 'El Salvador', 'Nicaragua', 'Panama', 'Bahamas'].includes(c));
+  const hasSouth = americas.some(c => ['Chile', 'Peru'].includes(c));
+  const continentCount = continents.size + (hasNorth ? 1 : 0) + (hasSouth ? 1 : 0);
+  const stats = document.querySelectorAll('#travel-map .map-stat-num');
+  if (stats.length >= 3) {
+    stats[0].textContent = Object.keys(visited).length;
+    stats[1].textContent = Object.keys(planned).length;
+    stats[2].textContent = continentCount;
   }
-
-  function createPlannedIcon(name) {
-    return L.divIcon({
-      className: 'map-marker-wrapper',
-      html: `<div class="map-pin planned-pin">
-               <div class="pin-inner"></div>
-             </div>
-             <div class="map-label planned-label">${name}</div>`,
-      iconSize: [20, 20],
-      iconAnchor: [10, 10]
-    });
-  }
-
-  // Add visited markers
-  visited.forEach(country => {
-    L.marker([country.lat, country.lng], { icon: createVisitedIcon(country.name) })
-      .addTo(map)
-      .bindPopup(`
-        <div style="text-align:center;padding:4px 8px;">
-          <strong style="font-size:14px;">${country.name}</strong><br>
-          <span style="color:#c9a54e;font-size:12px;">&#10003; Visited</span><br>
-          <span style="color:#888;font-size:11px;">${country.region}</span>
-        </div>
-      `);
-  });
-
-  // Add planned markers
-  planned.forEach(country => {
-    L.marker([country.lat, country.lng], { icon: createPlannedIcon(country.name) })
-      .addTo(map)
-      .bindPopup(`
-        <div style="text-align:center;padding:4px 8px;">
-          <strong style="font-size:14px;">${country.name}</strong><br>
-          <span style="color:#e74c3c;font-size:12px;">&#9733; On the List</span><br>
-          <span style="color:#888;font-size:11px;">${country.region}</span>
-        </div>
-      `);
-  });
-
-  // Draw connection lines between visited countries (subtle)
-  const americasVisited = visited.filter(c => c.region === 'Americas');
-  const europeVisited = visited.filter(c => c.region === 'Europe');
-
-  // Draw a line from Americas to Europe to Middle East to show travel reach
-  const keyPoints = [
-    [39.8, -98.5],   // USA
-    [53.1, -7.7],    // Ireland
-    [46.6, 2.2],     // France
-    [41.9, 12.6],    // Italy
-    [47.2, 19.5],    // Hungary
-    [30.6, 36.2],    // Jordan
-  ];
-
-  L.polyline(keyPoints, {
-    color: 'rgba(201, 165, 78, 0.15)',
-    weight: 1.5,
-    dashArray: '8, 8',
-    smoothFactor: 3
-  }).addTo(map);
-
-  // Another line through Americas
-  const americaRoute = [
-    [56.1, -106.3],  // Canada
-    [39.8, -98.5],   // USA
-    [23.6, -102.5],  // Mexico
-    [13.7, -88.9],   // El Salvador
-    [12.9, -85.2],   // Nicaragua
-    [9.7, -83.7],    // Costa Rica
-    [8.5, -80.8],    // Panama
-    [-9.2, -75.0],   // Peru
-    [-35.7, -71.5],  // Chile
-  ];
-
-  L.polyline(americaRoute, {
-    color: 'rgba(201, 165, 78, 0.15)',
-    weight: 1.5,
-    dashArray: '8, 8',
-    smoothFactor: 3
-  }).addTo(map);
 
   // Enable scroll zoom on click
-  map.on('click', () => {
-    map.scrollWheelZoom.enable();
-  });
-
-  map.on('mouseout', () => {
-    map.scrollWheelZoom.disable();
-  });
+  map.on('click', () => map.scrollWheelZoom.enable());
+  map.on('mouseout', () => map.scrollWheelZoom.disable());
 }
