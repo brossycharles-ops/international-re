@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-16 by scripts/content_quality.py. 101 indexed articles, average score 60/100, 7 research-verified (7%), 8 with a Sources section, 38 with an FAQ.
+Generated 2026-10-16 by scripts/content_quality.py. 101 indexed articles, average score 60/100, 9 research-verified (9%), 11 with a Sources section, 38 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -8,17 +8,17 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 |---|---|---|---|---|---|
 | 39 | blog/guanacaste-hottest-market-2026.html | — | 838 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 838 words (min 900) |
 | 39 | blog/medellin-real-estate-2026.html | — | 1006 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; meta description length 109 (110-165) |
+| 39 | blog/panama-city-real-estate-2026.html | — | 883 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 883 words (min 900) |
 | 51 | blog/10-cheapest-beach-towns-latin-america-2026.html | — | 1243 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/buenos-aires-best-value-2026.html | — | 1096 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | blog/buenos-aires-best-value-2026.html | — | 1121 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/costa-rica-buying-guide-2026.html | — | 3644 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/granada-nicaraguas-colonial-gem-2026.html | — | 1158 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-14-18-2026.html | — | 926 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1123 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-26-may-2-2026.html | — | 1039 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latin-america-market-update-june-2026.html | — | 1070 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/mendoza-wine-country-estates.html | — | 1150 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/panama-city-real-estate-2026.html | — | 916 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/panama-vs-costa-rica-expats-investors-2026.html | — | 1003 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | blog/mendoza-wine-country-estates.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | blog/panama-vs-costa-rica-expats-investors-2026.html | — | 1009 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/punta-del-este-real-estate-2026.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/san-juan-del-sur-affordable-beach.html | — | 913 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/santiago-supply-squeeze-2026.html | — | 954 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -27,13 +27,13 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | blog/tbilisi-georgia-1-percent-tax-2026.html | — | 1081 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-brazil-2026.html | — | 1302 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-chile-2026.html | — | 1326 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | guides/can-foreigners-buy-property-in-panama-2026.html | — | 1421 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | guides/can-foreigners-buy-property-in-panama-2026.html | — | 1458 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-mexico-2026.html | — | 1518 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/cuenca-ecuador-neighborhood-guide-property-buyers-2026.html | — | 1208 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/florianopolis-vs-punta-del-este-beach-buyers-2026.html | — | 1299 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/lima-peru-rental-yield-analysis-2026.html | — | 1411 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/medellin-neighborhood-guide-property-buyers-2026.html | — | 1534 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | — | 1055 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | — | 1062 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/mexico-beach-towns-vs-costa-rica-2026.html | — | 1655 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/montevideo-rental-yield-analysis-2026.html | — | 1339 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/uruguay-vs-chile-retirees-2026.html | — | 1185 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -44,7 +44,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | quick-reads/airbnb-income-san-jose-costa-rica.html | — | 578 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-sao-paulo-2026.html | — | 437 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/best-neighborhoods-medellin-for-expats.html | — | 710 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/cost-of-living-buenos-aires-per-month.html | — | 617 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | quick-reads/cost-of-living-buenos-aires-per-month.html | — | 601 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/cost-of-living-lima-peru-per-month.html | — | 585 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/cost-of-living-medellin-per-month.html | — | 698 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/cost-of-living-panama-city-per-month.html | — | 611 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -52,9 +52,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | quick-reads/lisbon-property-buying-timeline.html | — | 461 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-colombia-foreigners-2026.html | — | 590 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-mexico-foreigners-2026.html | — | 534 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/property-tax-panama-foreigners-2026.html | — | 439 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-uruguay-foreigners-2026.html | — | 602 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 63 | blog/argentina-real-estate-foreigners-2026.html | — | 2010 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/belize-real-estate-2026.html | — | 1930 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/best-neighborhoods-panama-city-2026.html | — | 1754 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/best-places-retire-mexico-2026.html | — | 1667 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -76,7 +74,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | blog/panama-pensionado-visa-2026.html | — | 1569 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/playa-del-carmen-vs-tulum-2026.html | — | 1279 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-argentina-2026.html | — | 1919 | 0 | needs a Sources section with 3+ external https links (has 0) |
-| 63 | blog/retire-in-colombia-2026.html | — | 1465 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-costa-rica-2026.html | — | 1363 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-ecuador-2026.html | — | 2194 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-panama-2026.html | — | 1348 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -85,6 +82,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | blog/uruguay-real-estate-foreigners-2026.html | — | 1566 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-colombia-2026.html | — | 1603 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-costa-rica.html | — | 1985 | 0 | needs a Sources section with 3+ external https links (has 0) |
+| 63 | quick-reads/property-tax-panama-foreigners-2026.html | — | 510 | 3 | missing FAQ + FAQPage JSON-LD |
 | 63 | tips/brazil-viper-residency-real-estate.html | — | 365 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/buenos-aires-usd-property.html | — | 364 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/cartagena-beachfront-vs-miami.html | — | 361 | 0 | needs a Sources section with 1+ external https links (has 0) |
@@ -100,8 +98,10 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | tips/sao-paulo-jardins-vs-manhattan.html | — | 382 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/uruguay-10-year-tax-holiday.html | — | 383 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 75 | blog/latin-america-market-update-october-2026.html | — | 1337 | 6 | none |
+| 100 | blog/argentina-real-estate-foreigners-2026.html | 2026-10-16 | 2757 | 28 | none |
 | 100 | blog/best-places-retire-latin-america-2026.html | 2026-10-16 | 2124 | 24 | none |
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
+| 100 | blog/retire-in-colombia-2026.html | 2026-10-16 | 1977 | 15 | none |
 | 100 | guides/buenos-aires-rental-yield-analysis-2026.html | 2026-10-16 | 1979 | 19 | none |
 | 100 | guides/panama-city-vs-san-jose-expat-investors-2026.html | 2026-10-16 | 1884 | 20 | none |
 | 100 | guides/santiago-chile-neighborhood-guide-property-buyers-2026.html | 2026-10-16 | 2707 | 23 | none |
