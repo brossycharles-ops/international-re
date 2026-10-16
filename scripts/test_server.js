@@ -87,6 +87,20 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('counts one visitor for two pages', after.visitors - before.visitors === 1, JSON.stringify(after));
   check('records referring site and top pages', after.sources.some(s => s.source === 'google.com') && after.pages.some(p => p.page === '/free-guide.html'), JSON.stringify(after));
 
+  // Contact form
+  sent.length = 0;
+  process.env.CONTACT_EMAIL = 'owner@realmail.io';
+  check('contact rejects missing email', (await post('/api/contact', { message: 'The tax rate on this page is out of date.' })).status === 400);
+  check('contact rejects a too-short message', (await post('/api/contact', { email: 'reader@realmail.io', message: 'hi' })).status === 400);
+  r = await post('/api/contact', { email: 'Reader@Realmail.io', kind: 'correction', page: '/guides/x.html', message: 'The <b>tax</b> rate here changed in 2026.' });
+  check('contact accepts a valid message', r.status === 200);
+  const mail = sent.find(m => m.to === 'owner@realmail.io');
+  check('contact emails the owner with reply-to and escaped HTML', !!mail && mail.replyTo === 'reader@realmail.io' && /&lt;b&gt;tax/.test(mail.html), JSON.stringify(mail));
+  sent.length = 0;
+  check('contact honeypot pretends success but sends nothing', (await post('/api/contact', { email: 'bot@realmail.io', message: 'Buy cheap things now!!!', website: 'x' })).status === 200 && sent.length === 0);
+  const saved = JSON.parse(fs.readFileSync(path.join(dir, 'messages.json')));
+  check('contact keeps a copy on the volume', saved.some(m => m.email === 'reader@realmail.io' && m.kind === 'correction'));
+
   if (createdNl) fs.unlinkSync(nlFile);
   fs.rmSync(dir, { recursive: true, force: true });
   console.log(failures ? `[test_server] ${failures} FAILED` : '[test_server] all passed');

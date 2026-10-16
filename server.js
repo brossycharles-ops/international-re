@@ -391,6 +391,67 @@ app.post('/api/unsubscribe', async (req, res) => {
   }
 });
 
+// ─── Contact / corrections form ───
+// There is no shared inbox, so messages go by email to CONTACT_EMAIL (or the
+// owner's BACKUP_EMAIL) with Reply-To set to the sender, and a copy is kept on
+// the volume in case sending fails. The owner's address is never shown publicly.
+const CONTACT_FILE = path.join(path.dirname(SUBSCRIBERS_FILE), 'messages.json');
+const contactRateLimitMap = new Map();
+const CONTACT_KINDS = { correction: 'Correction', question: 'Question', privacy: 'Data / privacy request', other: 'Other' };
+
+app.post('/api/contact', async (req, res) => {
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  const now = Date.now();
+  const rl = contactRateLimitMap.get(ip) || { count: 0, resetAt: now + 60 * 60 * 1000 };
+  if (now > rl.resetAt) { rl.count = 0; rl.resetAt = now + 60 * 60 * 1000; }
+  rl.count++;
+  contactRateLimitMap.set(ip, rl);
+  if (rl.count > 5) return res.status(429).json({ error: 'Too many messages. Please try again later.' });
+
+  const { name, email, page, kind, message, website } = req.body || {};
+  if (website) return res.json({ message: 'Thanks — your message has been sent.' }); // honeypot: pretend success
+  const em = String(email || '').trim().toLowerCase();
+  const msg = String(message || '').trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) || em.length > 200) return res.status(400).json({ error: 'Please enter a valid email address so we can reply.' });
+  if (msg.length < 10) return res.status(400).json({ error: 'Please write a little more detail.' });
+  if (msg.length > 5000) return res.status(400).json({ error: 'Please keep your message under 5,000 characters.' });
+  const entry = {
+    at: new Date().toISOString(),
+    kind: CONTACT_KINDS[kind] ? kind : 'other',
+    name: String(name || '').trim().slice(0, 100),
+    email: em,
+    page: String(page || '').trim().slice(0, 300),
+    message: msg,
+  };
+
+  try {
+    ensureDataDir();
+    let all = [];
+    try { all = JSON.parse(fs.readFileSync(CONTACT_FILE, 'utf-8')); } catch {}
+    all.push(entry);
+    fs.writeFileSync(CONTACT_FILE, JSON.stringify(all.slice(-500), null, 2));
+  } catch (err) { console.error('Contact save failed:', err.message); }
+
+  const to = process.env.CONTACT_EMAIL || process.env.BACKUP_EMAIL;
+  if (resend && to) {
+    try {
+      await resend.emails.send({
+        from: EMAIL_FROM,
+        to,
+        replyTo: entry.email,
+        subject: `[internationalre.org] ${CONTACT_KINDS[entry.kind]}: ${entry.message.replace(/\s+/g, ' ').slice(0, 60)}`,
+        html: `<div style="font-family:Inter,Arial,sans-serif;max-width:600px">
+          <p><strong>${CONTACT_KINDS[entry.kind]}</strong> from ${escapeHtml(entry.name || 'a reader')} &lt;${escapeHtml(entry.email)}&gt;</p>
+          ${entry.page ? `<p>Page: ${escapeHtml(entry.page)}</p>` : ''}
+          <p style="white-space:pre-wrap;border-left:3px solid #c9a84c;padding-left:12px">${escapeHtml(entry.message)}</p>
+          <p style="color:#888;font-size:13px">Reply to this email to answer the reader directly.</p></div>`,
+      });
+    } catch (err) { console.error('Contact email failed:', err.message); }
+  }
+  console.log(`Contact message (${entry.kind}) from ${entry.email}`);
+  res.json({ message: 'Thanks — your message has been sent. We reply within a few days.' });
+});
+
 // ─── Subscriber count endpoint ───
 
 app.get('/api/subscriber-count', (req, res) => {

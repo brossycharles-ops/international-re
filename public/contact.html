@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact International RE | Corrections & Questions</title>
+  <meta name="description" content="Contact International RE: report an error or outdated figure in an article, ask a question, or make a data request. We read every message and reply within days.">
+  <link rel="canonical" href="https://www.internationalre.org/contact.html">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/layout_updates.css">
+  <style>
+    .privacy-page { padding-top: 80px; min-height: 100vh; background: #f7f5f0; }
+    .privacy-hero {
+      background: linear-gradient(135deg, #0a1628 0%, #132039 100%);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .privacy-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin: 0 0 12px;
+    }
+    .privacy-hero p { color: rgba(255,255,255,0.7); margin: 0; font-size: 0.95rem; }
+    .privacy-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .privacy-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #0a1628;
+      margin: 36px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e8e3d9;
+    }
+    .privacy-body h2:first-child { margin-top: 0; }
+    .privacy-body p, .privacy-body li {
+      color: #444;
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+    .privacy-body ul { padding-left: 20px; margin: 0 0 16px; }
+    .privacy-body a { color: #c9a84c; }
+    .privacy-updated { font-size: 0.82rem; color: #999; margin-bottom: 32px; }
+    .contact-form label { display:block; font-weight:600; color:#0a1628; margin:18px 0 6px; font-size:0.92rem; }
+    .contact-form input, .contact-form select, .contact-form textarea { width:100%; box-sizing:border-box; padding:12px 14px; border:1px solid #d9d2c3; border-radius:8px; font:inherit; font-size:0.95rem; background:#fff; }
+    .contact-form textarea { min-height:160px; resize:vertical; }
+    .contact-form button { margin-top:22px; }
+    .contact-hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    .contact-status { margin-top:16px; font-weight:600; }
+    .contact-status.ok { color:#2e7d32; } .contact-status.err { color:#c62828; }
+  </style>
+  <script defer src="/js/analytics.js"></script>
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-CY3wf_vdX8_H8IwOCHT4z.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+      <ul class="nav-links">
+        <li><a href="/#markets">Markets</a></li>
+        <li><a href="/#newsletters">Newsletters</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/guides.html">Guides</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="privacy-page" id="main">
+    <div class="privacy-hero">
+      <h1>Contact Us</h1>
+      <p>Corrections, questions and data requests</p>
+    </div>
+
+    <div class="privacy-body">
+      <h2>Spotted an error?</h2>
+      <p>Laws, prices and exchange rates change fast. If an article has a wrong or out-of-date figure, tell us which page and what you found — ideally with a link to the source. We check every report against current official sources and correct the article. See <a href="/about.html#how-we-research">how we research</a>.</p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <label for="cKind">What is this about?</label>
+        <select id="cKind" name="kind">
+          <option value="correction">Correction or outdated figure</option>
+          <option value="question">Question</option>
+          <option value="privacy">Data / privacy request</option>
+          <option value="other">Something else</option>
+        </select>
+        <label for="cPage">Page (optional)</label>
+        <input type="text" id="cPage" name="page" placeholder="Link to the article">
+        <label for="cName">Your name (optional)</label>
+        <input type="text" id="cName" name="name" autocomplete="name">
+        <label for="cEmail">Your email (so we can reply)</label>
+        <input type="email" id="cEmail" name="email" autocomplete="email" required>
+        <label for="cMessage">Message</label>
+        <textarea id="cMessage" name="message" required></textarea>
+        <div class="contact-hp" aria-hidden="true"><label for="cWebsite">Leave empty</label><input type="text" id="cWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" class="btn btn-primary" id="cSubmit">Send message</button>
+        <p class="contact-status" id="cStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <h2>Before you write</h2>
+      <ul>
+        <li>To unsubscribe from emails, use <a href="/unsubscribe.html">this page</a> or the link at the bottom of any email.</li>
+        <li>We publish general information, not legal, tax or investment advice, and can't advise on individual purchases. A licensed local attorney is the right person for that.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+          <p>Your weekly guide to Latin American real estate markets.</p>
+          <p class="footer-domain">internationalre.org</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/guides.html">Guides</a></li>
+            <li><a href="/newsletter.html">Newsletter</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/unsubscribe.html">Unsubscribe</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const t = document.getElementById('mobileToggle'), n = document.querySelector('.nav-links');
+    if (t && n) { t.addEventListener('click', () => n.classList.toggle('active')); }
+  </script>
+  <script>
+    (function () {
+      var f = document.getElementById('contactForm'), st = document.getElementById('cStatus'), btn = document.getElementById('cSubmit');
+      var q = new URLSearchParams(location.search);
+      if (q.get('page')) document.getElementById('cPage').value = q.get('page');
+      if (q.get('kind')) document.getElementById('cKind').value = q.get('kind');
+      f.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var data = Object.fromEntries(new FormData(f).entries());
+        st.className = 'contact-status'; st.textContent = '';
+        if (!data.email || !data.message) { st.className = 'contact-status err'; st.textContent = 'Please add your email and a message.'; return; }
+        btn.disabled = true; btn.textContent = 'Sending...';
+        try {
+          var r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          var j = await r.json();
+          if (r.ok) { st.className = 'contact-status ok'; st.textContent = j.message; f.reset(); }
+          else { st.className = 'contact-status err'; st.textContent = j.error || 'Something went wrong. Please try again.'; }
+        } catch (err) { st.className = 'contact-status err'; st.textContent = 'Network error. Please try again.'; }
+        btn.disabled = false; btn.textContent = 'Send message';
+      });
+    })();
+  </script>
+</body>
+</html>

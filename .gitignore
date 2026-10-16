@@ -17,3 +17,4 @@ start-server.command
 .pending-tasks.txt.tmp.*
 data/traffic.json
 data/scheduler-state.json
+data/messages.json
