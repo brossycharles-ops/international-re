@@ -1168,6 +1168,16 @@ function escapeHtml(t) {
   return String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
+// One line from the scorecard the agents regenerate (docs/QUALITY.md), if present.
+function researchSummary() {
+  try {
+    const m = fs.readFileSync(path.join(__dirname, 'docs', 'QUALITY.md'), 'utf-8')
+      .match(/(\d+) indexed articles, average score (\d+)\/100, (\d+) research-verified \((\d+)%\)/);
+    if (!m) return '';
+    return `<h3>Article quality</h3><p><strong>${m[3]} of ${m[1]}</strong> articles fact-checked against sources (${m[4]}%) · average quality score <strong>${m[2]}/100</strong>.</p>`;
+  } catch { return ''; }
+}
+
 // Monday owner report: growth + traffic, with the full list attached as a backup.
 async function sendSubscriberBackup(today) {
   const to = process.env.BACKUP_EMAIL;
@@ -1196,6 +1206,7 @@ async function sendSubscriberBackup(today) {
       <h2>Weekly report — ${today}</h2>
       <h3>Subscribers</h3><p><strong>${subs.length}</strong> total · <strong>+${joined}</strong> joined in the last 7 days.</p>
       ${trafficHtml}
+      ${researchSummary()}
       <p style="color:#888;font-size:13px;border-top:1px solid #eee;padding-top:12px">The full subscriber list is attached as a CSV backup. Keep this email: if the server's list is ever lost, it can be restored from this file.</p></div>`,
     attachments: [{ filename: `internationalre-subscribers-${today}.csv`, content: Buffer.from(csv, 'utf-8') }]
   });
