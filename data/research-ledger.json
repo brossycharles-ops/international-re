@@ -1,4 +1,12 @@
 {
+  "blog/best-places-retire-latin-america-2026.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 55,
+    "corrected": 14,
+    "removed": 38,
+    "sources": 24,
+    "notes": "Visa income thresholds were wrong (Colombia 3x SMMLV ~COP 5.25M, Ecuador 3x SBU $1,446, Costa Rica pensionado $1,000/mo not '$150K'); Colombia is Level 3; budgets/yields/rankings removed; checker fixes: Panama dependents, Mexico $4,200 framing, Ecuador 65+ fee discount, dead dhr.go.cr link"
+  },
   "blog/medellin-neighborhoods-expats-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 30,
@@ -25,5 +33,29 @@
     "sources": 20,
     "notes": "San José out-yields Panama City (8.05% vs 7.66%, GPG) — thesis reversed; colón is a managed float, not USD-pegged; fake 40% foreign-buyer and 102% migration stats removed",
     "links_checked": "2026-10-16"
+  },
+  "guides/santiago-chile-neighborhood-guide-property-buyers-2026.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 28,
+    "corrected": 9,
+    "removed": 4,
+    "sources": 23,
+    "notes": "new page; fact-checked. Removed unconfirmable GPG figures (US$2,810/m² -16.1%, 1-bed $79,200/5.45%, 27.6 months, El Golf/Lastarria quote); homicide -11.5% is the rate not victims; 'new-apartment' and 'Metropolitan Region' wording; TOCTOC unit-mix dated to Oct 2025; 2025 rents labelled"
+  },
+  "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 17,
+    "corrected": 6,
+    "removed": 0,
+    "sources": 4,
+    "notes": "new page; fact-checked. Added missing municipal tax-clearance step; dated World Bank 2019 benchmark everywhere; full Ley 6043 Art. 47 limits; Constitution source swapped to TSE"
+  },
+  "tips/chile-off-plan-deposit-guarantee.html": {
+    "verified": "2026-10-16",
+    "claims_checked": 9,
+    "corrected": 2,
+    "removed": 0,
+    "sources": 2,
+    "notes": "new page; fact-checked. Meta 'every peso before completion' narrowed to unfinished units; time-deposit exception made precise"
   }
 }
