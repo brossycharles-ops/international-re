@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-17 by scripts/content_quality.py. 104 indexed articles, average score 63/100, 15 research-verified (14%), 16 with a Sources section, 45 with an FAQ.
+Generated 2026-10-17 by scripts/content_quality.py. 104 indexed articles, average score 64/100, 16 research-verified (15%), 17 with a Sources section, 46 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -8,7 +8,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 |---|---|---|---|---|---|
 | 39 | blog/guanacaste-hottest-market-2026.html | — | 838 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 838 words (min 900) |
 | 39 | blog/panama-city-real-estate-2026.html | — | 883 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 883 words (min 900) |
-| 51 | blog/10-cheapest-beach-towns-latin-america-2026.html | — | 1243 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/buenos-aires-best-value-2026.html | — | 1121 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/costa-rica-buying-guide-2026.html | — | 3644 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/granada-nicaraguas-colonial-gem-2026.html | — | 1158 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -95,6 +94,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | tips/sao-paulo-jardins-vs-manhattan.html | — | 382 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/uruguay-10-year-tax-holiday.html | — | 383 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 75 | blog/latin-america-market-update-october-2026.html | — | 1363 | 6 | none |
+| 100 | blog/10-cheapest-beach-towns-latin-america-2026.html | 2026-10-17 | 2411 | 29 | none |
 | 100 | blog/argentina-real-estate-foreigners-2026.html | 2026-10-16 | 2748 | 28 | none |
 | 100 | blog/best-places-retire-latin-america-2026.html | 2026-10-16 | 2124 | 24 | none |
 | 100 | blog/latam-weekly-oct-12-17-2026.html | 2026-10-17 | 1982 | 21 | none |

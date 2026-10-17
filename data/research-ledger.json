@@ -1,4 +1,12 @@
 {
+  "blog/10-cheapest-beach-towns-latin-america-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 62,
+    "corrected": 14,
+    "removed": 27,
+    "sources": 29,
+    "notes": "Currency claims reversed (BRL, COP, MXN all strengthened since end-2024); Brazil 'CPF is all you need' replaced with terrenos de marinha rule; Playa del Carmen $600-900/sqft contradiction removed; Peru registry is reliable per State Dept; advisory levels added for all 7 countries; unverifiable prices, appreciation rates and expat counts removed; independent checker pass 2 fixes (Dallas route, Mazatlán average not median, dead Santa Marta law link)"
+  },
   "blog/argentina-real-estate-foreigners-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 33,
