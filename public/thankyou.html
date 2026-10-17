@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261017">
   <link rel="stylesheet" href="/layout_updates.css">
   <style>
     body { background: #f7f5f0; }
@@ -126,7 +126,7 @@
         <a class="ty-share-btn ty-tw" id="tyTw" href="#" target="_blank" rel="noopener">&#120143; Share</a>
         <a class="ty-share-btn ty-wa" id="tyWa" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a class="ty-share-btn ty-fb" id="tyFb" href="#" target="_blank" rel="noopener">Facebook</a>
-        <button class="ty-share-btn ty-copy" onclick="navigator.clipboard.writeText('https://www.internationalre.org/subscribe.html').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy Link'},2000)})">Copy Link</button>
+        <button class="ty-share-btn ty-copy" data-action="copy-link" data-copy-url="https://www.internationalre.org/subscribe.html">Copy Link</button>
       </div>
     </div>
 
@@ -147,6 +147,17 @@
     document.getElementById('tyTw').href = 'https://twitter.com/intent/tweet?text=' + txt + '&url=' + url;
     document.getElementById('tyWa').href = 'https://wa.me/?text=' + txt + ' ' + url;
     document.getElementById('tyFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+    // Copy-link button (inline onclick= is blocked by CSP script-src-attr 'none')
+    document.querySelectorAll('[data-action="copy-link"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var label = btn.textContent;
+        var done = function (t) { btn.textContent = t; setTimeout(function () { btn.textContent = label; }, 2000); };
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy-url') || window.location.href)
+            .then(function () { done('Copied!'); }, function () { done('Copy failed'); });
+        }
+      });
+    });
   </script>
 </body>
 </html>

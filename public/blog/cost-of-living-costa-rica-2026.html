@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20261017">
   <link rel="stylesheet" href="../layout_updates.css">
 
   <style>
@@ -405,7 +405,7 @@
     <div class="share-row">
       <a href="https://twitter.com/intent/tweet?text=Cost+of+Living+in+Costa+Rica+2026+%E2%80%94+real+numbers+by+region%3A+%241%2C500+budget+to+%245%2C500+beach&url=https%3A%2F%2Fwww.internationalre.org%2Fblog%2Fcost-of-living-costa-rica-2026.html" target="_blank" rel="noopener" class="share-btn share-btn-twitter">&#x1D54F; Share on X</a>
       <a href="https://wa.me/?text=Cost+of+Living+in+Costa+Rica+2026+%E2%80%94+real+numbers+https%3A%2F%2Fwww.internationalre.org%2Fblog%2Fcost-of-living-costa-rica-2026.html" target="_blank" rel="noopener" class="share-btn share-btn-whatsapp">WhatsApp</a>
-      <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Copied!';setTimeout(()=>{this.textContent='Copy Link'},2000)})">Copy Link</button>
+      <button class="share-btn share-btn-copy" data-action="copy-link">Copy Link</button>
     </div>
 
     <!-- related:start -->
@@ -474,7 +474,7 @@
   </footer>
 
   <script src="../script.js"></script>
-  <script src="../lead_capture.js"></script>
+  <script src="../lead_capture.js?v=20261017"></script>
   <script>
     document.getElementById('inlineSubForm').addEventListener('submit', async function(e) {
       e.preventDefault();

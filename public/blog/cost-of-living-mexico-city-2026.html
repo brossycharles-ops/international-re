@@ -601,7 +601,7 @@
 <div class="subscribe-box">
   <h3>Track What's Actually Moving in Latin American Markets</h3>
   <p>Our free newsletter covers real rent data, visa updates, and investment opportunities across Mexico, Colombia, Panama, and beyond — straight to your inbox.</p>
-  <form class="subscribe-form" onsubmit="handleSubscribe(event, 'blog-mexicocity-inline')">
+  <form class="subscribe-form" data-subscribe-source="blog-mexicocity-inline">
     <input type="email" placeholder="Your email address" required aria-label="Email address">
     <button type="submit">Get Free Updates</button>
   </form>
@@ -641,8 +641,8 @@
 </div>
 
 <div class="share-row">
-  <button class="share-btn share-twitter" onclick="window.open('https://twitter.com/intent/tweet?text=Cost%20of%20Living%20in%20Mexico%20City%202026%3A%20Real%20Numbers%20for%20Expats&url='+encodeURIComponent(window.location.href))">Share on X</button>
-  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!'">Copy Link</button>
+  <button class="share-btn share-twitter" data-action="share-twitter" data-tweet-url="https://twitter.com/intent/tweet?text=Cost%20of%20Living%20in%20Mexico%20City%202026%3A%20Real%20Numbers%20for%20Expats&amp;url=">Share on X</button>
+  <button class="share-btn share-copy" data-action="copy-link">Copy Link</button>
 </div>
 
 </div>
@@ -652,20 +652,40 @@
 function handleSubscribe(e, source) {
   e.preventDefault();
   const form = e.target;
-  const email = form.querySelector('input[type="email"]').value;
+  const email = form.querySelector('input[type="email"]').value.trim();
   const btn = form.querySelector('button');
+  const label = btn.textContent;
+  let msg = form.querySelector('.subscribe-msg');
+  if (!msg) {
+    msg = document.createElement('p');
+    msg.className = 'subscribe-msg';
+    msg.setAttribute('role', 'status');
+    msg.style.cssText = 'margin:8px 0 0;font-size:.9rem;';
+    form.appendChild(msg);
+  }
+  msg.textContent = '';
   btn.textContent = 'Subscribing...';
   btn.disabled = true;
   fetch('/api/subscribe', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({email, source})
-  }).then(r => r.json()).then(data => {
-    setTimeout(() => { window.location.href = '/thankyou.html'; }, 1600);
+  }).then(r => r.json().catch(() => ({})).then(data => ({ok: r.ok, data}))).then(({ok, data}) => {
+    if (ok || /already subscribed/i.test((data && data.error) || '')) {
+      msg.textContent = 'Check your inbox — welcome aboard!';
+      setTimeout(() => { window.location.href = '/thankyou.html'; }, 1600);
+    } else {
+      btn.textContent = label; btn.disabled = false;
+      msg.textContent = (data && data.error) || 'Something went wrong. Try again.';
+    }
   }).catch(() => {
-    setTimeout(() => { window.location.href = '/thankyou.html'; }, 1600);
+    btn.textContent = label; btn.disabled = false;
+    msg.textContent = 'Network error. Please try again.';
   });
 }
+document.querySelectorAll('form[data-subscribe-source]').forEach(function (f) {
+  f.addEventListener('submit', function (e) { handleSubscribe(e, f.getAttribute('data-subscribe-source')); });
+});
 </script>
   <!-- related:start -->
 <nav class="related-reading" aria-label="Related reading" style="margin:28px 0 8px;padding:18px 22px;background:#f7f5f0;border-radius:10px;"><p style="font-weight:600;margin:0 0 8px;color:#0a1628;">Related reading</p><ul style="margin:0;padding-left:18px;line-height:1.8;"><li><a href="/cities/mexico-city-mexico/">Mexico City city guide</a></li><li><a href="/quick-reads/airbnb-income-mexico-city-2026.html">Airbnb Income in Mexico City (2026)</a></li><li><a href="/tips/mexico-city-direct-ownership.html">Mexico City Condos: Foreigners Own Directly, No Bank Trust</a></li><li><a href="/guides/can-foreigners-buy-property-mexico-2026.html">Can Foreigners Buy Property in Mexico? Complete Legal Guide 2026</a></li><li><a href="/guides/mexico-beach-towns-vs-costa-rica-2026.html">Mexico Beach Towns vs Costa Rica: Pacific Coast 2026</a></li></ul></nav>
@@ -675,6 +695,6 @@ function handleSubscribe(e, source) {
     <p><a href="/">Home</a><a href="/cities/">City Guides</a><a href="/blog.html">Blog</a><a href="/guides.html">Guides</a><a href="/quiz.html">Market Quiz</a><a href="/newsletter.html">Newsletter</a><a href="/privacy.html">Privacy</a></p>
     <p>&copy; International RE &mdash; internationalre.org</p>
   </footer>
-<script src="/lead_capture.js" defer></script>
+<script src="/lead_capture.js?v=20261017" defer></script>
 </body>
 </html>

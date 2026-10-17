@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20261017">
   <link rel="stylesheet" href="../layout_updates.css">
 
   <style>
@@ -366,7 +366,7 @@
     <div class="inline-subscribe">
       <h3>Get the Free Expat Starter Kit</h3>
       <p>A 47-item relocation checklist, residency routes for Costa Rica and nine other countries, and a 17-city market comparison — free in the Expat Starter Kit.</p>
-      <form onsubmit="handleInlineSub(event, this)">
+      <form data-inline-sub>
         <input type="email" placeholder="your@email.com" required aria-label="Email address">
         <button type="submit">Get Free Starter Kit</button>
       </form>
@@ -398,7 +398,7 @@
         Share on X
       </a>
       <a href="https://wa.me/?text=Retire+in+Costa+Rica+2026+%E2%80%94+visa%2C+CAJA+%26+real+costs%3A+https://www.internationalre.org/blog/retire-in-costa-rica-2026.html" target="_blank" class="share-btn share-btn-whatsapp">WhatsApp</a>
-      <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!'">Copy Link</button>
+      <button class="share-btn share-btn-copy" data-action="copy-link">Copy Link</button>
     </div>
 
     <!-- related:start -->
@@ -460,7 +460,11 @@
         msg.textContent = 'Network error. Please try again.';
       }
     }
+    document.querySelectorAll('form[data-inline-sub]').forEach(function (f) {
+      f.addEventListener('submit', function (e) { handleInlineSub(e, f); });
+    });
+
   </script>
-  <script src="../lead_capture.js"></script>
+  <script src="../lead_capture.js?v=20261017"></script>
 </body>
 </html>

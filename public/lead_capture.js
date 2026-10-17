@@ -2,9 +2,13 @@
    lead_capture.js — Conversion engine
    Modules:
      1. ROI Calculator (email-gated reveal)
-     2. Exit-Intent Modal (real 2026 Investment Report)
-     3. VIP Off-Market Gate
+     2. Exit-Intent Modal (Latin America Expat Starter Kit)
      4. Social Proof Toast (real subscribers only — no fabrication)
+     5. Sticky Subscribe Bar
+     6. Time-on-page modal trigger
+     7. Delegated page actions (copy-link / print / share-twitter) —
+        replaces inline onclick= attributes, which the CSP
+        (script-src-attr 'none') blocks.
    GDPR/CCPA: every form has explicit consent line; nothing is
    pre-checked; no data leaves the user without submit; localStorage
    keys are namespaced and discoverable in DevTools.
@@ -183,12 +187,12 @@
         <img class="modal-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Latin American skyline at golden hour" loading="lazy">
         <div class="modal-body">
           <span class="modal-eyebrow">Free · 2026 Edition</span>
-          <h2 id="exitTitle">Before you go — get the Latin America Starter Kit</h2>
-          <p><strong>38 pages, free.</strong> Real price-per-m² across 12 markets, current rental yields, visa requirements for 8 countries, and a 47-item relocation checklist. Sent instantly.</p>
+          <h2 id="exitTitle">Before you go — get the Latin America Expat Starter Kit</h2>
+          <p><strong>Free, sent instantly.</strong> A 17-city market comparison, residency routes for 10 countries, and a 47-item relocation checklist.</p>
           <form class="modal-form" data-form="exit">
             <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
             <button type="submit">Send My Free Starter Kit →</button>
-            <p class="modal-fineprint">Plus our weekly market intel email. Unsubscribe anytime. No spam — ever.</p>
+            <p class="modal-fineprint">Plus our weekly newsletter covering 11 Latin American countries. Unsubscribe anytime. No spam — ever.</p>
           </form>
         </div>
       </div>`;
@@ -203,44 +207,15 @@
       const { ok, data } = await postSubscribe(payload);
       if (ok || (data && /already subscribed/i.test(data.error || ''))) {
         markSubscribed();
-        f.outerHTML = '<p style="text-align:center;padding:20px;color:#0a0e1a;"><strong>Check your inbox.</strong><br>The report is on its way.</p>';
+        f.outerHTML = '<p style="text-align:center;padding:20px;color:#0a0e1a;"><strong>Check your inbox.</strong><br>Your Starter Kit is on its way.</p>';
         setTimeout(() => { window.location.href = '/thankyou.html'; }, 1400);
       } else {
         btn.disabled = false;
-        btn.textContent = 'Send Me the Report';
+        btn.textContent = 'Send My Free Starter Kit →';
         alert((data && data.error) || 'Network error.');
       }
     });
     return wrap;
-  }
-
-  /* ---------- 3. VIP OFF-MARKET GATE ---------- */
-  function initVIP() {
-    const section = document.querySelector('.vip-section');
-    if (!section) return;
-    const listings = section.querySelector('.vip-listings');
-    if (!listings) return;
-    if (alreadySubscribed()) listings.classList.remove('vip-locked');
-    else listings.classList.add('vip-locked');
-    const form = section.querySelector('.vip-gate-form');
-    if (!form) return;
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const em = form.querySelector('input[name="email"]').value.trim();
-      if (!em) return;
-      const btn = form.querySelector('button');
-      btn.disabled = true; btn.textContent = 'Verifying…';
-      const { ok, data } = await postSubscribe({ email: em });
-      if (ok || (data && /already subscribed/i.test(data.error || ''))) {
-        markSubscribed();
-        listings.classList.remove('vip-locked');
-        btn.textContent = 'Unlocked';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Verify Email';
-        alert((data && data.error) || 'Network error.');
-      }
-    });
   }
 
   /* ---------- 4. SOCIAL PROOF TOAST (real subscribers only) ---------- */
@@ -317,7 +292,7 @@
     bar.setAttribute('aria-label', 'Subscribe prompt');
     bar.innerHTML = `
       <div class="sticky-bar-inner">
-        <span class="sticky-bar-text">&#9670; <strong>Free 38-page Starter Kit</strong> — prices, yields &amp; visa rules for 12 Latin American markets</span>
+        <span class="sticky-bar-text">&#9670; <strong>Free Expat Starter Kit</strong> — 17-city comparison, residency routes for 10 countries &amp; a 47-item checklist</span>
         <form class="sticky-bar-form" autocomplete="off">
           <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
           <button type="submit">Get It Free →</button>
@@ -342,7 +317,7 @@
         markSubscribed();
         window.location.href = '/thankyou.html';
       } else {
-        btn.disabled = false; btn.textContent = 'Subscribe Free';
+        btn.disabled = false; btn.textContent = 'Get It Free →';
         alert((data && data.error) || 'Something went wrong.');
       }
     });
@@ -376,6 +351,98 @@
     }, 25000);
   }
 
+  /* ---------- 7. DELEGATED PAGE ACTIONS ---------- */
+  // <button data-action="copy-link" [data-copy-url="…"]>  copies the URL (default: this page)
+  // <button data-action="print">                          window.print()
+  // <button data-action="share-twitter" data-tweet-url="https://twitter.com/intent/tweet?text=…&url=">
+  //                                                       opens the intent with this page's URL appended
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise((resolve, reject) => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy') ? resolve() : reject(new Error('copy failed')); }
+      catch (err) { reject(err); }
+      finally { ta.remove(); }
+    });
+  }
+  function flashLabel(el, text) {
+    if (!el.dataset.label) el.dataset.label = el.textContent;
+    el.textContent = text;
+    clearTimeout(el._labelTimer);
+    el._labelTimer = setTimeout(() => { el.textContent = el.dataset.label; }, 2000);
+  }
+  function initPageActions() {
+    if (window.__ireActionsBound) return;
+    window.__ireActionsBound = true;
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest && e.target.closest('[data-action]');
+      if (!el) return;
+      const action = el.getAttribute('data-action');
+      if (action === 'copy-link') {
+        e.preventDefault();
+        const url = el.getAttribute('data-copy-url') || window.location.href;
+        copyText(url).then(() => flashLabel(el, 'Copied!'), () => flashLabel(el, 'Copy failed'));
+      } else if (action === 'print') {
+        e.preventDefault();
+        window.print();
+      } else if (action === 'share-twitter') {
+        e.preventDefault();
+        const base = el.getAttribute('data-tweet-url') || 'https://twitter.com/intent/tweet?url=';
+        window.open(base + encodeURIComponent(window.location.href), '_blank', 'noopener');
+      }
+    });
+  }
+  initPageActions();
+
+  /* ---------- 8. GENERIC SUBSCRIBE FORMS ---------- */
+  // <form data-lc-subscribe="source-tag"> … <input type="email" name="email"> … </form>
+  // [optional sibling/child .subscribe-msg for status text]. POSTs JSON to /api/subscribe
+  // (form-action 'self' blocks posting to third-party hosts).
+  function initGenericSubscribeForms() {
+    document.querySelectorAll('form[data-lc-subscribe]').forEach((f) => {
+      if (f.dataset.lcBound) return;
+      f.dataset.lcBound = '1';
+      f.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = f.querySelector('input[type="email"]');
+        const email = (input && input.value || '').trim();
+        const btn = f.querySelector('button[type="submit"], button');
+        let msg = f.querySelector('.subscribe-msg') ||
+          (f.nextElementSibling && f.nextElementSibling.classList.contains('subscribe-msg') ? f.nextElementSibling : null);
+        if (!msg) {
+          msg = document.createElement('p');
+          msg.className = 'subscribe-msg';
+          msg.setAttribute('role', 'status');
+          f.insertAdjacentElement('afterend', msg);
+        }
+        if (!email) { msg.textContent = 'Please enter your email.'; return; }
+        const label = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+        msg.textContent = '';
+        try {
+          const { ok, data } = await postSubscribe({ email, source: f.getAttribute('data-lc-subscribe') || 'unknown' });
+          if (ok || (data && /already subscribed/i.test(data.error || ''))) {
+            markSubscribed();
+            msg.textContent = 'Check your inbox — welcome aboard!';
+            setTimeout(() => { window.location.href = '/thankyou.html'; }, 1200);
+            return;
+          }
+          msg.textContent = (data && data.error) || 'Something went wrong. Please try again.';
+        } catch {
+          msg.textContent = 'Network error. Please check your connection and try again.';
+        }
+        if (btn) { btn.disabled = false; btn.textContent = label; }
+      });
+    });
+  }
+
   /* ---------- BOOT ---------- */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
@@ -387,9 +454,9 @@
     if (fy) fy.textContent = new Date().getFullYear();
     initROICalculator();
     initExitIntent();
-    initVIP();
     initSocialToast();
     initStickyBar();
+    initGenericSubscribeForms();
     initTimeOnPage();
   }
 })();

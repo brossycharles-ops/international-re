@@ -668,6 +668,7 @@ a {
   margin-bottom: 16px;
 }
 
+.why-card h3,
 .why-card h4 {
   color: var(--white);
   font-family: var(--font-display);

@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20261017">
   <link rel="stylesheet" href="../layout_updates.css">
 
   <style>
@@ -472,13 +472,13 @@
         Share on X
       </a>
       <a href="https://wa.me/?text=Buenos+Aires+cost+of+living+2026+%E2%80%94+real+numbers+after+Milei%27s+reforms%3A+https://www.internationalre.org/blog/cost-of-living-buenos-aires-2026.html" target="_blank" class="share-btn share-btn-whatsapp">WhatsApp</a>
-      <button class="share-btn share-btn-copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='Copied!'">Copy Link</button>
+      <button class="share-btn share-btn-copy" data-action="copy-link">Copy Link</button>
     </div>
 
     <div class="inline-subscribe">
-      <h3>Get Our 8-Country Expat Comparison Table</h3>
-      <p>Buenos Aires is just one of 8 markets we track. Get the full comparison — rent, healthcare, visa requirements, and property yields — free.</p>
-      <form onsubmit="handleInlineSub(event, this)">
+      <h3>Get the Free Expat Starter Kit</h3>
+      <p>Buenos Aires is one of 17 cities in our market comparison. Get the Expat Starter Kit — a 17-city market comparison, residency routes for 10 countries and a 47-item relocation checklist — free.</p>
+      <form data-inline-sub>
         <input type="email" placeholder="your@email.com" required aria-label="Email address">
         <button type="submit">Get Free Starter Kit</button>
       </form>
@@ -544,7 +544,11 @@
         msg.textContent = 'Network error. Please try again.';
       }
     }
+    document.querySelectorAll('form[data-inline-sub]').forEach(function (f) {
+      f.addEventListener('submit', function (e) { handleInlineSub(e, f); });
+    });
+
   </script>
-  <script src="../lead_capture.js"></script>
+  <script src="../lead_capture.js?v=20261017"></script>
 </body>
 </html>

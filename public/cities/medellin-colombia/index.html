@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261017">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -41,6 +41,20 @@
   <link rel="stylesheet" href="/cities.css">
   <style>
     .hub-hero { background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=1920&q=80'); }
+    .hub-nav, .cities-nav { flex-wrap: wrap; gap: 6px 16px; }
+    .hub-nav a.logo, .cities-nav a.logo { white-space: nowrap; }
+    @media (max-width: 700px) {
+      .hub-nav, .cities-nav { padding: 10px 16px 6px; }
+      .hub-nav-links, .cities-nav-links {
+        display: flex; flex: 1 1 100%; gap: 12px;
+        overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .hub-nav-links::-webkit-scrollbar, .cities-nav-links::-webkit-scrollbar { display: none; }
+      .hub-nav-links a, .hub-nav-links a:nth-child(n+4), .cities-nav-links a {
+        display: inline-block; flex: 0 0 auto; margin-left: 0;
+        white-space: nowrap; font-size: 0.86rem; padding: 8px 0;
+      }
+    }
   </style>
   <script defer src="/js/analytics.js"></script>
   <!-- breadcrumbs:start -->
@@ -112,12 +126,12 @@
         </a>
         <a class="hub-card" href="/blog/medellin-real-estate-2026.html">
           <h3>Medellín Real Estate in 2026: Latin America's Smartest Value Play</h3>
-          <p>Apartments from $1,500/sqm, gross rental yields of 6.5–9%, and a peso that's still giving USD buyers an edge.</p>
+          <p>Medellín property in 2026: apartments from $1,500/sqm, 6.5–9% gross rental yields by neighborhood, the best areas for investors and short-term rental rules.</p>
           <span class="hub-card-cta">Read →</span>
         </a>
         <a class="hub-card" href="/blog/retire-in-colombia-2026.html">
           <h3>Retire in Colombia 2026: Visa, Cost of Living & Best Cities</h3>
-          <p>Complete guide to retiring in Colombia in 2026. Visa requirements, cost of living, best cities (Medellín, Cartagena, Santa Marta, Bogotá), healthcare.</p>
+          <p>Retire in Colombia 2026: the Pensionado visa needs about $1,650/month (3x minimum wage), $335 in fees, Medellín budgets from Numbeo, health insurance, safety.</p>
           <span class="hub-card-cta">Read →</span>
         </a>
       </div>
@@ -137,8 +151,8 @@
           <span class="hub-card-cta">Read →</span>
         </a>
         <a class="hub-card" href="/guides/medellin-vs-buenos-aires-expat-investors-2026.html">
-          <h3>Medellín vs Buenos Aires for Expat Investors (2026)</h3>
-          <p>Medellín vs Buenos Aires: side-by-side 2026 data on property prices, rental yields, entry costs, visa options, and currency risk for expat investors.</p>
+          <h3>Medellín vs Buenos Aires for Property Investors (2026)</h3>
+          <p>Medellín vs Buenos Aires for foreign property investors in 2026: prices per m², rental yields, peso vs dollar risk, residency routes and travel advisories.</p>
           <span class="hub-card-cta">Read →</span>
         </a>
       </div>
@@ -168,8 +182,8 @@
   </main>
 
   <section class="hub-cta">
-    <h2>Get the free 2026 Latin America Starter Kit</h2>
-    <p>38 pages — prices per m², rental yields, visa rules, and a 47-item relocation checklist across 12 markets.</p>
+    <h2>Get the free Latin America Expat Starter Kit</h2>
+    <p>A 17-city market comparison, residency routes for 10 countries, and a 47-item relocation checklist — plus our weekly newsletter covering 11 Latin American countries.</p>
     <form class="hub-cta-form" id="hubSubForm">
       <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
       <button type="submit">Send It Free</button>
@@ -212,6 +226,6 @@
       }
     });
   </script>
-  <script src="/lead_capture.js" defer></script>
+  <script src="/lead_capture.js?v=20261017" defer></script>
 </body>
 </html>

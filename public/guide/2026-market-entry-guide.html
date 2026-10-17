@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20261017">
   <link rel="stylesheet" href="../layout_updates.css">
 
   <style>
@@ -802,7 +802,7 @@
           <span class="market-flag-chip">&#127462;&#127479; Argentina</span>
           <span class="market-flag-chip">&#127464;&#127473; Chile</span>
         </div>
-        <button class="guide-pdf-btn" onclick="window.print()">
+        <button class="guide-pdf-btn" data-action="print">
           &#8595; Save as PDF
         </button>
         <p class="pdf-note">Use your browser's Print dialog &rarr; select "Save as PDF" as the destination</p>
@@ -1774,6 +1774,6 @@
       link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
   </script>
-  <script src="../lead_capture.js" defer></script>
+  <script src="../lead_capture.js?v=20261017" defer></script>
 </body>
 </html>
