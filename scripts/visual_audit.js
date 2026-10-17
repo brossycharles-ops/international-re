@@ -4,8 +4,12 @@
 // pages wider than a phone, a map that didn't draw, and stale copies served by
 // Cloudflare or browsers after a fix.
 //
-//   npx -y playwright@1.48.2 install chromium   (once per machine)
 //   NODE_PATH=$(npm root -g) node scripts/visual_audit.js [--base URL] [--out DIR] [--all]
+//   Works with whichever playwright resolves (the cloud audit image has a global
+//   playwright 1.56 + browsers in /opt/pw-browsers, so NODE_PATH=$(npm root -g) is
+//   enough there). Elsewhere: npm i -g playwright && npx playwright install chromium.
+//   If the bundled browser revision is missing, it retries with $PLAYWRIGHT_CHROMIUM
+//   or /opt/pw-browsers/chromium-*/chrome-linux/chrome.
 //   --all checks every sitemap URL (screenshots only for pages with findings)
 //
 // Writes screenshots + report.json to --out (default /tmp/visual-audit) and
@@ -16,7 +20,7 @@ const crypto = require('crypto');
 
 let chromium;
 try { ({ chromium } = require('playwright')); } catch {
-  console.error('playwright not installed: npm i playwright@1.48.2 && npx playwright install chromium');
+  console.error('playwright not found: run with NODE_PATH=$(npm root -g), or npm i -g playwright && npx playwright install chromium');
   process.exit(2);
 }
 
@@ -32,6 +36,45 @@ const PAGES = ['/', '/about.html', '/contact.html', '/free-guide.html', '/guide/
 const VIEWPORTS = [{ name: 'desktop', width: 1280, height: 900 }, { name: 'mobile', width: 375, height: 812, isMobile: true }];
 const findings = [];
 const add = (sev, page, msg) => findings.push({ sev, page, msg });
+
+// The pinned/global playwright may expect a browser revision that isn't installed
+// (e.g. playwright 1.48 wants chromium-1140, the image ships chromium-1194). Fall
+// back to an explicit executable rather than failing the whole audit.
+async function launchBrowser() {
+  try { return await chromium.launch(); } catch (err) {
+    const candidates = [process.env.PLAYWRIGHT_CHROMIUM];
+    try {
+      const base = '/opt/pw-browsers';
+      for (const d of fs.readdirSync(base).filter(d => /^chromium-\d+$/.test(d)).sort((a, b) => b.split('-')[1] - a.split('-')[1])) {
+        candidates.push(path.join(base, d, 'chrome-linux', 'chrome'));
+      }
+    } catch {}
+    for (const exe of candidates.filter(Boolean)) {
+      if (!fs.existsSync(exe)) continue;
+      try {
+        const b = await chromium.launch({ executablePath: exe });
+        console.error(`[visual_audit] default chromium launch failed; using ${exe}`);
+        return b;
+      } catch (e) { console.error(`[visual_audit] ${exe} failed: ${e.message.split('\n')[0]}`); }
+    }
+    throw err;
+  }
+}
+
+// Scroll through the page so IntersectionObserver fade-ins and lazy images
+// render before the screenshot, then return to the top.
+async function revealPage(page) {
+  await page.evaluate(async () => {
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const to = top => window.scrollTo({ top, behavior: 'instant' }); // styles.css sets scroll-behavior: smooth
+    const step = Math.max(300, Math.floor(window.innerHeight * 0.8));
+    for (let y = 0, n = 0; y < document.documentElement.scrollHeight && n < 60; y += step, n++) { to(y); await wait(120); }
+    to(document.documentElement.scrollHeight);
+    await wait(300);
+    to(0);
+    await wait(400);
+  });
+}
 
 async function newestFromSitemap() {
   try {
@@ -70,7 +113,7 @@ async function checkLiveAssets() {
     pages = [...new Set([...pages, ...[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(/^https?:\/\/[^/]+/, ''))])];
   }
   await checkLiveAssets();
-  const browser = await chromium.launch();
+  const browser = await launchBrowser();
   const report = [];
   for (const vp of VIEWPORTS) {
     const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: !!vp.isMobile, deviceScaleFactor: 1 });
@@ -90,6 +133,7 @@ async function checkLiveAssets() {
         const resp = await page.goto(BASE + p, { waitUntil: 'networkidle', timeout: 45000 });
         status = resp ? resp.status() : 0;
       } catch (e) { add('P0', p, `${vp.name}: page did not load (${e.message.slice(0, 120)})`); await page.close(); continue; }
+      await revealPage(page).catch(() => {});
       await page.evaluate(() => { document.getElementById('stickyCta')?.remove(); });
       if (status >= 400) add('P0', p, `${vp.name}: HTTP ${status}`);
       const info = await page.evaluate(() => {

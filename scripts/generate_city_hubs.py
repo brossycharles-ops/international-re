@@ -18,6 +18,26 @@ PUBLIC = os.path.join(BASE, 'public')
 DATA = os.path.join(BASE, 'data', 'cities.json')
 SITE = 'https://www.internationalre.org'
 
+# Shared header CSS for hubs (.hub-nav) and the index (.cities-nav). Inline so it
+# can't be served stale from a cached /cities.css. On phones the logo keeps one
+# line and every nav link stays reachable in a swipeable row under it (the old
+# cities.css rule hid Guides/Cities/About below 700px with no menu).
+NAV_CSS = '''    .hub-nav, .cities-nav { flex-wrap: wrap; gap: 6px 16px; }
+    .hub-nav a.logo, .cities-nav a.logo { white-space: nowrap; }
+    @media (max-width: 700px) {
+      .hub-nav, .cities-nav { padding: 10px 16px 6px; }
+      .hub-nav-links, .cities-nav-links {
+        display: flex; flex: 1 1 100%; gap: 12px;
+        overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .hub-nav-links::-webkit-scrollbar, .cities-nav-links::-webkit-scrollbar { display: none; }
+      .hub-nav-links a, .hub-nav-links a:nth-child(n+4), .cities-nav-links a {
+        display: inline-block; flex: 0 0 auto; margin-left: 0;
+        white-space: nowrap; font-size: 0.86rem; padding: 8px 0;
+      }
+    }
+'''
+
 with open(DATA) as f:
     cities = json.load(f)['cities']
 
@@ -188,7 +208,7 @@ def render_city_hub(city):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261017">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -211,7 +231,7 @@ def render_city_hub(city):
   <link rel="stylesheet" href="/cities.css">
   <style>
     .hub-hero {{ background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('{hero_img}'); }}
-  </style>
+{NAV_CSS}  </style>
   <script defer src="/js/analytics.js"></script>
 </head>
 <body>
@@ -248,8 +268,8 @@ def render_city_hub(city):
   </main>
 
   <section class="hub-cta">
-    <h2>Get the free 2026 Latin America Starter Kit</h2>
-    <p>38 pages — prices per m², rental yields, visa rules, and a 47-item relocation checklist across 12 markets.</p>
+    <h2>Get the free Latin America Expat Starter Kit</h2>
+    <p>A 17-city market comparison, residency routes for 10 countries, and a 47-item relocation checklist — plus our weekly newsletter covering 11 Latin American countries.</p>
     <form class="hub-cta-form" id="hubSubForm">
       <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
       <button type="submit">Send It Free</button>
@@ -292,7 +312,7 @@ def render_city_hub(city):
       }}
     }});
   </script>
-  <script src="/lead_capture.js" defer></script>
+  <script src="/lead_capture.js?v=20261017" defer></script>
 </body>
 </html>
 '''
@@ -330,7 +350,7 @@ def render_index(cities_list):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261017">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -400,7 +420,7 @@ def render_index(cities_list):
     .cities-nav a.logo {{ font-weight: 700; color: #0a1628; text-decoration: none; }}
     .cities-nav a.logo span {{ color: #c9a84c; }}
     .cities-nav-links a {{ color: #555; text-decoration: none; margin-left: 22px; font-size: 0.92rem; }}
-  </style>
+{NAV_CSS}  </style>
   <script defer src="/js/analytics.js"></script>
 </head>
 <body>
@@ -409,6 +429,7 @@ def render_index(cities_list):
     <a class="logo" href="/"><span>&#9670;</span> International RE</a>
     <div class="cities-nav-links">
       <a href="/">Home</a>
+      <a href="/newsletter.html">Newsletters</a>
       <a href="/blog.html">Blog</a>
       <a href="/guides.html">Guides</a>
       <a href="/about.html">About</a>
@@ -428,7 +449,7 @@ def render_index(cities_list):
     <a href="/" style="color:#c9a84c;font-weight:700;text-decoration:none;">&#9670; International RE</a>
     <p style="margin:14px 0 6px;">Independent research by Charles Brossy.</p>
   </footer>
-  <script src="/lead_capture.js" defer></script>
+  <script src="/lead_capture.js?v=20261017" defer></script>
 </body>
 </html>
 '''
