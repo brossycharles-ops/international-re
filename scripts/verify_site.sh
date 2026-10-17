@@ -13,6 +13,9 @@ check python3 scripts/check_links.py
 check python3 scripts/validate_jsonld.py
 check python3 scripts/audit_a11y.py
 check python3 scripts/content_quality.py
+# The live CSP blocks inline on*= handlers and off-site form posts: forms and buttons went dead silently.
+check python3 scripts/check_csp_inline.py --self-test
+check python3 scripts/check_csp_inline.py
 check python3 -c "import xml.dom.minidom,sys; xml.dom.minidom.parse('public/sitemap.xml')"
 # Agents used to invent Unsplash IDs (Berlin, Athens, a sneaker... labelled as Latin American cities).
 check python3 - <<'PY'
