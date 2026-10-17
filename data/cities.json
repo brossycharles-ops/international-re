@@ -233,11 +233,11 @@
       "city": "Lima",
       "country": "Peru",
       "countryFlag": "🇵🇪",
-      "tagline": "Coastal capital with Pacific cliffs and the cheapest entry price among Latin American capitals.",
+      "tagline": "Pacific clifftop capital — foreigners own on equal terms, and prime districts ask about $2,500/m².",
       "heroImage": "https://images.unsplash.com/photo-1660521844005-015733ce411e",
       "stats": {
-        "pricePerSqm": "$1,500–$2,800",
-        "rentalYield": "6–8%",
+        "pricePerSqm": "$2,400–$2,800",
+        "rentalYield": "5–6%",
         "costOfLiving": "$1,200–$2,000/mo",
         "currency": "Peruvian Sol (PEN)"
       },
@@ -245,7 +245,85 @@
         "lima",
         "peru"
       ],
-      "metaDescription": "Lima, Peru real estate 2026 — Miraflores, Barranco, San Isidro prices, rental yields, foreign ownership rules and cost of living."
+      "metaDescription": "Lima, Peru real estate 2026 — Miraflores, Barranco, San Isidro prices, rental yields, foreign ownership rules and cost of living.",
+      "about": [
+        "Lima is a metropolitan area of about 10 million people, and most foreign buyers focus on the ocean-side districts of Miraflores, Barranco and San Isidro. Peru's Constitution (Article 71) puts foreigners on the same footing as Peruvians for property ownership, so you can buy in your own name with no residency, local partner or trust. The restriction applies only within 50 km of the country's borders, far from Lima. Central bank (BCRP) data put median asking prices in Q1 2026 at about US$2,460 per square meter in Miraflores, US$2,560 in Barranco and US$2,600 in San Isidro, and dollar prices rose about 10–21% over the previous year.",
+        "Ownership is transferred by a public deed (escritura pública) signed before a notary and then registered with SUNARP, the public registry. SUNARP stresses that the deed alone is not enough: register the sale, check the registry certificate before you buy, and ask the notary for a registry block until signing. The buyer pays the 3% alcabala transfer tax on the value above 10 UIT (S/ 55,000 in 2026). A non-resident individual landlord pays a 5% tax on gross rent, which a domiciled tenant withholds.",
+        "The risks are real. The US State Department rates Peru Level 2, 'Exercise increased caution', citing crime, unrest, kidnapping and terrorism, and Lima and Callao have been under repeated states of emergency since September 2024 over killings and extortion. Lima sits in a major earthquake zone, and the civil defence agency INDECI warns of a possible magnitude 8.8 quake off the central coast, so check a building's age and its compliance with the E.030 seismic code. Politics are volatile: Keiko Fujimori's July 2026 inauguration was Peru's ninth change of president in ten years. Gross yields are moderate, at about 5.5–6%, and published prices are asking prices, so budget time and negotiating room for resale."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Lima, Peru?",
+          "a": "Yes. Article 71 of Peru's Constitution gives foreigners the same property rights as Peruvians, so you can buy an apartment in Lima in your own name with no residency or local partner. The only restriction is within 50 km of the borders, which does not affect Lima."
+        },
+        {
+          "q": "How much does an apartment cost per square meter in Miraflores?",
+          "a": "BCRP data put the median asking price at about US$2,460 per square meter in Miraflores in Q1 2026, with San Isidro at about US$2,600 and Barranco about US$2,560. Urbania's July 2026 index had Miraflores at S/ 8,905 per square meter."
+        },
+        {
+          "q": "What rental yield can I expect in Lima?",
+          "a": "About 5.5–6% gross. BCRP price-to-rent ratios for Q1 2026 imply about 5.6% in Miraflores and 6.0% in San Isidro, and Urbania put Lima's average at 5.53% in July 2026. Non-resident landlords pay a 5% tax on gross rent."
+        },
+        {
+          "q": "What taxes do I pay when buying property in Lima?",
+          "a": "The buyer pays the alcabala transfer tax: 3% of the value above 10 UIT, or above S/ 55,000 in 2026. In the province of Lima it is paid to SAT Lima by the last business day of the month after the transfer."
+        }
+      ],
+      "sources": [
+        {
+          "title": "BCRP — Estadísticas del mercado inmobiliario (precios por m² y PER por distrito)",
+          "url": "https://estadisticas.bcrp.gob.pe/estadisticas/series/trimestrales/mercado-inmobiliario"
+        },
+        {
+          "title": "Revista Economía — Índice de mercado inmobiliario de Urbania, julio 2026",
+          "url": "https://www.revistaeconomia.com/indice-de-mercado-inmobiliario-de-urbania-cinco-distritos-de-lima-y-callao-registran-una-baja-interanual-en-los-precios-de-venta/"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Lima",
+          "url": "https://www.numbeo.com/cost-of-living/in/Lima"
+        },
+        {
+          "title": "Congreso del Perú — Proyecto de Ley 4284 (quotes Constitution Article 71)",
+          "url": "https://www.leyes.congreso.gob.pe/Documentos/2016_2021/Proyectos_de_Ley_y_de_Resoluciones_Legislativas/PL0428420190503..pdf"
+        },
+        {
+          "title": "SUNARP — Conoce cómo registrar una compraventa de inmueble",
+          "url": "https://www.gob.pe/institucion/sunarp/noticias/167857-conoce-como-registrar-una-compraventa-de-inmueble-en-la-sunarp"
+        },
+        {
+          "title": "SUNARP — Pasos a seguir antes de comprar una casa o departamento (2024)",
+          "url": "https://www.gob.pe/institucion/sunarp/noticias/1032824-sunarp-evite-ser-sorprendido-conozca-los-pasos-a-seguir-antes-de-comprar-una-casa-o-departamento"
+        },
+        {
+          "title": "El Peruano — DS 301-2025-EF, UIT 2026",
+          "url": "https://busquedas.elperuano.pe/dispositivo/NL/2469116-1"
+        },
+        {
+          "title": "SUNAT — Retención del 5% por alquiler a no domiciliados",
+          "url": "https://orientacion.sunat.gob.pe/node/436"
+        },
+        {
+          "title": "US State Department — Peru Travel Advisory (Level 2)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/peru.html"
+        },
+        {
+          "title": "Forbes Perú — Gobierno prorrogó el estado de emergencia en Lima y Callao (June 2026)",
+          "url": "https://forbes.pe/actualidad/2026-06-25/gobierno-prorrogo-el-estado-de-emergencia-en-lima-y-callao-por-60-dias/"
+        },
+        {
+          "title": "INDECI — Preparación ante un sismo de gran magnitud frente a la costa central",
+          "url": "https://www.gob.pe/institucion/indeci/noticias/699540-indeci-recomienda-medidas-de-preparacion-ante-un-sismo-de-gran-magnitud-frente-a-la-costa-central-del-peru"
+        },
+        {
+          "title": "Gestión/EFE — Perú vive su noveno cambio de presidente en diez años (July 2026)",
+          "url": "https://gestion.pe/peru/peru-vive-su-noveno-cambio-de-presidente-en-diez-anos-con-la-investidura-de-keiko-fujimori-noticia/"
+        },
+        {
+          "title": "INEI — Población del Perú (2026 census release)",
+          "url": "https://www.gob.pe/institucion/inei/noticias/1399446-inei-poblacion-del-peru-totalizo-34-millones-157-mil-732-habitantes-al-2025"
+        }
+      ],
+      "updated": "2026-10-17"
     },
     {
       "slug": "sao-paulo-brazil",
