@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-16 by scripts/content_quality.py. 101 indexed articles, average score 60/100, 9 research-verified (9%), 11 with a Sources section, 38 with an FAQ.
+Generated 2026-10-17 by scripts/content_quality.py. 101 indexed articles, average score 62/100, 12 research-verified (12%), 13 with a Sources section, 41 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -27,13 +27,11 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | blog/tbilisi-georgia-1-percent-tax-2026.html | — | 1081 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-brazil-2026.html | — | 1302 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-in-chile-2026.html | — | 1326 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | guides/can-foreigners-buy-property-in-panama-2026.html | — | 1458 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/can-foreigners-buy-property-mexico-2026.html | — | 1518 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/cuenca-ecuador-neighborhood-guide-property-buyers-2026.html | — | 1208 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/florianopolis-vs-punta-del-este-beach-buyers-2026.html | — | 1299 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/lima-peru-rental-yield-analysis-2026.html | — | 1411 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/medellin-neighborhood-guide-property-buyers-2026.html | — | 1534 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | — | 1062 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/mexico-beach-towns-vs-costa-rica-2026.html | — | 1655 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/montevideo-rental-yield-analysis-2026.html | — | 1339 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | guides/uruguay-vs-chile-retirees-2026.html | — | 1185 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -82,7 +80,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | blog/uruguay-real-estate-foreigners-2026.html | — | 1566 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-colombia-2026.html | — | 1603 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-costa-rica.html | — | 1985 | 0 | needs a Sources section with 3+ external https links (has 0) |
-| 63 | quick-reads/property-tax-panama-foreigners-2026.html | — | 510 | 3 | missing FAQ + FAQPage JSON-LD |
 | 63 | tips/brazil-viper-residency-real-estate.html | — | 365 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/buenos-aires-usd-property.html | — | 364 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/cartagena-beachfront-vs-miami.html | — | 361 | 0 | needs a Sources section with 1+ external https links (has 0) |
@@ -103,7 +100,10 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
 | 100 | blog/retire-in-colombia-2026.html | 2026-10-16 | 1977 | 15 | none |
 | 100 | guides/buenos-aires-rental-yield-analysis-2026.html | 2026-10-16 | 1979 | 19 | none |
+| 100 | guides/can-foreigners-buy-property-in-panama-2026.html | 2026-10-17 | 2473 | 20 | none |
+| 100 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | 2026-10-17 | 2033 | 24 | none |
 | 100 | guides/panama-city-vs-san-jose-expat-investors-2026.html | 2026-10-16 | 1884 | 20 | none |
 | 100 | guides/santiago-chile-neighborhood-guide-property-buyers-2026.html | 2026-10-16 | 2707 | 23 | none |
 | 100 | quick-reads/how-long-to-buy-property-costa-rica-2026.html | 2026-10-16 | 798 | 4 | none |
+| 100 | quick-reads/property-tax-panama-foreigners-2026.html | 2026-10-17 | 1040 | 11 | none |
 | 100 | tips/chile-off-plan-deposit-guarantee.html | 2026-10-16 | 333 | 2 | none |

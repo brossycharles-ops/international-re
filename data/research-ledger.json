@@ -6,7 +6,7 @@
     "removed": 10,
     "sources": 28,
     "notes": "BA is US$2,484/m2 (Zonaprop Sep 2026), only 11.3% below peak, not $1,200-1,800 and 30-50% off 2018; CDI replaced by CUIT (Mar 2026); buyer costs 5-8% CABA; stamp 2.7%/3.5%",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-17"
   },
   "blog/best-places-retire-latin-america-2026.html": {
     "verified": "2026-10-16",
@@ -15,7 +15,7 @@
     "removed": 38,
     "sources": 24,
     "notes": "Visa income thresholds were wrong (Colombia 3x SMMLV ~COP 5.25M, Ecuador 3x SBU $1,446, Costa Rica pensionado $1,000/mo not '$150K'); Colombia is Level 3; budgets/yields/rankings removed; checker fixes: Panama dependents, Mexico $4,200 framing, Ecuador 65+ fee discount, dead dhr.go.cr link",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-17"
   },
   "blog/medellin-neighborhoods-expats-2026.html": {
     "verified": "2026-10-16",
@@ -24,7 +24,7 @@
     "removed": 13,
     "sources": 14,
     "notes": "Envigado is not the cheapest area (Metrocuadrado: ≈$2,500–2,900/m², above Medellín); invented 90%/18%/3–5x/safest claims, rents and STR yields removed; Level 3 advisory added",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-17"
   },
   "blog/retire-in-colombia-2026.html": {
     "verified": "2026-10-16",
@@ -33,7 +33,7 @@
     "removed": 9,
     "sources": 15,
     "notes": "Pensionado income is 3x SMMLV = COP 5,252,715 (~US$1,650), not ~$750, so 'lowest in LatAm' reversed; visa bars social-security/EPS enrolment, so private health insurance is required; fees $335",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-17"
   },
   "guide/panama-foreign-buyer-legal-guide.html": {
     "verified": "2026-10-16",
@@ -41,8 +41,8 @@
     "corrected": 15,
     "removed": 6,
     "sources": 18,
-    "notes": "Qualified Investor 'Oct 15, 2026 deadline' was false: DE 17/2026 (in force Sep 16) sets $300k first-sale / $500k resale; new-build ITBI now partially exempt under Ley 546 (Aug 2026); 3% is advance income tax, not ITBMS",
-    "links_checked": "2026-10-16"
+    "notes": "Qualified Investor 'Oct 15, 2026 deadline' was false: DE 17/2026 (in force Sep 16) sets $300k first-sale / $500k resale; new-build ITBI now partially exempt under Ley 546 (Aug 2026); 3% is advance income tax, not ITBMS; 2026-10-17: ITBI is the seller's and cannot be contractually shifted (La Prensa) — wording fixed",
+    "links_checked": "2026-10-17"
   },
   "guides/buenos-aires-rental-yield-analysis-2026.html": {
     "verified": "2026-10-16",
@@ -52,6 +52,24 @@
     "sources": 19,
     "notes": "Northern barrios yield ~4.6% not 6–7% (Zonaprop Sept 2026: city 5.70%, Núñez $3,409/m²); 15% cedular gains tax no longer applies to individuals from 2026",
     "links_checked": "2026-10-16"
+  },
+  "guides/can-foreigners-buy-property-in-panama-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 38,
+    "corrected": 16,
+    "removed": 6,
+    "sources": 20,
+    "notes": "Ley 80: beach strip is 22 m Pacific / 10 m Caribbean and the rest of the 200 m zone is titleable (no '5-year foreigner concession' rule); ITBI is the seller's by law, buyer costs ~2-3% not 4-6%; Friendly Nations includes the US; fake 10% deposit removed",
+    "links_checked": "2026-10-17"
+  },
+  "guides/medellin-vs-buenos-aires-expat-investors-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 40,
+    "corrected": 17,
+    "removed": 6,
+    "sources": 24,
+    "notes": "El Poblado yields are 6.35-7.75% (GPG Q3 2026) not 3.5-5.5%; peso gained 22% vs USD so Medellín USD prices are higher (El Poblado ~$2,530/m2); Recoleta far below $3,500-4,300; Argentina PR after 3 years not 2; nomad visa ~$1,650 and gives no residency",
+    "links_checked": "2026-10-17"
   },
   "guides/panama-city-vs-san-jose-expat-investors-2026.html": {
     "verified": "2026-10-16",
@@ -79,6 +97,15 @@
     "sources": 4,
     "notes": "new page; fact-checked. Added missing municipal tax-clearance step; dated World Bank 2019 benchmark everywhere; full Ley 6043 Art. 47 limits; Constitution source swapped to TSE",
     "links_checked": "2026-10-16"
+  },
+  "quick-reads/property-tax-panama-foreigners-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 18,
+    "corrected": 7,
+    "removed": 1,
+    "sources": 11,
+    "notes": "Primary-residence rates (0.5% to $700k, 0.7% above) were missing; rates are marginal; instalments Apr 30/Aug 31/Dec 31 (Ley 66 Art. 786); Ley 546 relief is for first sale of new homes up to $200k; ITBI cannot be shifted to buyer",
+    "links_checked": "2026-10-17"
   },
   "tips/chile-off-plan-deposit-guarantee.html": {
     "verified": "2026-10-16",
