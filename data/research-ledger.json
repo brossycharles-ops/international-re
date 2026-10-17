@@ -17,6 +17,14 @@
     "notes": "Visa income thresholds were wrong (Colombia 3x SMMLV ~COP 5.25M, Ecuador 3x SBU $1,446, Costa Rica pensionado $1,000/mo not '$150K'); Colombia is Level 3; budgets/yields/rankings removed; checker fixes: Panama dependents, Mexico $4,200 framing, Ecuador 65+ fee discount, dead dhr.go.cr link",
     "links_checked": "2026-10-17"
   },
+  "blog/latam-weekly-oct-12-17-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 48,
+    "corrected": 3,
+    "removed": 0,
+    "sources": 21,
+    "notes": "new page; fact-checked (Banxico minutes date, 'three days', quote completed; Chile source added; attributions fixed)"
+  },
   "blog/medellin-neighborhoods-expats-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 30,
@@ -89,6 +97,14 @@
     "notes": "new page; fact-checked. Removed unconfirmable GPG figures (US$2,810/m² -16.1%, 1-bed $79,200/5.45%, 27.6 months, El Golf/Lastarria quote); homicide -11.5% is the rate not victims; 'new-apartment' and 'Metropolitan Region' wording; TOCTOC unit-mix dated to Oct 2025; 2025 rents labelled",
     "links_checked": "2026-10-16"
   },
+  "quick-reads/airbnb-rules-medellin-foreigners-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 20,
+    "corrected": 3,
+    "removed": 0,
+    "sources": 12,
+    "notes": "new page; fact-checked (condo registration and mixed-use zoning added; POT status updated to October 2026; ET art. 24 and Ley 675 sources added)"
+  },
   "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 17,
@@ -115,5 +131,13 @@
     "sources": 2,
     "notes": "new page; fact-checked. Meta 'every peso before completion' narrowed to unfinished units; time-deposit exception made precise",
     "links_checked": "2026-10-16"
+  },
+  "tips/peru-alcabala-transfer-tax-2026.html": {
+    "verified": "2026-10-17",
+    "claims_checked": 10,
+    "corrected": 3,
+    "removed": 0,
+    "sources": 5,
+    "notes": "new page; fact-checked (Lima province, IGV wording, border-zone supreme decree exception)"
   }
 }
