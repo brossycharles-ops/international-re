@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-17 by scripts/content_quality.py. 104 indexed articles, average score 64/100, 16 research-verified (15%), 17 with a Sources section, 46 with an FAQ.
+Generated 2026-10-18 by scripts/content_quality.py. 104 indexed articles, average score 65/100, 18 research-verified (17%), 19 with a Sources section, 48 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -8,7 +8,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 |---|---|---|---|---|---|
 | 39 | blog/guanacaste-hottest-market-2026.html | — | 838 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 838 words (min 900) |
 | 39 | blog/panama-city-real-estate-2026.html | — | 883 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 883 words (min 900) |
-| 51 | blog/buenos-aires-best-value-2026.html | — | 1121 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/costa-rica-buying-guide-2026.html | — | 3644 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/granada-nicaraguas-colonial-gem-2026.html | — | 1158 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-14-18-2026.html | — | 926 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -38,8 +37,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | quick-reads/airbnb-income-playa-del-carmen.html | — | 476 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-san-jose-costa-rica.html | — | 578 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-sao-paulo-2026.html | — | 437 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/best-neighborhoods-medellin-for-expats.html | — | 710 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/cost-of-living-buenos-aires-per-month.html | — | 601 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | quick-reads/best-neighborhoods-medellin-for-expats.html | — | 708 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/cost-of-living-lima-peru-per-month.html | — | 585 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/cost-of-living-medellin-per-month.html | — | 698 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/cost-of-living-panama-city-per-month.html | — | 611 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -97,15 +95,17 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/10-cheapest-beach-towns-latin-america-2026.html | 2026-10-17 | 2411 | 29 | none |
 | 100 | blog/argentina-real-estate-foreigners-2026.html | 2026-10-16 | 2748 | 28 | none |
 | 100 | blog/best-places-retire-latin-america-2026.html | 2026-10-16 | 2124 | 24 | none |
+| 100 | blog/buenos-aires-best-value-2026.html | 2026-10-18 | 1997 | 21 | none |
 | 100 | blog/latam-weekly-oct-12-17-2026.html | 2026-10-17 | 1982 | 21 | none |
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
 | 100 | blog/retire-in-colombia-2026.html | 2026-10-16 | 1977 | 15 | none |
 | 100 | guides/buenos-aires-rental-yield-analysis-2026.html | 2026-10-16 | 1979 | 19 | none |
 | 100 | guides/can-foreigners-buy-property-in-panama-2026.html | 2026-10-17 | 2473 | 20 | none |
-| 100 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | 2026-10-17 | 2033 | 24 | none |
+| 100 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | 2026-10-17 | 2052 | 25 | none |
 | 100 | guides/panama-city-vs-san-jose-expat-investors-2026.html | 2026-10-16 | 1884 | 20 | none |
 | 100 | guides/santiago-chile-neighborhood-guide-property-buyers-2026.html | 2026-10-16 | 2707 | 23 | none |
 | 100 | quick-reads/airbnb-rules-medellin-foreigners-2026.html | 2026-10-17 | 822 | 12 | none |
+| 100 | quick-reads/cost-of-living-buenos-aires-per-month.html | 2026-10-18 | 1184 | 10 | none |
 | 100 | quick-reads/how-long-to-buy-property-costa-rica-2026.html | 2026-10-16 | 798 | 4 | none |
 | 100 | quick-reads/property-tax-panama-foreigners-2026.html | 2026-10-17 | 1040 | 11 | none |
 | 100 | tips/chile-off-plan-deposit-guarantee.html | 2026-10-16 | 333 | 2 | none |
