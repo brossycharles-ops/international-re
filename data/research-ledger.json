@@ -89,6 +89,14 @@
     "links_checked": "2026-10-19",
     "notes": "Removed the claim that foreigners can get Chilean mortgages (banks require permanent residency), a nonexistent $10B Puerto Varas project (a ~US$10M park), and a 2.2% GDP forecast (now 0.25-0.75%); prime Santiago new-build is $4,300-4,900/m², not $2,300-4,000"
   },
+  "blog/transfer-money-abroad-buy-property-2026.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 12,
+    "corrected": 6,
+    "removed": 0,
+    "sources": 10,
+    "notes": "new page; fact-checked (Reg E 500-transfer safe harbor, cancellation and error-resolution conditions, receiving-bank fees, DCIN-83 superseded, UMA updates each February)"
+  },
   "guide/expat-starter-kit.html": {
     "verified": "2026-10-18",
     "claims_checked": 64,
@@ -179,6 +187,14 @@
     "notes": "new page; fact-checked. Added missing municipal tax-clearance step; dated World Bank 2019 benchmark everywhere; full Ley 6043 Art. 47 limits; Constitution source swapped to TSE",
     "links_checked": "2026-10-16"
   },
+  "quick-reads/property-tax-chile-foreigners-2026.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 9,
+    "corrected": 4,
+    "removed": 1,
+    "sources": 6,
+    "notes": "new page; fact-checked (rate bands apply to total appraisal, TGR payment points, sobretasa ~CLP 670M per SII 2026 FAQ, owner liability; dead late-payment source removed)"
+  },
   "quick-reads/property-tax-panama-foreigners-2026.html": {
     "verified": "2026-10-17",
     "claims_checked": 18,
@@ -187,6 +203,14 @@
     "sources": 11,
     "notes": "Primary-residence rates (0.5% to $700k, 0.7% above) were missing; rates are marginal; instalments Apr 30/Aug 31/Dec 31 (Ley 66 Art. 786); Ley 546 relief is for first sale of new homes up to $200k; ITBI cannot be shifted to buyer",
     "links_checked": "2026-10-17"
+  },
+  "tips/brazil-cpf-required-buy-property.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 7,
+    "corrected": 2,
+    "removed": 0,
+    "sources": 3,
+    "notes": "new page; fact-checked (added IN RFB 2.236/2024 annual CPF update for foreigners abroad; wording on bank accounts/investments)"
   },
   "tips/chile-off-plan-deposit-guarantee.html": {
     "verified": "2026-10-16",
