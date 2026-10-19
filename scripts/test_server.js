@@ -87,6 +87,23 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('counts one visitor for two pages', after.visitors - before.visitors === 1, JSON.stringify(after));
   check('records referring site and top pages', after.sources.some(s => s.source === 'google.com') && after.pages.some(p => p.page === '/free-guide.html'), JSON.stringify(after));
 
+  // RSS feed: page titles/descriptions are already HTML-escaped and must be escaped once, not twice.
+  let res = await fetch(B + '/feed.xml');
+  const feed = await res.text();
+  const dbl = feed.match(/&amp;(#x?[0-9a-f]+|[a-z]+);/i);
+  check('feed.xml does not double-escape entities (homepage cards showed "&#x27;")', res.status === 200 && !dbl, dbl && dbl[0]);
+  const bare = feed.match(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)[^\s]{0,12}/i);
+  check('feed.xml has no bare ampersands', !bare, bare && bare[0]);
+
+  // Errors: fixed JSON messages, no stack traces or parser internals.
+  res = await fetch(B + '/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=bogus-9', 'X-Forwarded-For': '192.0.2.90' }, body: '{}' });
+  let txt = await res.text();
+  check('unsupported charset gets a 4xx "Invalid request." without internals', res.status === 415 && JSON.parse(txt).error === 'Invalid request.' && !/at |node_modules|Error/.test(txt), `${res.status} ${txt}`);
+  res = await post('/api/subscribe', null, '{bad');
+  txt = await res.text();
+  check('malformed JSON response leaks no stack or paths', !/SyntaxError|node_modules|server\.js|at /.test(txt), txt);
+  check('security headers present, X-Powered-By hidden', !!res.headers.get('content-security-policy') && !res.headers.get('x-powered-by') && res.headers.get('x-frame-options') === 'SAMEORIGIN', JSON.stringify([...res.headers]));
+
   // Contact form
   sent.length = 0;
   process.env.CONTACT_EMAIL = 'owner@realmail.io';
@@ -100,6 +117,23 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('contact honeypot pretends success but sends nothing', (await post('/api/contact', { email: 'bot@realmail.io', message: 'Buy cheap things now!!!', website: 'x' })).status === 200 && sent.length === 0);
   const saved = JSON.parse(fs.readFileSync(path.join(dir, 'messages.json')));
   check('contact keeps a copy on the volume', saved.some(m => m.email === 'reader@realmail.io' && m.kind === 'correction'));
+
+  // Contact must not claim "sent" when the message reached neither the volume nor an inbox.
+  const msgFile = path.join(dir, 'messages.json');
+  const contactAs = (ip) => fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': ip }, body: JSON.stringify({ email: 'reader2@realmail.io', message: 'Is the 2026 rate still current?' }) });
+  fs.renameSync(msgFile, msgFile + '.bak'); fs.mkdirSync(msgFile); // makes the save fail
+  delete process.env.CONTACT_EMAIL;
+  res = await contactAs('192.0.2.80');
+  check('contact returns 500 when neither save nor email worked', res.status === 500 && /try again/i.test((await res.json()).error), String(res.status));
+  process.env.CONTACT_EMAIL = 'owner@realmail.io';
+  sent.length = 0;
+  res = await contactAs('192.0.2.81');
+  check('contact still succeeds when only the email went out', res.status === 200 && sent.some(m => m.to === 'owner@realmail.io'), String(res.status));
+  fs.rmdirSync(msgFile); fs.renameSync(msgFile + '.bak', msgFile);
+  delete process.env.CONTACT_EMAIL;
+  res = await contactAs('192.0.2.82');
+  check('contact succeeds when saved but no recipient is configured', res.status === 200 && JSON.parse(fs.readFileSync(msgFile)).some(m => m.email === 'reader2@realmail.io'), String(res.status));
+  process.env.CONTACT_EMAIL = 'owner@realmail.io';
 
   sent.length = 0;
   await fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '192.0.2.77' }, body: JSON.stringify({ kind: 'advisory', name: 'A', email: 'client@realmail.io', message: 'ADVISORY APPLICATION\nTier: Strategy Call' }) });

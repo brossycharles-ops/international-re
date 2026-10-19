@@ -450,16 +450,21 @@ function buildContactEntry({ name, email, page, kind, message } = {}) {
 }
 
 // Keeps a copy on the volume and emails it to the owner; never throws.
+// Returns true if the message reached at least one of them.
 async function deliverContact(entry) {
+  // Only claim success if the message went somewhere the owner will see it.
+  let saved = false, emailed = false;
   try {
     ensureDataDir();
     let all = [];
     try { all = JSON.parse(fs.readFileSync(CONTACT_FILE, 'utf-8')); } catch {}
     all.push(entry);
     fs.writeFileSync(CONTACT_FILE, JSON.stringify(all.slice(-500), null, 2));
+    saved = true;
   } catch (err) { console.error('Contact save failed:', err.message); }
 
   const to = process.env.CONTACT_EMAIL || process.env.BACKUP_EMAIL;
+  if (!resend || !to) console.error(`Contact email NOT sent: ${!resend ? 'RESEND_API_KEY' : 'CONTACT_EMAIL / BACKUP_EMAIL'} is not set`);
   if (resend && to) {
     try {
       await resend.emails.send({
@@ -473,9 +478,11 @@ async function deliverContact(entry) {
           <p style="white-space:pre-wrap;border-left:3px solid #c9a84c;padding-left:12px">${escapeHtml(entry.message)}</p>
           <p style="color:#888;font-size:13px">Reply to this email to answer the reader directly.</p></div>`,
       });
+      emailed = true;
     } catch (err) { console.error('Contact email failed:', err.message); }
   }
-  console.log(`Contact message (${entry.kind}) from ${entry.email}`);
+  console.log(`Contact message (${entry.kind}) from ${entry.email}: ${saved ? 'saved' : 'NOT saved'}, ${emailed ? 'emailed' : 'NOT emailed'}`);
+  return saved || emailed;
 }
 
 app.post('/api/contact', async (req, res) => {
@@ -484,7 +491,7 @@ app.post('/api/contact', async (req, res) => {
   if (body.website) return res.json({ message: 'Thanks — your message has been sent.' }); // honeypot: pretend success
   const { error, entry } = buildContactEntry(body);
   if (error) return res.status(400).json({ error });
-  await deliverContact(entry);
+  if (!(await deliverContact(entry))) return res.status(500).json({ error: 'Sorry — we could not send your message just now. Please try again in a few minutes.' });
   res.json({ message: 'Thanks — your message has been sent. We reply within a few days.' });
 });
 
@@ -512,7 +519,7 @@ app.post('/advisory-intake', express.urlencoded({ extended: false, limit: '20kb'
   if (!name || ADVISORY_FIELDS.some(k => typeof f[k] !== 'string' || !f[k].trim())) return res.redirect(303, '/advisory.html?error=1#advisoryIntakeForm');
   const { error, entry } = buildContactEntry({ kind: 'advisory', name, email: f.email, page: '/advisory.html', message: advisoryMessage(f) });
   if (error) return res.redirect(303, '/advisory.html?error=1#advisoryIntakeForm');
-  await deliverContact(entry);
+  if (!(await deliverContact(entry))) return res.redirect(303, '/advisory.html?error=send#advisoryIntakeForm');
   res.redirect(303, '/advisory-success.html');
 });
 
@@ -887,6 +894,22 @@ app.post('/api/send-newsletter', async (req, res) => {
 
 // ─── RSS Feed — scans all content directories for dlvr.it auto-posting ───
 
+// Escaping the raw attribute text again turned "Peru&#x27;s" into "Peru&amp;#x27;s",
+// so the homepage Latest cards (refreshed from this feed) showed a literal "&#x27;".
+const NAMED_ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0', mdash: '\u2014', ndash: '\u2013', hellip: '\u2026', rsquo: '\u2019', lsquo: '\u2018', rdquo: '\u201d', ldquo: '\u201c', rarr: '\u2192', middot: '\u00b7', copy: '\u00a9', eacute: '\u00e9', aacute: '\u00e1', iacute: '\u00ed', oacute: '\u00f3', uacute: '\u00fa', ntilde: '\u00f1' };
+function decodeEntities(t) {
+  return String(t).replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
+    if (e[0] === '#') {
+      const n = e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      return n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : m;
+    }
+    return Object.hasOwn(NAMED_ENTITIES, e) ? NAMED_ENTITIES[e] : m;
+  });
+}
+function xmlEscape(t) {
+  return String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+}
+
 app.get('/rss.xml', (req, res) => res.redirect(301, '/feed.xml'));
 app.get('/feed.xml', (req, res) => {
   // NOTE: 'landing' is deliberately excluded — those are conversion pages with
@@ -924,8 +947,10 @@ app.get('/feed.xml', (req, res) => {
 
         const baseLink = `https://www.internationalre.org/${urlPrefix}/${file}`;
         items.push({
-          title: titleMatch ? titleMatch[1].trim() : file.replace('.html', ''),
-          description: descMatch ? descMatch[1] : '',
+          // Titles and meta descriptions are already HTML-escaped ("Peru&#x27;s"):
+          // decode first so xmlEscape below escapes them exactly once.
+          title: titleMatch ? decodeEntities(titleMatch[1].trim()) : file.replace('.html', ''),
+          description: descMatch ? decodeEntities(descMatch[1]) : '',
           link: `${baseLink}?utm_source=rss&utm_medium=social&utm_campaign=dlvr`,
           guid: baseLink,
           date: dateStr || fileStat.mtime.toISOString().split('T')[0]
@@ -946,9 +971,9 @@ app.get('/feed.xml', (req, res) => {
     <language>en-us</language>
     <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
     ${items.map(item => `<item>
-      <title>${item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</title>
-      <link>${item.link.replace(/&/g, '&amp;')}</link>
-      <description>${item.description.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</description>
+      <title>${xmlEscape(item.title)}</title>
+      <link>${xmlEscape(item.link)}</link>
+      <description>${xmlEscape(item.description)}</description>
       <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
       <guid isPermaLink="false">${item.guid}</guid>
     </item>`).join('\n    ')}
@@ -1545,9 +1570,11 @@ app.use((req, res) => {
 // Express's default error page includes a stack trace with server file paths.
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err);
-  const status = err.status || err.statusCode || 500;
+  let status = Number(err.status || err.statusCode) || 500;
+  if (status < 400 || status > 599) status = 500;
   if (status >= 500) console.error('Unhandled error:', err);
-  res.status(status).json({ error: status === 400 ? 'Invalid request.' : status === 413 ? 'Request too large.' : 'Server error.' });
+  // Fixed messages only: err.message can carry parser internals or file paths.
+  res.status(status).json({ error: status === 413 ? 'Request too large.' : status < 500 ? 'Invalid request.' : 'Server error.' });
 });
 
 // ─── Error handling ───
