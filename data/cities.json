@@ -8,8 +8,8 @@
       "tagline": "Colombia's second city — direct foreign ownership, no residency needed to buy, and spring-like weather year-round.",
       "heroImage": "https://images.unsplash.com/photo-1715503234327-b57d32e5da0f",
       "stats": {
-        "pricePerSqm": "$1,500–$2,400",
-        "rentalYield": "6.5–9%",
+        "pricePerSqm": "$1,400–$2,500",
+        "rentalYield": "~6.9% gross",
         "costOfLiving": "$1,400–$2,200/mo",
         "currency": "Colombian Peso (COP)"
       },
@@ -24,7 +24,7 @@
       "city": "Cartagena",
       "country": "Colombia",
       "countryFlag": "🇨🇴",
-      "tagline": "Walled colonial beauty on the Caribbean with strong Airbnb demand and beachfront condos 68% below Miami.",
+      "tagline": "Walled colonial city on the Caribbean coast — compare the Old City with beachfront Bocagrande before you buy.",
       "heroImage": "https://images.unsplash.com/photo-1714686495394-73e2bb1bbd39",
       "stats": {
         "pricePerSqm": "$2,000–$3,500",
@@ -368,28 +368,28 @@
       "city": "Granada",
       "country": "Nicaragua",
       "countryFlag": "🇳🇮",
-      "tagline": "Central America's oldest colonial city — restored haciendas under $200K and 9-11% yields.",
+      "tagline": "One of Central America's oldest colonial cities — low prices, but seizures of foreign-owned property make it a high-risk buy.",
       "heroImage": "https://images.unsplash.com/photo-1742513225200-a3fe34ea1d2a",
       "stats": {
-        "pricePerSqm": "$800–$1,800",
-        "rentalYield": "9–11%",
-        "costOfLiving": "$900–$1,500/mo",
+        "pricePerSqm": "No reliable published data",
+        "rentalYield": "No reliable published data",
+        "costOfLiving": "~$680/mo + rent (single; Numbeo Managua)",
         "currency": "Córdoba (NIO); property priced in USD"
       },
       "matchSlugs": [
         "granada",
         "nicaragua"
       ],
-      "metaDescription": "Granada, Nicaragua real estate 2026 — colonial home prices, 9-11% rental yields, foreign buyer rules and Lake Nicaragua proximity.",
+      "metaDescription": "Granada, Nicaragua real estate 2026: foreign buyer rules, title and confiscation risks, the 2025 constitution, thin price data and the US travel advisory.",
       "about": [
-        "Granada, on the shore of Lake Nicaragua, is one of Central America's oldest colonial cities, and its restored courtyard houses are what draw most foreign buyers. Foreigners can buy property here in their own name: The US State Department reports no specific restrictions on foreign or non-resident investors apart from border and national-security areas, the 2025 constitution guarantees property in Article 40, and a standard purchase needs no residency permit, local partner or minimum investment. The same State Department report, however, documents seizures of foreign-owned property.",
+        "Granada, on the shore of Lake Nicaragua, is one of Central America's oldest colonial cities, and its restored courtyard houses are what draw most foreign buyers. Foreigners can buy property here in their own name: The US State Department reports no specific restrictions on foreign or non-resident investors apart from border and national-security areas, and a standard purchase needs no residency permit, local partner or minimum investment. The 2025 constitution protects property in Article 40 but allows expropriation 'with fair compensation', and the same State Department report documents seizures of foreign-owned property. In August 2026 the government took nine homes owned by US retirees in Tola, Rivas; eight were returned in October.",
         "The real work is the title. Purchases are signed as an escritura pública before a Nicaraguan notary and then entered in the Registro Público under Law 698 of 2009. The US Embassy estimates about 28,000 properties were confiscated between 1979 and 1990 and many remain disputed, and colonial houses tend to have the longest ownership chains, so a full title study by your own lawyer is essential before any deposit.",
         "Buyers should also weigh the political backdrop. As of May 2026 the US State Department rates Nicaragua Level 3, 'Reconsider travel', citing crime, limited healthcare, wrongful detention and other risks. Granada's prices are low by regional standards, but liquidity is thinner than in Costa Rica or Panama, so plan for a longer hold and a slower resale."
       ],
       "faq": [
         {
           "q": "Can foreigners buy property in Granada, Nicaragua?",
-          "a": "Yes. On ordinary private land foreigners have the same property rights as Nicaraguans and can hold title in their own name, with no residency, local partner or minimum investment required. Land in restricted border zones is the main exception."
+          "a": "Legally, yes. The US State Department reports no specific restrictions on foreign or non-resident buyers apart from border and national-security areas, including a 15 km strip along land borders declared state property in 2025. But the same report says the government has seized foreign-owned property, so treat any purchase as high-risk."
         },
         {
           "q": "What is the biggest risk when buying in Granada?",
@@ -397,7 +397,7 @@
         },
         {
           "q": "Is it safe to buy property in Nicaragua right now?",
-          "a": "The US State Department rated Nicaragua Level 3, 'Reconsider travel', in its May 2026 advisory, citing crime, limited healthcare and the risk of wrongful detention. Many foreigners do own property there, but it is a higher-risk market than Costa Rica or Panama."
+          "a": "The US State Department rated Nicaragua Level 3, 'Reconsider travel', in its May 2026 advisory, citing crime, limited healthcare and the risk of wrongful detention. In August 2026 the government also took nine homes owned by US retirees in Tola, Rivas, so it is a much higher-risk market than Costa Rica or Panama."
         },
         {
           "q": "Can I get residency in Nicaragua as a retiree?",
@@ -428,9 +428,17 @@
         {
           "title": "US State Department — 2026 Investment Climate Statement: Nicaragua",
           "url": "https://www.state.gov/reports/2026-investment-climate-statements/nicaragua"
+        },
+        {
+          "title": "La Prensa — Confiscación de propiedades en Tola (17 October 2026): nine US retirees' homes taken in August 2026, eight returned",
+          "url": "https://www.laprensani.com/2026/10/17/economia/3800784-confiscacion-propiedades-tola-inss"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Managua (monthly costs excluding rent)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Managua"
         }
       ],
-      "updated": "2026-10-16"
+      "updated": "2026-10-19"
     },
     {
       "slug": "san-juan-del-sur-nicaragua",
@@ -451,7 +459,7 @@
       ],
       "metaDescription": "San Juan del Sur, Nicaragua real estate 2026: asking prices, coastal-zone law 690, title and confiscation risks, border-strip rules and the US travel advisory.",
       "about": [
-        "San Juan del Sur is a small Pacific bay town in Nicaragua's Rivas department, and its surf beaches and ocean-view hillsides are what draw most foreign buyers. Homes and condos are listed in US dollars: asking prices on Encuentra24 run from roughly US$1,000 per square metre for modest houses to about US$2,600 at the top end for beachfront condos. Foreigners can hold title in their own name: the US State Department reports no specific restrictions on foreign buyers outside border and national-security areas, and the 2025 constitution guarantees property in Article 40, though the same report documents seizures of foreign-owned property.",
+        "San Juan del Sur is a small Pacific bay town in Nicaragua's Rivas department, and its surf beaches and ocean-view hillsides are what draw most foreign buyers. Homes and condos are listed in US dollars: asking prices on Encuentra24 run from roughly US$1,000 per square metre for modest houses to about US$2,600 at the top end for beachfront condos. Foreigners can hold title in their own name: the US State Department reports no specific restrictions on foreign buyers outside border and national-security areas, and the 2025 constitution protects property in Article 40 while allowing expropriation 'with fair compensation'; the same report documents seizures of foreign-owned property, and in August 2026 the government took nine homes owned by US retirees in nearby Tola.",
         "Coastal land has its own rules. Under Ley 690 of 2009, the Coastal Zones Development Law, the beach between low and high tide plus 50 metres inland from the average high-tide mark is state-owned public-use land where homes are prohibited, and the next 200 metres inland is a restricted zone where the state regulates use. Neither strip can be sold, only granted by concession, although rights legally acquired before the law and already-established urban centres are exempt. Purchases are recorded in the Registro Público de la Propiedad, part of the national registry system set up by Law 698 of 2009. The US Embassy says about 28,000 properties were expropriated between 1979 and 1990, many are still disputed, and it urges extreme caution with coastal property in particular.",
         "The country risk is real. The US State Department rates Nicaragua Level 3, 'Reconsider travel', citing crime, health, wrongful detention and arbitrary enforcement of local laws. In August 2025 the National Assembly passed Law 1258, which declares a 15-kilometre strip along Nicaragua's borders state property, and the State Department called it a 'massive confiscation'. The town itself is roughly 25–30 km from the Costa Rican border, outside the strip, but the municipality's southern beaches (El Ostional, La Flor, Playa El Coco) lie within or close to it, so have a lawyer confirm where any lot sits. Nicaragua publishes no sales-price data and no reliable rental-yield figures, so treat agents' yield claims with caution and plan for a long hold."
       ],
@@ -517,9 +525,13 @@
         {
           "title": "Banco Central de Nicaragua — 0% crawling peg, C$36.6243 per US$ for 2026",
           "url": "https://www.bcn.gob.ni/sites/default/files/noticias/notas_prensa/2025/np_tcdeslizamineto201025.pdf"
+        },
+        {
+          "title": "La Prensa — Confiscación de propiedades en Tola (17 October 2026): nine US retirees' homes taken in August 2026, eight returned",
+          "url": "https://www.laprensani.com/2026/10/17/economia/3800784-confiscacion-propiedades-tola-inss"
         }
       ],
-      "updated": "2026-10-16"
+      "updated": "2026-10-19"
     }
   ]
 }

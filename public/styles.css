@@ -183,7 +183,9 @@ a {
   justify-content: center;
   overflow: hidden;
   padding-top: 100px;
-  padding-bottom: 60px;
+  /* Reserve room for the absolutely positioned scroll indicator (bottom: 32px, ~50px tall)
+     so the founder line never sits on top of "Scroll to explore". */
+  padding-bottom: 120px;
 }
 
 .hero-bg {
