@@ -40,8 +40,9 @@
     "claims_checked": 77,
     "corrected": 16,
     "removed": 42,
-    "sources": 19,
-    "notes": "research queue; refocused on buying costs and taxes; share sales do not avoid 1.5% transfer tax; 2026 luxury-home tax brackets in colones; Law 9996 $150k investor window ended July 2026 (status unclarified); Maritime Zone Art. 47 five-year residency rule; unsourced neighborhood prices and yields removed; independently fact-checked"
+    "sources": 20,
+    "notes": "research queue; refocused on buying costs and taxes; share sales do not avoid 1.5% transfer tax; 2026 luxury-home tax brackets in colones; Law 9996 $150k investor window ended July 2026 (status unclarified); Maritime Zone Art. 47 five-year residency rule; unsourced neighborhood prices and yields removed; independently fact-checked",
+    "links_checked": "2026-10-19"
   },
   "blog/granada-nicaraguas-colonial-gem-2026.html": {
     "verified": "2026-10-19",
@@ -88,6 +89,15 @@
     "notes": "Pensionado income is 3x SMMLV = COP 5,252,715 (~US$1,650), not ~$750, so 'lowest in LatAm' reversed; visa bars social-security/EPS enrolment, so private health insurance is required; fees $335",
     "links_checked": "2026-10-17"
   },
+  "blog/san-juan-del-sur-affordable-beach.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 47,
+    "corrected": 14,
+    "removed": 24,
+    "sources": 16,
+    "notes": "'Last affordable beach town / buy before it catches up' thesis removed: 6-12% appreciation unsourced, AirROI revenue down 4.6%, arrivals ~42% below 2017 (BCN), Tola seizure of US retirees' homes on leased state land; highway cost $150M not $400M",
+    "links_checked": "2026-10-19"
+  },
   "blog/santiago-vs-lake-district.html": {
     "verified": "2026-10-19",
     "claims_checked": 24,
@@ -103,7 +113,17 @@
     "corrected": 6,
     "removed": 0,
     "sources": 10,
-    "notes": "new page; fact-checked (Reg E 500-transfer safe harbor, cancellation and error-resolution conditions, receiving-bank fees, DCIN-83 superseded, UMA updates each February)"
+    "notes": "new page; fact-checked (Reg E 500-transfer safe harbor, cancellation and error-resolution conditions, receiving-bank fees, DCIN-83 superseded, UMA updates each February)",
+    "links_checked": "2026-10-19"
+  },
+  "guide/2026-market-entry-guide.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 112,
+    "corrected": 54,
+    "removed": 44,
+    "sources": 58,
+    "notes": "Chilean banks lend only to permanent residents (was 60-70% LTV for foreigners); Argentina buyer closing costs 5-8% in CABA not 2-3%, individuals' capital gains and long-term rents exempt from 2026; BA US$2,484/m2 & 5.70% (Zonaprop Sept 2026); all Nicaragua price cards removed",
+    "links_checked": "2026-10-19"
   },
   "guide/expat-starter-kit.html": {
     "verified": "2026-10-18",
@@ -131,6 +151,15 @@
     "sources": 19,
     "notes": "Northern barrios yield ~4.6% not 6–7% (Zonaprop Sept 2026: city 5.70%, Núñez $3,409/m²); 15% cedular gains tax no longer applies to individuals from 2026",
     "links_checked": "2026-10-18"
+  },
+  "guides/can-foreigners-buy-property-costa-rica.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 54,
+    "corrected": 18,
+    "removed": 6,
+    "sources": 18,
+    "notes": "Share sales do NOT avoid the 1.5% transfer tax (Law 6999 art. 2 since Law 9069); luxury tax applies to the full fiscal value incl. land once construction exceeds CRC 143M; investor threshold was lowered from $200k to $150k by Law 9996 (window ended July 2026), not raised from $50k",
+    "links_checked": "2026-10-19"
   },
   "guides/can-foreigners-buy-property-in-panama-2026.html": {
     "verified": "2026-10-17",
@@ -193,7 +222,7 @@
     "removed": 0,
     "sources": 4,
     "notes": "new page; fact-checked. Added missing municipal tax-clearance step; dated World Bank 2019 benchmark everywhere; full Ley 6043 Art. 47 limits; Constitution source swapped to TSE",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-19"
   },
   "quick-reads/property-tax-chile-foreigners-2026.html": {
     "verified": "2026-10-19",
@@ -201,7 +230,8 @@
     "corrected": 4,
     "removed": 1,
     "sources": 6,
-    "notes": "new page; fact-checked (rate bands apply to total appraisal, TGR payment points, sobretasa ~CLP 670M per SII 2026 FAQ, owner liability; dead late-payment source removed)"
+    "notes": "new page; fact-checked (rate bands apply to total appraisal, TGR payment points, sobretasa ~CLP 670M per SII 2026 FAQ, owner liability; dead late-payment source removed)",
+    "links_checked": "2026-10-19"
   },
   "quick-reads/property-tax-panama-foreigners-2026.html": {
     "verified": "2026-10-17",
@@ -218,7 +248,8 @@
     "corrected": 2,
     "removed": 0,
     "sources": 3,
-    "notes": "new page; fact-checked (added IN RFB 2.236/2024 annual CPF update for foreigners abroad; wording on bank accounts/investments)"
+    "notes": "new page; fact-checked (added IN RFB 2.236/2024 annual CPF update for foreigners abroad; wording on bank accounts/investments)",
+    "links_checked": "2026-10-19"
   },
   "tips/chile-off-plan-deposit-guarantee.html": {
     "verified": "2026-10-16",
