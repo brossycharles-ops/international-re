@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-19 by scripts/content_quality.py. 107 indexed articles, average score 68/100, 24 research-verified (22%), 27 with a Sources section, 56 with an FAQ.
+Generated 2026-10-19 by scripts/content_quality.py. 107 indexed articles, average score 68/100, 25 research-verified (23%), 27 with a Sources section, 56 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -86,13 +86,13 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | tips/playa-del-carmen-vs-miami-beach.html | — | 329 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/sao-paulo-jardins-vs-manhattan.html | — | 369 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/uruguay-10-year-tax-holiday.html | — | 370 | 0 | needs a Sources section with 1+ external https links (has 0) |
-| 75 | blog/costa-rica-buying-guide-2026.html | — | 3584 | 19 | none |
 | 75 | blog/latin-america-market-update-october-2026.html | — | 1363 | 6 | none |
 | 75 | tips/panama-no-capital-gains-tax.html | — | 402 | 3 | none |
 | 100 | blog/10-cheapest-beach-towns-latin-america-2026.html | 2026-10-17 | 2411 | 29 | none |
 | 100 | blog/argentina-real-estate-foreigners-2026.html | 2026-10-16 | 2748 | 28 | none |
 | 100 | blog/best-places-retire-latin-america-2026.html | 2026-10-16 | 2124 | 24 | none |
 | 100 | blog/buenos-aires-best-value-2026.html | 2026-10-18 | 1997 | 21 | none |
+| 100 | blog/costa-rica-buying-guide-2026.html | 2026-10-19 | 3655 | 19 | none |
 | 100 | blog/granada-nicaraguas-colonial-gem-2026.html | 2026-10-19 | 1914 | 22 | none |
 | 100 | blog/latam-weekly-oct-12-17-2026.html | 2026-10-17 | 1982 | 21 | none |
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
