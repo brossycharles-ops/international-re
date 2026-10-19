@@ -32,7 +32,17 @@
     "corrected": 18,
     "removed": 8,
     "sources": 21,
-    "notes": "Prices were $2,800-3,900/m² and yields 7.3%; Zonaprop Sept 2026 shows US$2,484/m², 5.70% and +1.3% YoY; untraceable BBVA 6-12% forecast removed; conclusion and title rewritten"
+    "notes": "Prices were $2,800-3,900/m² and yields 7.3%; Zonaprop Sept 2026 shows US$2,484/m², 5.70% and +1.3% YoY; untraceable BBVA 6-12% forecast removed; conclusion and title rewritten",
+    "links_checked": "2026-10-19"
+  },
+  "blog/granada-nicaraguas-colonial-gem-2026.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 25,
+    "corrected": 10,
+    "removed": 11,
+    "sources": 22,
+    "links_checked": "2026-10-19",
+    "notes": "Conclusion reversed: 'legal framework intact' was false (State Dept documents seizures of foreign-owned property; US retirees' homes taken Aug 2026); 2024 arrivals were 1.09M (-9.7%), not ~2M (+14%); unverifiable prices, 8-11% yields and $5.2B infrastructure claim removed; Law 694 repealed"
   },
   "blog/latam-weekly-oct-12-17-2026.html": {
     "verified": "2026-10-17",
@@ -52,6 +62,15 @@
     "notes": "Envigado is not the cheapest area (Metrocuadrado: ≈$2,500–2,900/m², above Medellín); invented 90%/18%/3–5x/safest claims, rents and STR yields removed; Level 3 advisory added",
     "links_checked": "2026-10-17"
   },
+  "blog/medellin-real-estate-2026.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 23,
+    "corrected": 12,
+    "removed": 5,
+    "sources": 25,
+    "links_checked": "2026-10-19",
+    "notes": "Investor-visa threshold was $110-130k; 350 minimum wages is about $193,000. El Poblado yields 6.4-7.8% (GPG), not 4-5%; 2025 rise 8.3-9% (DANE/Metrocuadrado), not an agency's 10.3%; deeds paid in pesos, not USD"
+  },
   "blog/retire-in-colombia-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 28,
@@ -61,13 +80,23 @@
     "notes": "Pensionado income is 3x SMMLV = COP 5,252,715 (~US$1,650), not ~$750, so 'lowest in LatAm' reversed; visa bars social-security/EPS enrolment, so private health insurance is required; fees $335",
     "links_checked": "2026-10-17"
   },
+  "blog/santiago-vs-lake-district.html": {
+    "verified": "2026-10-19",
+    "claims_checked": 24,
+    "corrected": 11,
+    "removed": 4,
+    "sources": 31,
+    "links_checked": "2026-10-19",
+    "notes": "Removed the claim that foreigners can get Chilean mortgages (banks require permanent residency), a nonexistent $10B Puerto Varas project (a ~US$10M park), and a 2.2% GDP forecast (now 0.25-0.75%); prime Santiago new-build is $4,300-4,900/m², not $2,300-4,000"
+  },
   "guide/expat-starter-kit.html": {
     "verified": "2026-10-18",
     "claims_checked": 64,
     "corrected": 31,
     "removed": 16,
     "sources": 30,
-    "notes": "17-city table rebuilt from sourced data (GPG, Zonaprop, FipeZAP, BCRP, Numbeo); unsupported 8-12% beach yields and all Nicaragua figures removed; Uruguay tax-holiday rule corrected"
+    "notes": "17-city table rebuilt from sourced data (GPG, Zonaprop, FipeZAP, BCRP, Numbeo); unsupported 8-12% beach yields and all Nicaragua figures removed; Uruguay tax-holiday rule corrected",
+    "links_checked": "2026-10-19"
   },
   "guide/panama-foreign-buyer-legal-guide.html": {
     "verified": "2026-10-16",
@@ -112,7 +141,7 @@
     "removed": 8,
     "sources": 20,
     "notes": "San José out-yields Panama City (8.05% vs 7.66%, GPG) — thesis reversed; colón is a managed float, not USD-pegged; fake 40% foreign-buyer and 102% migration stats removed",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-19"
   },
   "guides/santiago-chile-neighborhood-guide-property-buyers-2026.html": {
     "verified": "2026-10-16",
@@ -121,7 +150,7 @@
     "removed": 4,
     "sources": 23,
     "notes": "new page; fact-checked. Removed unconfirmable GPG figures (US$2,810/m² -16.1%, 1-bed $79,200/5.45%, 27.6 months, El Golf/Lastarria quote); homicide -11.5% is the rate not victims; 'new-apartment' and 'Metropolitan Region' wording; TOCTOC unit-mix dated to Oct 2025; 2025 rents labelled",
-    "links_checked": "2026-10-16"
+    "links_checked": "2026-10-19"
   },
   "quick-reads/airbnb-rules-medellin-foreigners-2026.html": {
     "verified": "2026-10-17",
@@ -138,7 +167,8 @@
     "corrected": 14,
     "removed": 5,
     "sources": 10,
-    "notes": "Rent was understated (Zonaprop Sept 2026: Palermo 1-bed ~$655, not $400-650) and 'most landlords price in USD' was false (27.6% of listings); fares, prepaga and utilities updated"
+    "notes": "Rent was understated (Zonaprop Sept 2026: Palermo 1-bed ~$655, not $400-650) and 'most landlords price in USD' was false (27.6% of listings); fares, prepaga and utilities updated",
+    "links_checked": "2026-10-19"
   },
   "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
     "verified": "2026-10-16",
