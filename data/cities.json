@@ -349,19 +349,113 @@
       "city": "Florianópolis",
       "country": "Brazil",
       "countryFlag": "🇧🇷",
-      "tagline": "Brazil's island capital — 42 beaches, year-round tourism, surfer-and-tech enclave.",
+      "tagline": "Santa Catarina's island capital: beach neighbourhoods, prices up 8% in a year, and title quirks on federal coastal land.",
       "heroImage": "https://images.unsplash.com/photo-1565574337618-b08146e94992",
       "stats": {
-        "pricePerSqm": "$2,200–$4,200",
-        "rentalYield": "7–10%",
-        "costOfLiving": "$1,500–$2,500/mo",
+        "pricePerSqm": "R$13,607 (~US$2,690) avg asking, FipeZap Sep 2026",
+        "rentalYield": "~5.4% gross, long-term (FipeZap Sep 2026)",
+        "costOfLiving": "~$650/mo + rent (single; Numbeo)",
         "currency": "Brazilian Real (BRL)"
       },
       "matchSlugs": [
         "florianopolis",
         "brazil"
       ],
-      "metaDescription": "Florianópolis, Brazil real estate 2026 — Jurerê, Lagoa and Praia Mole property prices, 7-10% Airbnb yields, and rules for foreign buyers in Brazil."
+      "metaDescription": "Florianópolis, Brazil real estate 2026: FipeZap prices near R$13,600/m², 5.4% gross yields, CPF, escritura, 2% ITBI and terreno de marinha rules for foreigners.",
+      "about": [
+        "Florianópolis, the capital of Santa Catarina, is split between Santa Catarina Island and a mainland district, and had 537,211 residents in the 2022 Census. Foreign interest centres on the island's beach neighbourhoods, such as Jurerê, Canasvieiras, Ingleses and Armação, and on Lagoa da Conceição; the state government notes heavy summer tourism, much of it from Argentina. It is not cheap: in September 2026 the FipeZap index put the average residential asking price at R$13,607/m², up 8.3% in 12 months, the second highest of the state capitals it tracks after Vitória and well above the R$10,015/m² index average. FipeZap's gross long-term rental yield for the city was about 5.4% a year.",
+        "Foreigners can buy urban property in their own name; rural land is subject to a separate regime under Law 5.709/1971, which caps foreign holdings at a quarter of a municipality's area. You first need a CPF tax number, which non-residents request free of charge at a Brazilian consulate. Above 30 times the minimum wage, the Civil Code requires the sale to be made by escritura pública, signed at a tabelionato de notas, and ownership only passes when that deed is registered at the Cartório de Registro de Imóveis; until then the seller is still the legal owner. Florianópolis charges ITBI transfer tax at 2% under its tax code (art. 285-A), with 0.5% on the part financed through the SFH housing system up to an inflation-indexed cap.",
+        "Two local issues need a lawyer's check. Much of the shoreline is terreno de marinha: Union land within 33 m of the 1831 mean high-tide line, including around islands, managed by the SPU. Holders pay an annual fee (0.6% of land value for aforamento), and the seller pays the Union a 5% laudêmio on the land value when it is sold. A 2018 press report counted about 42,000 such plots in the city, 39,000 not yet finally demarcated. Federal law also protects mangroves, restingas and a 30 m strip around natural lakes in urban zones, and courts have blocked new building permits in protected areas such as Praia Brava. Prices are in reais, so returns move with the exchange rate, and there is no reliable published data on short-term rental returns."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Florianópolis?",
+          "a": "Yes. Urban property can be bought in a foreigner's own name; rural land falls under Law 5.709/1971, which limits foreign ownership. You need a Brazilian CPF tax number, which non-residents get free at a Brazilian consulate, before you sign."
+        },
+        {
+          "q": "What taxes do you pay when buying in Florianópolis?",
+          "a": "The municipality charges ITBI transfer tax at 2% (0.5% on the part financed through the SFH, up to a cap). If the property is on federal coastal land (terreno de marinha), the seller also pays the Union a 5% laudêmio on the land value, and the owner pays an annual fee to the SPU. Notary and registry fees come on top."
+        },
+        {
+          "q": "What is a terreno de marinha and why does it matter?",
+          "a": "It is federal land within 33 m of the 1831 mean high-tide line, along the coast and around islands, managed by the SPU. You hold use rights rather than full ownership, pay an annual fee and owe laudêmio on resale. A 2018 press report counted about 42,000 such plots in Florianópolis, so ask your lawyer to check the SPU status of any coastal property."
+        },
+        {
+          "q": "What rental yield can I expect in Florianópolis?",
+          "a": "FipeZap put the gross long-term rental yield at about 5.4% a year in September 2026, based on asking rents and prices, before taxes, vacancy and costs. There is no reliable published data for short-term holiday rental returns."
+        }
+      ],
+      "sources": [
+        {
+          "title": "FIPE — Índice FipeZAP, séries históricas (Florianópolis, September 2026)",
+          "url": "https://downloads.fipe.org.br/indices/fipezap/fipezap-serieshistoricas.xlsx"
+        },
+        {
+          "title": "FIPE — Índice FipeZAP (index page and methodology)",
+          "url": "https://www.fipe.org.br/pt-br/indices/fipezap/"
+        },
+        {
+          "title": "Banco Central do Brasil — PTAX USD/BRL rate, 19 October 2026 (Olinda API)",
+          "url": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='10-19-2026'&$format=json"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Florianópolis (monthly costs excluding rent, updated 15 October 2026)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Florianopolis"
+        },
+        {
+          "title": "IBGE — Censo 2022, população residente, Florianópolis (SIDRA table 9514)",
+          "url": "https://servicodados.ibge.gov.br/api/v3/agregados/9514/periodos/2022/variaveis/93?localidades=N6[4205407]"
+        },
+        {
+          "title": "Governo de Santa Catarina — Conheça SC: Geografia",
+          "url": "https://estado.sc.gov.br/conheca-sc/geografia/"
+        },
+        {
+          "title": "Governo de Santa Catarina — Conheça SC: Constituição (capital)",
+          "url": "https://estado.sc.gov.br/conheca-sc/constituicao/"
+        },
+        {
+          "title": "gov.br / Receita Federal — Inscrever-se no CPF no exterior",
+          "url": "https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior"
+        },
+        {
+          "title": "Planalto — Código Civil (Lei 10.406/2002), arts. 108 and 1.245",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm"
+        },
+        {
+          "title": "Planalto — Lei 5.709/1971 (aquisição de imóvel rural por estrangeiro)",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5709.htm"
+        },
+        {
+          "title": "Planalto — Decreto-Lei 9.760/1946 (bens imóveis da União), arts. 2 and 101",
+          "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del9760.htm"
+        },
+        {
+          "title": "Planalto — Código Florestal (Lei 12.651/2012), art. 4",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm"
+        },
+        {
+          "title": "LegisWeb — Florianópolis Lei Complementar 600/2017 (ITBI art. 285-A)",
+          "url": "https://www.legisweb.com.br/legislacao/?id=336625"
+        },
+        {
+          "title": "Ministério da Gestão (SPU) — Terrenos de Marinha",
+          "url": "https://www.gov.br/gestao/pt-br/terrenos-de-marinha"
+        },
+        {
+          "title": "IRIB / ND Online — Decreto permite obras em 39 mil terrenos da marinha em Florianópolis (July 2018)",
+          "url": "https://irib.org.br/noticias/detalhes/clipping-undefined-nd-online-gean-loureiro-assina-decreto-que-permite-obras-em-39-mil-terrenos-da-marinha-em-florianopolis-sc"
+        },
+        {
+          "title": "IRIB / TRF4 — Florianópolis não pode conceder novas licenças em área de preservação na Praia Brava (August 2015)",
+          "url": "https://www.irib.org.br/noticias/detalhes/trf4-munic-iacute-pio-de-florian-oacute-polis-n-atilde-o-pode-conceder-novas-licen-ccedil-as-e-alvar-aacute-s-em-aacute-rea-de-preserva-ccedil-atilde-o-na-praia-brava"
+        },
+        {
+          "title": "The Rio Times — Buying Property in Brazil as a Foreigner (2026)",
+          "url": "https://www.riotimesonline.com/buying-property-brazil-foreigners-2026/"
+        }
+      ],
+      "updated": "2026-10-19"
     },
     {
       "slug": "granada-nicaragua",
