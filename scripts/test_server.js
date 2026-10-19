@@ -24,6 +24,7 @@ const nlDir = path.join(__dirname, '..', 'data', 'newsletters');
 const nlFile = path.join(nlDir, `${today}.json`);
 const createdNl = !fs.existsSync(nlFile);
 if (createdNl) { fs.mkdirSync(nlDir, { recursive: true }); fs.writeFileSync(nlFile, JSON.stringify({ subject: 'Test issue', html: '<p>Hi {{firstName}}</p>' + 'x'.repeat(250) })); }
+const nlSubject = JSON.parse(fs.readFileSync(nlFile, 'utf8')).subject;
 
 const PORT = 40000 + Math.floor(Math.random() * 9000);
 Object.assign(process.env, {
@@ -56,8 +57,8 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   sent.length = 0;
   let r = await (await post('/api/drip-check', { key: 'test-admin-key' })).json();
   const to = e => sent.filter(m => m.to === e).map(m => m.subject);
-  check('new subscriber gets exactly the day-1 drip', to('new@realmail.io').filter(s => !/Test issue/.test(s)).length === 1, JSON.stringify(to('new@realmail.io')));
-  check('old subscriber gets no backfilled drips', to('old@realmail.io').filter(s => !/Test issue/.test(s)).length === 0, JSON.stringify(to('old@realmail.io')));
+  check('new subscriber gets exactly the day-1 drip', to('new@realmail.io').filter(s => s !== nlSubject).length === 1, JSON.stringify(to('new@realmail.io')));
+  check('old subscriber gets no backfilled drips', to('old@realmail.io').filter(s => s !== nlSubject).length === 0, JSON.stringify(to('old@realmail.io')));
   check('newsletter goes to every subscriber', r.newsletterSent === 3, JSON.stringify(r));
   sent.length = 0;
   r = await (await post('/api/drip-check', { key: 'test-admin-key' })).json();

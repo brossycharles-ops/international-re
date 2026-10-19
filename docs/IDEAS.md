@@ -10,7 +10,7 @@ The Growth Engine takes the first unchecked idea that fits the day's format, mar
 - [ ] guide | Can Foreigners Buy Property in Ecuador? 2026 Guide | can foreigners buy property in ecuador
 - [x] 2026-10-16 duplicate | quick-read | Property Tax in Colombia for Foreigners | property tax colombia foreigners
 - [x] 2026-10-16 | quick-read | How Long Does It Take to Buy Property in Costa Rica? | how long to buy property costa rica
-- [ ] quick-read | Airbnb Rules in Medellín for Foreign Owners | airbnb rules medellin foreigners
+- [x] 2026-10-17 | quick-read | Airbnb Rules in Medellín for Foreign Owners | airbnb rules medellin foreigners
 - [ ] quick-read | Cost of Living in Lima Per Month | cost of living lima per month
 - [ ] comparison | Lima vs Santiago for Property Investors | lima vs santiago real estate
 - [ ] comparison | Cuenca vs Medellín for Retirees | cuenca vs medellin retire
