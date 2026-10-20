@@ -35,6 +35,7 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 - Link each new page from the top-traffic pages listed in /api/status `traffic.topPages`.
 
 ## Brief: research
+- First: blog/retire-in-ecuador-2026.html (top retirement-cluster page, never verified; the Growth Engine already corrected its retiree-visa income threshold to $1,446 on Oct 20 — verify the rentista/investor amounts and living costs).
 - Verify the most-read pages first (traffic.topPages), starting with blog/best-places-retire-latin-america-2026.html and blog/best-places-retire-mexico-2026.html if not verified in the last 30 days: traffic pages must be the most accurate.
 
 ## Brief: freshness
