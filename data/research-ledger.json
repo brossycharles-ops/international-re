@@ -292,5 +292,41 @@
     "sources": 5,
     "notes": "new page; fact-checked (Lima province, IGV wording, border-zone supreme decree exception)",
     "links_checked": "2026-10-18"
+  },
+  "guides/montevideo-rental-yield-analysis-2026.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 30,
+    "corrected": 18,
+    "removed": 9,
+    "sources": 17,
+    "notes": "Freshness Keeper: passed Dec 31 2025 grandfathering claim rewritten to Law 20.446 regime (IRNR option, year+10, UI 12.5M/UI 625,000 routes); rental tax 12%; VP exemptions; INGAR Sept 2026 prices/yields, INE Aug 2026 rents, ANV report 50; closing costs 8-9%; unsourced vacancy, appreciation, Manga/Casabó yields removed; checker confirmed all"
+  },
+  "blog/best-places-retire-mexico-2026.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 40,
+    "corrected": 16,
+    "removed": 12,
+    "sources": 15,
+    "notes": "Freshness Keeper: residency thresholds to Washington/New York consulate 2026 checklists (MXN 83,640/mo or MXN 1,394,000 minimum balance; permanent MXN 139,400), Banxico FIX 18.4253, IMSS voluntary fees 2026, State Dept Level 2 (May 29 2026), Numbeo rents; unsourced expat counts, JCI claims, insurance premiums removed; checker: 'average' balance corrected to 'minimum'"
+  },
+  "blog/how-to-buy-property-costa-rica-foreigner.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 35,
+    "corrected": 17,
+    "removed": 11,
+    "sources": 16,
+    "notes": "Freshness Keeper: stamp rates 0.5%/0.2%/0.15%, transfer tax split, notary 1-2%+VAT, capital gains 15%/2.25%, impuesto solidario 2026 (₡143M), ZMT Art. 47 rule corrected, Law 9996 window ended July 2026, price cards to Tico Times Jan 2026; checker could not reach Hacienda PDFs, unconfirmed habitual-home exemption removed"
+  },
+  "blog/digital-nomad-visa-costa-rica-2026.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 30,
+    "corrected": 18,
+    "removed": 10,
+    "sources": 19,
+    "notes": "Freshness Keeper: family income $4,000, fees $100+$90, $50k insurance, 1+1 year with 180 days, 15-day resolution, primary-holder-only tax exemption, FEIE $132,900 (2026), Colombia/Portugal thresholds; added missing dateModified; checker: unconfirmed Gaceta date and Decree 43619 removed"
   }
 }
