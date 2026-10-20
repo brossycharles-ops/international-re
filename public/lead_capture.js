@@ -29,12 +29,16 @@
   }
 
   async function postSubscribe(payload) {
-    const res = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    return { ok: res.ok, data: await res.json().catch(() => ({})) };
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      return { ok: res.ok, data: await res.json().catch(() => ({})) };
+    } catch {
+      return { ok: false, data: { error: 'Network error. Please check your connection and try again.' } };
+    }
   }
 
   /* ---------- 1. ROI CALCULATOR ---------- */

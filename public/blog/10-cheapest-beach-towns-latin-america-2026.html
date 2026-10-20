@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20261019">
+  <link rel="stylesheet" href="../styles.css?v=20261020">
   <link rel="stylesheet" href="../layout_updates.css">
 <script type="application/ld+json">
 {
@@ -333,7 +333,7 @@
     <div class="container">
       <div class="inline-subscribe-inner">
         <div class="inline-subscribe-text">
-          <h3>Get Our Free Latin America Real Estate Guide</h3>
+          <h3>Get the Free Expat Starter Kit</h3>
           <p>Subscribe and receive our <strong>Expat Starter Kit</strong> — a 17-city market comparison, residency routes for 10 countries and a 47-item relocation checklist.</p>
         </div>
         <form class="inline-subscribe-form" id="inlineSubscribeForm">
@@ -384,7 +384,12 @@
       <div class="footer-bottom"><p>&copy; 2026 International RE. All rights reserved.</p><p><a href="../privacy.html">Privacy Policy</a> &middot; <a href="../terms.html">Terms</a></p></div>
     </div>
   </footer>
-<script src="/lead_capture.js?v=20261017" defer></script>
+  <script>
+    const inlineForm = document.getElementById('inlineSubscribeForm');
+    if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email, source: 'blog-beach-towns-inline' }) }); const data = await res.json(); if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
+    const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); if (mobileToggle && navLinks) { mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); }); }
+  </script>
+<script src="/lead_capture.js?v=20261020" defer></script>
   <script>
     (function(){
       var t=document.title,u=encodeURIComponent(window.location.href),tt=encodeURIComponent(t);
