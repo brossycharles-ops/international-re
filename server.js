@@ -79,11 +79,21 @@ function bump(map, key, limit) {
   if (key in map || Object.keys(map).length < limit) map[key] = (map[key] || 0) + 1;
 }
 
+// Scrapers that fake a browser user-agent rarely send what a real browser sends
+// when a person opens a page: a language preference and Sec-Fetch-Mode: navigate
+// (Chrome, Edge, Firefox and Safari 16.4+). Until 2026-10-20 those requests were
+// counted as visitors (e.g. hundreds of /contact.html hits a day).
+function isBrowserNavigation(req) {
+  return !!req.get('accept-language') && req.get('sec-fetch-mode') === 'navigate';
+}
+
 function countPageview(req) {
   const ua = req.get('user-agent') || '';
   if (!ua || BOT_UA.test(ua) || /prefetch|prerender/i.test(req.get('sec-purpose') || req.get('purpose') || '')) return;
   const date = new Date().toISOString().slice(0, 10);
   const day = trafficDay(date);
+  day.raw = (day.raw || 0) + 1;
+  if (!isBrowserNavigation(req)) { trafficDirty = true; return; }
   const ip = clientIp(req);
   const id = crypto.createHash('sha256').update(traffic.today.salt + ip + ua).digest('hex').slice(0, 16);
   if (!traffic.today.seen.includes(id)) { traffic.today.seen.push(id); day.visitors++; }
@@ -128,7 +138,7 @@ app.use((req, res, next) => {
 
 app.get('/api/stats/summary', (req, res) => {
   res.set('Cache-Control', 'no-store');
-  res.json({ last7: trafficSummary(7), last28: trafficSummary(28), note: 'Built-in cookieless counts; bots excluded. Visitors are daily unique visitors summed over the period.' });
+  res.json({ last7: trafficSummary(7), last28: trafficSummary(28), note: 'Built-in cookieless counts of real browser page loads (bots and scripts excluded; stricter filter since 2026-10-20). Visitors are daily unique visitors summed over the period.' });
 });
 
 app.use(express.static(path.join(__dirname, 'public'), {
@@ -718,7 +728,7 @@ app.get('/api/status', async (req, res) => {
   for (let i = 27; i >= 0; i--) {
     const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
     const v = traffic.days[d] || { visitors: 0, views: 0 };
-    daily.push({ day: d, visitors: v.visitors, views: v.views });
+    daily.push({ day: d, visitors: v.visitors, views: v.views, requests: v.raw ?? null });
   }
   const t7 = trafficSummary(7, 5), t28 = trafficSummary(28, 10);
   const team = teamSnapshot();

@@ -90,17 +90,20 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('restore normalises email and filters unknown drip ids', !!stored && stored.drip.join() === 'day1,day3', JSON.stringify(stored));
 
   // Built-in visitor counts
-  const browser = { 'User-Agent': 'Mozilla/5.0 (Macintosh) Safari/605', 'X-Forwarded-For': '203.0.113.7' };
+  const browser = { 'User-Agent': 'Mozilla/5.0 (Macintosh) Safari/605', 'X-Forwarded-For': '203.0.113.7', 'Accept-Language': 'en-US,en;q=0.9', 'Sec-Fetch-Mode': 'navigate' };
   const stats = async () => (await (await fetch(B + '/api/stats/summary')).json()).last7;
+  // Node's fetch always sends Sec-Fetch-Mode: cors, so page loads use http.get like a browser navigation.
+  const load = (p, headers) => new Promise((res) => require('http').get(B + p, { headers }, (r) => { r.resume(); r.on('end', res); }));
   const before = await stats();
-  await fetch(B + '/', { headers: { ...browser, Referer: 'https://www.google.com/' } });
-  await fetch(B + '/free-guide.html', { headers: browser });
-  await fetch(B + '/', { headers: { 'User-Agent': 'Googlebot/2.1 (+http://www.google.com/bot.html)' } });
-  await fetch(B + '/styles.css', { headers: browser });
-  await fetch(B + '/no-such-page.html', { headers: browser });
+  await load('/', { ...browser, Referer: 'https://www.google.com/' });
+  await load('/free-guide.html', browser);
+  await load('/', { 'User-Agent': 'Googlebot/2.1 (+http://www.google.com/bot.html)' });
+  await load('/styles.css', browser);
+  await load('/no-such-page.html', browser);
+  await load('/contact.html', { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) Chrome/130.0', 'X-Forwarded-For': '203.0.113.99' }); // fake-browser scraper
   await new Promise(r => setTimeout(r, 100));
   const after = await stats();
-  check('counts browser page views only (not bots, assets, 404s)', after.pageviews - before.pageviews === 2, JSON.stringify(after));
+  check('counts real browser page views only (not bots, fake-browser scrapers, assets, 404s)', after.pageviews - before.pageviews === 2, JSON.stringify(after));
   check('counts one visitor for two pages', after.visitors - before.visitors === 1, JSON.stringify(after));
   check('records referring site and top pages', after.sources.some(s => s.source === 'google.com') && after.pages.some(p => p.page === '/free-guide.html'), JSON.stringify(after));
 
