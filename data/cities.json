@@ -195,19 +195,93 @@
       "city": "Montevideo",
       "country": "Uruguay",
       "countryFlag": "🇺🇾",
-      "tagline": "Latin America's most stable democracy — 10-year zero-tax holiday on foreign income for new residents.",
+      "tagline": "Foreigners buy on the same terms as Uruguayans, and new tax residents can opt out of tax on foreign investment income for up to 11 years.",
       "heroImage": "https://images.unsplash.com/photo-1667846788406-15622c02fe4d",
       "stats": {
-        "pricePerSqm": "$2,400–$4,500",
-        "rentalYield": "5–7%",
-        "costOfLiving": "$1,800–$2,800/mo",
-        "currency": "Uruguayan Peso (UYU)"
+        "pricePerSqm": "~$2,840 median asking; ~$3,950–$4,370 in Pocitos, Punta Carretas, Carrasco",
+        "rentalYield": "~5–6% gross (INGAR, Global Property Guide)",
+        "costOfLiving": "~$980/mo + rent (single; Numbeo Montevideo)",
+        "currency": "Uruguayan Peso (UYU); property priced in USD"
       },
       "matchSlugs": [
         "montevideo",
         "uruguay"
       ],
-      "metaDescription": "Montevideo, Uruguay real estate 2026 — Pocitos, Punta Carretas prices, 5-7% yields, 10-year tax holiday, residency program."
+      "metaDescription": "Montevideo, Uruguay real estate 2026: equal rights for foreigners, ~$2,840/m² median asking, 5–6% gross yields, closing costs and the new-resident tax holiday.",
+      "about": [
+        "Montevideo draws foreign buyers with a legal system that treats them like locals and a market priced in US dollars. Uruguay's investment law (Law 16.906) gives foreign investors the same treatment as nationals, and anyone, national or foreign, can own real estate. In the Índice INGAR for September 2026, the median asking price for apartments across Montevideo's barrios was about $2,840/m², rising to $3,956 in Pocitos, $4,184 in Punta Carretas and $4,370 in Carrasco. Estimated gross yields ran about 5–5.5% in those prime areas and 6.2% in Cordón and Centro. Since January 1, 2026, people who become tax residents can choose to pay non-resident income tax (IRNR) instead of IRPF on foreign investment income for the year they arrive plus the next ten. That applies if they spend more than 183 days a year in Uruguay or meet an investment test, such as more than UI 12.5 million in real estate, and were not tax residents in the previous two years.",
+        "The purchase runs through an escribano público, a notary chosen by the buyer. The escribano studies the title, drafts the escritura (deed), withholds the taxes and registers the first copy of the deed at the Registro de la Propiedad, Sección Inmobiliaria. That registry is run by the Dirección General de Registros and organised by the department where the property sits. Typical buyer costs are a notary fee of about 3% plus 22% VAT, an agent's commission of 3% plus VAT if an agent is involved, and the 2% property transfer tax (ITP). The seller pays another 2% ITP. ITP is charged on the cadastral value, which is usually well below the market price, so one Montevideo law firm estimates total buyer costs at 5–9% of the price.",
+        "The main risks are crime, cost and thin data. The US State Department rates Uruguay Level 2, 'Exercise increased caution', because of crime, in an advisory issued July 28, 2026. It says homicide, armed robbery, carjacking and theft are most common in Montevideo, Canelones, Maldonado and Rivera. Price and yield figures come from asking prices, not closed sales, and gross yields fall once tax, vacancy, management and building fees are counted. Montevideo is also expensive for the region: Numbeo puts a single person's monthly costs at about $980 before rent."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Montevideo, Uruguay?",
+          "a": "Yes, on the same terms as Uruguayans. Law 16.906 gives foreign investors the same treatment as nationals, and anyone, national or foreign, can own and occupy real estate."
+        },
+        {
+          "q": "What are the closing costs when buying in Montevideo?",
+          "a": "Buyers typically pay a notary fee of about 3% plus 22% VAT, an agent's commission of 3% plus VAT if an agent is involved, and 2% property transfer tax (ITP) on the cadastral value, plus small title-study and registration fees. One Montevideo law firm puts the total at 5–9% of the price."
+        },
+        {
+          "q": "Does Uruguay still have a 10-year tax holiday for new residents?",
+          "a": "In a changed form. For people who become tax residents from January 1, 2026, Law 20.446 lets them pay non-resident income tax (IRNR) instead of IRPF on foreign investment income for the year they become resident plus ten more. To qualify they must spend more than 183 days a year in Uruguay or invest more than UI 12.5 million in real estate or at least UI 625,000 a year in qualifying funds, and must not have been tax residents in the previous two years. Confirm your case with a Uruguayan tax adviser."
+        },
+        {
+          "q": "Is Montevideo safe for foreign property buyers?",
+          "a": "The US State Department rates Uruguay Level 2, 'Exercise increased caution', because of crime, in its July 28, 2026 advisory. It names Montevideo among the departments where crime is most common, with homicide, armed robbery, carjacking and theft the main concerns."
+        }
+      ],
+      "sources": [
+        {
+          "title": "IMPO — Law 16.906, Article 2 (equal treatment of foreign and national investors)",
+          "url": "https://www.impo.com.uy/bases/leyes/16906-1998/2"
+        },
+        {
+          "title": "Multilaw — Real Estate Guide: Uruguay (foreign ownership; notary 3% + VAT; commission 3% + VAT; ITP 2% of cadastral value)",
+          "url": "https://www.multilaw.com/Multilaw/RealEstate/Real_Estate_Guide_Uruguay.aspx"
+        },
+        {
+          "title": "Pérez del Castillo & Asociados — Real Estate in Uruguay (escribano's role, registration of the deed, 5–9% buyer costs)",
+          "url": "https://www.pdelc.com.uy/en/news/notary/real-estate-in-uruguay/"
+        },
+        {
+          "title": "gub.uy — Registro de la Propiedad, Sección Inmobiliaria (Dirección General de Registros): registering a purchase",
+          "url": "https://www.gub.uy/tramites/registro-propiedad-seccion-inmobiliaria-minuta-inmuebles"
+        },
+        {
+          "title": "IMPO — Texto Ordenado DGI 2023, Título 19, Article 7 (ITP: 2% seller, 2% buyer)",
+          "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/7_T19"
+        },
+        {
+          "title": "IMPO — Texto Ordenado DGI 2023, Título 7, Article 24-BIS (new-resident tax holiday from January 1, 2026, added by Law 20.446)",
+          "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/24_BIST7"
+        },
+        {
+          "title": "IMPO — Texto Ordenado DGI 2023, Título 7, Article 2 (tax residence: more than 183 days a year)",
+          "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/2_T7"
+        },
+        {
+          "title": "IMPO — Texto Ordenado DGI 2023, Título 7, Article 6, numeral 2 (foreign-source capital income from non-resident entities and related gains)",
+          "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/6_T7"
+        },
+        {
+          "title": "Índice INGAR — Montevideo market index, September 2026 (median asking prices per m² and estimated gross yields by barrio)",
+          "url": "https://ingar.com.uy/en/market-index"
+        },
+        {
+          "title": "Global Property Guide — Gross rental yields in Uruguay (Montevideo average 5.40%, Q2 2026)",
+          "url": "https://www.globalpropertyguide.com/latin-america/uruguay/rental-yields"
+        },
+        {
+          "title": "US State Department — Uruguay Travel Advisory (Level 2, July 28, 2026)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/uruguay.html"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Montevideo (monthly costs excluding rent)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Montevideo"
+        }
+      ],
+      "updated": "2026-10-20"
     },
     {
       "slug": "punta-del-este-uruguay",
