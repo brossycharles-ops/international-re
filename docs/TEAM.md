@@ -37,6 +37,7 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 ## Brief: research
 - First: blog/retire-in-ecuador-2026.html (top retirement-cluster page, never verified; the Growth Engine already corrected its retiree-visa income threshold to $1,446 on Oct 20 — verify the rentista/investor amounts and living costs).
 - Then: tips/medellin-property-vs-miami.html — indexed by Google with the headline claim '$1,200/sqm, 93% below Miami', never verified and no Sources section; the verified Medellín article uses different figures. Verify both numbers or rewrite the tip around sourced ones.
+- When the queue allows: reports/2026-global-investment-report.html — indexed, figures for 11 markets, never verified (it sits outside content_quality.py's sections, so the queue never offers it).
 - Verify the most-read pages first (traffic.topPages), starting with blog/best-places-retire-latin-america-2026.html and blog/best-places-retire-mexico-2026.html if not verified in the last 30 days: traffic pages must be the most accurate.
 
 ## Brief: freshness
