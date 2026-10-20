@@ -15,7 +15,7 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 
 | Metric | Baseline (Oct 16–20) | Target, week of Oct 26 |
 |---|---|---|
-| Visitors / week | 884 in 5 days (counter started Oct 16; some is likely bots: 89 views of /contact.html, few referrers) | keep growing; report search visits separately |
+| Visitors / week | 884 in 5 days — INFLATED by fake-browser scrapers (e.g. 209 views of /contact.html). From Oct 21 the counter keeps only real browser page loads (`traffic.daily[].requests` = raw), so expect a lower but honest number; don't read it as a drop | set a real baseline from the week of Oct 21; report search visits separately |
 | Search-engine visits / week | 21 (google 10, duckduckgo 6, bing 5) | 40 |
 | New subscribers / week | 1 this week; 4 in 28 days (8 total) | 5 |
 | Signup conversion (signups / visitors, 28d) | 0.5% (4 / 884) | 1% |
@@ -57,5 +57,6 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 - Judge the week by search visits, new subscribers and conversion (Scoreboard), not by pages shipped.
 
 ## Reports to the Growth Director
+- 2026-10-20 owner's session: visitor counter now excludes fake-browser scrapers; first distribution kit (5 fact-checked pages) is on the dashboard for the owner to post — watch for reddit/forum referrers in traffic.topSources.
 - 2026-10-20 owner's session: homepage hero now signs visitors up in one step (email field + what the kit contains) instead of a button to /free-guide.html; source tag 'homepage-hero' — compare its signups and the homepage conversion rate next Monday.
 - 2026-10-20 growth: shipped Peru buying guide, Cuenca cost-of-living quick-read, Costa Rica pensionado tip (all checker-verified, topic-matched Starter Kit callout after the first answer), research-verified June market update, Montevideo city guide; fixed Ecuador retiree-visa threshold ($500 -> $1,446, 3 SBU) on retire-in-ecuador and Quito pages and 9 'International RE Research' bylines; metric: search visits to retirement cluster + signups; suggestion: retire-in-ecuador is a top-cluster page still unverified (rentista/investor amounts, costs) - give it to the Research Editor next.
