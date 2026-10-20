@@ -26,6 +26,15 @@
     "notes": "Visa income thresholds were wrong (Colombia 3x SMMLV ~COP 5.25M, Ecuador 3x SBU $1,446, Costa Rica pensionado $1,000/mo not '$150K'); Colombia is Level 3; budgets/yields/rankings removed; checker fixes: Panama dependents, Mexico $4,200 framing, Ecuador 65+ fee discount, dead dhr.go.cr link",
     "links_checked": "2026-10-20"
   },
+  "blog/best-places-retire-mexico-2026.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 40,
+    "corrected": 16,
+    "removed": 12,
+    "sources": 15,
+    "notes": "Freshness Keeper: residency thresholds to Washington/New York consulate 2026 checklists (MXN 83,640/mo or MXN 1,394,000 minimum balance; permanent MXN 139,400), Banxico FIX 18.4253, IMSS voluntary fees 2026, State Dept Level 2 (May 29 2026), Numbeo rents; unsourced expat counts, JCI claims, insurance premiums removed; checker: 'average' balance corrected to 'minimum'"
+  },
   "blog/buenos-aires-best-value-2026.html": {
     "verified": "2026-10-18",
     "claims_checked": 36,
@@ -44,6 +53,15 @@
     "notes": "research queue; refocused on buying costs and taxes; share sales do not avoid 1.5% transfer tax; 2026 luxury-home tax brackets in colones; Law 9996 $150k investor window ended July 2026 (status unclarified); Maritime Zone Art. 47 five-year residency rule; unsourced neighborhood prices and yields removed; independently fact-checked",
     "links_checked": "2026-10-19"
   },
+  "blog/digital-nomad-visa-costa-rica-2026.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 30,
+    "corrected": 18,
+    "removed": 10,
+    "sources": 19,
+    "notes": "Freshness Keeper: family income $4,000, fees $100+$90, $50k insurance, 1+1 year with 180 days, 15-day resolution, primary-holder-only tax exemption, FEIE $132,900 (2026), Colombia/Portugal thresholds; added missing dateModified; checker: unconfirmed Gaceta date and Decree 43619 removed"
+  },
   "blog/granada-nicaraguas-colonial-gem-2026.html": {
     "verified": "2026-10-19",
     "claims_checked": 25,
@@ -61,6 +79,15 @@
     "sources": 19,
     "notes": "Removed unsourced 9–11% STR yields, $1.2B Ciudad Nya and 31% correction; AirDNA ~$49K revenue (~8% gross on $600K), maritime-zone art. 47 bars companies >50% foreign-owned"
   },
+  "blog/how-to-buy-property-costa-rica-foreigner.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 35,
+    "corrected": 17,
+    "removed": 11,
+    "sources": 16,
+    "notes": "Freshness Keeper: stamp rates 0.5%/0.2%/0.15%, transfer tax split, notary 1-2%+VAT, capital gains 15%/2.25%, impuesto solidario 2026 (₡143M), ZMT Art. 47 rule corrected, Law 9996 window ended July 2026, price cards to Tico Times Jan 2026; checker could not reach Hacienda PDFs, unconfirmed habitual-home exemption removed"
+  },
   "blog/latam-weekly-oct-12-17-2026.html": {
     "verified": "2026-10-17",
     "claims_checked": 48,
@@ -69,6 +96,14 @@
     "sources": 21,
     "notes": "new page; fact-checked (Banxico minutes date, 'three days', quote completed; Chile source added; attributions fixed)",
     "links_checked": "2026-10-18"
+  },
+  "blog/latin-america-market-update-june-2026.html": {
+    "verified": "2026-10-20",
+    "claims_checked": 52,
+    "corrected": 26,
+    "removed": 28,
+    "sources": 29,
+    "notes": "Growth Engine research queue: Argentina yield corrected from 8.35% to 5.94% (Zonaprop May 2026), Uruguay 'zero CGT' corrected to 12% IRNR, Colombia RNT decree shown as a draft, CR train financed but expropriations pending, 28 unsourced claims removed, FAQ added; checker pass: Banrep Sept 30 hike to 12.25% and July 2026 RNT redraft (2028 start) added, SHF Q2 wording to MND's 7.3%, San José GPG figure dated, Panama 6.94% attribution fixed"
   },
   "blog/medellin-neighborhoods-expats-2026.html": {
     "verified": "2026-10-16",
@@ -186,6 +221,14 @@
     "notes": "Ley 80: beach strip is 22 m Pacific / 10 m Caribbean and the rest of the 200 m zone is titleable (no '5-year foreigner concession' rule); ITBI is the seller's by law, buyer costs ~2-3% not 4-6%; Friendly Nations includes the US; fake 10% deposit removed",
     "links_checked": "2026-10-17"
   },
+  "guides/can-foreigners-buy-property-peru-2026.html": {
+    "verified": "2026-10-20",
+    "claims_checked": 28,
+    "corrected": 2,
+    "removed": 0,
+    "sources": 15,
+    "notes": "new page; fact-checked (checker: Gestión typo fixed, advisory Do Not Travel cities Abancay/Ayacucho/Huancavelica/Huancayo added; State Dept and BCRP confirmed via RSS/search copy due to bot walls)"
+  },
   "guides/medellin-vs-buenos-aires-expat-investors-2026.html": {
     "verified": "2026-10-17",
     "claims_checked": 40,
@@ -194,6 +237,15 @@
     "sources": 24,
     "notes": "El Poblado yields are 6.35-7.75% (GPG Q3 2026) not 3.5-5.5%; peso gained 22% vs USD so Medellín USD prices are higher (El Poblado ~$2,530/m2); Recoleta far below $3,500-4,300; Argentina PR after 3 years not 2; nomad visa ~$1,650 and gives no residency",
     "links_checked": "2026-10-17"
+  },
+  "guides/montevideo-rental-yield-analysis-2026.html": {
+    "verified": "2026-10-20",
+    "links_checked": "2026-10-20",
+    "claims_checked": 30,
+    "corrected": 18,
+    "removed": 9,
+    "sources": 17,
+    "notes": "Freshness Keeper: passed Dec 31 2025 grandfathering claim rewritten to Law 20.446 regime (IRNR option, year+10, UI 12.5M/UI 625,000 routes); rental tax 12%; VP exemptions; INGAR Sept 2026 prices/yields, INE Aug 2026 rents, ANV report 50; closing costs 8-9%; unsourced vacancy, appreciation, Manga/Casabó yields removed; checker confirmed all"
   },
   "guides/panama-city-vs-san-jose-expat-investors-2026.html": {
     "verified": "2026-10-16",
@@ -230,6 +282,14 @@
     "sources": 10,
     "notes": "Rent was understated (Zonaprop Sept 2026: Palermo 1-bed ~$655, not $400-650) and 'most landlords price in USD' was false (27.6% of listings); fares, prepaga and utilities updated",
     "links_checked": "2026-10-19"
+  },
+  "quick-reads/cost-of-living-cuenca-ecuador-per-month.html": {
+    "verified": "2026-10-20",
+    "claims_checked": 18,
+    "corrected": 1,
+    "removed": 0,
+    "sources": 5,
+    "notes": "new page; fact-checked (FAQ low-end total rounded to $885)"
   },
   "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
     "verified": "2026-10-16",
@@ -276,6 +336,14 @@
     "notes": "new page; fact-checked. Meta 'every peso before completion' narrowed to unfinished units; time-deposit exception made precise",
     "links_checked": "2026-10-20"
   },
+  "tips/costa-rica-pensionado-1000-pension.html": {
+    "verified": "2026-10-20",
+    "claims_checked": 7,
+    "corrected": 1,
+    "removed": 0,
+    "sources": 4,
+    "notes": "new page; fact-checked (added maritime-zone concession caveat; DGME site 403, Law 8764 Arts. 78-82, 129 verified from Poder Judicial and Defensoría copies)"
+  },
   "tips/florianopolis-airbnb-yield-brazil.html": {
     "verified": "2026-10-20",
     "claims_checked": 16,
@@ -292,41 +360,5 @@
     "sources": 5,
     "notes": "new page; fact-checked (Lima province, IGV wording, border-zone supreme decree exception)",
     "links_checked": "2026-10-18"
-  },
-  "guides/montevideo-rental-yield-analysis-2026.html": {
-    "verified": "2026-10-20",
-    "links_checked": "2026-10-20",
-    "claims_checked": 30,
-    "corrected": 18,
-    "removed": 9,
-    "sources": 17,
-    "notes": "Freshness Keeper: passed Dec 31 2025 grandfathering claim rewritten to Law 20.446 regime (IRNR option, year+10, UI 12.5M/UI 625,000 routes); rental tax 12%; VP exemptions; INGAR Sept 2026 prices/yields, INE Aug 2026 rents, ANV report 50; closing costs 8-9%; unsourced vacancy, appreciation, Manga/Casabó yields removed; checker confirmed all"
-  },
-  "blog/best-places-retire-mexico-2026.html": {
-    "verified": "2026-10-20",
-    "links_checked": "2026-10-20",
-    "claims_checked": 40,
-    "corrected": 16,
-    "removed": 12,
-    "sources": 15,
-    "notes": "Freshness Keeper: residency thresholds to Washington/New York consulate 2026 checklists (MXN 83,640/mo or MXN 1,394,000 minimum balance; permanent MXN 139,400), Banxico FIX 18.4253, IMSS voluntary fees 2026, State Dept Level 2 (May 29 2026), Numbeo rents; unsourced expat counts, JCI claims, insurance premiums removed; checker: 'average' balance corrected to 'minimum'"
-  },
-  "blog/how-to-buy-property-costa-rica-foreigner.html": {
-    "verified": "2026-10-20",
-    "links_checked": "2026-10-20",
-    "claims_checked": 35,
-    "corrected": 17,
-    "removed": 11,
-    "sources": 16,
-    "notes": "Freshness Keeper: stamp rates 0.5%/0.2%/0.15%, transfer tax split, notary 1-2%+VAT, capital gains 15%/2.25%, impuesto solidario 2026 (₡143M), ZMT Art. 47 rule corrected, Law 9996 window ended July 2026, price cards to Tico Times Jan 2026; checker could not reach Hacienda PDFs, unconfirmed habitual-home exemption removed"
-  },
-  "blog/digital-nomad-visa-costa-rica-2026.html": {
-    "verified": "2026-10-20",
-    "links_checked": "2026-10-20",
-    "claims_checked": 30,
-    "corrected": 18,
-    "removed": 10,
-    "sources": 19,
-    "notes": "Freshness Keeper: family income $4,000, fees $100+$90, $50k insurance, 1+1 year with 180 days, 15-day resolution, primary-holder-only tax exemption, FEIE $132,900 (2026), Colombia/Portugal thresholds; added missing dateModified; checker: unconfirmed Gaceta date and Decree 43619 removed"
   }
 }

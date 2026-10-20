@@ -4,9 +4,9 @@ The Growth Engine takes the first unchecked idea that fits the day's format, mar
 `[x] <date>`, and the Sunday review refills the list. Format:
 `- [ ] <blog|guide|quick-read|tip|comparison> | <working title> | <target search phrase>`
 
-- [ ] guide | Closing Costs When Buying Property in Panama (2026) | closing costs buying property panama foreigner
-- [ ] guide | Can Foreigners Buy Property in Uruguay? 2026 Guide | can foreigners buy property in uruguay
-- [ ] guide | Can Foreigners Buy Property in Peru? 2026 Guide | can foreigners buy property in peru
+- [x] 2026-10-20 duplicate (covered in guides/can-foreigners-buy-property-in-panama-2026.html) | guide | Closing Costs When Buying Property in Panama (2026) | closing costs buying property panama foreigner
+- [x] 2026-10-20 duplicate (blog/uruguay-real-estate-foreigners-2026.html) | guide | Can Foreigners Buy Property in Uruguay? 2026 Guide | can foreigners buy property in uruguay
+- [x] 2026-10-20 | guide | Can Foreigners Buy Property in Peru? 2026 Guide | can foreigners buy property in peru
 - [ ] guide | Can Foreigners Buy Property in Ecuador? 2026 Guide | can foreigners buy property in ecuador
 - [x] 2026-10-16 duplicate | quick-read | Property Tax in Colombia for Foreigners | property tax colombia foreigners
 - [x] 2026-10-16 | quick-read | How Long Does It Take to Buy Property in Costa Rica? | how long to buy property costa rica
