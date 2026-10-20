@@ -163,15 +163,24 @@ function readSubscribers() {
   ensureDataDir();
   if (!fs.existsSync(SUBSCRIBERS_FILE)) return [];
   try {
-    return JSON.parse(fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8'));
-  } catch {
-    return [];
-  }
+    const list = JSON.parse(fs.readFileSync(SUBSCRIBERS_FILE, 'utf-8'));
+    if (Array.isArray(list)) return list;
+  } catch {}
+  // An unreadable file used to read as [] and the next signup or drip run then
+  // overwrote the whole list with what it had. Set the file aside for recovery
+  // (POST /api/admin/restore-subscribers) and refuse to go on if that fails.
+  const aside = `${SUBSCRIBERS_FILE}.corrupt-${Date.now()}`;
+  fs.renameSync(SUBSCRIBERS_FILE, aside);
+  console.error(`Subscribers file was unreadable; moved it to ${aside} — restore it from there or the last backup.`);
+  return [];
 }
 
+// Write to a temp file and rename, so a crash mid-write can't leave half a list.
 function writeSubscribers(subscribers) {
   ensureDataDir();
-  fs.writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(subscribers, null, 2));
+  const tmp = `${SUBSCRIBERS_FILE}.${process.pid}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(subscribers, null, 2));
+  fs.renameSync(tmp, SUBSCRIBERS_FILE);
 }
 
 // Simple write lock to prevent concurrent file corruption

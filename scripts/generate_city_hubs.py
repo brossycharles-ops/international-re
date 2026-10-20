@@ -208,7 +208,7 @@ def render_city_hub(city):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261019">
+  <link rel="stylesheet" href="/styles.css?v=20261020">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -312,7 +312,7 @@ def render_city_hub(city):
       }}
     }});
   </script>
-  <script src="/lead_capture.js?v=20261017" defer></script>
+  <script src="/lead_capture.js?v=20261020" defer></script>
 </body>
 </html>
 '''
@@ -350,7 +350,7 @@ def render_index(cities_list):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261019">
+  <link rel="stylesheet" href="/styles.css?v=20261020">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -449,7 +449,7 @@ def render_index(cities_list):
     <a href="/" style="color:#c9a84c;font-weight:700;text-decoration:none;">&#9670; International RE</a>
     <p style="margin:14px 0 6px;">Independent research by Charles Brossy.</p>
   </footer>
-  <script src="/lead_capture.js?v=20261017" defer></script>
+  <script src="/lead_capture.js?v=20261020" defer></script>
 </body>
 </html>
 '''

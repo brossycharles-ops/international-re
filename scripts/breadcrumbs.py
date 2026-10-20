@@ -57,7 +57,14 @@ def main():
         }
         block = ('  <!-- breadcrumbs:start -->\n  <script type="application/ld+json">'
                  + json.dumps(data, ensure_ascii=False) + "</script>\n  <!-- breadcrumbs:end -->\n")
-        new = BLOCK.sub("", text).replace("</head>", block + "</head>", 1)
+        # Keep anything another tool placed inside the old block (e.g. an FAQPage
+        # script inserted next to it): only the BreadcrumbList is ours to replace.
+        kept = []
+        for old in BLOCK.findall(text):
+            for tag in re.findall(r"<script\b[^>]*>.*?</script>", old, re.S):
+                if '"BreadcrumbList"' not in tag:
+                    kept.append("  " + tag.strip() + "\n")
+        new = BLOCK.sub("", text).replace("</head>", "".join(kept) + block + "</head>", 1)
         total += 1
         if new != text:
             f.write_text(new)
