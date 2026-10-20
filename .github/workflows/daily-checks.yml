@@ -1,0 +1,78 @@
+# Free daily site checks (runs on GitHub, uses no Claude usage).
+# The mechanical half of the audit: the publish gate (server tests, links, JSON-LD,
+# accessibility, research standard, approved images, local crawl), passed-deadline
+# claims, and a real-browser visual audit of the live site (key pages + newest
+# articles, desktop and phone; Sundays: every sitemap URL). Failures open or update
+# a "Daily checks failed" issue (emailed to the owner, read by the Site Auditor);
+# it closes itself once everything passes. Screenshots are kept as a run artifact.
+name: Daily site checks
+on:
+  schedule:
+    - cron: "20 9 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: |
+          npm ci --omit=dev
+          mkdir -p /tmp/pw && cd /tmp/pw && npm init -y >/dev/null && npm i playwright@1.48.2 >/dev/null && npx playwright install --with-deps chromium >/dev/null
+      - name: Publish gate
+        id: gate
+        continue-on-error: true
+        run: bash scripts/verify_site.sh 2>&1 | tee /tmp/gate.log; exit ${PIPESTATUS[0]}
+      - name: Passed deadlines
+        run: python3 scripts/stale_claims.py | tee /tmp/stale.log
+      - name: Visual audit of the live site
+        id: visual
+        continue-on-error: true
+        run: |
+          ALL=""; [ "$(date -u +%u)" = 7 ] && ALL="--all"
+          run() { NODE_PATH=/tmp/pw/node_modules node scripts/visual_audit.js $ALL --out /tmp/visual 2>&1 | tee /tmp/visual.log; return ${PIPESTATUS[0]}; }
+          # A deploy causes about a minute of 502s: retry once before reporting.
+          run || { sleep 150; run; }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-audit
+          path: /tmp/visual
+          retention-days: 14
+      - name: Open, update or close the "Daily checks failed" issue
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          GATE: ${{ steps.gate.outcome }}
+          VISUAL: ${{ steps.visual.outcome }}
+        with:
+          script: |
+            const fs = require('fs');
+            const read = f => { try { return fs.readFileSync(f, 'utf8'); } catch { return ''; } };
+            const failed = process.env.GATE !== 'success' || process.env.VISUAL !== 'success';
+            const { owner, repo } = context.repo;
+            const run = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const open = (await github.rest.issues.listForRepo({ owner, repo, state: 'open', labels: 'daily-checks' })).data;
+            if (failed) {
+              const gate = read('/tmp/gate.log').split('\n').filter(l => /FAIL|BLOCKED|unapproved/.test(l)).slice(0, 40).join('\n');
+              const visual = read('/tmp/visual.log').split('\n').filter(l => /^P[01] /.test(l)).slice(0, 40).join('\n');
+              const stale = read('/tmp/stale.log').trim().split('\n').slice(-15).join('\n');
+              const body = `Daily checks on ${new Date().toISOString().slice(0, 10)} — [run and screenshots](${run})\n\n` +
+                `**Publish gate:** ${process.env.GATE}\n\`\`\`\n${gate || '(no failures)'}\n\`\`\`\n` +
+                `**Live visual audit:** ${process.env.VISUAL}\n\`\`\`\n${visual || '(no P0/P1 findings)'}\n\`\`\`\n` +
+                `**Passed deadlines:**\n\`\`\`\n${stale}\n\`\`\``;
+              if (open.length) await github.rest.issues.createComment({ owner, repo, issue_number: open[0].number, body });
+              else await github.rest.issues.create({ owner, repo, title: 'Daily checks failed', labels: ['daily-checks'], body });
+            } else {
+              for (const i of open) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: i.number, body: `All daily checks pass again — [run](${run}).` });
+                await github.rest.issues.update({ owner, repo, issue_number: i.number, state: 'closed' });
+              }
+            }

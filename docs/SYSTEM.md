@@ -7,18 +7,21 @@ local development.
 
 | When | What | Runs on |
 |---|---|---|
-| Daily 0:00 & 17:00 | **Research Editor**: fact-checks 3 existing articles per run against official sources with an independent checker subagent, adds Sources/FAQs, corrects or removes unverifiable claims, logs them in `data/research-ledger.json`, link-checks citations; then re-verifies the stalest pages forever (every 90 days) | Anthropic cloud routine |
-| Daily 6:00 | **Cloud Site Auditor**: checks every live page, images, SEO, security, cross-page contradictions; 3 workers fix what they find — content fixes go straight to main after the gate passes, code fixes go to a PR; flags pages for the Research Editor; writes `docs/cto-reports/<date>.md` | Anthropic cloud routine |
+| Mon, Wed, Fri 0:00 | **Research Editor**: fact-checks 3 existing articles per run against official sources with an independent checker subagent, adds Sources/FAQs, corrects or removes unverifiable claims, logs them in `data/research-ledger.json`, link-checks citations; then re-verifies the stalest pages forever (every 90 days) | Anthropic cloud routine |
+| Tue & Sat 6:00 | **Cloud Site Auditor** (the free daily GitHub checks below cover the mechanical part every day): checks every live page, images, SEO, security, cross-page contradictions; 3 workers fix what they find — content fixes go straight to main after the gate passes, code fixes go to a PR; flags pages for the Research Editor; writes `docs/cto-reports/<date>.md` | Anthropic cloud routine |
 | Daily 10:00 & 15:00 | **Email schedule**: welcome/drip sequence and the Monday newsletter | Railway server (`server.js`) |
-| Daily 13:00 | **Cloud Growth Engine**: publishes the day's content (each page fact-checked by an independent subagent), research-verifies one older page, FAQ and city queues, internal links, IndexNow | Anthropic cloud routine |
+| Weekdays 13:00 | **Cloud Growth Engine**: publishes the day's content (each page fact-checked by an independent subagent), research-verifies one older page, FAQ and city queues, internal links, IndexNow | Anthropic cloud routine |
 | Monday (first email run) | **Weekly owner report**: subscribers, growth, traffic, CSV backup to `BACKUP_EMAIL` | Railway server |
-| Sunday 15:00 | **Strategy & CTO review**: reviews traffic, research quality and auditor PRs, re-checks the fact-checkers' work, updates `docs/PLAYBOOK.md` and `docs/IDEAS.md`, writes `docs/reports/weekly-<date>.md` | Anthropic cloud routine |
+| Sunday 20:30 (Mon 00:30 UTC, just after the weekly usage reset) | **Strategy & CTO review**: reviews traffic, research quality and auditor PRs, re-checks the fact-checkers' work, updates `docs/PLAYBOOK.md` and `docs/IDEAS.md`, writes `docs/reports/weekly-<date>.md` | Anthropic cloud routine |
 | Sunday 19:00 | **Newsletter Editor**: writes and fact-checks Monday's issue (`data/newsletters/<Monday>.json` + web version); the server emails it Monday 10:00 | Anthropic cloud routine |
 | Wednesday 4:00 | **Market Data Refresher**: refreshes price/m², yields, cost of living for the 6 stalest city guides (`stats`, `statsSources`, `statsUpdated` in `data/cities.json`) | Anthropic cloud routine |
-| Friday 10:00 | **Distribution Kit**: ready-to-post X, LinkedIn, Pinterest and forum copy for the week's articles (`data/distribution/<date>.json`, shown on the dashboard with Copy buttons) | Anthropic cloud routine |
+| Paused | **Distribution Kit** (paused to fit the Pro plan; re-enable at claude.ai/code/routines): ready-to-post X, LinkedIn, Pinterest and forum copy for the week's articles (`data/distribution/<date>.json`, shown on the dashboard with Copy buttons) | Anthropic cloud routine |
 | Tuesday 9:00 | **Freshness Keeper**: rewrites passed deadlines, re-checks ageing figures on the most-read pages, replaces dead source links, fixes drifting site-wide counts and orphaned pages; handles the January retitling of year-stamped pages (`docs/freshness/<date>.md`) | Anthropic cloud routine |
 | Thursday 9:00 | **Design Director**: full-page screenshots of every page type on desktop and phone plus speed metrics; ships the 3 highest-impact look/consistency/speed improvements in shared CSS and the article template (`docs/design/<date>.md`) | Anthropic cloud routine |
+| Daily 5:20 | **Daily site checks**: the publish gate, passed-deadline claims and a real-browser visual audit of the live site (every sitemap URL on Sundays); opens/updates a "Daily checks failed" GitHub issue on failure, closes it when green (`.github/workflows/daily-checks.yml`) | GitHub Actions (free) |
 | Every 30 min | **Uptime watchdog**: loads the homepage, status API and a city guide; opens a "Site down" GitHub issue (emailed to the owner) if they fail twice 2 minutes apart, closes it when back (`.github/workflows/uptime.yml`) | GitHub Actions (free) |
+
+Usage budget: the account is on the Claude Pro plan, whose weekly allowance (resets Sunday 23:00 UTC) is shared by all routines and interactive sessions. In the week of 2026-10-12 it ran out on Saturday and every run stopped for 19 hours, so the schedule was cut to ~15 cloud runs a week, the most important ones early in the week, and mechanical checks moved to free GitHub Actions. Do not add Claude routines without removing others.
 
 Live status for all agents: the Mission Control dashboard (Claude artifact, reads `/api/status`).
 

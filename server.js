@@ -473,23 +473,24 @@ app.post('/api/contact', async (req, res) => {
 // history, docs/), gathered in one read-only JSON so the dashboard needs one call.
 const REPO = 'brossycharles-ops/international-re';
 const AGENTS = [
-  { id: 'research', name: 'Research Editor', cron: { hours: [4, 21] }, role: 'Fact-checks 3 articles per run against official sources, with an independent checker; logs every correction.', match: /^Research:/ },
-  { id: 'auditor', name: 'Site Auditor', cron: { hours: [10] }, role: 'Opens the live site in a real browser, tests forms, finds broken, stale or misleading things and fixes them.', match: /^(Audit |Cloud audit|Merge cloud audit)/ },
-  { id: 'growth', name: 'Growth Engine', cron: { hours: [17] }, role: 'Publishes 3 researched pages a day, verifies one older page, adds FAQs, links and city research.', match: /^(Add (blog|guide|quick-read|tip)|Quality:|City guide:|Growth:)/ },
-  { id: 'review', name: 'Strategy Review', cron: { hours: [19], weekday: 0 }, role: 'Sunday: reviews traffic and research quality, re-checks the fact-checkers, rewrites the playbook and topic queue.', match: /^Weekly review/ },
+  { id: 'research', name: 'Research Editor', cron: { hours: [4], weekdays: [1, 3, 5] }, role: 'Mon, Wed, Fri: fact-checks 3 articles per run against official sources, with an independent checker; logs every correction.', match: /^Research:/ },
+  { id: 'auditor', name: 'Site Auditor', cron: { hours: [10], weekdays: [2, 6] }, role: 'Tue and Sat (free GitHub checks run daily): opens the live site in a real browser, tests forms, finds broken, stale or misleading things and fixes them.', match: /^(Audit |Cloud audit|Merge cloud audit)/ },
+  { id: 'growth', name: 'Growth Engine', cron: { hours: [17], weekdays: [1, 2, 3, 4, 5] }, role: 'Weekdays: publishes 3 researched pages, verifies one older page, adds FAQs, links and city research.', match: /^(Add (blog|guide|quick-read|tip)|Quality:|City guide:|Growth:)/ },
+  { id: 'review', name: 'Strategy Review', cron: { hours: [0], minute: 30, weekday: 1 }, role: 'Monday 00:30 UTC, right after the weekly usage reset: reviews traffic and research quality, re-checks the fact-checkers, rewrites the playbook and topic queue.', match: /^Weekly review/ },
   { id: 'newsletter', name: 'Newsletter Editor', cron: { hours: [23], weekday: 0 }, role: "Sunday night: writes and fact-checks Monday's newsletter from the week's best-read and newly verified articles.", match: /^Newsletter:/ },
   { id: 'market', name: 'Market Data', cron: { hours: [8], weekday: 3 }, role: 'Wednesdays: refreshes prices, rental yields and exchange rates in the city guides from current sources.', match: /^Market data:/ },
-  { id: 'distribution', name: 'Distribution Kit', cron: { hours: [14], weekday: 5 }, role: 'Fridays: writes ready-to-post social, Pinterest and forum posts for the week\'s new and updated articles.', match: /^Distribution:/ },
+  { id: 'distribution', name: 'Distribution Kit', paused: true, cron: { hours: [14], weekday: 5 }, role: 'Paused to stay within the Pro plan. Wrote ready-to-post social, Pinterest and forum posts for the week\'s new and updated articles.', match: /^Distribution:/ },
   { id: 'freshness', name: 'Freshness Keeper', cron: { hours: [13], weekday: 2 }, role: 'Tuesdays: updates passed deadlines, ageing figures, dead source links and site-wide counts; handles the new-year retitling.', match: /^Freshness:/ },
   { id: 'design', name: 'Design Director', cron: { hours: [13], weekday: 4 }, role: 'Thursdays: screenshots every page type on desktop and phone, fixes inconsistencies and makes the site look and load better.', match: /^Design:/ },
 ];
 const statusCache = { at: 0, commits: [] };
 
 function nextRun(cron, now = new Date()) {
+  const days = cron.weekdays || (cron.weekday === undefined ? null : [cron.weekday]);
   for (let d = 0; d < 8; d++) {
     for (const h of cron.hours) {
-      const t = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + d, h, 0, 0));
-      if (t > now && (cron.weekday === undefined || t.getUTCDay() === cron.weekday)) return t.toISOString();
+      const t = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + d, h, cron.minute || 0, 0));
+      if (t > now && (!days || days.includes(t.getUTCDay()))) return t.toISOString();
     }
   }
   return null;
@@ -624,7 +625,7 @@ app.get('/api/status', async (req, res) => {
     distribution: distributionSnapshot(),
     agents: AGENTS.map(a => {
       const mine = commits.filter(c => c.agent === a.id);
-      return { id: a.id, name: a.name, role: a.role, schedule: a.cron, nextRun: nextRun(a.cron, now), lastActivity: mine[0] || null, commitsLast7d: mine.filter(c => Date.parse(c.at) >= weekAgo).length };
+      return { id: a.id, name: a.name, role: a.role, schedule: a.cron, paused: !!a.paused, nextRun: a.paused ? null : nextRun(a.cron, now), lastActivity: mine[0] || null, commitsLast7d: mine.filter(c => Date.parse(c.at) >= weekAgo).length };
     }),
     commits: commits.slice(0, 30),
   });
