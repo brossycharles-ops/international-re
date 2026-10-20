@@ -1,15 +1,13 @@
 # Article quality scorecard
 
-Generated 2026-10-19 by scripts/content_quality.py. 107 indexed articles, average score 69/100, 27 research-verified (25%), 29 with a Sources section, 57 with an FAQ.
+Generated 2026-10-20 by scripts/content_quality.py. 107 indexed articles, average score 70/100, 30 research-verified (28%), 32 with a Sources section, 59 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
 | Score | Page | Verified | Words | Sources | Problems |
 |---|---|---|---|---|---|
-| 39 | blog/guanacaste-hottest-market-2026.html | — | 841 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 841 words (min 900) |
-| 39 | blog/panama-city-real-estate-2026.html | — | 883 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD; thin: 883 words (min 900) |
 | 51 | blog/latam-weekly-apr-14-18-2026.html | — | 926 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1123 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1050 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-26-may-2-2026.html | — | 1039 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latin-america-market-update-june-2026.html | — | 1070 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/mendoza-wine-country-estates.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -57,7 +55,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | blog/expat-health-insurance-latin-america-2026.html | — | 1670 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/how-to-buy-property-costa-rica-foreigner.html | — | 1456 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/mexico-real-estate-foreigners-2026.html | — | 1749 | 0 | needs a Sources section with 3+ external https links (has 0) |
-| 63 | blog/panama-pensionado-visa-2026.html | — | 1569 | 0 | needs a Sources section with 3+ external https links (has 0) |
+| 63 | blog/panama-pensionado-visa-2026.html | — | 1570 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/playa-del-carmen-vs-tulum-2026.html | — | 1279 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-argentina-2026.html | — | 1919 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-costa-rica-2026.html | — | 1363 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -76,7 +74,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | tips/cartagena-beachfront-vs-miami.html | — | 349 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/costa-rica-foreigner-property-rights.html | — | 391 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/ecuador-dollar-beachfront.html | — | 318 | 0 | needs a Sources section with 1+ external https links (has 0) |
-| 63 | tips/florianopolis-airbnb-yield-brazil.html | — | 391 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/medellin-property-vs-miami.html | — | 252 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/mexico-city-direct-ownership.html | — | 327 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/mexico-fideicomiso-beachfront-ownership.html | — | 399 | 0 | needs a Sources section with 1+ external https links (has 0) |
@@ -92,9 +89,11 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/buenos-aires-best-value-2026.html | 2026-10-18 | 1997 | 21 | none |
 | 100 | blog/costa-rica-buying-guide-2026.html | 2026-10-19 | 3721 | 20 | none |
 | 100 | blog/granada-nicaraguas-colonial-gem-2026.html | 2026-10-19 | 1914 | 22 | none |
+| 100 | blog/guanacaste-hottest-market-2026.html | 2026-10-20 | 1630 | 21 | none |
 | 100 | blog/latam-weekly-oct-12-17-2026.html | 2026-10-17 | 1982 | 21 | none |
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
 | 100 | blog/medellin-real-estate-2026.html | 2026-10-19 | 2108 | 25 | none |
+| 100 | blog/panama-city-real-estate-2026.html | 2026-10-20 | 1691 | 14 | none |
 | 100 | blog/retire-in-colombia-2026.html | 2026-10-16 | 1977 | 15 | none |
 | 100 | blog/san-juan-del-sur-affordable-beach.html | 2026-10-19 | 2552 | 16 | none |
 | 100 | blog/santiago-vs-lake-district.html | 2026-10-19 | 2061 | 31 | none |
@@ -112,4 +111,5 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | quick-reads/property-tax-panama-foreigners-2026.html | 2026-10-17 | 1040 | 11 | none |
 | 100 | tips/brazil-cpf-required-buy-property.html | 2026-10-19 | 338 | 3 | none |
 | 100 | tips/chile-off-plan-deposit-guarantee.html | 2026-10-16 | 333 | 2 | none |
+| 100 | tips/florianopolis-airbnb-yield-brazil.html | 2026-10-20 | 858 | 12 | none |
 | 100 | tips/peru-alcabala-transfer-tax-2026.html | 2026-10-17 | 404 | 5 | none |
