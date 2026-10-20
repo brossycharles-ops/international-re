@@ -7,6 +7,7 @@ local development.
 
 | When | What | Runs on |
 |---|---|---|
+| Sunday 22:00 (Mon 02:00 UTC) | **Growth Director** (team lead, marketing): measures traffic, search visits, signups and conversion per page (`/api/status` → `growth`), does hands-on conversion/click-through/internal-link work, writes the distribution kit and outreach drafts for the owner, and briefs every agent with targets in `docs/TEAM.md` (agents read their brief via PLAYBOOK rule 0 and report back there); report in `docs/growth/<date>.md` | Anthropic cloud routine |
 | Mon, Wed, Fri 0:00 | **Research Editor**: fact-checks 3 existing articles per run against official sources with an independent checker subagent, adds Sources/FAQs, corrects or removes unverifiable claims, logs them in `data/research-ledger.json`, link-checks citations; then re-verifies the stalest pages forever (every 90 days) | Anthropic cloud routine |
 | Tue & Sat 6:00 | **Cloud Site Auditor** (the free daily GitHub checks below cover the mechanical part every day): checks every live page, images, SEO, security, cross-page contradictions; 3 workers fix what they find — content fixes go straight to main after the gate passes, code fixes go to a PR; flags pages for the Research Editor; writes `docs/cto-reports/<date>.md` | Anthropic cloud routine |
 | Daily 10:00 & 15:00 | **Email schedule**: welcome/drip sequence and the Monday newsletter | Railway server (`server.js`) |
@@ -21,7 +22,7 @@ local development.
 | Daily 5:20 | **Daily site checks**: the publish gate, passed-deadline claims and a real-browser visual audit of the live site (every sitemap URL on Sundays); opens/updates a "Daily checks failed" GitHub issue on failure, closes it when green (`.github/workflows/daily-checks.yml`) | GitHub Actions (free) |
 | Every 30 min | **Uptime watchdog**: loads the homepage, status API and a city guide; opens a "Site down" GitHub issue (emailed to the owner) if they fail twice 2 minutes apart, closes it when back (`.github/workflows/uptime.yml`) | GitHub Actions (free) |
 
-Usage budget: the account is on the Claude Pro plan, whose weekly allowance (resets Sunday 23:00 UTC) is shared by all routines and interactive sessions. In the week of 2026-10-12 it ran out on Saturday and every run stopped for 19 hours, so the schedule was cut to ~15 cloud runs a week, the most important ones early in the week, and mechanical checks moved to free GitHub Actions. Do not add Claude routines without removing others.
+Usage budget: the account is on the Claude Pro plan, whose weekly allowance (resets Sunday 23:00 UTC) is shared by all routines and interactive sessions. In the week of 2026-10-12 it ran out on Saturday and every run stopped for 19 hours, so the schedule was cut to ~16 cloud runs a week, the most important ones early in the week, and mechanical checks moved to free GitHub Actions. Do not add Claude routines without removing others.
 
 Live status for all agents: the Mission Control dashboard (Claude artifact, reads `/api/status`).
 

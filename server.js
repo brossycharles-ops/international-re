@@ -281,6 +281,16 @@ function requireAdminKey(req, res, providedKey) {
 
 // ─── Subscribe endpoint ───
 
+// The page a signup came from (same-site Referer path only), so the Growth
+// Director can see which pages turn readers into subscribers.
+function signupPage(req) {
+  try {
+    const u = new URL(req.get('referer') || '');
+    if (!/(^|\.)internationalre\.org$|^localhost$|^127\.0\.0\.1$/.test(u.hostname)) return null;
+    return u.pathname.replace(/\/index\.html$/, '/').slice(0, 200);
+  } catch { return null; }
+}
+
 app.post('/api/subscribe', async (req, res) => {
   const ip = clientIp(req);
   if (!checkRateLimit(ip)) {
@@ -333,6 +343,7 @@ app.post('/api/subscribe', async (req, res) => {
       lastName,
       email: normalizedEmail,
       source: (source && String(source).trim().slice(0, 64)) || null,
+      page: signupPage(req),
       dateSubscribed: now.toISOString().split('T')[0],
       subscribedAt: now.toISOString(),
       city: (req.body.city && String(req.body.city).trim().slice(0, 64)) || null
@@ -544,6 +555,7 @@ const AGENTS = [
   { id: 'newsletter', name: 'Newsletter Editor', cron: { hours: [23], weekday: 0 }, role: "Sunday night: writes and fact-checks Monday's newsletter from the week's best-read and newly verified articles.", match: /^Newsletter:/ },
   { id: 'market', name: 'Market Data', cron: { hours: [8], weekday: 3 }, role: 'Wednesdays: refreshes prices, rental yields and exchange rates in the city guides from current sources.', match: /^Market data:/ },
   { id: 'distribution', name: 'Distribution Kit', paused: true, cron: { hours: [14], weekday: 5 }, role: 'Paused to stay within the Pro plan. Wrote ready-to-post social, Pinterest and forum posts for the week\'s new and updated articles.', match: /^Distribution:/ },
+  { id: 'director', name: 'Growth Director', cron: { hours: [2], weekday: 1 }, role: 'Monday: measures traffic and signups per page, does hands-on conversion and SEO work, writes the distribution kit, and briefs every other agent with targets for the week (docs/TEAM.md).', match: /^Growth Director/ },
   { id: 'freshness', name: 'Freshness Keeper', cron: { hours: [13], weekday: 2 }, role: 'Tuesdays: updates passed deadlines, ageing figures, dead source links and site-wide counts; handles the new-year retitling.', match: /^Freshness:/ },
   { id: 'design', name: 'Design Director', cron: { hours: [13], weekday: 4 }, role: 'Thursdays: screenshots every page type on desktop and phone, fixes inconsistencies and makes the site look and load better.', match: /^Design:/ },
 ];
@@ -662,6 +674,39 @@ function ideasSnapshot() {
   return { open: open.length, done, next: open.slice(0, 4) };
 }
 
+// Signups and conversion by page over 28 days (aggregate counts only, no emails).
+function growthSnapshot(subs) {
+  const since = Date.now() - 28 * 864e5;
+  const recent = subs.filter(s => new Date(s.subscribedAt || s.dateSubscribed || 0).getTime() >= since);
+  const daily = [];
+  for (let i = 27; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
+    daily.push({ day: d, signups: recent.filter(s => String(s.subscribedAt || s.dateSubscribed || '').slice(0, 10) === d).length });
+  }
+  const count = key => {
+    const m = {};
+    recent.forEach(s => { const k = key(s); if (k) m[k] = (m[k] || 0) + 1; });
+    return m;
+  };
+  const views = Object.fromEntries(trafficSummary(28, 100000).pages.map(r => [r.page, r.views]));
+  const byPage = Object.entries(count(s => s.page || null)).sort((a, b) => b[1] - a[1]).slice(0, 12)
+    .map(([page, signups]) => ({ page, signups, views: views[page] || 0, rate: views[page] ? Math.round(1000 * signups / views[page]) / 10 : null }));
+  const bySource = Object.entries(count(s => s.source || 'unknown')).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([source, signups]) => ({ source, signups }));
+  const t28 = trafficSummary(28, 1);
+  return { signups28: recent.length, visitors28: t28.visitors, conversion28: t28.visitors ? Math.round(1000 * recent.length / t28.visitors) / 10 : null, daily, byPage, bySource };
+}
+
+// docs/TEAM.md is the team channel: the Growth Director writes '## Brief: <agent id>'
+// sections and the scoreboard; agents read them at the start of each run.
+function teamSnapshot() {
+  const md = readDoc('docs/TEAM.md');
+  if (!md) return { briefs: {} };
+  const briefs = {};
+  for (const m of md.matchAll(/^## Brief: *([a-z]+)[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/gm)) briefs[m[1]] = m[2].trim().slice(0, 1200);
+  const section = name => ((md.match(new RegExp('^## ' + name + '[^\\n]*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))', 'm')) || [])[1] || '').trim().slice(0, 2000);
+  return { updated: (md.match(/Updated:? *(\d{4}-\d{2}-\d{2})/) || [])[1] || null, scoreboard: section('Scoreboard'), bets: section('This week'), wins: section('Wins'), briefs };
+}
+
 app.get('/api/status', async (req, res) => {
   res.set('Cache-Control', 'no-store');
   res.set('Access-Control-Allow-Origin', '*');
@@ -676,6 +721,7 @@ app.get('/api/status', async (req, res) => {
     daily.push({ day: d, visitors: v.visitors, views: v.views });
   }
   const t7 = trafficSummary(7, 5), t28 = trafficSummary(28, 10);
+  const team = teamSnapshot();
   res.json({
     generatedAt: now.toISOString(),
     site: { up: true, uptimeHours: Math.round(process.uptime() / 360) / 10, emailSchedule: schedulerEnabled() },
@@ -687,9 +733,11 @@ app.get('/api/status', async (req, res) => {
     ideas: ideasSnapshot(),
     newsletter: newsletterSnapshot(),
     distribution: distributionSnapshot(),
+    growth: growthSnapshot(subs),
+    team: { updated: team.updated, scoreboard: team.scoreboard, bets: team.bets, wins: team.wins },
     agents: AGENTS.map(a => {
       const mine = commits.filter(c => c.agent === a.id);
-      return { id: a.id, name: a.name, role: a.role, schedule: a.cron, paused: !!a.paused, nextRun: a.paused ? null : nextRun(a.cron, now), lastActivity: mine[0] || null, commitsLast7d: mine.filter(c => Date.parse(c.at) >= weekAgo).length };
+      return { id: a.id, name: a.name, role: a.role, schedule: a.cron, paused: !!a.paused, nextRun: a.paused ? null : nextRun(a.cron, now), brief: team.briefs[a.id] || null, lastActivity: mine[0] || null, commitsLast7d: mine.filter(c => Date.parse(c.at) >= weekAgo).length };
     }),
     commits: commits.slice(0, 30),
   });

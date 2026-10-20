@@ -5,6 +5,9 @@ evidence (traffic, blocked runs, regressions). Keep it under 30 rules.
 
 Goal: 500+ organic visitors/month, then grow; every visitor offered the Expat Starter Kit.
 
+## Team channel
+0. At the start of every run read `docs/TEAM.md`: the team targets and the Growth Director's brief for your role (`## Brief: <your id>` — growth, research, freshness, design, newsletter, market, auditor, review). Follow it unless it conflicts with an accuracy, honesty or safety rule. At the end of your run add one line under "Reports to the Growth Director": what you shipped, the metric it should move, and one blocker or suggestion. (The Growth Director restores this rule if it goes missing.)
+
 ## Accuracy and trust
 1. Every statistic needs a source found that day, linked in a `Sources` section. Never invent numbers, quotes or people.
 2. Be honest about risk: official travel advisories, title disputes, currency controls. Readers make large financial decisions.

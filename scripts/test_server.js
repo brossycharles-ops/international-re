@@ -199,6 +199,15 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   r = await fetch(B + '/advisory-intake', { method: 'POST', redirect: 'manual', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'motivation=' + 'x'.repeat(30000) });
   check('advisory-intake caps the form body size', r.status === 413, String(r.status));
 
+  // Signups are credited to the page they came from (same-site Referer only).
+  await fetch(B + '/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json', Referer: 'https://www.internationalre.org/guides/x.html', 'X-Forwarded-For': '198.51.100.40' }, body: JSON.stringify({ email: 'reader2@realmail.io', source: 'guides-x-inline' }) });
+  await fetch(B + '/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json', Referer: 'https://evil.example/guides/x.html', 'X-Forwarded-For': '198.51.100.41' }, body: JSON.stringify({ email: 'reader3@realmail.io' }) });
+  const subsNow = JSON.parse(fs.readFileSync(process.env.SUBSCRIBERS_FILE));
+  check('signup records its same-site page only', subsNow.find(x => x.email === 'reader2@realmail.io')?.page === '/guides/x.html' && !subsNow.find(x => x.email === 'reader3@realmail.io')?.page, JSON.stringify(subsNow.slice(-2)));
+  const gst = await (await fetch(B + '/api/status')).json();
+  check('status reports signups by page', gst.growth && gst.growth.byPage.some(r => r.page === '/guides/x.html' && r.signups === 1) && gst.growth.signups28 >= 2, JSON.stringify(gst.growth));
+  check('status lists the Growth Director', gst.agents.some(a => a.id === 'director'));
+
   if (createdNl) fs.unlinkSync(nlFile);
   fs.rmSync(dir, { recursive: true, force: true });
   console.log(failures ? `[test_server] ${failures} FAILED` : '[test_server] all passed');
