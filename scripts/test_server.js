@@ -52,6 +52,22 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   // Admin auth
   check('drip-check needs the admin key', (await post('/api/drip-check', { key: 'wrong' })).status === 401);
   check('restore needs the admin key', (await post('/api/admin/restore-subscribers', { key: 'wrong', subscribers: [] })).status === 401);
+  for (const [m, p] of [['GET', '/api/subscribers'], ['GET', '/api/admin/traffic'], ['POST', '/api/send-newsletter'], ['POST', '/api/admin/cleanup-test-subscribers']]) {
+    const res = await fetch(B + p, { method: m, headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '192.0.2.40' }, body: m === 'POST' ? '{}' : undefined });
+    check(`${m} ${p} needs the admin key`, res.status === 401, String(res.status));
+  }
+
+  // A corrupt subscriber file must be set aside, not overwritten by the next signup.
+  const subsFile = process.env.SUBSCRIBERS_FILE;
+  const goodList = fs.readFileSync(subsFile, 'utf8');
+  const garbage = goodList.slice(0, Math.floor(goodList.length / 2)); // a half-written file
+  fs.writeFileSync(subsFile, garbage);
+  check('signup still works when the subscriber file is corrupt', (await post('/api/subscribe', { email: 'after-corrupt@realmail.io' })).status === 200);
+  const aside = fs.readdirSync(dir).filter(f => f.startsWith('subscribers.json.corrupt-'));
+  check('corrupt subscriber file is kept for recovery', aside.length === 1 && fs.readFileSync(path.join(dir, aside[0]), 'utf8') === garbage, aside.join());
+  check('subscriber writes leave no temp files', !fs.readdirSync(dir).some(f => f.endsWith('.tmp')));
+  aside.forEach(f => fs.unlinkSync(path.join(dir, f)));
+  fs.writeFileSync(subsFile, goodList);
 
   // Drip + newsletter
   sent.length = 0;
