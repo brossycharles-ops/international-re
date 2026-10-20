@@ -17,15 +17,15 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 |---|---|---|
 | Visitors / week | 884 in 5 days (counter started Oct 16; some is likely bots: 89 views of /contact.html, few referrers) | keep growing; report search visits separately |
 | Search-engine visits / week | 21 (google 10, duckduckgo 6, bing 5) | 40 |
-| New subscribers / week | 1 (8 total) | 5 |
-| Signup conversion (signups / visitors, 28d) | ≈0.1% | 0.5% |
+| New subscribers / week | 1 this week; 4 in 28 days (8 total) | 5 |
+| Signup conversion (signups / visitors, 28d) | 0.5% (4 / 884) | 1% |
 
 ## Wins
 - Research Editor + Freshness Keeper: 18 articles fact-checked since Oct 17 with 300+ corrections — the content is now trustworthy enough to promote.
 - Site Auditor: fixed 14 signup forms that the security policy was silently blocking (Oct 17). Conversion can only be measured now that forms work.
 
 ## This week: growth bets
-1. **Conversion first.** ~180 visitors a day, almost nobody subscribes. Every top page needs one clear, specific Starter Kit offer that matches the page's topic.
+1. **Conversion first.** ~180 visitors a day, only 1 in 200 subscribes. Every top page needs one clear, specific Starter Kit offer that matches the page's topic.
 2. **Win the queries we already half-rank for.** Retirement pages (best places to retire in Latin America / Mexico) and Costa Rica buying are the most-read articles: strengthen them and build clusters around them.
 3. **Earn real referrals.** Search engines sent only 21 visits; distribution (owner-posted kit, forum answers) and internal linking must feed the best pages.
 
