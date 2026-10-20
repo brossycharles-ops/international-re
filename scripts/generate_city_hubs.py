@@ -18,6 +18,26 @@ PUBLIC = os.path.join(BASE, 'public')
 DATA = os.path.join(BASE, 'data', 'cities.json')
 SITE = 'https://www.internationalre.org'
 
+# Shared header CSS for hubs (.hub-nav) and the index (.cities-nav). Inline so it
+# can't be served stale from a cached /cities.css. On phones the logo keeps one
+# line and every nav link stays reachable in a swipeable row under it (the old
+# cities.css rule hid Guides/Cities/About below 700px with no menu).
+NAV_CSS = '''    .hub-nav, .cities-nav { flex-wrap: wrap; gap: 6px 16px; }
+    .hub-nav a.logo, .cities-nav a.logo { white-space: nowrap; }
+    @media (max-width: 700px) {
+      .hub-nav, .cities-nav { padding: 10px 16px 6px; }
+      .hub-nav-links, .cities-nav-links {
+        display: flex; flex: 1 1 100%; gap: 12px;
+        overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .hub-nav-links::-webkit-scrollbar, .cities-nav-links::-webkit-scrollbar { display: none; }
+      .hub-nav-links a, .hub-nav-links a:nth-child(n+4), .cities-nav-links a {
+        display: inline-block; flex: 0 0 auto; margin-left: 0;
+        white-space: nowrap; font-size: 0.86rem; padding: 8px 0;
+      }
+    }
+'''
+
 with open(DATA) as f:
     cities = json.load(f)['cities']
 
@@ -188,7 +208,7 @@ def render_city_hub(city):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261017">
+  <link rel="stylesheet" href="/styles.css?v=20261019">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -211,21 +231,7 @@ def render_city_hub(city):
   <link rel="stylesheet" href="/cities.css">
   <style>
     .hub-hero {{ background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('{hero_img}'); }}
-    .hub-nav, .cities-nav {{ flex-wrap: wrap; gap: 6px 16px; }}
-    .hub-nav a.logo, .cities-nav a.logo {{ white-space: nowrap; }}
-    @media (max-width: 700px) {{
-      .hub-nav, .cities-nav {{ padding: 10px 16px 6px; }}
-      .hub-nav-links, .cities-nav-links {{
-        display: flex; flex: 1 1 100%; gap: 12px;
-        overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      }}
-      .hub-nav-links::-webkit-scrollbar, .cities-nav-links::-webkit-scrollbar {{ display: none; }}
-      .hub-nav-links a, .hub-nav-links a:nth-child(n+4), .cities-nav-links a {{
-        display: inline-block; flex: 0 0 auto; margin-left: 0;
-        white-space: nowrap; font-size: 0.86rem; padding: 8px 0;
-      }}
-    }}
-  </style>
+{NAV_CSS}  </style>
   <script defer src="/js/analytics.js"></script>
 </head>
 <body>
@@ -344,7 +350,7 @@ def render_index(cities_list):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261017">
+  <link rel="stylesheet" href="/styles.css?v=20261019">
   <link rel="stylesheet" href="/layout_updates.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
@@ -414,21 +420,7 @@ def render_index(cities_list):
     .cities-nav a.logo {{ font-weight: 700; color: #0a1628; text-decoration: none; }}
     .cities-nav a.logo span {{ color: #c9a84c; }}
     .cities-nav-links a {{ color: #555; text-decoration: none; margin-left: 22px; font-size: 0.92rem; }}
-    .hub-nav, .cities-nav {{ flex-wrap: wrap; gap: 6px 16px; }}
-    .hub-nav a.logo, .cities-nav a.logo {{ white-space: nowrap; }}
-    @media (max-width: 700px) {{
-      .hub-nav, .cities-nav {{ padding: 10px 16px 6px; }}
-      .hub-nav-links, .cities-nav-links {{
-        display: flex; flex: 1 1 100%; gap: 12px;
-        overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      }}
-      .hub-nav-links::-webkit-scrollbar, .cities-nav-links::-webkit-scrollbar {{ display: none; }}
-      .hub-nav-links a, .hub-nav-links a:nth-child(n+4), .cities-nav-links a {{
-        display: inline-block; flex: 0 0 auto; margin-left: 0;
-        white-space: nowrap; font-size: 0.86rem; padding: 8px 0;
-      }}
-    }}
-  </style>
+{NAV_CSS}  </style>
   <script defer src="/js/analytics.js"></script>
 </head>
 <body>

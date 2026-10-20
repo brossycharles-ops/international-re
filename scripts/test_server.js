@@ -88,6 +88,23 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('counts one visitor for two pages', after.visitors - before.visitors === 1, JSON.stringify(after));
   check('records referring site and top pages', after.sources.some(s => s.source === 'google.com') && after.pages.some(p => p.page === '/free-guide.html'), JSON.stringify(after));
 
+  // RSS feed: page titles/descriptions are already HTML-escaped and must be escaped once, not twice.
+  let res = await fetch(B + '/feed.xml');
+  const feed = await res.text();
+  const dbl = feed.match(/&amp;(#x?[0-9a-f]+|[a-z]+);/i);
+  check('feed.xml does not double-escape entities (homepage cards showed "&#x27;")', res.status === 200 && !dbl, dbl && dbl[0]);
+  const bare = feed.match(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)[^\s]{0,12}/i);
+  check('feed.xml has no bare ampersands', !bare, bare && bare[0]);
+
+  // Errors: fixed JSON messages, no stack traces or parser internals.
+  res = await fetch(B + '/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=bogus-9', 'X-Forwarded-For': '192.0.2.90' }, body: '{}' });
+  let txt = await res.text();
+  check('unsupported charset gets a 4xx "Invalid request." without internals', res.status === 415 && JSON.parse(txt).error === 'Invalid request.' && !/at |node_modules|Error/.test(txt), `${res.status} ${txt}`);
+  res = await post('/api/subscribe', null, '{bad');
+  txt = await res.text();
+  check('malformed JSON response leaks no stack or paths', !/SyntaxError|node_modules|server\.js|at /.test(txt), txt);
+  check('security headers present, X-Powered-By hidden', !!res.headers.get('content-security-policy') && !res.headers.get('x-powered-by') && res.headers.get('x-frame-options') === 'SAMEORIGIN', JSON.stringify([...res.headers]));
+
   // Contact form
   sent.length = 0;
   process.env.CONTACT_EMAIL = 'owner@realmail.io';
@@ -102,6 +119,23 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   const saved = JSON.parse(fs.readFileSync(path.join(dir, 'messages.json')));
   check('contact keeps a copy on the volume', saved.some(m => m.email === 'reader@realmail.io' && m.kind === 'correction'));
 
+  // Contact must not claim "sent" when the message reached neither the volume nor an inbox.
+  const msgFile = path.join(dir, 'messages.json');
+  const contactAs = (ip) => fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': ip }, body: JSON.stringify({ email: 'reader2@realmail.io', message: 'Is the 2026 rate still current?' }) });
+  fs.renameSync(msgFile, msgFile + '.bak'); fs.mkdirSync(msgFile); // makes the save fail
+  delete process.env.CONTACT_EMAIL;
+  res = await contactAs('192.0.2.80');
+  check('contact returns 500 when neither save nor email worked', res.status === 500 && /try again/i.test((await res.json()).error), String(res.status));
+  process.env.CONTACT_EMAIL = 'owner@realmail.io';
+  sent.length = 0;
+  res = await contactAs('192.0.2.81');
+  check('contact still succeeds when only the email went out', res.status === 200 && sent.some(m => m.to === 'owner@realmail.io'), String(res.status));
+  fs.rmdirSync(msgFile); fs.renameSync(msgFile + '.bak', msgFile);
+  delete process.env.CONTACT_EMAIL;
+  res = await contactAs('192.0.2.82');
+  check('contact succeeds when saved but no recipient is configured', res.status === 200 && JSON.parse(fs.readFileSync(msgFile)).some(m => m.email === 'reader2@realmail.io'), String(res.status));
+  process.env.CONTACT_EMAIL = 'owner@realmail.io';
+
   sent.length = 0;
   await fetch(B + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '192.0.2.77' }, body: JSON.stringify({ kind: 'advisory', name: 'A', email: 'client@realmail.io', message: 'ADVISORY APPLICATION\nTier: Strategy Call' }) });
   check('advisory applications reach the owner, labelled', sent.some(m => m.to === 'owner@realmail.io' && /Advisory application/.test(m.subject)), JSON.stringify(sent.map(m => m.subject)));
@@ -111,6 +145,43 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   const codes = []; for (let n = 0; n < 6; n++) codes.push(await spoof(n));
   check('rate limit keys on the proxy-added IP, not a forged one', codes[5] === 429, codes.join(','));
   check('admin key accepted from the X-Admin-Key header', (await fetch(B + '/api/drip-check', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Key': 'test-admin-key' }, body: '{}' })).status === 200);
+
+  // Input validation: wrong JSON types must get a 400, never a 500 or a hung request.
+  const postT = (p, body) => fetch(B + p, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': '192.0.2.10' }, body: JSON.stringify(body), signal: AbortSignal.timeout(3000) });
+  check('subscribe rejects a non-string email with 400', (await postT('/api/subscribe', { email: ['arr@realmail.io'] })).status === 400);
+  check('subscribe rejects an over-long email', (await postT('/api/subscribe', { email: 'a'.repeat(250) + '@realmail.io' })).status === 400);
+  check('subscribe tolerates a non-string first name', (await postT('/api/subscribe', { email: 'num@realmail.io', firstName: 5 })).status === 200);
+  sent.length = 0;
+  await postT('/api/subscribe', { email: 'html@realmail.io', firstName: '<a href="https://evil.example">Verify</a>' });
+  await new Promise(r => setTimeout(r, 100));
+  const welcome = sent.find(m => m.to === 'html@realmail.io');
+  check('welcome email escapes the subscriber-supplied name', !!welcome && !/<a href="https:\/\/evil/.test(welcome.html) && /&lt;a href/.test(welcome.html));
+  let st = 0; try { st = (await postT('/api/unsubscribe', { email: 5 })).status; } catch (e) { st = 'hung'; }
+  check('unsubscribe rejects a non-string email with 400 (used to hang)', st === 400, String(st));
+  await postT('/api/contact', { email: 'proto@realmail.io', kind: 'toString', message: 'Prototype key as the kind field.' });
+  check('contact maps unknown/prototype kinds to other', JSON.parse(fs.readFileSync(path.join(dir, 'messages.json'))).find(m => m.email === 'proto@realmail.io')?.kind === 'other');
+
+  // No-JS fallback for the advisory form: plain urlencoded POST, 303 redirect.
+  const form = (fields, ip = '192.0.2.20') => fetch(B + '/advisory-intake', { method: 'POST', redirect: 'manual', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Forwarded-For': ip }, body: new URLSearchParams(fields).toString() });
+  const adv = { name: 'Ana Client', email: 'Ana@Realmail.io', target_country: 'Panama', budget_range: '$200K-$500K', timeline: '3-6 months', tier_interest: 'Strategy Call', motivation: 'Retiring in 2027.' };
+  sent.length = 0;
+  r = await form(adv);
+  check('advisory-intake redirects 303 to the success page', r.status === 303 && r.headers.get('location') === '/advisory-success.html', `${r.status} ${r.headers.get('location')}`);
+  const advMail = sent.find(m => m.to === 'owner@realmail.io');
+  check('advisory-intake emails the same ADVISORY APPLICATION message as the JS', !!advMail && /Advisory application/.test(advMail.subject) && advMail.replyTo === 'ana@realmail.io'
+    && advMail.html.includes('ADVISORY APPLICATION\nTier: Strategy Call\nTarget country: Panama\nBudget: $200K-$500K\nTimeline: 3-6 months\n\nGoals:\nRetiring in 2027.'), JSON.stringify(advMail));
+  check('advisory-intake keeps a copy on the volume', JSON.parse(fs.readFileSync(path.join(dir, 'messages.json'))).some(m => m.email === 'ana@realmail.io' && m.kind === 'advisory' && m.page === '/advisory.html'));
+  r = await form({ ...adv, timeline: '' }, '192.0.2.21');
+  check('advisory-intake sends a missing field back to the form', r.status === 303 && /^\/advisory\.html\?error=1/.test(r.headers.get('location')), `${r.status} ${r.headers.get('location')}`);
+  r = await form({ ...adv, email: 'not-an-email' }, '192.0.2.21');
+  check('advisory-intake sends a bad email back to the form', r.status === 303 && /^\/advisory\.html\?error=1/.test(r.headers.get('location')));
+  sent.length = 0;
+  r = await form({ ...adv, website: 'spam' }, '192.0.2.22');
+  check('advisory-intake honeypot pretends success but sends nothing', r.status === 303 && r.headers.get('location') === '/advisory-success.html' && sent.length === 0);
+  const advCodes = []; for (let n = 0; n < 6; n++) advCodes.push((await form(adv, '192.0.2.23')).headers.get('location'));
+  check('advisory-intake shares the contact rate limit', advCodes[4] === '/advisory-success.html' && /error=rate/.test(advCodes[5]), advCodes.join(','));
+  r = await fetch(B + '/advisory-intake', { method: 'POST', redirect: 'manual', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'motivation=' + 'x'.repeat(30000) });
+  check('advisory-intake caps the form body size', r.status === 413, String(r.status));
 
   if (createdNl) fs.unlinkSync(nlFile);
   fs.rmSync(dir, { recursive: true, force: true });

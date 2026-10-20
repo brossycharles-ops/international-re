@@ -241,6 +241,7 @@ function checkAdminRateLimit(ip) {
   }
   entry.count++;
   adminRateLimitMap.set(ip, entry);
+  if (adminRateLimitMap.size > 10000) for (const [k, v] of adminRateLimitMap) if (now > v.resetAt) adminRateLimitMap.delete(k);
   return entry.count <= ADMIN_RATE_LIMIT_MAX;
 }
 
@@ -277,14 +278,17 @@ app.post('/api/subscribe', async (req, res) => {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
 
-  const { firstName, lastName, email, source } = req.body;
+  const { email, source } = req.body || {};
+  // Non-string fields used to reach .trim() and 500; names were unbounded.
+  const firstName = typeof req.body?.firstName === 'string' ? req.body.firstName.trim().slice(0, 80) : '';
+  const lastName = typeof req.body?.lastName === 'string' ? req.body.lastName.trim().slice(0, 80) : '';
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required.' });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (typeof email !== 'string' || email.length > 254 || !emailRegex.test(email)) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
 
@@ -316,8 +320,8 @@ app.post('/api/subscribe', async (req, res) => {
 
     const now = new Date();
     subscribers.push({
-      firstName: (firstName && firstName.trim()) || '',
-      lastName: (lastName && lastName.trim()) || '',
+      firstName,
+      lastName,
       email: normalizedEmail,
       source: (source && String(source).trim().slice(0, 64)) || null,
       dateSubscribed: now.toISOString().split('T')[0],
@@ -326,7 +330,7 @@ app.post('/api/subscribe', async (req, res) => {
     });
 
     writeSubscribers(subscribers);
-    const displayName = (firstName && firstName.trim()) || 'there';
+    const displayName = firstName || 'there';
     console.log(`New subscriber: ${displayName} <${normalizedEmail}> (total: ${subscribers.length})`);
 
     // Send welcome email (non-blocking — don't fail the subscribe if email fails)
@@ -341,7 +345,7 @@ app.post('/api/subscribe', async (req, res) => {
               <h1 style="color:#c9a84c;margin:0;font-size:24px;">&#9670; International RE</h1>
             </div>
             <div style="padding:30px;background:#fff;">
-              <h2 style="color:#1a1a2e;">Welcome, ${displayName}!</h2>
+              <h2 style="color:#1a1a2e;">Welcome, ${escapeHtml(displayName)}!</h2>
               <p>Thanks for subscribing to International RE.</p>
               <h3 style="color:#c9a84c;">Your Expat Starter Kit</h3>
               <p>A 17-city market comparison, residency routes for 10 countries, a 47-item relocation checklist and a six-month buying timeline — all on one page you can print or save.</p>
@@ -382,8 +386,9 @@ app.post('/api/subscribe', async (req, res) => {
 app.post('/api/unsubscribe', async (req, res) => {
   const ip = clientIp(req);
   if (!checkRateLimit(ip)) return res.status(429).json({ error: 'Too many requests. Please try again later.' });
-  const { email } = req.body;
-  if (!email) return res.status(400).json({ error: 'Email is required.' });
+  const { email } = req.body || {};
+  // A non-string email used to throw outside the try and leave the request hanging.
+  if (!email || typeof email !== 'string' || email.length > 254) return res.status(400).json({ error: 'Email is required.' });
   const normalizedEmail = email.trim().toLowerCase();
   await acquireLock();
   try {
@@ -415,40 +420,51 @@ const CONTACT_FILE = path.join(path.dirname(SUBSCRIBERS_FILE), 'messages.json');
 const contactRateLimitMap = new Map();
 const CONTACT_KINDS = { advisory: 'Advisory application', correction: 'Correction', question: 'Question', privacy: 'Data / privacy request', other: 'Other' };
 
-app.post('/api/contact', async (req, res) => {
-  const ip = clientIp(req);
+// Shared by /api/contact (JSON, from the page scripts) and /advisory-intake (the
+// plain HTML form post, for visitors whose JavaScript failed or was blocked).
+function contactRateLimited(ip) {
   const now = Date.now();
   const rl = contactRateLimitMap.get(ip) || { count: 0, resetAt: now + 60 * 60 * 1000 };
   if (now > rl.resetAt) { rl.count = 0; rl.resetAt = now + 60 * 60 * 1000; }
   rl.count++;
   contactRateLimitMap.set(ip, rl);
-  if (rl.count > 5) return res.status(429).json({ error: 'Too many messages. Please try again later.' });
+  if (contactRateLimitMap.size > 10000) for (const [k, v] of contactRateLimitMap) if (now > v.resetAt) contactRateLimitMap.delete(k);
+  return rl.count > 5;
+}
 
-  const { name, email, page, kind, message, website } = req.body || {};
-  if (website) return res.json({ message: 'Thanks — your message has been sent.' }); // honeypot: pretend success
-  const em = String(email || '').trim().toLowerCase();
-  const msg = String(message || '').trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) || em.length > 200) return res.status(400).json({ error: 'Please enter a valid email address so we can reply.' });
-  if (msg.length < 10) return res.status(400).json({ error: 'Please write a little more detail.' });
-  if (msg.length > 5000) return res.status(400).json({ error: 'Please keep your message under 5,000 characters.' });
-  const entry = {
+// Returns { error } or { entry }.
+function buildContactEntry({ name, email, page, kind, message } = {}) {
+  const em = typeof email === 'string' ? email.trim().toLowerCase() : '';
+  const msg = typeof message === 'string' ? message.trim() : '';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) || em.length > 200) return { error: 'Please enter a valid email address so we can reply.' };
+  if (msg.length < 10) return { error: 'Please write a little more detail.' };
+  if (msg.length > 5000) return { error: 'Please keep your message under 5,000 characters.' };
+  return { entry: {
     at: new Date().toISOString(),
-    kind: CONTACT_KINDS[kind] ? kind : 'other',
-    name: String(name || '').trim().slice(0, 100),
+    kind: Object.hasOwn(CONTACT_KINDS, kind) ? kind : 'other',
+    name: String(typeof name === 'string' ? name : '').trim().slice(0, 100),
     email: em,
-    page: String(page || '').trim().slice(0, 300),
+    page: String(typeof page === 'string' ? page : '').trim().slice(0, 300),
     message: msg,
-  };
+  } };
+}
 
+// Keeps a copy on the volume and emails it to the owner; never throws.
+// Returns true if the message reached at least one of them.
+async function deliverContact(entry) {
+  // Only claim success if the message went somewhere the owner will see it.
+  let saved = false, emailed = false;
   try {
     ensureDataDir();
     let all = [];
     try { all = JSON.parse(fs.readFileSync(CONTACT_FILE, 'utf-8')); } catch {}
     all.push(entry);
     fs.writeFileSync(CONTACT_FILE, JSON.stringify(all.slice(-500), null, 2));
+    saved = true;
   } catch (err) { console.error('Contact save failed:', err.message); }
 
   const to = process.env.CONTACT_EMAIL || process.env.BACKUP_EMAIL;
+  if (!resend || !to) console.error(`Contact email NOT sent: ${!resend ? 'RESEND_API_KEY' : 'CONTACT_EMAIL / BACKUP_EMAIL'} is not set`);
   if (resend && to) {
     try {
       await resend.emails.send({
@@ -462,10 +478,49 @@ app.post('/api/contact', async (req, res) => {
           <p style="white-space:pre-wrap;border-left:3px solid #c9a84c;padding-left:12px">${escapeHtml(entry.message)}</p>
           <p style="color:#888;font-size:13px">Reply to this email to answer the reader directly.</p></div>`,
       });
+      emailed = true;
     } catch (err) { console.error('Contact email failed:', err.message); }
   }
-  console.log(`Contact message (${entry.kind}) from ${entry.email}`);
+  console.log(`Contact message (${entry.kind}) from ${entry.email}: ${saved ? 'saved' : 'NOT saved'}, ${emailed ? 'emailed' : 'NOT emailed'}`);
+  return saved || emailed;
+}
+
+app.post('/api/contact', async (req, res) => {
+  if (contactRateLimited(clientIp(req))) return res.status(429).json({ error: 'Too many messages. Please try again later.' });
+  const body = req.body || {};
+  if (body.website) return res.json({ message: 'Thanks — your message has been sent.' }); // honeypot: pretend success
+  const { error, entry } = buildContactEntry(body);
+  if (error) return res.status(400).json({ error });
+  if (!(await deliverContact(entry))) return res.status(500).json({ error: 'Sorry — we could not send your message just now. Please try again in a few minutes.' });
   res.json({ message: 'Thanks — your message has been sent. We reply within a few days.' });
+});
+
+// Same message the advisory.html script builds and posts to /api/contact.
+const ADVISORY_FIELDS = ['tier_interest', 'target_country', 'budget_range', 'timeline'];
+function advisoryMessage(f) {
+  const v = k => (typeof f[k] === 'string' ? f[k].trim().slice(0, 200) : '');
+  return [
+    'ADVISORY APPLICATION',
+    'Tier: ' + v('tier_interest'),
+    'Target country: ' + v('target_country'),
+    'Budget: ' + v('budget_range'),
+    'Timeline: ' + v('timeline'),
+    '',
+    'Goals:',
+    (typeof f.motivation === 'string' && f.motivation.trim().slice(0, 4000)) || '(not given)',
+  ].join('\n');
+}
+
+app.post('/advisory-intake', express.urlencoded({ extended: false, limit: '20kb', parameterLimit: 20 }), async (req, res) => {
+  if (contactRateLimited(clientIp(req))) return res.redirect(303, '/advisory.html?error=rate#advisoryIntakeForm');
+  const f = req.body || {};
+  if (f.website) return res.redirect(303, '/advisory-success.html'); // honeypot
+  const name = typeof f.name === 'string' ? f.name.trim() : '';
+  if (!name || ADVISORY_FIELDS.some(k => typeof f[k] !== 'string' || !f[k].trim())) return res.redirect(303, '/advisory.html?error=1#advisoryIntakeForm');
+  const { error, entry } = buildContactEntry({ kind: 'advisory', name, email: f.email, page: '/advisory.html', message: advisoryMessage(f) });
+  if (error) return res.redirect(303, '/advisory.html?error=1#advisoryIntakeForm');
+  if (!(await deliverContact(entry))) return res.redirect(303, '/advisory.html?error=send#advisoryIntakeForm');
+  res.redirect(303, '/advisory-success.html');
 });
 
 // ─── Status for the Mission Control dashboard ───
@@ -825,7 +880,7 @@ app.post('/api/send-newsletter', async (req, res) => {
         from: EMAIL_FROM,
         to: sub.email,
         subject,
-        html: html.replace(/{{firstName}}/g, sub.firstName || 'there')
+        html: html.replace(/{{firstName}}/g, escapeHtml(sub.firstName || 'there'))
       }).then(() => { sent++; }).catch(err => {
         console.error(`Failed to send to ${sub.email}:`, err);
         failed++;
@@ -839,6 +894,22 @@ app.post('/api/send-newsletter', async (req, res) => {
 });
 
 // ─── RSS Feed — scans all content directories for dlvr.it auto-posting ───
+
+// Escaping the raw attribute text again turned "Peru&#x27;s" into "Peru&amp;#x27;s",
+// so the homepage Latest cards (refreshed from this feed) showed a literal "&#x27;".
+const NAMED_ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0', mdash: '\u2014', ndash: '\u2013', hellip: '\u2026', rsquo: '\u2019', lsquo: '\u2018', rdquo: '\u201d', ldquo: '\u201c', rarr: '\u2192', middot: '\u00b7', copy: '\u00a9', eacute: '\u00e9', aacute: '\u00e1', iacute: '\u00ed', oacute: '\u00f3', uacute: '\u00fa', ntilde: '\u00f1' };
+function decodeEntities(t) {
+  return String(t).replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
+    if (e[0] === '#') {
+      const n = e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      return n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : m;
+    }
+    return Object.hasOwn(NAMED_ENTITIES, e) ? NAMED_ENTITIES[e] : m;
+  });
+}
+function xmlEscape(t) {
+  return String(t).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+}
 
 app.get('/rss.xml', (req, res) => res.redirect(301, '/feed.xml'));
 app.get('/feed.xml', (req, res) => {
@@ -877,8 +948,10 @@ app.get('/feed.xml', (req, res) => {
 
         const baseLink = `https://www.internationalre.org/${urlPrefix}/${file}`;
         items.push({
-          title: titleMatch ? titleMatch[1].trim() : file.replace('.html', ''),
-          description: descMatch ? descMatch[1] : '',
+          // Titles and meta descriptions are already HTML-escaped ("Peru&#x27;s"):
+          // decode first so xmlEscape below escapes them exactly once.
+          title: titleMatch ? decodeEntities(titleMatch[1].trim()) : file.replace('.html', ''),
+          description: descMatch ? decodeEntities(descMatch[1]) : '',
           link: `${baseLink}?utm_source=rss&utm_medium=social&utm_campaign=dlvr`,
           guid: baseLink,
           date: dateStr || fileStat.mtime.toISOString().split('T')[0]
@@ -899,9 +972,9 @@ app.get('/feed.xml', (req, res) => {
     <language>en-us</language>
     <atom:link href="https://www.internationalre.org/feed.xml" rel="self" type="application/rss+xml"/>
     ${items.map(item => `<item>
-      <title>${item.title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</title>
-      <link>${item.link.replace(/&/g, '&amp;')}</link>
-      <description>${item.description.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</description>
+      <title>${xmlEscape(item.title)}</title>
+      <link>${xmlEscape(item.link)}</link>
+      <description>${xmlEscape(item.description)}</description>
       <pubDate>${item.date ? new Date(item.date).toUTCString() : ''}</pubDate>
       <guid isPermaLink="false">${item.guid}</guid>
     </item>`).join('\n    ')}
@@ -1266,7 +1339,7 @@ function dueNewsletter(now) {
 }
 
 function newsletterEmail(issue, firstName) {
-  const body = issue.html.replace(/{{firstName}}/g, firstName || 'there');
+  const body = issue.html.replace(/{{firstName}}/g, escapeHtml(firstName || 'there'));
   return `${body}
       <p style="color:#aaa;font-size:0.78rem;margin-top:28px;border-top:1px solid #eee;padding-top:16px;font-family:Inter,Arial,sans-serif;text-align:center;">
         You're receiving this because you subscribed at internationalre.org. <a href="https://www.internationalre.org/newsletter.html" style="color:#c9a84c;">Past issues</a> · <a href="https://www.internationalre.org/contact.html" style="color:#c9a84c;">Questions? Contact us</a> · <a href="https://www.internationalre.org/unsubscribe.html" style="color:#999;">Unsubscribe</a>
@@ -1317,7 +1390,7 @@ async function dripCheckOnce(source) {
             from: EMAIL_FROM,
             to: sub.email,
             subject: email.subject,
-            html: email.html(sub.firstName || 'there')
+            html: email.html(escapeHtml(sub.firstName || 'there'))
           });
           newDrip.push(email.id);
           sent++;
@@ -1498,9 +1571,11 @@ app.use((req, res) => {
 // Express's default error page includes a stack trace with server file paths.
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err);
-  const status = err.status || err.statusCode || 500;
+  let status = Number(err.status || err.statusCode) || 500;
+  if (status < 400 || status > 599) status = 500;
   if (status >= 500) console.error('Unhandled error:', err);
-  res.status(status).json({ error: status === 400 ? 'Invalid request.' : status === 413 ? 'Request too large.' : 'Server error.' });
+  // Fixed messages only: err.message can carry parser internals or file paths.
+  res.status(status).json({ error: status === 413 ? 'Request too large.' : status < 500 ? 'Invalid request.' : 'Server error.' });
 });
 
 // ─── Error handling ───
