@@ -10,6 +10,9 @@ on:
   schedule:
     - cron: "20 9 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/daily-checks.yml]
 permissions:
   contents: read
   issues: write
