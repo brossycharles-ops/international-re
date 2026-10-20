@@ -2772,3 +2772,15 @@ a {
 #worldMap.leaflet-container { background: #0f1a2b !important; }
 /* Keep Leaflet's controls (z-index 1000) under the fixed navbar */
 .map-container { position: relative; z-index: 0; isolation: isolate; }
+
+/* Homepage hero: sign up in one step (was a button to a separate page) */
+.hero-signup { display: flex; gap: 10px; max-width: 540px; margin: 0 auto 12px; flex-wrap: wrap; justify-content: center; }
+.hero-signup input { flex: 1 1 240px; min-width: 0; padding: 15px 18px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.96); font-size: 1rem; color: #0a1628; }
+.hero-signup input:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
+.hero-signup .btn { flex: 0 0 auto; }
+.hero-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hero-kit { max-width: 540px; margin: 0 auto 14px; font-size: 0.88rem; line-height: 1.55; color: rgba(255,255,255,0.85); }
+.hero .subscribe-msg { color: #fff; margin: 0 auto 10px; }
+.hero-explore { display: inline-block; margin-bottom: 48px; font-size: 0.9rem; color: rgba(255,255,255,0.78); text-decoration: underline; text-underline-offset: 3px; }
+.hero-explore:hover { color: var(--gold); }
+@media (max-width: 480px) { .hero-signup .btn { width: 100%; } }

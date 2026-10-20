@@ -137,7 +137,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261020">
+  <link rel="stylesheet" href="/styles.css?v=20261020b">
   <link rel="stylesheet" href="layout_updates.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script defer src="/js/analytics.js"></script>
@@ -177,10 +177,13 @@
       <p class="hero-label">internationalre.org</p>
       <h1>Unlock Latin America's<br><span class="highlight">Real Estate Potential</span></h1>
       <p class="hero-sub">Free weekly newsletter covering property prices, investment opportunities &amp; expat living across Costa Rica, Panama, Colombia, Mexico, Argentina, Chile &amp; more in 2026.</p>
-      <div class="hero-actions">
-        <a href="/free-guide.html" class="btn btn-primary">Get Free Starter Kit</a>
-        <a href="#markets" class="btn btn-outline">Explore Markets</a>
-      </div>
+      <form class="hero-signup" data-lc-subscribe="homepage-hero">
+        <label for="heroEmail" class="hero-sr">Email address</label>
+        <input id="heroEmail" type="email" name="email" autocomplete="email" placeholder="Your email address" required>
+        <button type="submit" class="btn btn-primary">Get the free Starter Kit</button>
+      </form>
+      <p class="hero-kit">Free: a 17-city price &amp; yield comparison, residency routes for 10 countries and a 47-item buying checklist, plus one research-checked email a week. Unsubscribe anytime.</p>
+      <a href="#markets" class="hero-explore">or explore the markets &darr;</a>
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">11</span>
