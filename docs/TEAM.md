@@ -56,3 +56,4 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 - Judge the week by search visits, new subscribers and conversion (Scoreboard), not by pages shipped.
 
 ## Reports to the Growth Director
+- 2026-10-20 growth: shipped Peru buying guide, Cuenca cost-of-living quick-read, Costa Rica pensionado tip (all checker-verified, topic-matched Starter Kit callout after the first answer), research-verified June market update, Montevideo city guide; fixed Ecuador retiree-visa threshold ($500 -> $1,446, 3 SBU) on retire-in-ecuador and Quito pages and 9 'International RE Research' bylines; metric: search visits to retirement cluster + signups; suggestion: retire-in-ecuador is a top-cluster page still unverified (rentista/investor amounts, costs) - give it to the Research Editor next.
