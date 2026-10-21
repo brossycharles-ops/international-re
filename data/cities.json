@@ -8,16 +8,66 @@
       "tagline": "Colombia's second city — direct foreign ownership, no residency needed to buy, and spring-like weather year-round.",
       "heroImage": "https://images.unsplash.com/photo-1715503234327-b57d32e5da0f",
       "stats": {
-        "pricePerSqm": "$1,400–$2,500",
+        "pricePerSqm": "$1,600–$2,800",
         "rentalYield": "~6.9% gross",
-        "costOfLiving": "$1,400–$2,200/mo",
+        "costOfLiving": "$1,470–$1,900/mo",
         "currency": "Colombian Peso (COP)"
       },
       "matchSlugs": [
         "medellin",
         "colombia"
       ],
-      "metaDescription": "Everything we know about Medellín real estate in 2026 — current prices per m², rental yields, best neighborhoods, foreign buyer rules, and cost of living."
+      "metaDescription": "Everything we know about Medellín real estate in 2026 — current prices per m², rental yields, best neighborhoods, foreign buyer rules, and cost of living.",
+      "statsUpdated": "2026-10-21",
+      "statsSources": [
+        {
+          "title": "Metrocuadrado: price per m² for sale in Medellín (Aug 2026)",
+          "url": "https://www.metrocuadrado.com/noticias/precios-m2/cual-es-el-precio-del-metro-cuadrado-en-venta-en-medellin-y-los-municipios-del-valle-de-aburra-7053",
+          "supports": "pricePerSqm: COP 5.13M–8.92M/m² for 50–200 m² apartments, estratos 3–6 (≈$1,620–$2,820 at TRM 3,163.76)"
+        },
+        {
+          "title": "Global Property Guide: square meter prices in Colombia cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/colombia/square-meter-prices",
+          "supports": "pricePerSqm cross-check: new-build Medellín $2,412/m², 2026 Q3"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Colombia",
+          "url": "https://www.globalpropertyguide.com/latin-america/colombia/rental-yields",
+          "supports": "rentalYield: Medellín average 6.88% gross, Q3 2026"
+        },
+        {
+          "title": "Numbeo: cost of living in Medellín",
+          "url": "https://www.numbeo.com/cost-of-living/in/Medellin?displayCurrency=USD",
+          "supports": "costOfLiving: $840.6/mo single excluding rent + 1-bed rent $633 (outside centre) to $1,055 (centre), Oct 2026"
+        },
+        {
+          "title": "datos.gov.co: TRM official COP/USD rate",
+          "url": "https://www.datos.gov.co/resource/32sa-8pi3.json",
+          "supports": "currency: COP; TRM 3,163.76 per USD on 2026-10-21, used for conversions"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Metrocuadrado: price per m² for sale in Medellín (Aug 2026)",
+          "url": "https://www.metrocuadrado.com/noticias/precios-m2/cual-es-el-precio-del-metro-cuadrado-en-venta-en-medellin-y-los-municipios-del-valle-de-aburra-7053"
+        },
+        {
+          "title": "Global Property Guide: square meter prices in Colombia cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/colombia/square-meter-prices"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Colombia",
+          "url": "https://www.globalpropertyguide.com/latin-america/colombia/rental-yields"
+        },
+        {
+          "title": "Numbeo: cost of living in Medellín",
+          "url": "https://www.numbeo.com/cost-of-living/in/Medellin?displayCurrency=USD"
+        },
+        {
+          "title": "datos.gov.co: TRM official COP/USD rate",
+          "url": "https://www.datos.gov.co/resource/32sa-8pi3.json"
+        }
+      ]
     },
     {
       "slug": "cartagena-colombia",
@@ -27,16 +77,66 @@
       "tagline": "Walled colonial city on the Caribbean coast — compare the Old City with beachfront Bocagrande before you buy.",
       "heroImage": "https://images.unsplash.com/photo-1714686495394-73e2bb1bbd39",
       "stats": {
-        "pricePerSqm": "$2,000–$3,500",
-        "rentalYield": "6–8%",
-        "costOfLiving": "$1,500–$2,400/mo",
+        "pricePerSqm": "$2,200–$4,100",
+        "rentalYield": "~5.2% gross",
+        "costOfLiving": "Not published (1-bed rent ~$580–$1,060/mo, Numbeo)",
         "currency": "Colombian Peso (COP)"
       },
       "matchSlugs": [
         "cartagena",
         "colombia"
       ],
-      "metaDescription": "Cartagena, Colombia real estate guide 2026 — prices, yields, Old City vs Bocagrande, foreign buyer rules, and Airbnb income data."
+      "metaDescription": "Cartagena, Colombia real estate guide 2026 — prices, yields, Old City vs Bocagrande, foreign buyer rules, and Airbnb income data.",
+      "statsUpdated": "2026-10-21",
+      "statsSources": [
+        {
+          "title": "Ciencuadras: apartments in Cartagena average COP 7 million per m² in 2026",
+          "url": "https://www.ciencuadras.com/blog/evolucion-del-mercado-de-vivienda/actualidad-del-mercado-inmobiliario-en-cartagena-2026",
+          "supports": "pricePerSqm: city average asking COP 7,017,097/m² (≈$2,220), May 2026"
+        },
+        {
+          "title": "El Universal: price per m² in Cartagena’s coastal zone (Catastro observatory)",
+          "url": "https://www.eluniversal.com.co/economica/2025/10/22/asi-estan-los-precios-del-metro-cuadrado-en-la-zona-costera-de-cartagena/",
+          "supports": "pricePerSqm: Bocagrande average COP 13M/m² (≈$4,110), Oct 2025"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Colombia",
+          "url": "https://www.globalpropertyguide.com/latin-america/colombia/rental-yields",
+          "supports": "rentalYield: Cartagena average 5.22% gross, Q3 2026"
+        },
+        {
+          "title": "Numbeo: cost of living in Cartagena",
+          "url": "https://www.numbeo.com/cost-of-living/in/Cartagena?displayCurrency=USD",
+          "supports": "costOfLiving: 1-bed rent $584 (outside centre) to $1,057 (centre); no single-person estimate published, Oct 2026"
+        },
+        {
+          "title": "datos.gov.co: TRM official COP/USD rate",
+          "url": "https://www.datos.gov.co/resource/32sa-8pi3.json",
+          "supports": "currency: COP; TRM 3,163.76 per USD on 2026-10-21, used for conversions"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ciencuadras: apartments in Cartagena average COP 7 million per m² in 2026",
+          "url": "https://www.ciencuadras.com/blog/evolucion-del-mercado-de-vivienda/actualidad-del-mercado-inmobiliario-en-cartagena-2026"
+        },
+        {
+          "title": "El Universal: price per m² in Cartagena’s coastal zone (Catastro observatory)",
+          "url": "https://www.eluniversal.com.co/economica/2025/10/22/asi-estan-los-precios-del-metro-cuadrado-en-la-zona-costera-de-cartagena/"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Colombia",
+          "url": "https://www.globalpropertyguide.com/latin-america/colombia/rental-yields"
+        },
+        {
+          "title": "Numbeo: cost of living in Cartagena",
+          "url": "https://www.numbeo.com/cost-of-living/in/Cartagena?displayCurrency=USD"
+        },
+        {
+          "title": "datos.gov.co: TRM official COP/USD rate",
+          "url": "https://www.datos.gov.co/resource/32sa-8pi3.json"
+        }
+      ]
     },
     {
       "slug": "panama-city-panama",
@@ -64,16 +164,57 @@
       "tagline": "Central Valley capital with deep expat infrastructure and political stability since 1948.",
       "heroImage": "https://images.unsplash.com/photo-1699385600854-5b2137d14cfd",
       "stats": {
-        "pricePerSqm": "$1,400–$2,800",
-        "rentalYield": "5–8%",
-        "costOfLiving": "$1,800–$3,200/mo",
+        "pricePerSqm": "$2,100–$2,950",
+        "rentalYield": "6.3–8.1% gross",
+        "costOfLiving": "$1,770–$1,950/mo",
         "currency": "Costa Rican Colón (CRC)"
       },
       "matchSlugs": [
         "costa-rica",
         "san-jose"
       ],
-      "metaDescription": "San José, Costa Rica real estate guide 2026 — current prices, yields, foreign buyer rules, residency pathways, and expat-favored neighborhoods."
+      "metaDescription": "San José, Costa Rica real estate guide 2026 — current prices, yields, foreign buyer rules, residency pathways, and expat-favored neighborhoods.",
+      "statsUpdated": "2026-10-21",
+      "statsSources": [
+        {
+          "title": "Global Property Guide: square meter prices in Costa Rica cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/square-meter-prices",
+          "supports": "pricePerSqm: new-build apartments Santa Ana $2,087, Escazú $2,219, San José $2,949/m², 2026 Q3"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Costa Rica",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/rental-yields",
+          "supports": "rentalYield: Escazú 6.29%, Santa Ana 7.86%, San José 8.05% gross, Q2 2026"
+        },
+        {
+          "title": "Numbeo: cost of living in San José",
+          "url": "https://www.numbeo.com/cost-of-living/in/San-Jose-Costa-Rica?displayCurrency=USD",
+          "supports": "costOfLiving: $1,005.4/mo single excluding rent + 1-bed rent $761 (outside centre) to $944 (centre), Oct 2026"
+        },
+        {
+          "title": "Global Property Guide: Costa Rica residential property market analysis 2026",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/price-history",
+          "supports": "currency: CRC; BCCR reference rate ₡447.75 buy / ₡453.33 sell per USD, Aug 2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Global Property Guide: square meter prices in Costa Rica cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/square-meter-prices"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Costa Rica",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/rental-yields"
+        },
+        {
+          "title": "Numbeo: cost of living in San José",
+          "url": "https://www.numbeo.com/cost-of-living/in/San-Jose-Costa-Rica?displayCurrency=USD"
+        },
+        {
+          "title": "Global Property Guide: Costa Rica residential property market analysis 2026",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/price-history"
+        }
+      ]
     },
     {
       "slug": "guanacaste-costa-rica",
@@ -83,9 +224,9 @@
       "tagline": "Pacific surf-and-sun region — LIR airport's busiest quarter ever and a $1.2B development pipeline.",
       "heroImage": "https://images.unsplash.com/photo-1643122542535-1326d7658ff1",
       "stats": {
-        "pricePerSqm": "$2,200–$4,500",
-        "rentalYield": "9–11%",
-        "costOfLiving": "$2,000–$3,500/mo",
+        "pricePerSqm": "$2,000–$3,000",
+        "rentalYield": "No reliable published data",
+        "costOfLiving": "Not published (1-bed rent ~$950–$1,930/mo, Numbeo Tamarindo)",
         "currency": "Costa Rican Colón (CRC)"
       },
       "matchSlugs": [
@@ -93,7 +234,39 @@
         "tamarindo",
         "costa-rica"
       ],
-      "metaDescription": "Guanacaste, Costa Rica real estate 2026 — Tamarindo, Nosara, Papagayo. Current prices per m², 9-11% rental yields, and foreign buyer rules."
+      "metaDescription": "Guanacaste, Costa Rica real estate 2026 — Tamarindo, Nosara, Papagayo. Current prices per m², 9-11% rental yields, and foreign buyer rules.",
+      "statsUpdated": "2026-10-21",
+      "statsSources": [
+        {
+          "title": "El Financiero: ¿Cuánto cuesta vivir en un condominio frente al mar?",
+          "url": "https://www.elfinancierocr.com/economia-y-politica/cuanto-cuesta-vivir-en-un-condominio-frente-al-mar/BOJHCSW6GZGENMTLJZ6PDQVPCM/story/",
+          "supports": "pricePerSqm: beach-condo asking averages $2,000 (Cabo Velas), $2,900 (Tamarindo), $3,000 (Playas del Coco) per m², small sample, Aug 2026; rentalYield: no index or official Guanacaste yield found"
+        },
+        {
+          "title": "Numbeo: cost of living in Tamarindo",
+          "url": "https://www.numbeo.com/cost-of-living/in/Tamarindo-Costa-Rica",
+          "supports": "costOfLiving: 1-bed rent ₡430,912 (outside centre) to ₡874,965 (centre) ≈ $950–$1,930; no single-person estimate published, Oct 2026"
+        },
+        {
+          "title": "Global Property Guide: Costa Rica residential property market analysis 2026",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/price-history",
+          "supports": "currency: CRC; BCCR reference rate ₡447.75 buy / ₡453.33 sell per USD, Aug 2026"
+        }
+      ],
+      "sources": [
+        {
+          "title": "El Financiero: ¿Cuánto cuesta vivir en un condominio frente al mar?",
+          "url": "https://www.elfinancierocr.com/economia-y-politica/cuanto-cuesta-vivir-en-un-condominio-frente-al-mar/BOJHCSW6GZGENMTLJZ6PDQVPCM/story/"
+        },
+        {
+          "title": "Numbeo: cost of living in Tamarindo",
+          "url": "https://www.numbeo.com/cost-of-living/in/Tamarindo-Costa-Rica"
+        },
+        {
+          "title": "Global Property Guide: Costa Rica residential property market analysis 2026",
+          "url": "https://www.globalpropertyguide.com/latin-america/costa-rica/price-history"
+        }
+      ]
     },
     {
       "slug": "buenos-aires-argentina",
@@ -122,16 +295,75 @@
       "tagline": "Latin America's biggest economy hub — Polanco, Roma, Condesa drawing waves of remote workers.",
       "heroImage": "https://images.unsplash.com/photo-1518659526054-190340b32735",
       "stats": {
-        "pricePerSqm": "$2,400–$4,200",
-        "rentalYield": "5.5–7.5%",
-        "costOfLiving": "$1,400–$2,500/mo",
+        "pricePerSqm": "$2,300–$4,600",
+        "rentalYield": "6.5–7% gross",
+        "costOfLiving": "$1,420–$1,800/mo",
         "currency": "Mexican Peso (MXN)"
       },
       "matchSlugs": [
         "mexico-city",
         "mexico"
       ],
-      "metaDescription": "Mexico City (CDMX) real estate 2026 — Polanco, Roma, Condesa prices, rental yields, foreign buyer rules, and expat cost of living."
+      "metaDescription": "Mexico City (CDMX) real estate 2026 — Polanco, Roma, Condesa prices, rental yields, foreign buyer rules, and expat cost of living.",
+      "statsUpdated": "2026-10-21",
+      "statsSources": [
+        {
+          "title": "Propiedades.com: apartment prices per m², Narvarte Poniente",
+          "url": "https://propiedades.com/valores/narvarte-poniente-benito-juarez/departamentos-venta",
+          "supports": "pricePerSqm low end: median asking MXN 43,100/m² (≈$2,340 at Banxico FIX 18.42), Oct 2026"
+        },
+        {
+          "title": "Propiedades.com: apartment prices per m², Polanco V Sección",
+          "url": "https://propiedades.com/valores/polanco-v-seccion-miguel-hidalgo/departamentos-venta",
+          "supports": "pricePerSqm high end: median asking MXN 84,300/m² (≈$4,580), Oct 2026"
+        },
+        {
+          "title": "Global Property Guide: square meter prices in Mexico cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/square-meter-prices",
+          "supports": "pricePerSqm cross-check: new-build Mexico City $2,947/m², 2026 Q2"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Mexico",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/rental-yields",
+          "supports": "rentalYield: Mexico City average 6.77%; 6.53–7.05% by unit size, Q2 2026"
+        },
+        {
+          "title": "Numbeo: cost of living in Mexico City",
+          "url": "https://www.numbeo.com/cost-of-living/in/Mexico-City?displayCurrency=USD",
+          "supports": "costOfLiving: $765.5/mo single excluding rent + 1-bed rent $657 (outside centre) to $1,030 (centre), Oct 2026"
+        },
+        {
+          "title": "Banxico: FIX exchange rate",
+          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp",
+          "supports": "currency: MXN; FIX 18.4200 per USD on 2026-10-20, used for conversions"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Propiedades.com: apartment prices per m², Narvarte Poniente",
+          "url": "https://propiedades.com/valores/narvarte-poniente-benito-juarez/departamentos-venta"
+        },
+        {
+          "title": "Propiedades.com: apartment prices per m², Polanco V Sección",
+          "url": "https://propiedades.com/valores/polanco-v-seccion-miguel-hidalgo/departamentos-venta"
+        },
+        {
+          "title": "Global Property Guide: square meter prices in Mexico cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/square-meter-prices"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Mexico",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/rental-yields"
+        },
+        {
+          "title": "Numbeo: cost of living in Mexico City",
+          "url": "https://www.numbeo.com/cost-of-living/in/Mexico-City?displayCurrency=USD"
+        },
+        {
+          "title": "Banxico: FIX exchange rate",
+          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp"
+        }
+      ]
     },
     {
       "slug": "playa-del-carmen-mexico",
@@ -141,16 +373,75 @@
       "tagline": "Riviera Maya's beach-town hub — fideicomiso ownership, dollar income from Airbnb tourists.",
       "heroImage": "https://images.unsplash.com/photo-1640617547871-15e4fb41d0c5",
       "stats": {
-        "pricePerSqm": "$2,500–$4,800",
-        "rentalYield": "7–10%",
-        "costOfLiving": "$1,800–$3,000/mo",
+        "pricePerSqm": "$1,500–$3,400",
+        "rentalYield": "No reliable published data",
+        "costOfLiving": "Not published (1-bed rent ~$380–$980/mo, Numbeo)",
         "currency": "Mexican Peso (MXN)"
       },
       "matchSlugs": [
         "playa-del-carmen",
         "mexico"
       ],
-      "metaDescription": "Playa del Carmen real estate 2026 — Riviera Maya condo prices, Airbnb yields of 7-10%, and fideicomiso (bank trust) rules for foreign buyers in Mexico."
+      "metaDescription": "Playa del Carmen real estate 2026 — Riviera Maya condo prices, Airbnb yields of 7-10%, and fideicomiso (bank trust) rules for foreign buyers in Mexico.",
+      "statsUpdated": "2026-10-21",
+      "statsSources": [
+        {
+          "title": "Propiedades.com: apartment prices per m² in Playa del Carmen",
+          "url": "https://propiedades.com/valores/playa-del-carmen/departamentos-venta",
+          "supports": "pricePerSqm: city median asking MXN 51,000/m² (≈$2,770 at Banxico FIX 18.42), Oct 2026"
+        },
+        {
+          "title": "Propiedades.com: apartment prices per m², Ejidal",
+          "url": "https://propiedades.com/valores/ejidal-solidaridad-quintana-roo/departamentos-venta",
+          "supports": "pricePerSqm low end: median asking MXN 28,100/m² (≈$1,530), Oct 2026"
+        },
+        {
+          "title": "Propiedades.com: apartment prices per m², Zazil-Ha",
+          "url": "https://propiedades.com/valores/zazil-ha-solidaridad/departamentos-venta",
+          "supports": "pricePerSqm high end: median asking MXN 62,800/m² (≈$3,410), Oct 2026"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Mexico",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/rental-yields",
+          "supports": "rentalYield: no Playa del Carmen figure published (nearest: Cancún 4.60% long-term gross, Q2 2026)"
+        },
+        {
+          "title": "Numbeo: cost of living in Playa del Carmen",
+          "url": "https://www.numbeo.com/cost-of-living/city_result.jsp?country=Mexico&city=Playa+del+Carmen&displayCurrency=USD",
+          "supports": "costOfLiving: 1-bed rent $378 (outside centre) to $981 (centre); no single-person estimate published, Oct 2026"
+        },
+        {
+          "title": "Banxico: FIX exchange rate",
+          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp",
+          "supports": "currency: MXN; FIX 18.4200 per USD on 2026-10-20, used for conversions"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Propiedades.com: apartment prices per m² in Playa del Carmen",
+          "url": "https://propiedades.com/valores/playa-del-carmen/departamentos-venta"
+        },
+        {
+          "title": "Propiedades.com: apartment prices per m², Ejidal",
+          "url": "https://propiedades.com/valores/ejidal-solidaridad-quintana-roo/departamentos-venta"
+        },
+        {
+          "title": "Propiedades.com: apartment prices per m², Zazil-Ha",
+          "url": "https://propiedades.com/valores/zazil-ha-solidaridad/departamentos-venta"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Mexico",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/rental-yields"
+        },
+        {
+          "title": "Numbeo: cost of living in Playa del Carmen",
+          "url": "https://www.numbeo.com/cost-of-living/city_result.jsp?country=Mexico&city=Playa+del+Carmen&displayCurrency=USD"
+        },
+        {
+          "title": "Banxico: FIX exchange rate",
+          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp"
+        }
+      ]
     },
     {
       "slug": "tulum-mexico",
