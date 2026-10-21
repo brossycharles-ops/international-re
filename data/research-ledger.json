@@ -77,7 +77,8 @@
     "corrected": 9,
     "removed": 12,
     "sources": 19,
-    "notes": "Removed unsourced 9–11% STR yields, $1.2B Ciudad Nya and 31% correction; AirDNA ~$49K revenue (~8% gross on $600K), maritime-zone art. 47 bars companies >50% foreign-owned"
+    "notes": "Removed unsourced 9–11% STR yields, $1.2B Ciudad Nya and 31% correction; AirDNA ~$49K revenue (~8% gross on $600K), maritime-zone art. 47 bars companies >50% foreign-owned",
+    "links_checked": "2026-10-21"
   },
   "blog/how-to-buy-property-costa-rica-foreigner.html": {
     "verified": "2026-10-20",
@@ -87,6 +88,15 @@
     "removed": 11,
     "sources": 16,
     "notes": "Freshness Keeper: stamp rates 0.5%/0.2%/0.15%, transfer tax split, notary 1-2%+VAT, capital gains 15%/2.25%, impuesto solidario 2026 (₡143M), ZMT Art. 47 rule corrected, Law 9996 window ended July 2026, price cards to Tico Times Jan 2026; checker could not reach Hacienda PDFs, unconfirmed habitual-home exemption removed"
+  },
+  "blog/latam-weekly-apr-14-18-2026.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 28,
+    "corrected": 11,
+    "removed": 9,
+    "sources": 18,
+    "links_checked": "2026-10-21",
+    "notes": "False 'Costa Rica residency rises to $200K in Feb 2026' corrected to Law 9996's $150K (post-July 2026 status disputed); BA yield 7.3% -> 5.83% (Zonaprop Apr 2026); fake 'Editorial Team' byline removed"
   },
   "blog/latam-weekly-oct-12-17-2026.html": {
     "verified": "2026-10-17",
@@ -103,7 +113,8 @@
     "corrected": 26,
     "removed": 28,
     "sources": 29,
-    "notes": "Growth Engine research queue: Argentina yield corrected from 8.35% to 5.94% (Zonaprop May 2026), Uruguay 'zero CGT' corrected to 12% IRNR, Colombia RNT decree shown as a draft, CR train financed but expropriations pending, 28 unsourced claims removed, FAQ added; checker pass: Banrep Sept 30 hike to 12.25% and July 2026 RNT redraft (2028 start) added, SHF Q2 wording to MND's 7.3%, San José GPG figure dated, Panama 6.94% attribution fixed"
+    "notes": "Growth Engine research queue: Argentina yield corrected from 8.35% to 5.94% (Zonaprop May 2026), Uruguay 'zero CGT' corrected to 12% IRNR, Colombia RNT decree shown as a draft, CR train financed but expropriations pending, 28 unsourced claims removed, FAQ added; checker pass: Banrep Sept 30 hike to 12.25% and July 2026 RNT redraft (2028 start) added, SHF Q2 wording to MND's 7.3%, San José GPG figure dated, Panama 6.94% attribution fixed",
+    "links_checked": "2026-10-21"
   },
   "blog/medellin-neighborhoods-expats-2026.html": {
     "verified": "2026-10-16",
@@ -129,7 +140,8 @@
     "corrected": 10,
     "removed": 6,
     "sources": 14,
-    "notes": "Metro Line 3 is not open (tests since Apr 2026, opening expected 2028, 25 km not 34 km); new flats $2,669/m² not $1,900; yield 7.66%"
+    "notes": "Metro Line 3 is not open (tests since Apr 2026, opening expected 2028, 25 km not 34 km); new flats $2,669/m² not $1,900; yield 7.66%",
+    "links_checked": "2026-10-21"
   },
   "blog/retire-in-colombia-2026.html": {
     "verified": "2026-10-16",
@@ -139,6 +151,15 @@
     "sources": 15,
     "notes": "Pensionado income is 3x SMMLV = COP 5,252,715 (~US$1,650), not ~$750, so 'lowest in LatAm' reversed; visa bars social-security/EPS enrolment, so private health insurance is required; fees $335",
     "links_checked": "2026-10-20"
+  },
+  "blog/retire-in-ecuador-2026.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 58,
+    "corrected": 31,
+    "removed": 15,
+    "sources": 31,
+    "links_checked": "2026-10-21",
+    "notes": "Security reversed: 2025 was Ecuador's most violent year (9,216 homicides), not 'improving'; foreign income is taxable (with 5-year temporary regime); IL #1 'eleven times' removed; yields ~4.7% not 6-9%; IESS $84.83 not $70"
   },
   "blog/san-juan-del-sur-affordable-beach.html": {
     "verified": "2026-10-19",
@@ -227,7 +248,8 @@
     "corrected": 2,
     "removed": 0,
     "sources": 15,
-    "notes": "new page; fact-checked (checker: Gestión typo fixed, advisory Do Not Travel cities Abancay/Ayacucho/Huancavelica/Huancayo added; State Dept and BCRP confirmed via RSS/search copy due to bot walls)"
+    "notes": "new page; fact-checked (checker: Gestión typo fixed, advisory Do Not Travel cities Abancay/Ayacucho/Huancavelica/Huancayo added; State Dept and BCRP confirmed via RSS/search copy due to bot walls)",
+    "links_checked": "2026-10-21"
   },
   "guides/medellin-vs-buenos-aires-expat-investors-2026.html": {
     "verified": "2026-10-17",
@@ -289,7 +311,8 @@
     "corrected": 1,
     "removed": 0,
     "sources": 5,
-    "notes": "new page; fact-checked (FAQ low-end total rounded to $885)"
+    "notes": "new page; fact-checked (FAQ low-end total rounded to $885)",
+    "links_checked": "2026-10-21"
   },
   "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
     "verified": "2026-10-16",
@@ -351,6 +374,15 @@
     "removed": 5,
     "sources": 12,
     "notes": "'8–12% Airbnb yield' and '#1 Airbnb market' unsupported: FipeZAP R$13,607/m² (~$2,690, not $2,290), 5.42% long-term yield, ~7% gross STR per AirDNA (3rd in Brazil)"
+  },
+  "tips/medellin-property-vs-miami.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 12,
+    "corrected": 8,
+    "removed": 2,
+    "sources": 10,
+    "links_checked": "2026-10-21",
+    "notes": "Headline '$1,200/m2, 93% below Miami' replaced: Medellin new-builds ~$2,412/m2 (GPG Q3 2026) vs Miami $532/sq ft (~$5,700/m2, Redfin) = ~60% less; peso strengthened, not weakened"
   },
   "tips/peru-alcabala-transfer-tax-2026.html": {
     "verified": "2026-10-17",

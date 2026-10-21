@@ -1,13 +1,12 @@
 # Article quality scorecard
 
-Generated 2026-10-20 by scripts/content_quality.py. 110 indexed articles, average score 73/100, 38 research-verified (35%), 40 with a Sources section, 65 with an FAQ.
+Generated 2026-10-21 by scripts/content_quality.py. 110 indexed articles, average score 74/100, 41 research-verified (37%), 43 with a Sources section, 66 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
 | Score | Page | Verified | Words | Sources | Problems |
 |---|---|---|---|---|---|
-| 51 | blog/latam-weekly-apr-14-18-2026.html | — | 926 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1050 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
+| 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1075 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-26-may-2-2026.html | — | 1039 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/mendoza-wine-country-estates.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/panama-vs-costa-rica-expats-investors-2026.html | — | 1009 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -52,7 +51,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | blog/playa-del-carmen-vs-tulum-2026.html | — | 1278 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-argentina-2026.html | — | 1919 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-costa-rica-2026.html | — | 1379 | 0 | needs a Sources section with 3+ external https links (has 0) |
-| 63 | blog/retire-in-ecuador-2026.html | — | 2243 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-panama-2026.html | — | 1347 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/retire-in-uruguay-2026.html | — | 1478 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/tulum-real-estate-investment-2026.html | — | 1611 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -69,7 +67,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | tips/cartagena-beachfront-vs-miami.html | — | 349 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/costa-rica-foreigner-property-rights.html | — | 391 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/ecuador-dollar-beachfront.html | — | 318 | 0 | needs a Sources section with 1+ external https links (has 0) |
-| 63 | tips/medellin-property-vs-miami.html | — | 252 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/mexico-city-direct-ownership.html | — | 327 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/mexico-fideicomiso-beachfront-ownership.html | — | 399 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/peru-miraflores-foreign-ownership.html | — | 325 | 0 | needs a Sources section with 1+ external https links (has 0) |
@@ -88,12 +85,14 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/granada-nicaraguas-colonial-gem-2026.html | 2026-10-19 | 1914 | 22 | none |
 | 100 | blog/guanacaste-hottest-market-2026.html | 2026-10-20 | 1630 | 21 | none |
 | 100 | blog/how-to-buy-property-costa-rica-foreigner.html | 2026-10-20 | 3094 | 16 | none |
+| 100 | blog/latam-weekly-apr-14-18-2026.html | 2026-10-21 | 1778 | 18 | none |
 | 100 | blog/latam-weekly-oct-12-17-2026.html | 2026-10-17 | 1982 | 21 | none |
 | 100 | blog/latin-america-market-update-june-2026.html | 2026-10-20 | 2759 | 29 | none |
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
 | 100 | blog/medellin-real-estate-2026.html | 2026-10-19 | 2108 | 25 | none |
 | 100 | blog/panama-city-real-estate-2026.html | 2026-10-20 | 1691 | 14 | none |
 | 100 | blog/retire-in-colombia-2026.html | 2026-10-16 | 1977 | 15 | none |
+| 100 | blog/retire-in-ecuador-2026.html | 2026-10-21 | 3202 | 31 | none |
 | 100 | blog/san-juan-del-sur-affordable-beach.html | 2026-10-19 | 2552 | 16 | none |
 | 100 | blog/santiago-vs-lake-district.html | 2026-10-19 | 2061 | 31 | none |
 | 100 | blog/transfer-money-abroad-buy-property-2026.html | 2026-10-19 | 1998 | 10 | none |
@@ -115,4 +114,5 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | tips/chile-off-plan-deposit-guarantee.html | 2026-10-16 | 333 | 2 | none |
 | 100 | tips/costa-rica-pensionado-1000-pension.html | 2026-10-20 | 425 | 4 | none |
 | 100 | tips/florianopolis-airbnb-yield-brazil.html | 2026-10-20 | 858 | 12 | none |
+| 100 | tips/medellin-property-vs-miami.html | 2026-10-21 | 660 | 10 | none |
 | 100 | tips/peru-alcabala-transfer-tax-2026.html | 2026-10-17 | 419 | 5 | none |
