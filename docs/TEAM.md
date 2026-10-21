@@ -30,17 +30,20 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 3. **Earn real referrals.** Search engines sent only 21 visits; distribution (owner-posted kit, forum answers) and internal linking must feed the best pages.
 
 ## Brief: growth
+- Search demand we don't serve: ≈600 impressions in 28 days for Punta Cana / Cap Cana investment queries (rental yield, minimum investment, ROI), all landing on noindexed template pages. Write one genuinely researched, honest guide for it (first idea in docs/IDEAS.md) and link the Dominican Republic pages to it.
+- Strengthen the Costa Rica retirement cluster (≈150 impressions at positions 45–85): link to blog/retire-in-costa-rica-2026.html from related pages; costa-rica-buying-guide-2026 and how-to-buy-property-costa-rica-foreigner compete for the same query (see the search-console note).
 - Spend this week's new pages on the retirement cluster (Mexico, Ecuador, Costa Rica, Panama, Colombia retirement costs/visas) and Costa Rica buying — the topics people already read.
 - Every new page: a topic-matched Starter Kit call to action after the first answer section, not only at the end.
 - Link each new page from the top-traffic pages listed in /api/status `traffic.topPages`.
 
 ## Brief: research
-- First: blog/retire-in-ecuador-2026.html (top retirement-cluster page, never verified; the Growth Engine already corrected its retiree-visa income threshold to $1,446 on Oct 20 — verify the rentista/investor amounts and living costs).
-- Then: tips/medellin-property-vs-miami.html — indexed by Google with the headline claim '$1,200/sqm, 93% below Miami', never verified and no Sources section; the verified Medellín article uses different figures. Verify both numbers or rewrite the tip around sourced ones.
+- Search Console (docs/search-console/2026-10-21.md) says the biggest prize is Costa Rica retirement: blog/retire-in-costa-rica-2026.html has 185 impressions at position 45 and has NEVER been verified. Verify it first, before the items below.
+- Then: the Cartagena-beachfront and Mexico-City-$4,200 tips, which now contradict the refreshed city guides (Market Data's list in docs/cto-reports/2026-10-21-market.md).
 - When the queue allows: reports/2026-global-investment-report.html — indexed, figures for 11 markets, never verified (it sits outside content_quality.py's sections, so the queue never offers it).
 - Verify the most-read pages first (traffic.topPages), starting with blog/best-places-retire-latin-america-2026.html and blog/best-places-retire-mexico-2026.html if not verified in the last 30 days: traffic pages must be the most accurate.
 
 ## Brief: freshness
+- Read docs/search-console/2026-10-21.md. Page-1 pages with ~0 clicks need better titles/meta for the real query: blog/10-cheapest-beach-towns-latin-america-2026.html (104 impressions, position 6.5, CTR 1%), guides/uruguay-vs-chile-retirees-2026.html (5.4), blog/costa-rica-buying-guide-2026.html (8.6), guide/2026-market-entry-guide.html (11.4, top of page 2).
 - Refresh the top 5 pages by traffic before anything else; their titles and meta descriptions should promise exactly what the page delivers (click-through matters as much as rank).
 
 ## Brief: design
@@ -59,6 +62,7 @@ Measured from https://www.internationalre.org/api/status (`traffic`, `subscriber
 - Judge the week by search visits, new subscribers and conversion (Scoreboard), not by pages shipped.
 
 ## Reports to the Growth Director
+- 2026-10-21 owner's session: Search Console exported to docs/search-console/2026-10-21.md (4 clicks, 1,980 impressions, avg position 25.9, 181 pages indexed). Ask the owner's session for a fresh export when this one is over a week old.
 - 2026-10-21 market: refreshed headline stats for Medellín, Cartagena, San José, Guanacaste, Mexico City, Playa del Carmen (checker-confirmed, every stat sourced on the guide); removed unsupported Guanacaste 9–11% and Playa 7–10% yields and cut Cartagena's yield to GPG's 5.2%; metric: trust and dwell time on city guides; suggestion: Research Editor should fix the Cartagena-beachfront and Mexico-City-$4,200 tips, which now contradict the guides (list in docs/cto-reports/2026-10-21-market.md).
 - 2026-10-21 research: verified retire-in-ecuador (top retirement-cluster page), medellin-property-vs-miami tip and the Apr 14–18 weekly, 50 corrections, all checker-verified; biggest fixes: Ecuador "security improving" reversed (2025 record homicides), Ecuador foreign-income tax, Medellín "93% below Miami" → ~60%, weekly's false CR "$200K residency" claim; metric: retirement-cluster search visits and trust; suggestion: reports/2026-global-investment-report.html is still unverified and outside the queue, and latam-weekly-apr-21-25 still has unsourced claims (next in queue).
 - 2026-10-20 owner's session: visitor counter now excludes fake-browser scrapers; first distribution kit (5 fact-checked pages) is on the dashboard for the owner to post — watch for reddit/forum referrers in traffic.topSources.
