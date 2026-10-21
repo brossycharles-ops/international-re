@@ -143,6 +143,14 @@
     "notes": "Metro Line 3 is not open (tests since Apr 2026, opening expected 2028, 25 km not 34 km); new flats $2,669/m² not $1,900; yield 7.66%",
     "links_checked": "2026-10-21"
   },
+  "blog/panama-vs-costa-rica-expats-investors-2026.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 70,
+    "corrected": 29,
+    "removed": 25,
+    "sources": 29,
+    "notes": "research-verified; independent checker pass. Panama rent higher than San José; CR pensionado is temporary; Panama property tax by use (Law 66); CR 200 m zone 50+150 m; Law 9996 incentive window vs $150k threshold; Panama Level 4 areas; unsourced climate, budgets, STR yields, expat counts removed"
+  },
   "blog/retire-in-colombia-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 28,
@@ -251,6 +259,14 @@
     "notes": "new page; fact-checked (checker: Gestión typo fixed, advisory Do Not Travel cities Abancay/Ayacucho/Huancavelica/Huancayo added; State Dept and BCRP confirmed via RSS/search copy due to bot walls)",
     "links_checked": "2026-10-21"
   },
+  "guides/cuenca-vs-medellin-retirees-2026.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 37,
+    "corrected": 9,
+    "removed": 2,
+    "sources": 38,
+    "notes": "new page; fact-checked. Checker fixes: Colombian seller withholding (art. 398, DIAN 11625/2025 replaces 2020 COP 685M rule), wealth-tax decree 1474 struck down by C-079/2026, Ecuador protected-area ban, Medellín Numbeo $830->$840, Flores quote softened, advisory risks, undated GPG Cuenca yield removed"
+  },
   "guides/medellin-vs-buenos-aires-expat-investors-2026.html": {
     "verified": "2026-10-17",
     "claims_checked": 40,
@@ -323,6 +339,14 @@
     "notes": "new page; fact-checked. Added missing municipal tax-clearance step; dated World Bank 2019 benchmark everywhere; full Ley 6043 Art. 47 limits; Constitution source swapped to TSE",
     "links_checked": "2026-10-19"
   },
+  "quick-reads/mexico-temporary-residency-income-requirement-2026.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 21,
+    "corrected": 2,
+    "removed": 0,
+    "sources": 9,
+    "notes": "new page; fact-checked. Uses July 2025 Lineamientos (UMA days), not the old minimum-wage multiples; 'tax-free' -> after-tax income above 680 UMA days; Washington figures flagged as the older formula; May 2026 amendment cited"
+  },
   "quick-reads/property-tax-chile-foreigners-2026.html": {
     "verified": "2026-10-19",
     "claims_checked": 9,
@@ -358,6 +382,14 @@
     "sources": 2,
     "notes": "new page; fact-checked. Meta 'every peso before completion' narrowed to unfinished units; time-deposit exception made precise",
     "links_checked": "2026-10-20"
+  },
+  "tips/colombia-pension-visa-3-minimum-wages-2026.html": {
+    "verified": "2026-10-21",
+    "claims_checked": 15,
+    "corrected": 2,
+    "removed": 0,
+    "sources": 7,
+    "notes": "new page; fact-checked. Decree 1469/2025 suspended, transitional Decree 0159/2026 keeps COP 1,750,905; documents wording"
   },
   "tips/costa-rica-pensionado-1000-pension.html": {
     "verified": "2026-10-20",
