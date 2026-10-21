@@ -448,19 +448,109 @@
       "city": "Tulum",
       "country": "Mexico",
       "countryFlag": "🇲🇽",
-      "tagline": "High-yield jungle-beach market with the strongest STR income per dollar in Latin America.",
+      "tagline": "Caribbean beach town with a new international airport, where foreigners buy through a bank trust and condo oversupply is the main risk.",
       "heroImage": "https://images.unsplash.com/photo-1605216663980-b7ca6e9f2451",
       "stats": {
-        "pricePerSqm": "$2,800–$5,500",
-        "rentalYield": "8–12%",
-        "costOfLiving": "$2,200–$3,500/mo",
-        "currency": "Mexican Peso (MXN)"
+        "pricePerSqm": "~$2,440–$2,740 asking (MXN 44,900–50,500, apartments)",
+        "rentalYield": "No reliable published data",
+        "costOfLiving": "No reliable total; 1-bed rent ~$530–$595/mo (Numbeo, thin data)",
+        "currency": "Mexican Peso (MXN); ~18.4 per USD (Banxico FIX, Oct 2026)"
       },
       "matchSlugs": [
         "tulum",
         "mexico"
       ],
-      "metaDescription": "Tulum, Mexico real estate 2026 — Aldea Zama, Region 15 and La Veleta prices, Airbnb rental yields, and fideicomiso requirements for foreign buyers."
+      "metaDescription": "Tulum, Mexico real estate 2026: bank trust rules for foreign buyers, ejido and permit risks, condo oversupply, asking prices and the US travel advisory.",
+      "about": [
+        "Tulum, on Mexico's Caribbean coast in Quintana Roo, draws foreign buyers with its beaches and Maya ruins, its vacation-rental market, and better access: the Felipe Carrillo Puerto International Airport opened on 1 December 2023 and the town has a station on section 5 of the Tren Maya. Because Tulum lies inside Mexico's restricted zone (the strip within 50 km of the coast and 100 km of the borders), foreigners cannot hold residential title directly. Instead, a Mexican bank holds the title in a fideicomiso (bank trust) with the buyer as beneficiary. This needs a permit from the Secretaría de Relaciones Exteriores (SRE) and runs for up to 50 years, renewable on request. A Mexican company with foreign shareholders can own restricted-zone land directly, but only for non-residential use, and it must notify the SRE within 60 business days.",
+        "Title and permits are where Tulum deals go wrong. Ejido (communal) parcels can legally be sold only to other ejido members or recognized residents (avecindados) of the same ejido community until the ejido assembly approves full ownership (dominio pleno), the land is removed from the Registro Agrario Nacional and a private title is entered in the Public Property Registry. Environmental rules matter too. In 2022 the federal government decreed the 2,249-hectare Jaguar flora and fauna protection area in the municipality, where no new population centers are allowed, and the federal environmental agency Profepa has shut down developments in the municipality, including a hotel inside Tulum National Park (2018), and in September 2025 obtained a court-ordered seizure of the Adamar condo project at Tankah IV, built without federal environmental authorization. Bloomberg reported in 2025, citing lawyers, that more than 70 presale units in Tulum were never delivered, in some cases by developers that did not own the land.",
+        "The market risks are just as real. Expansión reported in July 2025 that new-home sales had fallen 32–35% since 2023, that vacation-rental occupancy averaged below 50% and that nightly rates kept falling, and AirDNA puts average occupancy at about 46% for the year to August 2026. With thousands of competing units, resale can be slow and rental income can fall short of developers' projections. The US State Department rates Quintana Roo, including Tulum, Level 2 ('Exercise increased caution') for terrorism and crime, and advises extra care after dark in downtown Tulum."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Tulum?",
+          "a": "Yes, but not in their own name. Tulum is inside the restricted zone within 50 km of the coast, so a foreigner buying a home does so through a fideicomiso: a Mexican bank holds the title and the buyer is the beneficiary. The trust needs an SRE permit and lasts up to 50 years, renewable. A Mexican company can own land directly only for non-residential use."
+        },
+        {
+          "q": "What is ejido land and why does it matter in Tulum?",
+          "a": "Ejido land is communally held agrarian land. Under the Ley Agraria, ejido parcels can be sold only to other ejido members or recognized residents (avecindados) of the same ejido community until the assembly approves full ownership and the land gets a private title registered in the Public Property Registry. Have your own lawyer confirm the private title and federal environmental permits before paying any deposit, including on a presale."
+        },
+        {
+          "q": "Is Tulum oversupplied with condos?",
+          "a": "Reporting points that way. Expansión reported in July 2025 that new-home sales had fallen 32–35% since 2023 and that vacation-rental occupancy averaged below 50%. AirDNA puts average short-term-rental occupancy at about 46% for the year to August 2026. Plan on vacancy, discounting and a slow resale rather than the yields in sales brochures."
+        },
+        {
+          "q": "Is Tulum safe according to the US State Department?",
+          "a": "The State Department's Mexico advisory rates Quintana Roo, which includes Tulum, Level 2 ('Exercise increased caution') for terrorism and crime, and advises extra care after dark in downtown Cancún, Tulum and Playa del Carmen. Check the live advisory before you travel or buy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "US State Department — Mexico Travel Advisory (Quintana Roo: Level 2, terrorism and crime)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/mexico.html"
+        },
+        {
+          "title": "Cámara de Diputados — Ley de Inversión Extranjera (Arts. 2, 10, 11, 13: restricted zone, company ownership, bank trusts)",
+          "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LIE.pdf"
+        },
+        {
+          "title": "Consulado de México en Reino Unido (SRE) — Acquisition of properties in Mexico",
+          "url": "https://consulmex.sre.gob.mx/reinounido/index.php/en/servicios/218-acquisition-of-properties-in-mexico"
+        },
+        {
+          "title": "Cámara de Diputados — Ley Agraria (Arts. 80–82: sale of ejido parcels and dominio pleno)",
+          "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LAgra.pdf"
+        },
+        {
+          "title": "Diario Oficial de la Federación — Decree declaring the Jaguar flora and fauna protection area, Tulum (27 July 2022)",
+          "url": "https://dof.gob.mx/nota_detalle.php?codigo=5659412&fecha=27/07/2022"
+        },
+        {
+          "title": "Profepa — Court-ordered seizure of the Adamar property in Tulum (September 2025)",
+          "url": "https://www.gob.mx/profepa/prensa/logran-profepa-y-fiscalia-de-quintana-roo-resolucion-judicial-para-asegurar-el-inmueble-adamar-en-tulum?idiom=es"
+        },
+        {
+          "title": "Profepa — Closure of Hotel Mezzanine works inside Tulum National Park (2018)",
+          "url": "https://www.gob.mx/profepa/prensa/verifica-profepa-violacion-de-la-clausura-en-el-hotel-mezzanine-tulum-dentro-del-parque-nacional-tulum-en-quintana-roo"
+        },
+        {
+          "title": "El Financiero / Bloomberg — The dark side of Tulum's real estate boom (April 2025)",
+          "url": "https://www.elfinanciero.com.mx/bloomberg/2025/04/06/el-lado-oscuro-del-boom-inmobiliario-en-tulum-fraudes-millones-de-dolares-desaparecidos-y-dos-muertes/"
+        },
+        {
+          "title": "Obras Expansión — Tulum's real estate boom ends amid housing oversupply (July 2025)",
+          "url": "https://obras.expansion.mx/inmobiliario/2025/07/23/termina-boom-inmobiliario-tulum"
+        },
+        {
+          "title": "AirDNA — Tulum short-term rental data (occupancy, trailing 12 months)",
+          "url": "https://www.airdna.co/vacation-rental-data/app/mx/quintana-roo/tulum/overview"
+        },
+        {
+          "title": "Gobierno de México — Press conference of 1 December 2023 (Tulum airport inauguration)",
+          "url": "https://www.gob.mx/amlo/articulos/version-estenografica-conferencia-de-prensa-del-presidente-andres-manuel-lopez-obrador-del-1-de-diciembre-de-2023"
+        },
+        {
+          "title": "Tren Maya — Tramo 5 ridership and Tulum station",
+          "url": "https://www.trenmaya.gob.mx/comunicado120824.php"
+        },
+        {
+          "title": "Mudafy — Apartments for sale in Tulum (median asking price per m², October 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/quintana-roo-tulum"
+        },
+        {
+          "title": "Lamudi — Apartments for sale in Tulum (asking price per m², August 2026)",
+          "url": "https://www.lamudi.com.mx/precios-inmuebles/venta/quintana-roo/tulum-1/"
+        },
+        {
+          "title": "Banco de México — FIX exchange rate (18.4200 MXN per USD, 20 October 2026)",
+          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Tulum (rents; 19 contributors, updated 2 October 2026)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Tulum-Mexico"
+        }
+      ],
+      "updated": "2026-10-21"
     },
     {
       "slug": "santiago-chile",
