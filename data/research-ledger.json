@@ -151,6 +151,14 @@
     "sources": 29,
     "notes": "research-verified; independent checker pass. Panama rent higher than San José; CR pensionado is temporary; Panama property tax by use (Law 66); CR 200 m zone 50+150 m; Law 9996 incentive window vs $150k threshold; Panama Level 4 areas; unsourced climate, budgets, STR yields, expat counts removed"
   },
+  "blog/punta-del-este-real-estate-2026.html": {
+    "verified": "2026-10-22",
+    "claims_checked": 52,
+    "corrected": 18,
+    "removed": 14,
+    "sources": 19,
+    "notes": "'Zero capital gains tax' was false (12% on gains, notary withholds); tax holiday now needs UI 12.5M (~US$2.1M) under Ley 20.446, not '$2M foreign earnings'; added ITP 2%+2%, notary 3%+VAT, 12% rent tax, primary-school and wealth tax; New York/Miami direct flights removed (only seasonal Miami-Montevideo); Montevideo population, 'only dollar markets', Argentina FX gap, $150M Fendi figure, 10% winter occupancy, unsourced price/yield/appreciation ranges removed; prices replaced with InfoCasas Sept 2026 Playa Brava medians; independent checker fixes (conditional 5-year extension, AirROI average not median, peak-season qualifier, El Observador buyer source)"
+  },
   "blog/retire-in-colombia-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 28,
