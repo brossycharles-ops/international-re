@@ -187,6 +187,14 @@
     "links_checked": "2026-10-19",
     "notes": "Removed the claim that foreigners can get Chilean mortgages (banks require permanent residency), a nonexistent $10B Puerto Varas project (a ~US$10M park), and a 2.2% GDP forecast (now 0.25-0.75%); prime Santiago new-build is $4,300-4,900/m², not $2,300-4,000"
   },
+  "blog/tbilisi-georgia-1-percent-tax-2026.html": {
+    "verified": "2026-10-22",
+    "claims_checked": 46,
+    "corrected": 15,
+    "removed": 9,
+    "sources": 15,
+    "notes": "Thursday strengthen + full verification: '1% tax on rent' was false (rental income excluded from small-business status; residential rent 5%); property tax is family-income based (0.2%/0.8% of market value in Tbilisi), not value-based; residency threshold US$150,000 market value from 2026-03-01 (not US$100k cadastral), permanent after 10 years; population and price/yield ranges replaced with Galt & Taggart 2026 data; politics (EU talks frozen, foreign-agents law) and State Dept Level 1 added; unsourced STR yields, closing costs, sale times and false newsletter promise removed; independent checker fixes (rent example, CPI label, visa-free count, source labels)"
+  },
   "blog/transfer-money-abroad-buy-property-2026.html": {
     "verified": "2026-10-19",
     "claims_checked": 12,
