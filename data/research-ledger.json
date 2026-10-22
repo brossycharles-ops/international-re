@@ -330,6 +330,14 @@
     "notes": "new page; fact-checked (FAQ low-end total rounded to $885)",
     "links_checked": "2026-10-21"
   },
+  "quick-reads/ecuador-pensioner-visa-requirements-2026.html": {
+    "verified": "2026-10-22",
+    "claims_checked": 14,
+    "corrected": 4,
+    "removed": 1,
+    "sources": 5,
+    "notes": "new page; fact-checked (2025 SBU source added, 180-day criminal-record rule added, Level 4 zones described as cantons, unsourced 'no visa needed to buy' removed)"
+  },
   "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 17,
@@ -415,6 +423,14 @@
     "sources": 10,
     "links_checked": "2026-10-21",
     "notes": "Headline '$1,200/m2, 93% below Miami' replaced: Medellin new-builds ~$2,412/m2 (GPG Q3 2026) vs Miami $532/sq ft (~$5,700/m2, Redfin) = ~60% less; peso strengthened, not weakened"
+  },
+  "tips/panama-pensionado-750-with-property.html": {
+    "verified": "2026-10-22",
+    "claims_checked": 7,
+    "corrected": 2,
+    "removed": 0,
+    "sources": 4,
+    "notes": "new page; fact-checked (B/.100,000 is purchase price not value; electricity discount is 25% of first 600 kWh under Ley 37 of 2001, not the old B/.50 cap)"
   },
   "tips/peru-alcabala-transfer-tax-2026.html": {
     "verified": "2026-10-17",
