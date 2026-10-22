@@ -785,19 +785,117 @@
       "city": "São Paulo",
       "country": "Brazil",
       "countryFlag": "🇧🇷",
-      "tagline": "Latin America's financial capital — dollar buys 40-60% more than comparable global cities.",
+      "tagline": "Brazil's financial capital — rental yields above the national average, but a slowing market and a volatile real.",
       "heroImage": "https://images.unsplash.com/photo-1561592390-42c07289e9cb",
       "stats": {
-        "pricePerSqm": "$2,500–$5,000",
-        "rentalYield": "6–7.5%",
-        "costOfLiving": "$1,500–$2,800/mo",
+        "pricePerSqm": "R$12,206 (~US$2,420; FipeZAP Sep 2026)",
+        "rentalYield": "6.43% gross (FipeZAP Sep 2026)",
+        "costOfLiving": "~$720/mo + rent (single; Numbeo)",
         "currency": "Brazilian Real (BRL)"
       },
       "matchSlugs": [
         "sao-paulo",
         "brazil"
       ],
-      "metaDescription": "São Paulo real estate 2026 — Jardins, Itaim Bibi, Vila Madalena prices, 6-7.5% yields, foreign buyer rules and dollar advantage."
+      "metaDescription": "São Paulo real estate 2026 for foreigners: R$12,206/m² asking prices, 6.4% gross yields, CPF, deed and registry steps, 3% ITBI, taxes and honest risks.",
+      "about": [
+        "São Paulo draws foreign buyers for its scale and its rents: FipeZAP's September 2026 index puts the average residential asking price at R$12,206 per m² (about US$2,420 at the Banco Central PTAX rate of R$5.04 per dollar) and the average gross rental yield at 6.43%, above Brazil's 6.13% average, with the highest average asking rent of the 22 capitals FipeZAP tracks, R$65.78 per m² a month. Foreigners can buy urban property here on the same terms as Brazilians; the federal limits on foreign ownership apply to rural land and the 150 km border strip, not to city apartments.",
+        "Buying runs through three steps. You first need a CPF taxpayer number, which non-residents can request free through the Receita Federal or a Brazilian consulate. For property worth more than 30 minimum wages the sale must be signed as an escritura pública before a notary (Civil Code Art. 108), and ownership only passes when that deed is registered on the property's matrícula at the Registro de Imóveis (Art. 1,245). The city charges ITBI transfer tax of 3% on the higher of the price and the city's reference value, according to the Prefeitura; ask your lawyer which base applies to your purchase. Investor residency is possible with at least R$1,000,000 in property under CNIg Normative Resolution 36/2018; confirm the current rules with the Ministry of Justice before relying on it.",
+        "Be realistic about returns and exit. Prices rose 3.64% in the twelve months to September 2026, below FipeZAP's 4.45% consumer-inflation measure, so they fell slightly in real terms, and FipeZAP notes that the national yield is below Brazil's real reference interest rate. Unsold new-build stock reached 98,018 units in August 2026, up 50.7% in a year, and the estimated time to sell mid- and high-end units has stretched to about 13 months. Since 2021 the dollar has traded between about R$4.62 and R$6.21 (Banco Central PTAX), and non-resident landlords pay 15% withholding tax on rent. Condo fees average roughly R$840–1,090 a month. The US State Department rates Brazil Level 2, 'Exercise Increased Caution', citing crime and kidnapping, with 'Do Not Travel' zones that include favelas and land border areas."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in São Paulo?",
+          "a": "Yes. Brazilian law restricts foreign ownership of rural land and land in the 150 km border strip, not urban apartments, so a foreigner can buy in São Paulo in their own name. You will need a CPF taxpayer number first, which non-residents can request free through the Receita Federal or a Brazilian consulate."
+        },
+        {
+          "q": "What does an apartment cost per square metre in São Paulo?",
+          "a": "FipeZAP's September 2026 index puts the average residential asking price at R$12,206 per m², about US$2,420 at the Banco Central exchange rate of R$5.04 per dollar. Prices rose 3.64% over the previous twelve months."
+        },
+        {
+          "q": "What rental yield can I expect in São Paulo?",
+          "a": "FipeZAP estimated the average gross rental yield at 6.43% a year in September 2026, against 6.13% for Brazil. That is before condo fees (roughly R$840–1,090 a month on average), IPTU property tax, vacancy and the 15% withholding tax non-resident landlords pay on rent."
+        },
+        {
+          "q": "What taxes do foreigners pay when buying and selling in São Paulo?",
+          "a": "The city charges 3% ITBI transfer tax when you buy. When you sell, a non-resident's gain is calculated in reais and taxed at 15% up to R$5 million, rising in steps to 22.5%, so a fall in the real can leave you owing tax on a gain that is a loss in dollars."
+        }
+      ],
+      "sources": [
+        {
+          "title": "FipeZAP — Índice de venda residencial, setembro de 2026",
+          "url": "https://downloads.fipe.org.br/indices/fipezap/fipezap-202609-residencial-venda.pdf"
+        },
+        {
+          "title": "FipeZAP — Índice de locação residencial, setembro de 2026",
+          "url": "https://downloads.fipe.org.br/indices/fipezap/fipezap-202609-residencial-locacao.pdf"
+        },
+        {
+          "title": "Banco Central do Brasil — PTAX exchange rate",
+          "url": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='10-20-2026'&@dataFinalCotacao='10-22-2026'&$format=json"
+        },
+        {
+          "title": "Banco Central do Brasil — PTAX series since 2021 (SGS 1)",
+          "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados?formato=json&dataInicial=01/01/2021&dataFinal=22/10/2026"
+        },
+        {
+          "title": "Numbeo — Cost of Living in São Paulo",
+          "url": "https://www.numbeo.com/cost-of-living/in/Sao-Paulo?displayCurrency=USD"
+        },
+        {
+          "title": "gov.br — Inscrever no CPF (including residents abroad)",
+          "url": "https://www.gov.br/pt-br/servicos/inscrever-no-cpf"
+        },
+        {
+          "title": "Planalto — Código Civil (Lei 10.406/2002), Arts. 108 and 1.245",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm"
+        },
+        {
+          "title": "Planalto — Lei 5.709/1971 (rural land acquired by foreigners)",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l5709.htm"
+        },
+        {
+          "title": "Planalto — Lei 6.634/1979 (border strip)",
+          "url": "https://www.planalto.gov.br/ccivil_03/leis/l6634.htm"
+        },
+        {
+          "title": "Prefeitura de São Paulo — ITBI",
+          "url": "https://prefeitura.sp.gov.br/fazenda/w/servicos/itbi/2513"
+        },
+        {
+          "title": "Normas Brasil — Resolução Normativa CNIg 36/2018",
+          "url": "https://www.normasbrasil.com.br/norma/resolucao-normativa-36-2018_369540.html"
+        },
+        {
+          "title": "Planalto — Decreto 9.580/2018 (Income Tax Regulation), Arts. 745 and 763",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/decreto/d9580.htm"
+        },
+        {
+          "title": "Planalto — Lei 13.259/2016 (capital gains rates)",
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13259.htm"
+        },
+        {
+          "title": "Portas — Vendas de imóveis em SP em agosto (Secovi-SP data), October 2026",
+          "url": "https://portas.com.br/noticias/vendas-de-imoveis-em-sp-sobem-37-em-agosto-mas-valores-caem/"
+        },
+        {
+          "title": "Forbes Brasil — Preço médio do condomínio em São Paulo, May 2026",
+          "url": "https://forbes.com.br/geral/2026/05/condominio-preco-medio-sp/"
+        },
+        {
+          "title": "Portas — Condomínio mais caro de São Paulo 2026 (Loft data)",
+          "url": "https://portas.com.br/noticias/condominio-mais-caro-sao-paulo-2026/"
+        },
+        {
+          "title": "US State Department — Brazil Travel Advisory",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/brazil.html"
+        },
+        {
+          "title": "FOX 35 Orlando — State Department Brazil advisory, September 2026",
+          "url": "https://www.fox35orlando.com/news/travelers-warned-murder-kidnappings-robberies-vacation-spot"
+        }
+      ],
+      "updated": "2026-10-22"
     },
     {
       "slug": "florianopolis-brazil",
