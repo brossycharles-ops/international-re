@@ -74,6 +74,8 @@ body { background: #fff; }
   margin: 0 auto;
   padding: 80px 24px;
 }
+/* layout_updates.css gives every <section> 96px padding; hub sections space themselves */
+.hub-section { padding-block: 0; }
 .hub-section + .hub-section { margin-top: 64px; }
 .hub-section-h2 {
   font-family: 'Playfair Display', serif;

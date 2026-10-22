@@ -149,7 +149,9 @@ def render_city_hub(city):
     related = find_related(city)
     groups = group_related(related)
     page_url = f"{SITE}/cities/{city['slug']}/"
-    hero_img = f"{city['heroImage']}?w=1920&q=80"
+    # Phones get an 800px hero (the 1920px one was up to 1.1 MB); desktops 1600px.
+    hero_img_sm = f"{city['heroImage']}?w=800&q=70"
+    hero_img = f"{city['heroImage']}?w=1600&q=75"
     social_img = f"{city['heroImage']}?w=1200&q=80"
     related_sections = ''
     for kind in ['blog', 'guides', 'quick-reads', 'tips', 'landing']:
@@ -208,8 +210,8 @@ def render_city_hub(city):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261020">
-  <link rel="stylesheet" href="/layout_updates.css">
+  <link rel="stylesheet" href="/styles.css?v=20261022">
+  <link rel="stylesheet" href="/layout_updates.css?v=20261022">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
   {{
@@ -228,9 +230,10 @@ def render_city_hub(city):
     }}
   }}
   </script>{faq_ld}
-  <link rel="stylesheet" href="/cities.css">
+  <link rel="stylesheet" href="/cities.css?v=20261022">
   <style>
-    .hub-hero {{ background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('{hero_img}'); }}
+    .hub-hero {{ background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('{hero_img_sm}'); }}
+    @media (min-width: 801px) {{ .hub-hero {{ background-image: linear-gradient(180deg, rgba(10,22,40,0.35), rgba(10,22,40,0.75)), url('{hero_img}'); }} }}
 {NAV_CSS}  </style>
   <script defer src="/js/analytics.js"></script>
 </head>
@@ -312,7 +315,7 @@ def render_city_hub(city):
       }}
     }});
   </script>
-  <script src="/lead_capture.js?v=20261020" defer></script>
+  <script src="/lead_capture.js?v=20261022" defer></script>
 </body>
 </html>
 '''
@@ -321,7 +324,7 @@ def render_index(cities_list):
     coverage = f"{len(cities_list)} markets across {len({c['country'] for c in cities_list})} countries"
     cards = '\n'.join(
         f'''      <a class="city-card" href="/cities/{c["slug"]}/">
-        <div class="city-card-img" style="background-image:url('{c["heroImage"]}?w=800&q=80');"></div>
+        <div class="city-card-img" style="background-image:url('{c["heroImage"]}?w=600&q=70');"></div>
         <div class="city-card-body">
           <span class="city-card-country">{c["countryFlag"]} {c["country"]}</span>
           <h2>{c["city"]}</h2>
@@ -350,8 +353,8 @@ def render_index(cities_list):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261020">
-  <link rel="stylesheet" href="/layout_updates.css">
+  <link rel="stylesheet" href="/styles.css?v=20261022">
+  <link rel="stylesheet" href="/layout_updates.css?v=20261022">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script type="application/ld+json">
   {{
@@ -449,7 +452,7 @@ def render_index(cities_list):
     <a href="/" style="color:#c9a84c;font-weight:700;text-decoration:none;">&#9670; International RE</a>
     <p style="margin:14px 0 6px;">Independent research by Charles Brossy.</p>
   </footer>
-  <script src="/lead_capture.js?v=20261020" defer></script>
+  <script src="/lead_capture.js?v=20261022" defer></script>
 </body>
 </html>
 '''

@@ -188,7 +188,7 @@
     wrap.innerHTML = `
       <div class="modal" role="dialog" aria-labelledby="exitTitle" aria-modal="true">
         <button class="modal-close" aria-label="Close">&times;</button>
-        <img class="modal-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Latin American skyline at golden hour" loading="lazy">
+        <img class="modal-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=70" width="520" height="180" alt="Modern glass skyscrapers seen from below" loading="lazy" decoding="async">
         <div class="modal-body">
           <span class="modal-eyebrow">Free · 2026 Edition</span>
           <h2 id="exitTitle">Before you go — get the Latin America Expat Starter Kit</h2>

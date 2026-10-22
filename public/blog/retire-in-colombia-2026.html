@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20261020">
-  <link rel="stylesheet" href="../layout_updates.css">
+  <link rel="stylesheet" href="../styles.css?v=20261022">
+  <link rel="stylesheet" href="../layout_updates.css?v=20261022">
 
   <style>
     .blog-post-hero{position:relative;height:480px;overflow:hidden}
@@ -180,20 +180,24 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <nav class="main-nav">
+  <nav class="navbar scrolled" id="navbar">
     <div class="nav-container">
-      <a href="/" class="nav-logo">International <span>RE</span></a>
+      <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
       <ul class="nav-links">
-        <li><a href="/cities/">City Guides</a></li>
-        <li><a href="/blog.html">Insights</a></li>
-        <li><a href="/guides.html">Guides</a></li>
+        <li><a href="/#markets">Markets</a></li>
+        <li><a href="/#newsletters">Newsletters</a></li>
+        <li><a href="../blog.html" class="active-link">Blog</a></li>
+        <li><a href="../guides.html">Guides</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="/quiz.html">Market Quiz</a></li>
         <li><a href="/free-guide.html" class="nav-cta">Free Starter Kit</a></li>
       </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <div class="blog-post-hero" id="main">
-    <img src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=1400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
+    <img fetchpriority="high" decoding="async" srcset="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=640&q=80 640w, https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=1024&q=80 1024w, https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=1600&q=80 1600w, https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=1920&q=80 1920w" sizes="100vw" src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=1400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
     <div class="blog-post-hero-overlay"></div>
     <div class="blog-post-hero-content">
       <div class="blog-post-meta" style="margin-bottom:16px">
@@ -421,21 +425,21 @@
     <h2>Related Guides</h2>
     <div class="related-grid">
       <a href="/blog/cost-of-living-medellin-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
         <div class="related-card-body">
           <span>Colombia</span>
           <p>Cost of Living in Medellín 2026: Rent, Food & Real Budget</p>
         </div>
       </a>
       <a href="/blog/colombia-real-estate-foreigners-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1715503234327-b57d32e5da0f?w=400&q=80" alt="Medellín, Colombia skyline with the Aburrá Valley mountains">
         <div class="related-card-body">
           <span>Colombia</span>
           <p>Colombia Real Estate for Foreigners 2026: The Complete Buying Guide</p>
         </div>
       </a>
       <a href="/blog/expat-health-insurance-latin-america-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt="Person planning on a laptop">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt="Person planning on a laptop">
         <div class="related-card-body">
           <span>Healthcare</span>
           <p>Expat Health Insurance in Latin America 2026: Country-by-Country Guide</p>
@@ -445,11 +449,52 @@
 
   </div>
 
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p>&copy; 2026 International RE · <a href="/privacy.html">Privacy</a></p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-icon">&#9670;</span> International <span class="logo-accent">RE</span></a>
+          <p>Your weekly guide to Latin American real estate markets.</p>
+          <p class="footer-domain">internationalre.org</p>
+        </div>
+        <div class="footer-links">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="/#costa-rica">Costa Rica</a></li>
+            <li><a href="/#nicaragua">Nicaragua</a></li>
+            <li><a href="/#argentina">Argentina</a></li>
+            <li><a href="/#chile">Chile</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../guides.html">Guides</a></li>
+            <li><a href="/newsletter.html">Newsletter</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="/feed.xml">RSS Feed</a></li>
+            <li><a href="/quiz.html">Market Quiz</a></li>
+            <li><a href="/newsletter.html">Past Issues</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> International RE — internationalre.org. All rights reserved. · <a href="/privacy.html">Privacy</a></p>
+      </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      var t = document.getElementById('mobileToggle'), n = document.querySelector('#navbar .nav-links');
+      if (t && n) t.addEventListener('click', function () { var o = n.classList.toggle('active'); t.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    })();
+  </script>
 
   <script>
     async function handleInlineSub(e, form) {
@@ -478,6 +523,6 @@
     });
 
   </script>
-  <script src="../lead_capture.js?v=20261020"></script>
+  <script src="../lead_capture.js?v=20261022"></script>
 </body>
 </html>

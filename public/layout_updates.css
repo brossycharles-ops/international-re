@@ -218,7 +218,7 @@ section { padding-block: 96px; }
   position: fixed; inset: 0;
   background: rgba(10, 14, 26, 0.78);
   backdrop-filter: blur(4px);
-  z-index: 9000;
+  z-index: 9500; /* above the sticky subscribe bar (9000): never stack two asks */
   display: none;
   align-items: center;
   justify-content: center;
@@ -297,8 +297,9 @@ section { padding-block: 96px; }
   z-index: 1;
 }
 .modal-fineprint {
+  grid-column: 1 / -1;
   font-size: 0.74rem;
-  color: #888;
+  color: #6b6b6b;
   margin-top: 14px;
   text-align: center;
 }
@@ -549,6 +550,16 @@ section { padding-block: 96px; }
   box-shadow: 0 -4px 24px rgba(10,22,40,0.18);
 }
 .sticky-sub-bar.visible { transform: translateY(0); }
+.sticky-bar-form input:focus-visible,
+.sticky-bar-form button:focus-visible,
+.sticky-bar-close:focus-visible { outline: 2px solid #c9a84c; outline-offset: 2px; }
+/* Phones: the modal's photo pushed the form below the fold; drop it (lazy, so never fetched) */
+@media (max-width: 600px) {
+  .modal-image { display: none; }
+  .modal-body { padding: 28px 22px 24px; }
+  .modal h2 { font-size: 1.35rem; padding-right: 28px; }
+  .modal-close { background: rgba(0,0,0,0.6); }
+}
 .sticky-bar-inner {
   max-width: 800px;
   margin: 0 auto;

@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20261020">
-  <link rel="stylesheet" href="../layout_updates.css">
+  <link rel="stylesheet" href="../styles.css?v=20261022">
+  <link rel="stylesheet" href="../layout_updates.css?v=20261022">
 
   <style>
     .blog-post-hero{position:relative;height:480px;overflow:hidden}
@@ -160,7 +160,7 @@
   </nav>
 
   <div class="blog-post-hero" id="main">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Tropical beach at sunset" loading="eager" fetchpriority="high">
+    <img srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=640&q=80 640w, https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1024&q=80 1024w, https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80 1600w, https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80 1920w" sizes="(max-width: 768px) 100vw, 1200px" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Tropical beach at sunset" loading="eager" fetchpriority="high">
     <div class="blog-post-hero-overlay"></div>
     <div class="blog-post-hero-content">
       <div class="blog-post-meta" style="margin-bottom:14px;">
@@ -415,21 +415,21 @@
     <h2>Related Articles</h2>
     <div class="related-grid">
       <a href="how-to-buy-property-costa-rica-foreigner.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Tropical beach at sunset">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Tropical beach at sunset">
         <div class="related-card-body">
           <span>Legal Guide</span>
           <p>How to Buy Property in Costa Rica as a Foreigner</p>
         </div>
       </a>
       <a href="panama-vs-costa-rica-expats-investors-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1773424216455-a936cba886c3?w=400&q=80" alt="Panama City skyline at sunset over the Pacific">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1773424216455-a936cba886c3?w=400&q=80" alt="Panama City skyline at sunset over the Pacific">
         <div class="related-card-body">
           <span>Market Comparison</span>
           <p>Panama vs Costa Rica for Expats &amp; Investors 2026</p>
         </div>
       </a>
       <a href="best-places-retire-latin-america-2026.html" class="related-card">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Mountain peaks rising above the clouds">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Mountain peaks rising above the clouds">
         <div class="related-card-body">
           <span>Retirement Guide</span>
           <p>Best Places to Retire in Latin America 2026</p>
@@ -474,7 +474,7 @@
   </footer>
 
   <script src="../script.js"></script>
-  <script src="../lead_capture.js?v=20261020"></script>
+  <script src="../lead_capture.js?v=20261022"></script>
   <script>
     document.getElementById('inlineSubForm').addEventListener('submit', async function(e) {
       e.preventDefault();
