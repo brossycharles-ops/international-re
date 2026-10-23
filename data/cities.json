@@ -557,19 +557,81 @@
       "city": "Santiago",
       "country": "Chile",
       "countryFlag": "🇨🇱",
-      "tagline": "Andean capital with the most stable peso in Latin America and supply-constrained luxury market.",
+      "tagline": "Andean capital with a deep, UF-priced apartment market, ~4.9% gross yields and new-unit stock falling in 2026.",
       "heroImage": "https://images.unsplash.com/photo-1689850543263-01a52ccc6943",
       "stats": {
-        "pricePerSqm": "$2,200–$4,500",
-        "rentalYield": "4.5–6.5%",
-        "costOfLiving": "$1,800–$3,200/mo",
-        "currency": "Chilean Peso (CLP)"
+        "pricePerSqm": "~83 UF/m² new apartments, Gran Santiago (≈CLP 3.4M); 103–117 UF in Providencia, Las Condes, Vitacura (unsubsidised)",
+        "rentalYield": "~4.9% gross, apartments (GPG, Q1 2026)",
+        "costOfLiving": "~$690/mo + rent (single; Numbeo)",
+        "currency": "Chilean Peso (CLP); property priced in UF"
       },
       "matchSlugs": [
         "santiago",
         "chile"
       ],
-      "metaDescription": "Santiago, Chile real estate 2026 — Las Condes, Providencia, Vitacura. Prices per m², rental yields, foreign buyer rules and visa pathways."
+      "metaDescription": "Santiago, Chile real estate 2026: new-apartment prices in UF, ~4.9% gross yields, contribuciones, foreign buyer rules, Metro Line 7 and the risks.",
+      "about": [
+        "Santiago draws foreign buyers for depth and predictability rather than bargains. New apartments across Gran Santiago averaged 83 UF per m² (about CLP 3.4 million) in the three months to July 2026, up 5.4% on a year earlier, according to TOCTOC data reported by CNN Chile; the eastern communes most foreigners look at cost more in the unsubsidised segment, at 103 UF in Providencia, 114 UF in Las Condes and 117 UF in Vitacura. Prices are quoted in UF, an inflation-indexed unit worth about CLP 41,200 in October 2026, so a dollar buyer carries both peso and inflation-indexation exposure. Global Property Guide puts Santiago's average gross apartment yield at 4.91% in Q1 2026 and notes net yields typically run 1.5 to 2 points lower.",
+        "Chile's trade-agreement reservations list only narrow restrictions on foreign ownership of real estate: state land within 10 km of the border or 5 km of the coast is reserved for Chileans unless a legal exception applies, and in declared border zones nationals of neighboring countries, and companies based in or controlled by them, need a presidential exemption. Owners pay an annual property tax (contribuciones), which the SII charges on the fiscal appraisal: from July 2026 the first CLP 61,711,570 of a home's appraisal is exempt, the rest pays 0.893%, and value above CLP 220,398,431 pays 1.042%.",
+        "The honest risks are currency and timing. Supply is tightening (the Santiago region had 49,834 new apartments for sale at the end of July 2026, 18.2% fewer than a year earlier), but much of the pipeline story depends on infrastructure that is still years away: Metro Line 7, 26 km and 19 stations from Renca to Vitacura, was about 40% complete in early 2026 and is expected to open at the end of 2028. The US State Department rates Chile Level 2, 'Exercise increased caution', citing crime, including violent crime such as carjackings in Santiago, and demonstrations that can disrupt buses and the metro."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Santiago, Chile?",
+          "a": "Chile's trade-agreement reservations list only narrow restrictions on foreign ownership: state land within 10 km of the border or 5 km of the coast is reserved for Chileans unless a legal exception applies, and in declared border zones buyers from neighboring countries need a presidential exemption. Have your lawyer confirm that no restriction applies to the specific property."
+        },
+        {
+          "q": "How much does an apartment cost in Santiago in 2026?",
+          "a": "New apartments in Gran Santiago averaged 83 UF per m² (about CLP 3.4 million) in the three months to July 2026, according to TOCTOC. In the unsubsidised segment, Providencia averaged 103 UF, Las Condes 114 UF and Vitacura 117 UF per m²."
+        },
+        {
+          "q": "What is the property tax on a home in Santiago?",
+          "a": "Contribuciones are charged by the SII on the fiscal appraisal, not the price. From July 2026 the first CLP 61,711,570 of a home's appraisal is exempt; the rest pays 0.893%, and any value above CLP 220,398,431 pays 1.042%. They are paid in four installments in April, June, September and November."
+        },
+        {
+          "q": "What rental yield can I expect in Santiago?",
+          "a": "Global Property Guide puts the average gross yield on Santiago apartments at 4.91% in Q1 2026, with yields ranging from 3.84% to 5.85% depending on unit size. Net yields are typically 1.5 to 2 percentage points lower."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CNN Chile — Venta de departamentos nuevos en la RM: precios en Vitacura, Las Condes y Providencia (TOCTOC data, 2026)",
+          "url": "https://www.cnnchile.com/negocios/venta-departamentos-nuevos-rm-precios-vitacura-las-condes-providencia-toctoc/"
+        },
+        {
+          "title": "Global Property Guide — Gross rental yields in Chile: Santiago and 7 other cities",
+          "url": "https://www.globalpropertyguide.com/latin-america/chile/rental-yields"
+        },
+        {
+          "title": "SII — Reajustes y exenciones de Impuesto Territorial (second half 2026)",
+          "url": "https://www.sii.cl/ayudas/ayudas_por_servicios/2242-reajustes_exenciones-2468.html"
+        },
+        {
+          "title": "SII — ¿Cómo se cobran las contribuciones? (four installments)",
+          "url": "https://www.sii.cl/preguntas_frecuentes/aval_contrib_bbrr/001_165_0310.htm"
+        },
+        {
+          "title": "Chile — Anexo I, lista de reservas de inversión (acuerdoscomerciales.gob.pe): state land and border-zone restrictions",
+          "url": "https://www.acuerdoscomerciales.gob.pe/En_Vigencia/Chile/Documentos/espanol/Anexo_I_Chile_Inversion_Servicios.pdf"
+        },
+        {
+          "title": "CNN Chile — Línea 7 de Metro alcanza 40% de avance y se estima que abrirá a fines de 2028",
+          "url": "https://www.cnnchile.com/pais/linea-7-de-metro-alcanza-40-de-avance-y-se-estima-que-abrira-a-fines-de-2028_20260203/"
+        },
+        {
+          "title": "US State Department — Chile Travel Advisory (Level 2, August 2026)",
+          "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/chile-travel-advisory.html"
+        },
+        {
+          "title": "Rankia — Valor UF hoy 21 de octubre 2026 (SII table)",
+          "url": "https://www.rankia.cl/noticias/fiscalidad/7519687-valor-uf-hoy-21-octubre-2026-41-194-55"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Santiago (updated October 2026)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Santiago"
+        }
+      ],
+      "updated": "2026-10-23"
     },
     {
       "slug": "montevideo-uruguay",
