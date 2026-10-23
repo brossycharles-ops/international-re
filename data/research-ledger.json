@@ -149,7 +149,8 @@
     "corrected": 29,
     "removed": 25,
     "sources": 29,
-    "notes": "research-verified; independent checker pass. Panama rent higher than San José; CR pensionado is temporary; Panama property tax by use (Law 66); CR 200 m zone 50+150 m; Law 9996 incentive window vs $150k threshold; Panama Level 4 areas; unsourced climate, budgets, STR yields, expat counts removed"
+    "notes": "research-verified; independent checker pass. Panama rent higher than San José; CR pensionado is temporary; Panama property tax by use (Law 66); CR 200 m zone 50+150 m; Law 9996 incentive window vs $150k threshold; Panama Level 4 areas; unsourced climate, budgets, STR yields, expat counts removed",
+    "links_checked": "2026-10-23"
   },
   "blog/punta-del-este-real-estate-2026.html": {
     "verified": "2026-10-22",
@@ -157,7 +158,8 @@
     "corrected": 18,
     "removed": 14,
     "sources": 19,
-    "notes": "'Zero capital gains tax' was false (12% on gains, notary withholds); tax holiday now needs UI 12.5M (~US$2.1M) under Ley 20.446, not '$2M foreign earnings'; added ITP 2%+2%, notary 3%+VAT, 12% rent tax, primary-school and wealth tax; New York/Miami direct flights removed (only seasonal Miami-Montevideo); Montevideo population, 'only dollar markets', Argentina FX gap, $150M Fendi figure, 10% winter occupancy, unsourced price/yield/appreciation ranges removed; prices replaced with InfoCasas Sept 2026 Playa Brava medians; independent checker fixes (conditional 5-year extension, AirROI average not median, peak-season qualifier, El Observador buyer source)"
+    "notes": "'Zero capital gains tax' was false (12% on gains, notary withholds); tax holiday now needs UI 12.5M (~US$2.1M) under Ley 20.446, not '$2M foreign earnings'; added ITP 2%+2%, notary 3%+VAT, 12% rent tax, primary-school and wealth tax; New York/Miami direct flights removed (only seasonal Miami-Montevideo); Montevideo population, 'only dollar markets', Argentina FX gap, $150M Fendi figure, 10% winter occupancy, unsourced price/yield/appreciation ranges removed; prices replaced with InfoCasas Sept 2026 Playa Brava medians; independent checker fixes (conditional 5-year extension, AirROI average not median, peak-season qualifier, El Observador buyer source)",
+    "links_checked": "2026-10-23"
   },
   "blog/retire-in-colombia-2026.html": {
     "verified": "2026-10-16",
@@ -167,6 +169,15 @@
     "sources": 15,
     "notes": "Pensionado income is 3x SMMLV = COP 5,252,715 (~US$1,650), not ~$750, so 'lowest in LatAm' reversed; visa bars social-security/EPS enrolment, so private health insurance is required; fees $335",
     "links_checked": "2026-10-20"
+  },
+  "blog/retire-in-costa-rica-2026.html": {
+    "verified": "2026-10-23",
+    "links_checked": "2026-10-23",
+    "claims_checked": 52,
+    "corrected": 19,
+    "removed": 23,
+    "sources": 21,
+    "notes": "brief priority: rentista $60,000 deposit no longer counts (Decreto 43926, 2023; also fixed on 3 other CR pages); citizenship 7 yrs (5 for Ibero-Americans); unverifiable CCSS 12.5% table, regional budgets, Nat Geo Atenas claim removed; Colombia pension visa 3 SMMLV not $750, ~10 yrs to citizenship; checker: migrant (not voluntary) CCSS scheme, $150k investor amount still applies"
   },
   "blog/retire-in-ecuador-2026.html": {
     "verified": "2026-10-21",
@@ -201,7 +212,8 @@
     "corrected": 15,
     "removed": 9,
     "sources": 15,
-    "notes": "Thursday strengthen + full verification: '1% tax on rent' was false (rental income excluded from small-business status; residential rent 5%); property tax is family-income based (0.2%/0.8% of market value in Tbilisi), not value-based; residency threshold US$150,000 market value from 2026-03-01 (not US$100k cadastral), permanent after 10 years; population and price/yield ranges replaced with Galt & Taggart 2026 data; politics (EU talks frozen, foreign-agents law) and State Dept Level 1 added; unsourced STR yields, closing costs, sale times and false newsletter promise removed; independent checker fixes (rent example, CPI label, visa-free count, source labels)"
+    "notes": "Thursday strengthen + full verification: '1% tax on rent' was false (rental income excluded from small-business status; residential rent 5%); property tax is family-income based (0.2%/0.8% of market value in Tbilisi), not value-based; residency threshold US$150,000 market value from 2026-03-01 (not US$100k cadastral), permanent after 10 years; population and price/yield ranges replaced with Galt & Taggart 2026 data; politics (EU talks frozen, foreign-agents law) and State Dept Level 1 added; unsourced STR yields, closing costs, sale times and false newsletter promise removed; independent checker fixes (rent example, CPI label, visa-free count, source labels)",
+    "links_checked": "2026-10-23"
   },
   "blog/transfer-money-abroad-buy-property-2026.html": {
     "verified": "2026-10-19",
@@ -281,7 +293,8 @@
     "corrected": 9,
     "removed": 2,
     "sources": 38,
-    "notes": "new page; fact-checked. Checker fixes: Colombian seller withholding (art. 398, DIAN 11625/2025 replaces 2020 COP 685M rule), wealth-tax decree 1474 struck down by C-079/2026, Ecuador protected-area ban, Medellín Numbeo $830->$840, Flores quote softened, advisory risks, undated GPG Cuenca yield removed"
+    "notes": "new page; fact-checked. Checker fixes: Colombian seller withholding (art. 398, DIAN 11625/2025 replaces 2020 COP 685M rule), wealth-tax decree 1474 struck down by C-079/2026, Ecuador protected-area ban, Medellín Numbeo $830->$840, Flores quote softened, advisory risks, undated GPG Cuenca yield removed",
+    "links_checked": "2026-10-23"
   },
   "guides/medellin-vs-buenos-aires-expat-investors-2026.html": {
     "verified": "2026-10-17",
@@ -352,7 +365,8 @@
     "corrected": 4,
     "removed": 1,
     "sources": 5,
-    "notes": "new page; fact-checked (2025 SBU source added, 180-day criminal-record rule added, Level 4 zones described as cantons, unsourced 'no visa needed to buy' removed)"
+    "notes": "new page; fact-checked (2025 SBU source added, 180-day criminal-record rule added, Level 4 zones described as cantons, unsourced 'no visa needed to buy' removed)",
+    "links_checked": "2026-10-23"
   },
   "quick-reads/how-long-to-buy-property-costa-rica-2026.html": {
     "verified": "2026-10-16",
@@ -397,6 +411,15 @@
     "sources": 3,
     "notes": "new page; fact-checked (added IN RFB 2.236/2024 annual CPF update for foreigners abroad; wording on bank accounts/investments)",
     "links_checked": "2026-10-19"
+  },
+  "tips/cartagena-beachfront-vs-miami.html": {
+    "verified": "2026-10-23",
+    "links_checked": "2026-10-23",
+    "claims_checked": 15,
+    "corrected": 8,
+    "removed": 4,
+    "sources": 13,
+    "notes": "auditor flag: Bocagrande $3,500 -> COP 13M asking (~$4,080 at TRM 3,185); Miami Beach $11,000/m2 -> Redfin $632/sq ft (~$6,800); gap 68% -> ~40%; 8-12% yield -> GPG 5.22%; peso strengthened; fake TheLatinvestor citation removed; checker: asking vs sale wording, primary RNT/SIC sources"
   },
   "tips/chile-off-plan-deposit-guarantee.html": {
     "verified": "2026-10-16",
@@ -456,5 +479,14 @@
     "sources": 5,
     "notes": "new page; fact-checked (Lima province, IGV wording, border-zone supreme decree exception)",
     "links_checked": "2026-10-18"
+  },
+  "tips/playa-del-carmen-vs-miami-beach.html": {
+    "verified": "2026-10-23",
+    "links_checked": "2026-10-23",
+    "claims_checked": 14,
+    "corrected": 9,
+    "removed": 4,
+    "sources": 13,
+    "notes": "auditor flag: Playa $3,800/m2 -> Propiedades.com median MXN 51,018 (~$2,730); Miami Beach $13,000 -> ~$6,800; gap 70% -> ~60%; 8-12% yield unsupported (GPG Cancun 4.60%); peso strengthened; checker: Solidaridad SHF +9.96% replaces press 11.7%, 6% lodging tax applies to private homes"
   }
 }
