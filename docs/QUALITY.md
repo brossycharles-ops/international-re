@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-23 by scripts/content_quality.py. 115 indexed articles, average score 78/100, 52 research-verified (45%), 54 with a Sources section, 76 with an FAQ.
+Generated 2026-10-23 by scripts/content_quality.py. 118 indexed articles, average score 79/100, 55 research-verified (47%), 57 with a Sources section, 80 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -11,8 +11,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | blog/mendoza-wine-country-estates.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/santiago-supply-squeeze-2026.html | — | 961 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/sao-paulo-real-estate-2026.html | — | 1441 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/airbnb-income-mexico-city-2026.html | — | 502 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/airbnb-income-montevideo-uruguay-2026.html | — | 458 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-playa-del-carmen.html | — | 476 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-san-jose-costa-rica.html | — | 578 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-sao-paulo-2026.html | — | 437 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -58,6 +56,8 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | guides/mexico-beach-towns-vs-costa-rica-2026.html | — | 1813 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/uruguay-vs-chile-retirees-2026.html | — | 1292 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-cartagena-colombia-2026.html | — | 666 | 0 | needs a Sources section with 2+ external https links (has 0) |
+| 63 | quick-reads/airbnb-income-mexico-city-2026.html | — | 640 | 0 | needs a Sources section with 2+ external https links (has 0) |
+| 63 | quick-reads/airbnb-income-montevideo-uruguay-2026.html | — | 574 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | tips/brazil-viper-residency-real-estate.html | — | 352 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/buenos-aires-usd-property.html | — | 352 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/costa-rica-foreigner-property-rights.html | — | 391 | 0 | needs a Sources section with 1+ external https links (has 0) |
@@ -95,27 +95,30 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/tbilisi-georgia-1-percent-tax-2026.html | 2026-10-22 | 1418 | 15 | none |
 | 100 | blog/transfer-money-abroad-buy-property-2026.html | 2026-10-19 | 1998 | 10 | none |
 | 100 | guides/buenos-aires-rental-yield-analysis-2026.html | 2026-10-16 | 1979 | 19 | none |
-| 100 | guides/can-foreigners-buy-property-costa-rica.html | 2026-10-19 | 3290 | 19 | none |
+| 100 | guides/can-foreigners-buy-property-costa-rica.html | 2026-10-19 | 3304 | 19 | none |
 | 100 | guides/can-foreigners-buy-property-in-panama-2026.html | 2026-10-17 | 2473 | 20 | none |
 | 100 | guides/can-foreigners-buy-property-peru-2026.html | 2026-10-20 | 2396 | 15 | none |
 | 100 | guides/cuenca-vs-medellin-retirees-2026.html | 2026-10-21 | 2844 | 38 | none |
 | 100 | guides/medellin-vs-buenos-aires-expat-investors-2026.html | 2026-10-17 | 2052 | 25 | none |
 | 100 | guides/montevideo-rental-yield-analysis-2026.html | 2026-10-20 | 2344 | 17 | none |
 | 100 | guides/panama-city-vs-san-jose-expat-investors-2026.html | 2026-10-16 | 1884 | 20 | none |
+| 100 | guides/punta-cana-real-estate-investment-2026.html | 2026-10-23 | 2455 | 22 | none |
 | 100 | guides/santiago-chile-neighborhood-guide-property-buyers-2026.html | 2026-10-16 | 2707 | 23 | none |
 | 100 | quick-reads/airbnb-rules-medellin-foreigners-2026.html | 2026-10-17 | 822 | 12 | none |
 | 100 | quick-reads/cost-of-living-buenos-aires-per-month.html | 2026-10-18 | 1184 | 10 | none |
 | 100 | quick-reads/cost-of-living-cuenca-ecuador-per-month.html | 2026-10-20 | 560 | 5 | none |
 | 100 | quick-reads/ecuador-pensioner-visa-requirements-2026.html | 2026-10-22 | 597 | 5 | none |
-| 100 | quick-reads/how-long-to-buy-property-costa-rica-2026.html | 2026-10-16 | 798 | 4 | none |
+| 100 | quick-reads/how-long-to-buy-property-costa-rica-2026.html | 2026-10-16 | 805 | 4 | none |
 | 100 | quick-reads/mexico-temporary-residency-income-requirement-2026.html | 2026-10-21 | 686 | 9 | none |
 | 100 | quick-reads/property-tax-chile-foreigners-2026.html | 2026-10-19 | 676 | 6 | none |
+| 100 | quick-reads/property-tax-costa-rica-foreigners-2026.html | 2026-10-23 | 804 | 6 | none |
 | 100 | quick-reads/property-tax-panama-foreigners-2026.html | 2026-10-17 | 1040 | 11 | none |
 | 100 | tips/brazil-cpf-required-buy-property.html | 2026-10-19 | 338 | 3 | none |
 | 100 | tips/cartagena-beachfront-vs-miami.html | 2026-10-23 | 940 | 13 | none |
 | 100 | tips/chile-off-plan-deposit-guarantee.html | 2026-10-16 | 333 | 2 | none |
 | 100 | tips/colombia-pension-visa-3-minimum-wages-2026.html | 2026-10-21 | 504 | 7 | none |
 | 100 | tips/costa-rica-pensionado-1000-pension.html | 2026-10-20 | 425 | 4 | none |
+| 100 | tips/dominican-republic-confotur-15-year-exemption.html | 2026-10-23 | 418 | 6 | none |
 | 100 | tips/florianopolis-airbnb-yield-brazil.html | 2026-10-20 | 858 | 12 | none |
 | 100 | tips/medellin-property-vs-miami.html | 2026-10-21 | 660 | 10 | none |
 | 100 | tips/panama-pensionado-750-with-property.html | 2026-10-22 | 305 | 4 | none |
