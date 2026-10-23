@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-23 by scripts/content_quality.py. 118 indexed articles, average score 79/100, 55 research-verified (47%), 57 with a Sources section, 80 with an FAQ.
+Generated 2026-10-23 by scripts/content_quality.py. 118 indexed articles, average score 79/100, 56 research-verified (47%), 58 with a Sources section, 81 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -9,7 +9,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1075 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-26-may-2-2026.html | — | 1039 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/mendoza-wine-country-estates.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/santiago-supply-squeeze-2026.html | — | 961 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/sao-paulo-real-estate-2026.html | — | 1441 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-playa-del-carmen.html | — | 476 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/airbnb-income-san-jose-costa-rica.html | — | 578 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
@@ -91,6 +90,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/retire-in-costa-rica-2026.html | 2026-10-23 | 2059 | 21 | none |
 | 100 | blog/retire-in-ecuador-2026.html | 2026-10-21 | 3225 | 31 | none |
 | 100 | blog/san-juan-del-sur-affordable-beach.html | 2026-10-19 | 2552 | 16 | none |
+| 100 | blog/santiago-supply-squeeze-2026.html | 2026-10-23 | 2883 | 25 | none |
 | 100 | blog/santiago-vs-lake-district.html | 2026-10-19 | 2061 | 31 | none |
 | 100 | blog/tbilisi-georgia-1-percent-tax-2026.html | 2026-10-22 | 1418 | 15 | none |
 | 100 | blog/transfer-money-abroad-buy-property-2026.html | 2026-10-19 | 1998 | 10 | none |
