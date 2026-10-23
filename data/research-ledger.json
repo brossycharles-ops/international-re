@@ -323,6 +323,14 @@
     "notes": "San José out-yields Panama City (8.05% vs 7.66%, GPG) — thesis reversed; colón is a managed float, not USD-pegged; fake 40% foreign-buyer and 102% migration stats removed",
     "links_checked": "2026-10-19"
   },
+  "guides/punta-cana-real-estate-investment-2026.html": {
+    "verified": "2026-10-23",
+    "claims_checked": 56,
+    "corrected": 8,
+    "removed": 3,
+    "sources": 22,
+    "notes": "new page; fact-checked. GPG yields updated to Q3 2026 (9.07%/9.21%); Law 30-26 10% capital gains (GPG still quotes 27%); aclaw.com is Arthur & Castillo; unsupported tax-registration step and no-residency claim removed; 65+ IPI exclusion credited to DGII Guia 17"
+  },
   "guides/santiago-chile-neighborhood-guide-property-buyers-2026.html": {
     "verified": "2026-10-16",
     "claims_checked": 28,
@@ -394,6 +402,14 @@
     "notes": "new page; fact-checked (rate bands apply to total appraisal, TGR payment points, sobretasa ~CLP 670M per SII 2026 FAQ, owner liability; dead late-payment source removed)",
     "links_checked": "2026-10-19"
   },
+  "quick-reads/property-tax-costa-rica-foreigners-2026.html": {
+    "verified": "2026-10-23",
+    "claims_checked": 20,
+    "corrected": 3,
+    "removed": 0,
+    "sources": 6,
+    "notes": "new page; fact-checked. Bill 25.239 wording (extra 0.5% to central government, not municipal); BCCR rate updated to 23 Oct 2026; Law 7509 Art. 6 added for nationality-neutral taxpayer"
+  },
   "quick-reads/property-tax-panama-foreigners-2026.html": {
     "verified": "2026-10-17",
     "claims_checked": 18,
@@ -445,6 +461,14 @@
     "removed": 0,
     "sources": 4,
     "notes": "new page; fact-checked (added maritime-zone concession caveat; DGME site 403, Law 8764 Arts. 78-82, 129 verified from Poder Judicial and Defensoría copies)"
+  },
+  "tips/dominican-republic-confotur-15-year-exemption.html": {
+    "verified": "2026-10-23",
+    "claims_checked": 10,
+    "corrected": 3,
+    "removed": 0,
+    "sources": 6,
+    "notes": "new page; fact-checked. IPI exemption limited to first individual buyers buying from the developer (DGII Guia 17, Law 195-13); title/meta softened"
   },
   "tips/florianopolis-airbnb-yield-brazil.html": {
     "verified": "2026-10-20",
