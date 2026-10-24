@@ -42,33 +42,36 @@
   }
 
   /* ---------- 1. ROI CALCULATOR ---------- */
-  // Real cap rates / yield ranges sourced from existing site guides.
-  // (gross yield % ranges, midpoints used)
+  // Gross rental yields, one per city, copied from the sourced figure in
+  // that city's guide (data/cities.json `stats.rentalYield`; Punta Cana from
+  // its 2026 investment guide). Where the guide gives a range, the midpoint
+  // is used. Markets whose guide says "No reliable published data" are
+  // deliberately left out. No appreciation, tax or cost assumptions: the
+  // calculator only reports gross rental income.
+  // Keys must match the <option> values in index.html #roiRegion.
   const MARKETS = {
-    'costa-rica': { name: 'Costa Rica',          yield: 0.072, growth: 0.10, tax: 0.0025 },
-    'panama':     { name: 'Panama',              yield: 0.085, growth: 0.06, tax: 0.0070 },
-    'colombia':   { name: 'Colombia',            yield: 0.078, growth: 0.18, tax: 0.0080 },
-    'mexico':     { name: 'Mexico (Playa)',      yield: 0.090, growth: 0.08, tax: 0.0030 },
-    'tulum':      { name: 'Mexico (Tulum)',      yield: 0.105, growth: 0.11, tax: 0.0030 },
-    'argentina':  { name: 'Argentina',           yield: 0.062, growth: 0.07, tax: 0.0125 },
-    'chile':      { name: 'Chile',               yield: 0.055, growth: 0.04, tax: 0.0098 },
-    'nicaragua':  { name: 'Nicaragua',           yield: 0.110, growth: 0.07, tax: 0.0100 },
-    'uruguay':    { name: 'Uruguay',             yield: 0.058, growth: 0.05, tax: 0.0030 },
-    'ecuador':    { name: 'Ecuador',             yield: 0.075, growth: 0.05, tax: 0.0050 },
-    'peru':       { name: 'Peru',                yield: 0.070, growth: 0.05, tax: 0.0040 },
-    'brazil':     { name: 'Brazil',              yield: 0.065, growth: 0.07, tax: 0.0060 },
-    'portugal':   { name: 'Portugal (Lisbon)',   yield: 0.050, growth: 0.04, tax: 0.0050 },
-    'greece':     { name: 'Greece (Athens)',     yield: 0.065, growth: 0.10, tax: 0.0035 },
-    'indonesia':  { name: 'Indonesia (Bali)',    yield: 0.140, growth: 0.12, tax: 0.0050 },
-    'georgia':    { name: 'Georgia (Tbilisi)',   yield: 0.100, growth: 0.115, tax: 0.0010 },
-    'dominican':  { name: 'Dominican Republic',  yield: 0.095, growth: 0.085, tax: 0.0100 }
+    'buenos-aires-argentina': { name: 'Buenos Aires',   yield: 0.07,   source: '6–8% gross',       guide: '/cities/buenos-aires-argentina/' },
+    'sao-paulo-brazil':       { name: 'São Paulo',      yield: 0.0643, source: '6.43% gross',      guide: '/cities/sao-paulo-brazil/' },
+    'florianopolis-brazil':   { name: 'Florianópolis',  yield: 0.054,  source: '~5.4% gross',      guide: '/cities/florianopolis-brazil/' },
+    'santiago-chile':         { name: 'Santiago',       yield: 0.049,  source: '~4.9% gross',      guide: '/cities/santiago-chile/' },
+    'medellin-colombia':      { name: 'Medellín',       yield: 0.069,  source: '~6.9% gross',      guide: '/cities/medellin-colombia/' },
+    'cartagena-colombia':     { name: 'Cartagena',      yield: 0.052,  source: '~5.2% gross',      guide: '/cities/cartagena-colombia/' },
+    'san-jose-costa-rica':    { name: 'San José',       yield: 0.072,  source: '6.3–8.1% gross',   guide: '/cities/san-jose-costa-rica/' },
+    'punta-cana-dominican':   { name: 'Punta Cana',     yield: 0.0907, source: '9.07% gross',      guide: '/guides/punta-cana-real-estate-investment-2026.html' },
+    'mexico-city-mexico':     { name: 'Mexico City',    yield: 0.0675, source: '6.5–7% gross',     guide: '/cities/mexico-city-mexico/' },
+    'panama-city-panama':     { name: 'Panama City',    yield: 0.0675, source: '5.5–8% gross',     guide: '/cities/panama-city-panama/' },
+    'lima-peru':              { name: 'Lima',           yield: 0.055,  source: '5–6% gross',       guide: '/cities/lima-peru/' },
+    'montevideo-uruguay':     { name: 'Montevideo',     yield: 0.055,  source: '~5–6% gross',      guide: '/cities/montevideo-uruguay/' },
+    'punta-del-este-uruguay': { name: 'Punta del Este', yield: 0.05,   source: '4–6% gross',       guide: '/cities/punta-del-este-uruguay/' }
   };
+  const DEFAULT_MARKET = 'medellin-colombia';
 
   function fmtUSD(n) {
     if (!isFinite(n)) return '—';
     return '$' + Math.round(n).toLocaleString('en-US');
   }
-  function fmtPct(n) { return (n * 100).toFixed(1) + '%'; }
+  // Up to two decimals, trailing zeros dropped: 0.0675 -> 6.75%, 0.07 -> 7%
+  function fmtPct(n) { return parseFloat((n * 100).toFixed(2)) + '%'; }
 
   function initROICalculator() {
     const root = document.querySelector('.roi-calc');
@@ -85,19 +88,25 @@
     const totalSub = root.querySelector('[data-roi-sub="total"]');
     const unlockForm = root.querySelector('.roi-unlock-form');
     const unlockMsg = root.querySelector('.roi-unlock-msg');
+    const unlockOverlay = root.querySelector('.roi-unlock-overlay');
 
     function compute() {
       const budget = parseFloat(budgetInput.value) || 0;
       const years = parseInt(yearsInput.value, 10) || 5;
-      const m = MARKETS[regionSelect.value] || MARKETS['costa-rica'];
+      const m = MARKETS[regionSelect.value] || MARKETS[DEFAULT_MARKET];
+      // Gross only: no compounding, no appreciation, no costs.
       const annualIncome = budget * m.yield;
-      const totalReturn = budget * Math.pow(1 + m.growth + m.yield - m.tax, years);
+      const holdIncome = annualIncome * years;
       valYield.textContent = fmtPct(m.yield);
       valIncome.textContent = fmtUSD(annualIncome);
-      valTotal.textContent = fmtUSD(totalReturn);
-      yieldSub.textContent = m.name + ' average';
-      incomeSub.textContent = 'gross, year 1';
-      totalSub.textContent = years + '-year projection';
+      valTotal.textContent = fmtUSD(holdIncome);
+      yieldSub.textContent = '';
+      const link = document.createElement('a');
+      link.href = m.guide;
+      link.textContent = m.name + ' guide: ' + m.source;
+      yieldSub.appendChild(link);
+      incomeSub.textContent = 'gross, per year';
+      totalSub.textContent = 'gross, ' + years + (years === 1 ? ' year' : ' years') + ' × annual income';
     }
 
     [budgetInput, regionSelect, yearsInput].forEach(el => {
@@ -106,8 +115,14 @@
     });
     compute();
 
-    if (alreadySubscribed()) result.classList.remove('roi-locked');
-    else result.classList.add('roi-locked');
+    // The overlay is a sibling of .roi-calc-result, so the
+    // `.roi-locked .roi-unlock-overlay` rule never matched it and it stayed
+    // on top of the results after unlocking. Toggle it directly.
+    function setLocked(locked) {
+      result.classList.toggle('roi-locked', locked);
+      if (unlockOverlay) unlockOverlay.style.display = locked ? '' : 'none';
+    }
+    setLocked(!alreadySubscribed());
 
     if (unlockForm) {
       unlockForm.addEventListener('submit', async (e) => {
@@ -122,7 +137,7 @@
         btn.textContent = 'Unlock Results';
         if (ok || (data && /already subscribed/i.test(data.error || ''))) {
           markSubscribed();
-          result.classList.remove('roi-locked');
+          setLocked(false);
           unlockMsg.textContent = 'Unlocked. Welcome.';
           var advCta = document.getElementById('roiAdvisoryCta');
           if (advCta) advCta.style.display = 'block';
@@ -229,6 +244,8 @@
      - Only real signups in last 14 days
      - If empty list returned, no toast shown
      - Per-session: only shows toasts from this real list, in random order
+     - Each item is shown at most once per page view; when the queue is
+       exhausted the toast stops (no looping the same signup).
    */
   function initSocialToast() {
     if (sessionStorage.getItem(TOAST_DISMISSED_KEY) === 'true') return;
@@ -239,9 +256,13 @@
       const queue = items.slice().sort(() => Math.random() - 0.5);
       const toast = buildToastEl();
       document.body.appendChild(toast);
+      let timer = null;
       function show() {
-        if (sessionStorage.getItem(TOAST_DISMISSED_KEY) === 'true') return;
-        const item = queue[i % queue.length]; i++;
+        if (sessionStorage.getItem(TOAST_DISMISSED_KEY) === 'true' || i >= queue.length) {
+          clearInterval(timer);
+          return;
+        }
+        const item = queue[i]; i++;
         const ago = item.minutesAgo < 60
           ? item.minutesAgo + ' min ago'
           : Math.round(item.minutesAgo / 60) + ' hr ago';
@@ -254,7 +275,7 @@
         setTimeout(() => toast.classList.remove('show'), 6000);
       }
       setTimeout(show, 25000);
-      setInterval(show, 45000);
+      timer = setInterval(show, 45000);
     }).catch(() => { /* silent — toast is optional */ });
   }
 

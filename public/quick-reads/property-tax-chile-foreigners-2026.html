@@ -5,16 +5,16 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Property Tax in Chile for Foreigners (2026 Rates)</title>
-  <meta name="description" content="Property tax for foreigners in Chile in 2026: the first CLP 61.7 million of a home&#x27;s appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.">
+  <meta name="description" content="Chile property tax for foreigners, 2026: the first CLP 61.7 million of a home&#x27;s appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.">
   <link rel="canonical" href="https://www.internationalre.org/quick-reads/property-tax-chile-foreigners-2026.html">
   <meta property="og:title" content="Property Tax in Chile for Foreigners (2026 Rates)">
-  <meta property="og:description" content="Property tax for foreigners in Chile in 2026: the first CLP 61.7 million of a home&#x27;s appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.">
+  <meta property="og:description" content="Chile property tax for foreigners, 2026: the first CLP 61.7 million of a home&#x27;s appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1689850543263-01a52ccc6943?w=1200&q=80">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.internationalre.org/quick-reads/property-tax-chile-foreigners-2026.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Property Tax in Chile for Foreigners (2026 Rates)">
-  <meta name="twitter:description" content="Property tax for foreigners in Chile in 2026: the first CLP 61.7 million of a home&#x27;s appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.">
+  <meta name="twitter:description" content="Chile property tax for foreigners, 2026: the first CLP 61.7 million of a home&#x27;s appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1689850543263-01a52ccc6943?w=1200&q=80">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Property Tax in Chile for Foreigners: 2026 Rates and a Worked Example",
-  "description": "Property tax for foreigners in Chile in 2026: the first CLP 61.7 million of a home's appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.",
+  "description": "Chile property tax for foreigners, 2026: the first CLP 61.7 million of a home's appraisal is exempt, then 0.893% to 1.042% a year. Example and due dates.",
   "image": "https://images.unsplash.com/photo-1689850543263-01a52ccc6943?w=1200&q=80",
   "datePublished": "2026-10-19",
   "dateModified": "2026-10-19",
@@ -215,6 +215,6 @@
     if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
     const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
-  <script src="../lead_capture.js?v=20261022" defer></script>
+  <script src="../lead_capture.js?v=20261024" defer></script>
 </body>
 </html>

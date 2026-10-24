@@ -139,6 +139,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css?v=20261022">
   <link rel="stylesheet" href="layout_updates.css?v=20261022">
+  <style>
+    /* Rental yield calculator: stack label / value / note in each metric
+       (the spans otherwise run inline on one line). */
+    .roi-metric-label, .roi-metric-value, .roi-metric-sub { display: block; }
+    .roi-metric-sub a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+  </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script defer src="/js/analytics.js"></script>
 </head>
@@ -257,8 +263,8 @@
     <div class="container">
       <div class="section-header">
         <p class="section-label">Investor Tool</p>
-        <h2>Latin America Real Estate<br>ROI Calculator</h2>
-        <p class="section-desc">Estimate your projected rental income, appreciation, and total return across our 17 covered markets. Built from our 2026 dataset.</p>
+        <h2>Latin America Real Estate<br>Rental Yield Calculator</h2>
+        <p class="section-desc">Estimate gross rental income in the 13 markets where our guides cite a published rental-yield figure (midpoint of the sourced range). Gross, before vacancy, management, taxes and costs; excludes appreciation.</p>
       </div>
       <div class="roi-calc">
         <div class="roi-calc-form">
@@ -269,29 +275,20 @@
           <div class="form-group">
             <label for="roiRegion">Market</label>
             <select id="roiRegion">
-              <optgroup label="Latin America">
-                <option value="costa-rica">Costa Rica (Guanacaste)</option>
-                <option value="panama">Panama (Panama City)</option>
-                <option value="colombia">Colombia (Medellín)</option>
-                <option value="mexico">Mexico (Playa del Carmen)</option>
-                <option value="tulum">Mexico (Tulum)</option>
-                <option value="dominican">Dominican Republic (Punta Cana)</option>
-                <option value="argentina">Argentina (Buenos Aires)</option>
-                <option value="chile">Chile (Santiago)</option>
-                <option value="nicaragua">Nicaragua (San Juan del Sur)</option>
-                <option value="uruguay">Uruguay (Punta del Este)</option>
-                <option value="ecuador">Ecuador (Cuenca)</option>
-                <option value="peru">Peru (Lima)</option>
-                <option value="brazil">Brazil (Florianópolis)</option>
-              </optgroup>
-              <optgroup label="Europe">
-                <option value="portugal">Portugal (Lisbon)</option>
-                <option value="greece">Greece (Athens)</option>
-              </optgroup>
-              <optgroup label="Emerging">
-                <option value="georgia">Georgia (Tbilisi)</option>
-                <option value="indonesia">Indonesia (Bali)</option>
-              </optgroup>
+              <!-- Only cities whose guide cites a gross rental yield; values live in lead_capture.js MARKETS -->
+              <option value="buenos-aires-argentina">Buenos Aires, Argentina (6–8%)</option>
+              <option value="sao-paulo-brazil">São Paulo, Brazil (6.43%)</option>
+              <option value="florianopolis-brazil">Florianópolis, Brazil (~5.4%)</option>
+              <option value="santiago-chile">Santiago, Chile (~4.9%)</option>
+              <option value="medellin-colombia" selected>Medellín, Colombia (~6.9%)</option>
+              <option value="cartagena-colombia">Cartagena, Colombia (~5.2%)</option>
+              <option value="san-jose-costa-rica">San José, Costa Rica (6.3–8.1%)</option>
+              <option value="punta-cana-dominican">Punta Cana, Dominican Republic (9.07%)</option>
+              <option value="mexico-city-mexico">Mexico City, Mexico (6.5–7%)</option>
+              <option value="panama-city-panama">Panama City, Panama (5.5–8%)</option>
+              <option value="lima-peru">Lima, Peru (5–6%)</option>
+              <option value="montevideo-uruguay">Montevideo, Uruguay (~5–6%)</option>
+              <option value="punta-del-este-uruguay">Punta del Este, Uruguay (4–6%)</option>
             </select>
           </div>
           <div class="form-group">
@@ -300,13 +297,14 @@
           </div>
         </div>
         <div class="roi-calc-result" id="roiResult">
-          <div class="roi-metric"><span class="roi-metric-label">Annual Rental Yield</span><span class="roi-metric-value" data-roi="yield">—</span><span class="roi-metric-sub" data-roi-sub="yield"></span></div>
-          <div class="roi-metric"><span class="roi-metric-label">Projected Annual Income</span><span class="roi-metric-value" data-roi="income">—</span><span class="roi-metric-sub" data-roi-sub="income"></span></div>
-          <div class="roi-metric"><span class="roi-metric-label">Total Return (Hold Period)</span><span class="roi-metric-value" data-roi="total">—</span><span class="roi-metric-sub" data-roi-sub="total"></span></div>
+          <div class="roi-metric"><span class="roi-metric-label">Gross Rental Yield</span><span class="roi-metric-value" data-roi="yield">—</span><span class="roi-metric-sub" data-roi-sub="yield"></span></div>
+          <div class="roi-metric"><span class="roi-metric-label">Gross Annual Rental Income</span><span class="roi-metric-value" data-roi="income">—</span><span class="roi-metric-sub" data-roi-sub="income"></span></div>
+          <div class="roi-metric"><span class="roi-metric-label">Gross Rental Income (Hold Period)</span><span class="roi-metric-value" data-roi="total">—</span><span class="roi-metric-sub" data-roi-sub="total"></span></div>
         </div>
+        <p class="roi-note" style="color:rgba(250,248,243,0.7);font-size:0.85rem;text-align:center;margin-top:16px;">Gross, before vacancy, management, taxes and costs; excludes appreciation. Not a forecast or investment advice; net returns will be lower.</p>
         <div class="roi-unlock-overlay" id="roiUnlock">
-          <h3>Unlock Your Full Projection</h3>
-          <p>Enter your email to reveal yields, income, and total return — plus our 2026 weekly market intelligence newsletter, free.</p>
+          <h3>Unlock Your Rental Income Estimate</h3>
+          <p>Enter your email to reveal the gross yield and rental-income estimate — plus our weekly market intelligence newsletter, free.</p>
           <form class="roi-unlock-form" id="roiUnlockForm">
             <input type="email" name="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" required>
             <button type="submit" class="btn btn-primary">Unlock Results</button>
@@ -349,7 +347,7 @@
               <div class="fact-icon">&#128200;</div>
               <div>
                 <strong>San José new/prime apartments: about US$2,902/m²</strong>
-                <p>Global Property Guide's July 2026 survey; average gross yields were 7.63% in Q2 2026. Coastal Guanacaste is carrying unsold high-end inventory while the Central Valley gains buyers. <a href="/blog/latin-america-market-update-october-2026.html">October 2026 market update</a>.</p>
+                <p>Global Property Guide's July 2026 survey; Costa Rica's national average gross yield was 7.63% in Q2 2026. Coastal Guanacaste is carrying unsold high-end inventory while the Central Valley gains buyers. <a href="/blog/latin-america-market-update-october-2026.html">October 2026 market update</a>.</p>
               </div>
             </div>
             <div class="fact">
@@ -369,8 +367,8 @@
             <div class="fact">
               <div class="fact-icon">&#128176;</div>
               <div>
-                <strong>Median home price: $150K–$350K (expat zones)</strong>
-                <p>Entry-level condos start around $100K, while luxury beachfront villas range from $500K to $2M+ in premium areas like Tamarindo and Manuel Antonio.</p>
+                <strong>Guanacaste beach condos: about $2,000–$3,000/m²</strong>
+                <p>Asking prices from a small El Financiero sample (August 2026); there is no reliable published rental-yield figure for the coast, so ask for real booking records. <a href="/cities/guanacaste-costa-rica/">Guanacaste guide, sourced</a>.</p>
               </div>
             </div>
           </div>
@@ -877,6 +875,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
   <script src="/map.js?v=20261016"></script>
-  <script src="lead_capture.js?v=20261022" defer></script>
+  <script src="lead_capture.js?v=20261024" defer></script>
 </body>
 </html>
