@@ -36,11 +36,14 @@ sys.exit(1 if bad else 0)
 PY
 
 echo "[verify] live crawl"
-PORT=$(( 40000 + RANDOM % 10000 ))
+# Let the OS pick a free port (a random one could clash with a parallel run).
+PORT=$(python3 -c "import socket; s=socket.socket(); s.bind(('0.0.0.0', 0)); print(s.getsockname()[1]); s.close()")
 PORT=$PORT SUBSCRIBERS_FILE="$TMP/subs.json" ENABLE_EMAIL_SCHEDULER=0 node server.js > "$TMP/server.log" 2>&1 &
 SERVER_PID=$!
 trap 'kill $SERVER_PID 2>/dev/null; rm -rf "$TMP"' EXIT
-for _ in $(seq 1 30); do curl -s -o /dev/null "http://localhost:$PORT/" && break; sleep 0.3; done
+up=0
+for _ in $(seq 1 50); do curl -s -m 5 -o /dev/null "http://localhost:$PORT/" && { up=1; break; }; sleep 0.3; done
+[ "$up" -eq 1 ] || { echo "  FAIL server did not start on port $PORT"; tail -15 "$TMP/server.log"; fail=1; }
 
 bad=0; total=0
 for path in $(grep -o '<loc>[^<]*</loc>' public/sitemap.xml | sed -E 's|<loc>https?://[^/]+||; s|</loc>||'); do

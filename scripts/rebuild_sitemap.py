@@ -2,7 +2,8 @@
 """Regenerate public/sitemap.xml from the actual files in public/.
 Source of truth = filesystem. lastmod = last git commit touching the file
 (mtime is reset by every checkout, which would mark all pages as changed today).
-Pages carrying a robots noindex meta are skipped."""
+Pages carrying a robots noindex meta are skipped.
+Usage: rebuild_sitemap.py [--sitemap-only]  (skip the related/latest/breadcrumb page rewrites)"""
 import datetime as dt
 import re
 import subprocess
@@ -42,7 +43,13 @@ def lastmod(path: Path) -> str:
     return dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
 
 def url_for(rel: Path) -> str:
+    # index.html pages are listed at their canonical directory URL
+    # (/ and /cities/<slug>/), matching each page's rel=canonical.
     s = str(rel).replace("\\", "/")
+    if s == "index.html":
+        return f"{BASE}/"
+    if s.endswith("/index.html"):
+        s = s[: -len("index.html")]
     return f"{BASE}/{s}"
 
 entries = []
@@ -102,7 +109,10 @@ print(f"✓ sitemap.xml rebuilt with {len(unique)} entries")
 
 # Every agent runs this script before publishing, so it also refreshes the other
 # derived page section: the "Related reading" boxes that keep new pages linked.
+# --sitemap-only skips those page rewrites (just regenerate sitemap.xml).
 import subprocess, sys
+if "--sitemap-only" in sys.argv:
+    sys.exit(0)
 subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "related_links.py")], check=False)
 subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "latest_cards.py")], check=False)
 subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "breadcrumbs.py")], check=False)

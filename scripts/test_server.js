@@ -26,20 +26,33 @@ const createdNl = !fs.existsSync(nlFile);
 if (createdNl) { fs.mkdirSync(nlDir, { recursive: true }); fs.writeFileSync(nlFile, JSON.stringify({ subject: 'Test issue', html: '<p>Hi {{firstName}}</p>' + 'x'.repeat(250) })); }
 const nlSubject = JSON.parse(fs.readFileSync(nlFile, 'utf8')).subject;
 
-const PORT = 40000 + Math.floor(Math.random() * 9000);
-Object.assign(process.env, {
-  PORT: String(PORT), ADMIN_KEY: 'test-admin-key', RESEND_API_KEY: 'test', SUBSCRIBERS_FILE: path.join(dir, 'subscribers.json'),
-  ENABLE_EMAIL_SCHEDULER: '0', BACKUP_EMAIL: '',
-});
-require(path.join(__dirname, '..', 'server.js'));
+// Audit-report fixtures: a market report newer than the latest daily audit.
+const ctoDir = path.join(dir, 'cto-reports');
+const yday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+fs.mkdirSync(ctoDir);
+fs.writeFileSync(path.join(ctoDir, `${yday}.md`), '# Audit\n\n## Status\n\nAll systems green\n');
+fs.writeFileSync(path.join(ctoDir, `${today}-market.md`), '# Market data\n\n## Status\n\nNot an audit\n');
 
-const B = `http://127.0.0.1:${PORT}`;
+let PORT, B;
 const post = (p, body, raw) => fetch(B + p, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: raw ?? JSON.stringify(body) });
 let failures = 0;
 const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${name}${ok ? '' : '  ' + detail}`); if (!ok) failures++; };
 
 (async () => {
-  await new Promise(r => setTimeout(r, 400));
+  // Ask the OS for a free port (a random pick could collide with a parallel run),
+  // then wait until the server answers: a fixed 400 ms sleep lost the race on a
+  // busy machine and the first fetch died with ECONNREFUSED 127.0.0.1:<port>.
+  PORT = await new Promise((res, rej) => { const s = require('net').createServer().once('error', rej).listen(0, '0.0.0.0', () => { const p = s.address().port; s.close(() => res(p)); }); });
+  B = `http://127.0.0.1:${PORT}`;
+  Object.assign(process.env, {
+    PORT: String(PORT), ADMIN_KEY: 'test-admin-key', RESEND_API_KEY: 'test', SUBSCRIBERS_FILE: path.join(dir, 'subscribers.json'),
+    ENABLE_EMAIL_SCHEDULER: '0', BACKUP_EMAIL: '', CTO_REPORTS_DIR: ctoDir,
+  });
+  require(path.join(__dirname, '..', 'server.js'));
+  for (let i = 0; ; i++) {
+    try { await fetch(B + '/robots.txt', { signal: AbortSignal.timeout(2000) }); break; }
+    catch (e) { if (i >= 100) throw new Error(`server did not start on port ${PORT}`); await new Promise(r => setTimeout(r, 100)); }
+  }
   // Subscribe validation
   check('rejects reserved test domains', (await post('/api/subscribe', { email: 'a@example.com' })).status === 400);
   check('rejects malformed email', (await post('/api/subscribe', { email: 'nope' })).status === 400);
@@ -210,6 +223,7 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   const gst = await (await fetch(B + '/api/status')).json();
   check('status reports signups by page', gst.growth && gst.growth.byPage.some(r => r.page === '/guides/x.html' && r.signups === 1) && gst.growth.signups28 >= 2, JSON.stringify(gst.growth));
   check('status lists the Growth Director', gst.agents.some(a => a.id === 'director'));
+  check('status audit ignores non-audit reports (e.g. YYYY-MM-DD-market.md)', gst.audit && gst.audit.file === `${yday}.md` && gst.audit.status === 'All systems green', JSON.stringify(gst.audit));
 
   if (createdNl) fs.unlinkSync(nlFile);
   fs.rmSync(dir, { recursive: true, force: true });
