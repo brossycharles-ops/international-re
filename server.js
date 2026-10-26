@@ -635,8 +635,10 @@ function ledgerSnapshot() {
 
 function latestAudit() {
   try {
-    const dir = path.join(__dirname, 'docs', 'cto-reports');
-    const files = fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort().reverse();
+    const dir = process.env.CTO_REPORTS_DIR || path.join(__dirname, 'docs', 'cto-reports');
+    // Only the daily audits (YYYY-MM-DD.md): the folder also holds other reports
+    // (e.g. 2026-10-21-market.md) that would otherwise pass for the latest audit.
+    const files = fs.readdirSync(dir).filter(f => /^\d{4}-\d{2}-\d{2}\.md$/.test(f)).sort().reverse();
     if (!files.length) return null;
     const text = fs.readFileSync(path.join(dir, files[0]), 'utf-8');
     const status = (text.match(/## Status\s*\n+([^\n]+)/) || [])[1] || '';
