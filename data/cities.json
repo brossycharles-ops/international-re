@@ -273,19 +273,101 @@
       "city": "Buenos Aires",
       "country": "Argentina",
       "countryFlag": "🇦🇷",
-      "tagline": "World-class architecture at $2,800/m². Capital controls gone, UVA mortgages back, and 7%+ gross yields.",
+      "tagline": "Belle Époque Buenos Aires: city flats average about US$2,484/m² asking, with ~5.7% gross yields (Zonaprop, Sept 2026).",
       "heroImage": "https://images.unsplash.com/photo-1725499267114-15531716d101",
       "stats": {
-        "pricePerSqm": "$2,000–$3,500",
-        "rentalYield": "6–8%",
-        "costOfLiving": "$1,200–$2,000/mo",
-        "currency": "Argentine Peso (ARS)"
+        "pricePerSqm": "$1,070–$6,170 (avg ~$2,480 asking; Zonaprop)",
+        "rentalYield": "~5.7% gross (city avg; 3.2–9.6% by barrio)",
+        "costOfLiving": "~$880/mo + rent (single; Numbeo)",
+        "currency": "Argentine Peso (ARS); property priced in USD"
       },
       "matchSlugs": [
         "buenos-aires",
         "argentina"
       ],
-      "metaDescription": "Buenos Aires real estate 2026 — Palermo, Recoleta, Puerto Madero. Current prices per m², 6-8% gross yields, foreign buyer rules and UVA mortgages."
+      "metaDescription": "Buenos Aires real estate 2026: Zonaprop prices per m² by barrio, ~5.7% gross yields, foreign buyer rules, the CUIT, FX controls and the rent-law repeal.",
+      "about": [
+        "Buenos Aires draws foreign buyers with its Belle Époque apartments in Recoleta and Palermo and prices that are modest for a capital of its size. Zonaprop's September 2026 index puts the average asking price of a city apartment at US$2,484/m², from about US$1,071 in Lugano to US$6,165 in Puerto Madero (Palermo US$3,454), with a gross rental yield of 5.70% for the city as a whole: 4.6% in Palermo and 3.2% in Puerto Madero, rising to 9.6% in Lugano. Those yields are asking rent over asking price, before vacancy, expenses (building fees), taxes and currency moves. Article 20 of the Constitution gives foreigners all the civil rights of citizens, including to buy and sell real estate, and no residency is required. The rural land law (Law 26.737), whose caps on foreign ownership were repealed by DNU 70/2023 and are back in the courts after the Supreme Court provisionally suspended that repeal in October 2026, applies only to land outside the urban ejido, so it does not affect city apartments.",
+        "A purchase must be made by escritura pública (Civil and Commercial Code, Art. 1017), signed before an escribano (notary) who may not authorise it without seeing the registered title and a current certificate from the Registro de la Propiedad Inmueble (Law 17.801, Art. 23); the deed is then registered there to be enforceable against third parties. A foreign buyer first needs an Argentine tax ID: since 2 March 2026, ARCA Resolución General 5803/2025 has replaced the old CDI with a CUIT, which non-residents request through a representative with an address in Argentina. In the city, stamp duty on the transfer is 2.7% when the price or fiscal value is up to ARS 226.1 million and 3.5% above that (Ley Tarifaria 2026, Art. 34). Listings are priced in US dollars, so agree with the escribano in advance how the funds will be transferred and documented.",
+        "Be clear about the risks. Argentina has a long history of currency controls (the 'cepo'). From 14 April 2025, BCRA Comunicación A 8226 let resident individuals buy dollars at banks for savings without prior central-bank approval, but that change covered resident individuals only, so confirm with your bank how a non-resident would take sale proceeds out. Rental rules were deregulated: DNU 70/2023 repealed the 2020 Rent Law (Law 27.551) and lets landlord and tenant set the term, currency and indexation. The Senate has rejected that decree and the Chamber of Deputies had not voted on it as of October 2026, so the rules could change again. Liquidity is real but mortgage-light: the city's notaries recorded 6,055 sale deeds in August 2026 (down 4.9% year on year), of which 1,059 used a mortgage (down 20.8%). The US State Department rates Argentina Level 1, 'Exercise normal precautions' (July 2026), while warning of petty crime in Buenos Aires."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy an apartment in Buenos Aires?",
+          "a": "Yes. Article 20 of the Argentine Constitution gives foreigners the same civil rights as citizens, including to buy and sell real estate, and no residency is needed. The rural land law limits foreign ownership only of land outside urban areas, so they do not apply to a city apartment."
+        },
+        {
+          "q": "What tax ID does a foreigner need to buy property in Argentina?",
+          "a": "A CUIT. Since 2 March 2026, ARCA Resolución General 5803/2025 has replaced the CDI that foreigners used to obtain. Non-residents apply through a representative or authorised third party with an address in Argentina, using form 460 F/PD and a passport. CDIs issued before then remain valid until your details change."
+        },
+        {
+          "q": "How much does an apartment cost in Buenos Aires in 2026?",
+          "a": "Zonaprop's September 2026 index puts the average asking price of a city apartment at US$2,484/m², from about US$1,071 in Lugano to US$6,165 in Puerto Madero; Palermo averages US$3,454. A typical 50 m² two-room flat is listed at about US$131,000. These are asking prices, and closing prices can be lower."
+        },
+        {
+          "q": "Are Argentina's currency controls gone?",
+          "a": "Mostly, for residents. From 14 April 2025, BCRA Comunicación A 8226 let resident individuals buy foreign currency at banks without prior central-bank approval. The change applied to resident individuals, so non-residents should confirm with their bank how they would take sale proceeds or rent out of the country."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Zonaprop — Index CABA, September 2026 report (asking price per m², rents, gross yield by barrio)",
+          "url": "https://www.zonaprop.com.ar/blog/wp-content/uploads/2026/10/INDEX_CABA_REPORTE_2026-09.pdf"
+        },
+        {
+          "title": "Constitución de la Nación Argentina — Art. 20 (civil rights of foreigners)",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/804/texto"
+        },
+        {
+          "title": "Ley 26.737 — Régimen de Protección al Dominio Nacional sobre Tierras Rurales (Art. 1: rural land = outside the urban ejido)",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/192150/texto"
+        },
+        {
+          "title": "Decreto DNU 70/2023 — Art. 154 (repeal of Law 26.737), Art. 249 (repeal of Rent Law 27.551), Arts. 1198–1199 Civil Code (lease term and currency)",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/395521/texto"
+        },
+        {
+          "title": "ANB Bariloche — La Corte Suprema restableció los límites a la compra de tierras por extranjeros (9 October 2026)",
+          "url": "https://www.anbariloche.com.ar/amp/noticias/2026/10/09/119592-la-corte-suprema-restablecio-los-limites-a-la-compra-de-tierras-por-extranjeros-por-un-reclamo-de-bariloche"
+        },
+        {
+          "title": "iProfesional — Ley de Tierras: la Corte suma conjueces (6 October 2026; DNU rejected by the Senate, pending in Deputies)",
+          "url": "https://www.iprofesional.com/politica/466018-ley-de-tierras-la-corte-suma-conjueces-y-define-como-sigue-la-causa"
+        },
+        {
+          "title": "Código Civil y Comercial de la Nación (Ley 26.994) — Art. 1017 (escritura pública)",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/235975/actualizacion"
+        },
+        {
+          "title": "Ley 17.801 — Registro de la Propiedad Inmueble (Arts. 2 and 23)",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/norma-53050/texto"
+        },
+        {
+          "title": "ARCA Resolución General 5803/2025 — CUIT replaces CDI for individuals from 2 March 2026 (Boletín Oficial, 24 December 2025)",
+          "url": "https://www.boletinoficial.gob.ar/pdf/aviso/primera/336722/20251224"
+        },
+        {
+          "title": "Colegio de Escribanos de la Ciudad de Buenos Aires — Ley Tarifaria 2026 stamp duty rates (2.7% / 3.5%)",
+          "url": "https://www.colegio-escribanos.org.ar/2026/01/30/actualizacion-del-sie-implementacion-de-alicuotas-diferenciales-ley-tarifaria-2026/"
+        },
+        {
+          "title": "BCRA Comunicación \"A\" 8226 (11 April 2025, in force 14 April 2025) — FX access for resident individuals",
+          "url": "https://www.bcra.gob.ar/Pdfs/comytexord/A8226.pdf"
+        },
+        {
+          "title": "Colegio de Escribanos de la Ciudad de Buenos Aires — Escrituras de compraventa, August 2026",
+          "url": "https://www.colegio-escribanos.org.ar/?p=144575"
+        },
+        {
+          "title": "US State Department — Argentina Travel Advisory (Level 1, July 2026)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/argentina.html"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Buenos Aires (monthly costs excluding rent)",
+          "url": "https://www.numbeo.com/cost-of-living/in/Buenos-Aires"
+        }
+      ],
+      "updated": "2026-10-26"
     },
     {
       "slug": "mexico-city-mexico",
