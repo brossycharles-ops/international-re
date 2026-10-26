@@ -54,6 +54,11 @@ def scan_content():
             fp = os.path.join(dir_path, fname)
             with open(fp) as f:
                 html = f.read()
+            # Don't link hubs to pages we keep out of search (e.g. the noindexed
+            # template /landing/ pages): readers and crawlers should land on
+            # researched pages only.
+            if re.search(r'<meta name="robots" content="[^"]*noindex', html):
+                continue
             title_match = re.search(r'<title>([^<|]+)', html)
             desc_match = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', html)
             title = title_match.group(1).strip() if title_match else fname.replace('.html', '').replace('-', ' ').title()
