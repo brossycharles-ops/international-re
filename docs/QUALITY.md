@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-23 by scripts/content_quality.py. 118 indexed articles, average score 79/100, 56 research-verified (47%), 58 with a Sources section, 81 with an FAQ.
+Generated 2026-10-26 by scripts/content_quality.py. 118 indexed articles, average score 79/100, 56 research-verified (47%), 58 with a Sources section, 81 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
