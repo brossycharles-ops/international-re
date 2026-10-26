@@ -223,6 +223,14 @@
     "links_checked": "2026-10-19",
     "notes": "Removed the claim that foreigners can get Chilean mortgages (banks require permanent residency), a nonexistent $10B Puerto Varas project (a ~US$10M park), and a 2.2% GDP forecast (now 0.25-0.75%); prime Santiago new-build is $4,300-4,900/m², not $2,300-4,000"
   },
+  "blog/sao-paulo-real-estate-2026.html": {
+    "verified": "2026-10-26",
+    "claims_checked": 41,
+    "corrected": 17,
+    "removed": 18,
+    "sources": 13,
+    "notes": "research queue; FipeZAP Sept 2026 prices/yields, SP ITBI 3%, non-resident 15% rent withholding; independent fact-check fixes (FipeZAP 36-city average, low-tax list wording, 2026 R$5,000 relief); travel.state.gov blocked, Level 2 from search snippets"
+  },
   "blog/tbilisi-georgia-1-percent-tax-2026.html": {
     "verified": "2026-10-22",
     "claims_checked": 46,
