@@ -93,6 +93,17 @@ function countPageview(req) {
   const date = new Date().toISOString().slice(0, 10);
   const day = trafficDay(date);
   day.raw = (day.raw || 0) + 1;
+  // Temporary diagnostic (2026-10-26): /contact.html draws ~25% of counted views
+  // with no matching messages. Log a few request traits (IP only as a salted,
+  // daily-rotating hash) so the pattern can be read from Railway's logs.
+  if (req.path === '/contact.html' && (traffic.today.diag = (traffic.today.diag || 0) + 1) <= 400) {
+    console.log('contact-diag ' + JSON.stringify({
+      ok: isBrowserNavigation(req), ua: ua.slice(0, 150), ref: (req.get('referer') || '').slice(0, 120),
+      al: (req.get('accept-language') || '').slice(0, 30), q: Object.keys(req.query || {}).join(','),
+      dest: req.get('sec-fetch-dest') || '', site: req.get('sec-fetch-site') || '', user: req.get('sec-fetch-user') || '',
+      ch: (req.get('sec-ch-ua') || '').slice(0, 60), id: crypto.createHash('sha256').update(traffic.today.salt + clientIp(req)).digest('hex').slice(0, 8),
+    }));
+  }
   if (!isBrowserNavigation(req)) { trafficDirty = true; return; }
   const ip = clientIp(req);
   const id = crypto.createHash('sha256').update(traffic.today.salt + ip + ua).digest('hex').slice(0, 16);
