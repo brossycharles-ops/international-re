@@ -315,7 +315,7 @@ def render_city_hub(city):
       }}
     }});
   </script>
-  <script src="/lead_capture.js?v=20261022" defer></script>
+  <script src="/lead_capture.js?v=20261026" defer></script>
 </body>
 </html>
 '''
@@ -452,7 +452,7 @@ def render_index(cities_list):
     <a href="/" style="color:#c9a84c;font-weight:700;text-decoration:none;">&#9670; International RE</a>
     <p style="margin:14px 0 6px;">Independent research by Charles Brossy.</p>
   </footer>
-  <script src="/lead_capture.js?v=20261022" defer></script>
+  <script src="/lead_capture.js?v=20261026" defer></script>
 </body>
 </html>
 '''

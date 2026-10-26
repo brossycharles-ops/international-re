@@ -148,6 +148,29 @@
     }
   }
 
+  /* ---------- Topic-matched offer copy ----------
+     Same Starter Kit everywhere, but lead with the part of it that matches what
+     the reader is reading. Every line describes real kit contents. */
+  function offerCopy() {
+    const p = window.location.pathname.toLowerCase();
+    if (/retire|pension|retiree/.test(p)) return {
+      title: 'Planning to retire in Latin America? Get the free Expat Starter Kit',
+      lead: 'Residency routes for 10 countries side by side, a 17-city cost comparison and a 47-item relocation checklist.',
+      bar: 'Retiring abroad? Free Starter Kit: residency routes for 10 countries &amp; a 17-city cost comparison' };
+    if (/cost-of-living|per-month|budget/.test(p)) return {
+      title: 'Comparing costs? Get the free 17-city Expat Starter Kit',
+      lead: 'A 17-city comparison of prices and costs, residency routes for 10 countries and a 47-item relocation checklist.',
+      bar: 'Comparing cities? Free Starter Kit: 17-city cost comparison &amp; residency routes for 10 countries' };
+    if (/buy|property|real-estate|legal|tax|closing|foreigner/.test(p)) return {
+      title: 'Buying abroad? Get the free Expat Starter Kit',
+      lead: 'A six-month buying timeline, a 47-item checklist, a 17-city market comparison and residency routes for 10 countries.',
+      bar: 'Buying abroad? Free Starter Kit: 6-month buying timeline, 47-item checklist &amp; 17-city comparison' };
+    return {
+      title: 'Before you go — get the Latin America Expat Starter Kit',
+      lead: 'A 17-city market comparison, residency routes for 10 countries, and a 47-item relocation checklist.',
+      bar: '<strong>Free Expat Starter Kit</strong> — 17-city comparison, residency routes for 10 countries &amp; a 47-item checklist' };
+  }
+
   /* ---------- 2. EXIT-INTENT MODAL ---------- */
   function initExitIntent() {
     if (alreadySubscribed()) return;
@@ -206,8 +229,8 @@
         <img class="modal-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=70" width="520" height="180" alt="Modern glass skyscrapers seen from below" loading="lazy" decoding="async">
         <div class="modal-body">
           <span class="modal-eyebrow">Free · 2026 Edition</span>
-          <h2 id="exitTitle">Before you go — get the Latin America Expat Starter Kit</h2>
-          <p><strong>Free, sent instantly.</strong> A 17-city market comparison, residency routes for 10 countries, and a 47-item relocation checklist.</p>
+          <h2 id="exitTitle">${offerCopy().title}</h2>
+          <p><strong>Free, sent instantly.</strong> ${offerCopy().lead}</p>
           <form class="modal-form" data-form="exit">
             <input type="email" name="email" placeholder="Email address" required aria-label="Email address">
             <button type="submit">Send My Free Starter Kit →</button>
@@ -220,7 +243,7 @@
     wrap.querySelector('form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const f = e.target;
-      const payload = { email: f.email.value.trim() };
+      const payload = { email: f.email.value.trim(), source: 'exit-modal' };
       const btn = f.querySelector('button');
       btn.disabled = true; btn.textContent = 'Sending…';
       const { ok, data } = await postSubscribe(payload);
@@ -317,7 +340,7 @@
     bar.setAttribute('aria-label', 'Subscribe prompt');
     bar.innerHTML = `
       <div class="sticky-bar-inner">
-        <span class="sticky-bar-text">&#9670; <strong>Free Expat Starter Kit</strong> — 17-city comparison, residency routes for 10 countries &amp; a 47-item checklist</span>
+        <span class="sticky-bar-text">&#9670; ${offerCopy().bar}</span>
         <form class="sticky-bar-form" autocomplete="off">
           <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
           <button type="submit">Get It Free →</button>
@@ -337,7 +360,7 @@
       if (!email) return;
       const btn = bar.querySelector('button[type="submit"]');
       btn.disabled = true; btn.textContent = 'Subscribing…';
-      const { ok, data } = await postSubscribe({ firstName: '', lastName: '', email });
+      const { ok, data } = await postSubscribe({ firstName: '', lastName: '', email, source: 'sticky-bar' });
       if (ok || (data && /already subscribed/i.test(data.error || ''))) {
         markSubscribed();
         window.location.href = '/thankyou.html';
