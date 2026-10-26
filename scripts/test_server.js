@@ -114,6 +114,7 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   await load('/styles.css', browser);
   await load('/no-such-page.html', browser);
   await load('/contact.html', { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) Chrome/130.0', 'X-Forwarded-For': '203.0.113.99' }); // fake-browser scraper
+  await load('/contact.html?kind=correction&page=/x.html', { ...browser, 'X-Forwarded-For': '203.0.113.98', 'Sec-Fetch-Site': 'none' }); // crawler opening a harvested in-article link directly
   await new Promise(r => setTimeout(r, 100));
   const after = await stats();
   check('counts real browser page views only (not bots, fake-browser scrapers, assets, 404s)', after.pageviews - before.pageviews === 2, JSON.stringify(after));

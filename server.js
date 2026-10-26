@@ -105,6 +105,13 @@ function countPageview(req) {
     }));
   }
   if (!isBrowserNavigation(req)) { trafficDirty = true; return; }
+  // The 'report an error' link (/contact.html?kind=…&page=…) only exists inside
+  // articles, so a real click arrives same-origin. Crawlers driving real Chrome
+  // open the harvested URL directly (Sec-Fetch-Site: none, no referrer).
+  if (req.query && req.query.page && req.get('sec-fetch-site') !== 'same-origin') { trafficDirty = true; return; }
+  // Daily traits of counted views (aggregate counts only) to spot crawler traffic.
+  bump((day.langs ||= {}), (req.get('accept-language') || '').split(/[,;]/)[0].slice(0, 12) || '-', 60);
+  bump((day.arrival ||= {}), req.get('sec-fetch-site') || '-', 10);
   const ip = clientIp(req);
   const id = crypto.createHash('sha256').update(traffic.today.salt + ip + ua).digest('hex').slice(0, 16);
   if (!traffic.today.seen.includes(id)) { traffic.today.seen.push(id); day.visitors++; }
@@ -133,6 +140,12 @@ function trafficSummary(days, top = 10) {
     for (const [k, n] of Object.entries(v.refs)) out.sources[k] = (out.sources[k] || 0) + n;
   }
   const rank = m => Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, top);
+  out.langs = {}; out.arrival = {};
+  for (const [d, v] of Object.entries(traffic.days)) {
+    if (d < from) continue;
+    for (const [k, n] of Object.entries(v.langs || {})) out.langs[k] = (out.langs[k] || 0) + n;
+    for (const [k, n] of Object.entries(v.arrival || {})) out.arrival[k] = (out.arrival[k] || 0) + n;
+  }
   out.pages = rank(out.pages).map(([page, views]) => ({ page, views }));
   out.sources = rank(out.sources).map(([source, views]) => ({ source, views }));
   return out;
