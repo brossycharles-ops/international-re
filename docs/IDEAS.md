@@ -6,12 +6,12 @@ The Growth Engine takes the first unchecked idea that fits the day's format, mar
 
 Order (2026-10-26 review): retirement visas and costs first (the most-read cluster), then Ecuador/Mexico/Costa Rica buying, then under-covered markets.
 
-- [ ] comparison | Closing Costs for Foreign Buyers in Latin America 2026: Country Table | closing costs buying property latin america (linkable asset: transfer tax, notary, registry per country from official sources; we already have verified property-tax quick-reads for CR, Panama, Chile + Peru alcabala tip to build on; no comparison page exists)
+- [x] 2026-10-27 | comparison | Closing Costs for Foreign Buyers in Latin America 2026: Country Table | closing costs buying property latin america (linkable asset: transfer tax, notary, registry per country from official sources; we already have verified property-tax quick-reads for CR, Panama, Chile + Peru alcabala tip to build on; no comparison page exists)
 - [x] 2026-10-26 | guide | Can Foreigners Buy Property in Ecuador? 2026 Guide | can foreigners buy property in ecuador
 - [ ] comparison | Retire in Mexico vs Costa Rica 2026: Visa Income, Costs, Property | retire mexico vs costa rica
 - [ ] comparison | Panama Pensionado vs Ecuador Pensioner Visa: Which Is Easier? | best retirement visa latin america
 - [x] 2026-10-26 | quick-read | Uruguay Residency for Retirees 2026: Income Proof and Steps | uruguay residency requirements retirees
-- [ ] quick-read | Peru Retirement Visa (Rentista) Requirements 2026 | peru retirement visa requirements
+- [x] 2026-10-27 | quick-read | Peru Retirement Visa (Rentista) Requirements 2026 | peru retirement visa requirements
 - [ ] quick-read | Brazil Retirement Visa Income Requirement 2026 | brazil retirement visa requirements
 - [ ] quick-read | Chile Retirement Visa (Rentista) Requirements 2026 | chile retirement visa requirements
 - [ ] quick-read | Property Tax in Ecuador for Foreigners (2026 Rates) | property tax ecuador foreigners
@@ -26,4 +26,4 @@ Order (2026-10-26 review): retirement visas and costs first (the most-read clust
 - [ ] blog | Getting a Mortgage in Latin America as a Foreigner | mortgage latin america foreigner (Argentina: most lenders need permanent residency and local income, so buyers pay cash in USD)
 - [ ] comparison | Lima vs Santiago for Property Investors | lima vs santiago real estate
 - [ ] comparison | Panama City vs Mexico City for Remote Workers | panama city vs mexico city expat
-- [ ] tip | Uruguay Tax Holiday 2026: New Thresholds Under Law 20.446 (refresh tips/uruguay-10-year-tax-holiday.html rather than a new page if it is outdated) | uruguay tax holiday 2026 real estate
+- [x] 2026-10-27 duplicate | tip | Uruguay Tax Holiday 2026: New Thresholds Under Law 20.446 (refresh tips/uruguay-10-year-tax-holiday.html rather than a new page if it is outdated) | uruguay tax holiday 2026 real estate
