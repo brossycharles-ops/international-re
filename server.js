@@ -87,6 +87,40 @@ function isBrowserNavigation(req) {
   return !!req.get('accept-language') && req.get('sec-fetch-mode') === 'navigate';
 }
 
+// /contact.html (any query) is counted only when the arrival looks like a person:
+//  - Sec-Fetch-Site: same-origin — a click from another page of this site; or
+//  - Sec-Fetch-Site: cross-site WITH a Referer — a link on another site or in
+//    webmail (Gmail/Outlook web send their origin, or route through a redirector
+//    that does).
+// Not counted: Sec-Fetch-Site: none (URL opened directly: typed, bookmark,
+// desktop/mobile mail app, or a headless browser fed a harvested URL) and
+// cross-site with no Referer. Week of 2026-10-26: 275 of 319 counted views
+// arrived 'none' and only 4 'same-origin', while the form received no matching
+// messages, so 'none' on this page is overwhelmingly automation. The cost is
+// undercounting readers who click "Contact us" in a desktop mail app; their
+// messages still arrive (and are counted in messages.json), so the page-view
+// number errs on the side of honest. Sec-Fetch-User is not used: headless
+// Chrome's page.goto sends ?1 too, so it does not separate people from scripts.
+function isCountableContactArrival(req) {
+  const site = req.get('sec-fetch-site');
+  if (site === 'same-origin') return true;
+  return site === 'cross-site' && !!req.get('referer');
+}
+
+// How a counted view arrived, for the Scoreboard: internal (clicked from this
+// site), search (referred by a search engine), other-site (any other referrer)
+// or direct (no referrer: typed, bookmark, app, or automation).
+// Matched against the hostname without www., so mail.google.com (webmail) is other-site.
+const SEARCH_HOST = /^(google\.[a-z.]+|bing\.com|duckduckgo\.com|search\.yahoo\.com|yandex\.[a-z.]+|baidu\.com|ecosia\.org|search\.brave\.com|startpage\.com|qwant\.com|search\.naver\.com)$/i;
+function arrivalKind(req) {
+  if (req.get('sec-fetch-site') === 'same-origin') return 'internal';
+  let host = '';
+  try { host = new URL(req.get('referer') || '').hostname; } catch {}
+  if (!host) return 'direct';
+  if (OWN_HOST.test(host)) return 'internal';
+  return SEARCH_HOST.test(host.replace(/^www\./, '')) ? 'search' : 'other-site';
+}
+
 function countPageview(req) {
   const ua = req.get('user-agent') || '';
   if (!ua || BOT_UA.test(ua) || /prefetch|prerender/i.test(req.get('sec-purpose') || req.get('purpose') || '')) return;
@@ -109,9 +143,11 @@ function countPageview(req) {
   // articles, so a real click arrives same-origin. Crawlers driving real Chrome
   // open the harvested URL directly (Sec-Fetch-Site: none, no referrer).
   if (req.query && req.query.page && req.get('sec-fetch-site') !== 'same-origin') { trafficDirty = true; return; }
+  if (req.path === '/contact.html' && !isCountableContactArrival(req)) { trafficDirty = true; return; }
   // Daily traits of counted views (aggregate counts only) to spot crawler traffic.
   bump((day.langs ||= {}), (req.get('accept-language') || '').split(/[,;]/)[0].slice(0, 12) || '-', 60);
   bump((day.arrival ||= {}), req.get('sec-fetch-site') || '-', 10);
+  bump((day.via ||= {}), arrivalKind(req), 10);
   const ip = clientIp(req);
   const id = crypto.createHash('sha256').update(traffic.today.salt + ip + ua).digest('hex').slice(0, 16);
   if (!traffic.today.seen.includes(id)) { traffic.today.seen.push(id); day.visitors++; }
@@ -140,11 +176,12 @@ function trafficSummary(days, top = 10) {
     for (const [k, n] of Object.entries(v.refs)) out.sources[k] = (out.sources[k] || 0) + n;
   }
   const rank = m => Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, top);
-  out.langs = {}; out.arrival = {};
+  out.langs = {}; out.arrival = {}; out.via = {};
   for (const [d, v] of Object.entries(traffic.days)) {
     if (d < from) continue;
     for (const [k, n] of Object.entries(v.langs || {})) out.langs[k] = (out.langs[k] || 0) + n;
     for (const [k, n] of Object.entries(v.arrival || {})) out.arrival[k] = (out.arrival[k] || 0) + n;
+    for (const [k, n] of Object.entries(v.via || {})) out.via[k] = (out.via[k] || 0) + n;
   }
   out.pages = rank(out.pages).map(([page, views]) => ({ page, views }));
   out.sources = rank(out.sources).map(([source, views]) => ({ source, views }));
@@ -162,7 +199,7 @@ app.use((req, res, next) => {
 
 app.get('/api/stats/summary', (req, res) => {
   res.set('Cache-Control', 'no-store');
-  res.json({ last7: trafficSummary(7), last28: trafficSummary(28), note: 'Built-in cookieless counts of real browser page loads (bots and scripts excluded; stricter filter since 2026-10-20). Visitors are daily unique visitors summed over the period.' });
+  res.json({ last7: trafficSummary(7), last28: trafficSummary(28), note: 'Built-in cookieless counts of real browser page loads (bots and scripts excluded; stricter filter since 2026-10-20). Visitors are daily unique visitors summed over the period. arrival = raw Sec-Fetch-Site of counted views; via = internal / search / other-site / direct (counted since 2026-10-27). /contact.html is counted only for same-origin clicks or cross-site links with a referrer (since 2026-10-27).' });
 });
 
 app.use(express.static(path.join(__dirname, 'public'), {
