@@ -5,16 +5,16 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Can Foreigners Buy Property in Ecuador? 2026 Rules, Costs</title>
-  <meta name="description" content="Yes. Article 9 of Ecuador&#x27;s Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes, visa.">
+  <meta name="description" content="Yes. Article 9 of Ecuador&#x27;s Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes.">
   <link rel="canonical" href="https://www.internationalre.org/blog/can-foreigners-buy-property-ecuador-2026.html">
   <meta property="og:title" content="Can Foreigners Buy Property in Ecuador? 2026 Rules, Costs">
-  <meta property="og:description" content="Yes. Article 9 of Ecuador&#x27;s Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes, visa.">
+  <meta property="og:description" content="Yes. Article 9 of Ecuador&#x27;s Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1628004581461-13dd6f81ed07?w=1200&q=80">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.internationalre.org/blog/can-foreigners-buy-property-ecuador-2026.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Can Foreigners Buy Property in Ecuador? 2026 Rules, Costs">
-  <meta name="twitter:description" content="Yes. Article 9 of Ecuador&#x27;s Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes, visa.">
+  <meta name="twitter:description" content="Yes. Article 9 of Ecuador&#x27;s Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1628004581461-13dd6f81ed07?w=1200&q=80">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Can Foreigners Buy Property in Ecuador? Yes: 2026 Rules and Costs",
-  "description": "Yes. Article 9 of Ecuador's Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes, visa.",
+  "description": "Yes. Article 9 of Ecuador's Constitution gives foreigners equal rights; only non-urban land within 40 km of borders is barred. Steps, 1% alcabala, taxes.",
   "image": "https://images.unsplash.com/photo-1628004581461-13dd6f81ed07?w=1200&q=80",
   "datePublished": "2026-10-26",
   "dateModified": "2026-10-26",
@@ -271,6 +271,6 @@
     if (inlineForm) { inlineForm.addEventListener('submit', async (e) => { e.preventDefault(); const firstName = document.getElementById('inlineFirstName').value.trim(); const lastName = document.getElementById('inlineLastName').value.trim(); const email = document.getElementById('inlineEmail').value.trim(); if (!email) return; const btn = inlineForm.querySelector('button'); const btnText = inlineForm.querySelector('.inline-btn-text'); const btnLoading = inlineForm.querySelector('.inline-btn-loading'); btnText.style.display = 'none'; btnLoading.style.display = 'inline'; btn.disabled = true; try { const res = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstName, lastName, email }) }); const data = await res.json(); if (res.ok) { localStorage.setItem('subscribed', 'true'); window.location.href = '/thankyou.html'; } else { alert(data.error || 'Something went wrong.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } } catch { alert('Network error.'); btnText.style.display = 'inline'; btnLoading.style.display = 'none'; btn.disabled = false; } }); }
     const mobileToggle = document.getElementById('mobileToggle'); const navLinks = document.querySelector('.nav-links'); mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active')); navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
   </script>
-  <script src="../lead_capture.js?v=20261026" defer></script>
+  <script src="../lead_capture.js?v=20261027" defer></script>
 </body>
 </html>

@@ -189,7 +189,7 @@
     function trigger() {
       if (!armed) return;
       if (sessionStorage.getItem(EXIT_SHOWN_KEY) === 'true') return;
-      modal.classList.add('show');
+      openExitModal(modal);
       sessionStorage.setItem(EXIT_SHOWN_KEY, 'true');
     }
     document.addEventListener('mouseout', (e) => {
@@ -219,6 +219,27 @@
     }
   }
 
+  // Show the modal and move keyboard focus to its email field; Escape or the
+  // close button hides it again and returns focus to where the reader was.
+  let exitModalReturnFocus = null;
+  function openExitModal(modal) {
+    exitModalReturnFocus = document.activeElement;
+    modal.classList.add('show');
+    const input = modal.querySelector('input[type="email"]');
+    if (input) {
+      try { input.focus({ preventScroll: true }); } catch { input.focus(); }
+    }
+  }
+  function closeExitModal(modal) {
+    if (!modal.classList.contains('show')) return;
+    modal.classList.remove('show');
+    const back = exitModalReturnFocus;
+    exitModalReturnFocus = null;
+    if (back && back !== document.body && typeof back.focus === 'function' && document.contains(back)) {
+      try { back.focus({ preventScroll: true }); } catch { back.focus(); }
+    }
+  }
+
   function buildExitModal() {
     const wrap = document.createElement('div');
     wrap.className = 'modal-backdrop';
@@ -238,8 +259,11 @@
           </form>
         </div>
       </div>`;
-    wrap.querySelector('.modal-close').addEventListener('click', () => wrap.classList.remove('show'));
-    wrap.addEventListener('click', (e) => { if (e.target === wrap) wrap.classList.remove('show'); });
+    wrap.querySelector('.modal-close').addEventListener('click', () => closeExitModal(wrap));
+    wrap.addEventListener('click', (e) => { if (e.target === wrap) closeExitModal(wrap); });
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'Escape' || e.key === 'Esc') && wrap.classList.contains('show')) closeExitModal(wrap);
+    });
     wrap.querySelector('form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const f = e.target;
@@ -394,7 +418,7 @@
       if (!modal) return;
       if (sessionStorage.getItem('exitModalShown') === 'true') return;
       if (alreadySubscribed()) return;
-      modal.classList.add('show');
+      openExitModal(modal);
       sessionStorage.setItem('exitModalShown', 'true');
     }, 25000);
   }
