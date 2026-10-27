@@ -589,5 +589,50 @@
     "removed": 4,
     "sources": 13,
     "notes": "auditor flag: Playa $3,800/m2 -> Propiedades.com median MXN 51,018 (~$2,730); Miami Beach $13,000 -> ~$6,800; gap 70% -> ~60%; 8-12% yield unsupported (GPG Cancun 4.60%); peso strengthened; checker: Solidaridad SHF +9.96% replaces press 11.7%, 6% lodging tax applies to private homes"
+  },
+  "quick-reads/property-tax-mexico-foreigners-2026.html": {
+    "verified": "2026-10-27",
+    "links_checked": "2026-10-27",
+    "claims_checked": 17,
+    "corrected": 9,
+    "removed": 5,
+    "sources": 11,
+    "notes": "Freshness Keeper: predial 0.1–0.3% → ~0.12–0.31% resort towns / ~0.5–1.25% CDMX (municipal laws, Código Fiscal CDMX 2026 arts. 113/130/131); ISAI 2–4% → PDC/Tulum 4%, Los Cabos 3%, PV 2.65–3.55%, CDMX progressive ~4.4–6%; early-payment discounts per law; added LISR arts. 93/158/160, LIE arts. 11–13, Banxico FIX/UDI; removed unsourced fideicomiso fees, 5–7% closing costs, cadastral-gap claim; checker: all confirmed (35% top rate is in the art. 152 table)"
+  },
+  "blog/belize-real-estate-2026.html": {
+    "verified": "2026-10-27",
+    "links_checked": "2026-10-27",
+    "claims_checked": 48,
+    "corrected": 16,
+    "removed": 24,
+    "sources": 13,
+    "notes": "Freshness Keeper: QRP age 45+ → 40+, fees US$150+1,000+750/dependant+200 card+25 renewal, yearly card not 'permanent residency'; stamp duty 5% split → 8% non-Belizean/non-CARICOM above BZ$20,000 (Cap. 64 s.72); rental tax 25% → 3% business tax on gross rent; peg since 1976; Ambergris bnbcalc 35% occ/BZ$538 ADR; State Dept Level 2 (Mar 12 2026); removed unsourced prices, appreciation, yields and total-return P&L; Starter Kit CTA fixed (rule 3); checker: all confirmed, rental-tax exemption wording tightened after check"
+  },
+  "blog/cost-of-living-costa-rica-expats-2026.html": {
+    "verified": "2026-10-27",
+    "links_checked": "2026-10-27",
+    "claims_checked": 38,
+    "corrected": 13,
+    "removed": 20,
+    "sources": 21,
+    "notes": "Freshness Keeper: colón 500–530 → BCCR ₡451.24/₡455.53 (Oct 27 2026); budget tables replaced with Numbeo rents and costs (Oct 2026); Numbeo mid-2026 country index (CR 56.8 vs Portugal 48.7 — FAQ corrected); Ley 8764 arts. 78–82; naturalisation 7/5 years (TSE); State Dept Level 2; removed unsourced healthcare/car/budget figures and rentista deposit rules (DGME 403); added dateModified; checker: all confirmed"
+  },
+  "blog/retire-in-uruguay-2026.html": {
+    "verified": "2026-10-27",
+    "links_checked": "2026-10-27",
+    "claims_checked": 52,
+    "corrected": 18,
+    "removed": 27,
+    "sources": 21,
+    "notes": "Freshness Keeper: rentista '~$1,500' → ordinary residence has no fixed minimum, Law 16.340 optional regime ≥US$1,500 + US$100k; '0% for 11 years then 7%' → Law 20.446 IRNR option (year + 10) with thresholds, Decree 188/026; FONASA claim corrected; fees 557.30+55.70 UI; ITP 2%+2%; IRPF 12% on gains; INE Aug 2026 rents (Montevideo-wide row aligned to new-contract series 24,014 after check); removed unsourced budgets, safety and ranking claims; checker: all confirmed except mixed rent series, fixed"
+  },
+  "tips/uruguay-10-year-tax-holiday.html": {
+    "verified": "2026-10-27",
+    "links_checked": "2026-10-27",
+    "claims_checked": 22,
+    "corrected": 10,
+    "removed": 7,
+    "sources": 13,
+    "notes": "Freshness Keeper (rule 9): pre-2026 regime ('zero tax on all foreign income', '~US$2M real estate', 'only country in South America') → Law 20.446 art. 24-BIS: IRNR option on foreign capital income for year + 10, >183 days or >UI 12.5M real estate (~US$2.07M, INE UI 6.6792, DGI 40.286) or ≥UI 625,000/yr funds, post-holiday options; old-regime holders keep it; title/meta/H1 corrected; checker: all confirmed"
   }
 }
