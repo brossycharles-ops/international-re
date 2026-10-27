@@ -30,7 +30,7 @@ const OUT = arg('--out', '/tmp/visual-audit');
 const ROOT = path.join(__dirname, '..');
 fs.mkdirSync(OUT, { recursive: true });
 
-// Key templates: one of each page type, plus whatever the sitemap lists newest.
+// Key templates: one of each page type, plus the newest articles (see newestFromSitemap).
 const PAGES = ['/', '/about.html', '/contact.html', '/free-guide.html', '/guide/expat-starter-kit.html',
   '/blog.html', '/guides.html', '/cities/', '/cities/medellin-colombia/', '/newsletter.html', '/quiz.html', '/advisory.html'];
 const VIEWPORTS = [{ name: 'desktop', width: 1280, height: 900 }, { name: 'mobile', width: 375, height: 812, isMobile: true }];
@@ -76,14 +76,30 @@ async function revealPage(page) {
   });
 }
 
+// Articles to add to the key templates: the 3 newest by sitemap <lastmod> (recent
+// edits) plus the 3 most recently PUBLISHED — lastmod alone picked old pages that
+// were just refreshed and missed a brand-new article. Publish dates come from
+// "datePublished" in the repo copy's JSON-LD; only URLs the live sitemap lists are
+// used, so an undeployed page is never audited. At most 6 extra pages.
+function datePublished(url) {
+  try {
+    const file = path.join(ROOT, 'public', decodeURIComponent(url).replace(/\/$/, '/index.html'));
+    if (!file.startsWith(path.join(ROOT, 'public') + path.sep)) return '';
+    const m = fs.readFileSync(file, 'utf8').match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+    return m ? m[1] : '';
+  } catch { return ''; }
+}
+
 async function newestFromSitemap() {
   try {
     const xml = await (await fetch(BASE + '/sitemap.xml')).text();
     const items = [...xml.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)]
       .map(m => ({ url: m[1].replace(/^https?:\/\/[^/]+/, ''), d: m[2] }))
-      .filter(x => /\/(blog|guides|quick-reads|tips)\//.test(x.url))
-      .sort((a, b) => b.d.localeCompare(a.d));
-    return items.slice(0, 3).map(x => x.url);
+      .filter(x => /\/(blog|guides|quick-reads|tips)\//.test(x.url));
+    const byLastmod = [...items].sort((a, b) => b.d.localeCompare(a.d)).slice(0, 3).map(x => x.url);
+    const byPublished = items.map(x => ({ url: x.url, p: datePublished(x.url) })).filter(x => x.p)
+      .sort((a, b) => b.p.localeCompare(a.p) || a.url.localeCompare(b.url)).slice(0, 3).map(x => x.url);
+    return [...new Set([...byPublished, ...byLastmod])];
   } catch { return []; }
 }
 
@@ -107,7 +123,7 @@ async function checkLiveAssets() {
 
 (async () => {
   const ALL = process.argv.includes('--all');
-  let pages = [...PAGES, ...(await newestFromSitemap())];
+  let pages = [...new Set([...PAGES, ...(await newestFromSitemap())])];
   if (ALL) {
     const xml = await (await fetch(BASE + '/sitemap.xml')).text();
     pages = [...new Set([...pages, ...[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(/^https?:\/\/[^/]+/, ''))])];

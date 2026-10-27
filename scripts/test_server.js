@@ -121,6 +121,27 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('counts one visitor for two pages', after.visitors - before.visitors === 1, JSON.stringify(after));
   check('records referring site and top pages', after.sources.some(s => s.source === 'google.com') && after.pages.some(p => p.page === '/free-guide.html'), JSON.stringify(after));
 
+  // /contact.html is counted only for same-origin clicks or cross-site links with a referrer.
+  const contactViews = s => (s.pages.find(p => p.page === '/contact.html') || {}).views || 0;
+  const c0 = await stats();
+  const cb = (ip, extra) => ({ ...browser, 'X-Forwarded-For': ip, ...extra });
+  await load('/contact.html', cb('203.0.113.120', { 'Sec-Fetch-Site': 'none', 'Sec-Fetch-User': '?1' })); // headless page.goto / opened directly
+  await load('/contact.html', cb('203.0.113.121', {})); // no Sec-Fetch-Site at all
+  await load('/contact.html', cb('203.0.113.122', { 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-User': '?1' })); // cross-site, no referrer
+  await load('/contact.html?ref=x', cb('203.0.113.123', { 'Sec-Fetch-Site': 'none' })); // any query is covered
+  await load('/contact.html', cb('203.0.113.124', { 'Sec-Fetch-Site': 'same-origin', Referer: 'https://www.internationalre.org/blog/x.html' })); // site link: counted
+  await load('/contact.html', cb('203.0.113.125', { 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-User': '?1', Referer: 'https://mail.google.com/' })); // webmail link: counted
+  await load('/about.html', cb('203.0.113.126', { 'Sec-Fetch-Site': 'none' })); // other pages unchanged: direct still counted
+  await load('/about.html', cb('203.0.113.127', { 'Sec-Fetch-Site': 'cross-site', Referer: 'https://www.bing.com/' }));
+  await load('/about.html', cb('203.0.113.128', { 'Sec-Fetch-Site': 'cross-site', Referer: 'https://forum.example/thread' }));
+  await new Promise(r => setTimeout(r, 100));
+  const c1 = await stats();
+  check('contact.html counts only same-origin or cross-site-with-referrer arrivals', contactViews(c1) - contactViews(c0) === 2, `${contactViews(c0)} -> ${contactViews(c1)}`);
+  check('other pages still count direct arrivals', c1.pageviews - c0.pageviews === 5, `${c0.pageviews} -> ${c1.pageviews}`);
+  const dv = k => (c1.via[k] || 0) - ((c0.via || {})[k] || 0);
+  check('summary breaks arrivals into internal / search / other-site / direct', dv('internal') === 1 && dv('search') === 1 && dv('other-site') === 2 && dv('direct') === 1, JSON.stringify(c1.via));
+  check('summary keeps the raw Sec-Fetch-Site breakdown', (c1.arrival['same-origin'] || 0) - (c0.arrival['same-origin'] || 0) === 1 && (c1.arrival['cross-site'] || 0) - (c0.arrival['cross-site'] || 0) === 3, JSON.stringify(c1.arrival));
+
   // RSS feed: page titles/descriptions are already HTML-escaped and must be escaped once, not twice.
   let res = await fetch(B + '/feed.xml');
   const feed = await res.text();
