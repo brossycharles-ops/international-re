@@ -813,19 +813,93 @@
       "city": "Punta del Este",
       "country": "Uruguay",
       "countryFlag": "🇺🇾",
-      "tagline": "South America's Hamptons — peak-season rentals, year-round capital appreciation, and Mediterranean climate.",
+      "tagline": "Uruguay's summer resort market — USD-priced apartments, Argentine-led demand and strongly seasonal rentals.",
       "heroImage": "https://images.unsplash.com/photo-1616959313137-186688889054",
       "stats": {
-        "pricePerSqm": "$3,500–$8,000",
-        "rentalYield": "4–6%",
-        "costOfLiving": "$2,200–$4,500/mo",
-        "currency": "Uruguayan Peso (UYU)"
+        "pricePerSqm": "~$3,900–$4,100 (median asking, Sep 2026)",
+        "rentalYield": "No reliable published data",
+        "costOfLiving": "~$980/mo + rent (single; Numbeo Montevideo)",
+        "currency": "Uruguayan Peso (UYU); property priced in USD"
       },
       "matchSlugs": [
         "punta-del-este",
         "uruguay"
       ],
-      "metaDescription": "Punta del Este, Uruguay real estate 2026 — beachfront condo prices, seasonal rental yields, foreign buyer rules, and Brava vs Mansa peninsula guide."
+      "metaDescription": "Punta del Este, Uruguay real estate 2026: median asking price per m², 2% ITP transfer tax, 12% gains tax, foreign buyer rules and seasonal rental risk.",
+      "about": [
+        "Punta del Este, on Uruguay's Maldonado coast, draws most of its buyers from across the River Plate: Argentines still make up the majority, followed by Uruguayans, and Brazilian investors are a growing group, according to El Observador. Demand runs from the peninsula, which agents say is gaining relevance, along Playa Brava (the area premium buyers prefer), Playa Mansa and Roosevelt, out to La Barra, traditionally favoured by Argentines; in José Ignacio, apartment development is still in its early stages. Property is priced and sold in US dollars. An index of listings from late September 2026 put the median asking price at about US$3,909 per m² for resale apartments and US$4,091 for new ones, as reported by El Observador. These are asking prices, not closing prices.",
+        "Foreigners buy on the same terms as Uruguayans: Law 16.906 gives foreign investors the same treatment as nationals. An escribano (notary) handles the deed, and the purchase is recorded at the Registro de la Propiedad, Sección Inmobiliaria, run by the Dirección General de Registros. At purchase, the buyer and the seller each pay 2% transfer tax (ITP), charged on the valor real set by the Dirección Nacional de Catastro rather than on the price, according to the DGI. Owners then pay the annual Contribución Inmobiliaria to the Intendencia de Maldonado plus the national Primaria tax of 1.5 to 3 per thousand of valor real, and individuals may owe wealth tax (Impuesto al Patrimonio) on Uruguayan assets above a tax-free minimum of about US$166,000, at progressive rates up to 1.5%, according to Uruguay XXI.",
+        "Expect a seasonal market built around the summer: for the 2024–25 season El Observador reported very high January booking levels, with the challenge being to hold demand into February and March. Because Argentines are the largest buyer group, Argentina's economy and exchange rate move both rentals and sales, and dollar pricing adds currency risk for anyone earning in pesos or reais. When you sell, the DGI taxes the gain at 12%, withheld by the escribano (for property bought before July 1, 2007 the seller can instead be taxed on 15% of the price or Catastro value, whichever is higher); non-residents pay IRNR, generally at 12%. Under Law 20.446, people who become tax residents from January 1, 2026 can opt out of IRPF on foreign investment income for their first year and the ten following; one route is holding more than UI 12.5 million in Uruguayan real estate, and they must not have been tax residents in the previous two years. We have not found a reliable published rental yield for Punta del Este, so model rental income conservatively."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Punta del Este?",
+          "a": "Yes. Uruguay's investment law (Law 16.906) gives foreign investors the same treatment as nationals, so you can buy in your own name without residency. An escribano (notary) handles the deed, and the purchase is recorded at the Registro de la Propiedad, Sección Inmobiliaria."
+        },
+        {
+          "q": "What taxes do I pay when buying and owning in Punta del Este?",
+          "a": "At purchase, the buyer and the seller each pay 2% ITP on the valor real set by the Dirección Nacional de Catastro, not on the price. Each year you pay the Contribución Inmobiliaria to the Intendencia de Maldonado and the national Primaria tax (1.5 to 3 per thousand of valor real). Individuals may also owe wealth tax (Impuesto al Patrimonio) on Uruguayan assets above a tax-free minimum of about US$166,000."
+        },
+        {
+          "q": "Is there capital gains tax when I sell property in Punta del Este?",
+          "a": "Yes. The DGI taxes the gain on selling urban property at 12%, withheld by the escribano at the sale, and non-residents pay the equivalent IRNR, generally at 12%. For property bought before July 1, 2007, the seller can instead be taxed on 15% of the price or Catastro value, whichever is higher."
+        },
+        {
+          "q": "How much does an apartment cost per square metre in Punta del Este?",
+          "a": "An index of listings from late September 2026 put the median asking price at about US$3,909 per m² for resale apartments and US$4,091 for new ones, as reported by El Observador. These are asking prices, not sale prices, and they exclude Pinares and Maldonado city."
+        }
+      ],
+      "sources": [
+        {
+          "title": "El Observador — El metro cuadrado al detalle: precios pedidos en Montevideo, Punta del Este y Maldonado (13 Oct 2026)",
+          "url": "https://www.elobservador.com.uy/economia-y-empresas/el-metro-cuadrado-al-detalle-los-precios-pedidos-apartamentos-montevideo-punta-del-este-y-maldonado-n6060222"
+        },
+        {
+          "title": "El Observador — Crece el interés de los inversores brasileños en Punta del Este (23 Oct 2025)",
+          "url": "https://www.elobservador.com.uy/cafe-y-negocios/real-estate-crece-el-interes-los-inversores-brasilenos-punta-del-este-y-se-amplia-el-perfil-sectores-medios-n6021851"
+        },
+        {
+          "title": "El Observador — Verano 2025: cuánto sale alquilar una quincena en los balnearios (29 Dec 2024)",
+          "url": "https://www.elobservador.com.uy/economia-y-empresas/verano-2025-cuanto-sale-alquilar-una-quincena-los-diferentes-balnearios-uruguay-n5977033"
+        },
+        {
+          "title": "IMPO — Ley 16.906, art. 2 (equal treatment of foreign investors)",
+          "url": "https://www.impo.com.uy/bases/leyes/16906-1998/2"
+        },
+        {
+          "title": "Dirección General de Registros (gub.uy) — Registro de la Propiedad, Sección Inmobiliaria",
+          "url": "https://www.gub.uy/tramites/registro-propiedad-seccion-inmobiliaria-minuta-inmuebles"
+        },
+        {
+          "title": "DGI — Impuesto a las Trasmisiones Patrimoniales (ITP)",
+          "url": "https://www.gub.uy/direccion-general-impositiva/comunicacion/publicaciones/impuesto-trasmisiones-patrimoniales-itp"
+        },
+        {
+          "title": "DGI — IRPF: incrementos patrimoniales, inmuebles urbanos",
+          "url": "https://www.gub.uy/direccion-general-impositiva/comunicacion/publicaciones/irpf-incrementos-patrimoniales-inmuebles-urbanos"
+        },
+        {
+          "title": "gub.uy — Intendencia de Maldonado: Contribución Inmobiliaria",
+          "url": "https://www.gub.uy/tramites/amnistia-decreto-412526-contribucion-inmobiliaria-maldonado"
+        },
+        {
+          "title": "IMPO — Texto Ordenado 2023, Título 13, art. 4 (Impuesto de Enseñanza Primaria)",
+          "url": "https://impo.com.uy/bases/todgi2023/101-2024/4_T13"
+        },
+        {
+          "title": "Uruguay XXI — Guía del Inversor: Sistema Tributario (June 2026)",
+          "url": "https://www.uruguayxxi.gub.uy/es/quiero-invertir/guias-inversor/sistema-tributario-2026/descarga/"
+        },
+        {
+          "title": "IMPO — Texto Ordenado 2023, Título 7, art. 24-BIS (Law 20.446 new-resident regime)",
+          "url": "https://www.impo.com.uy/bases/todgi2023/101-2024/24_BIST7"
+        },
+        {
+          "title": "Numbeo — Cost of Living in Montevideo",
+          "url": "https://www.numbeo.com/cost-of-living/in/Montevideo"
+        }
+      ],
+      "updated": "2026-10-27"
     },
     {
       "slug": "lima-peru",
