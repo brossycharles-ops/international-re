@@ -59,7 +59,8 @@
     "corrected": 5,
     "removed": 0,
     "sources": 18,
-    "notes": "new page; fact-checked"
+    "notes": "new page; fact-checked",
+    "links_checked": "2026-10-28"
   },
   "blog/cost-of-living-costa-rica-expats-2026.html": {
     "verified": "2026-10-27",
@@ -94,7 +95,8 @@
     "corrected": 24,
     "removed": 14,
     "sources": 27,
-    "notes": "brief priority; rentista US$2,000 not $1,500 (Law 171-07); capital gains 10% (Law 30-26) not 27%; 3% succession tax exists; CONFOTUR 15 not 10 years; IPI threshold RD$10.7M; arrivals 11.68M; investor residency permanent from start; no renunciation rule; 8-14% STR yields -> GPG 9.07%"
+    "notes": "brief priority; rentista US$2,000 not $1,500 (Law 171-07); capital gains 10% (Law 30-26) not 27%; 3% succession tax exists; CONFOTUR 15 not 10 years; IPI threshold RD$10.7M; arrivals 11.68M; investor residency permanent from start; no renunciation rule; 8-14% STR yields -> GPG 9.07%",
+    "links_checked": "2026-10-28"
   },
   "blog/granada-nicaraguas-colonial-gem-2026.html": {
     "verified": "2026-10-19",
@@ -264,7 +266,8 @@
     "corrected": 17,
     "removed": 18,
     "sources": 13,
-    "notes": "research queue; FipeZAP Sept 2026 prices/yields, SP ITBI 3%, non-resident 15% rent withholding; independent fact-check fixes (FipeZAP 36-city average, low-tax list wording, 2026 R$5,000 relief); travel.state.gov blocked, Level 2 from search snippets"
+    "notes": "research queue; FipeZAP Sept 2026 prices/yields, SP ITBI 3%, non-resident 15% rent withholding; independent fact-check fixes (FipeZAP 36-city average, low-tax list wording, 2026 R$5,000 relief); travel.state.gov blocked, Level 2 from search snippets",
+    "links_checked": "2026-10-28"
   },
   "blog/tbilisi-georgia-1-percent-tax-2026.html": {
     "verified": "2026-10-22",
@@ -284,6 +287,15 @@
     "notes": "new page; fact-checked (Reg E 500-transfer safe harbor, cancellation and error-resolution conditions, receiving-bank fees, DCIN-83 superseded, UMA updates each February)",
     "links_checked": "2026-10-19"
   },
+  "blog/uruguay-real-estate-foreigners-2026.html": {
+    "verified": "2026-10-28",
+    "claims_checked": 78,
+    "corrected": 31,
+    "removed": 24,
+    "notes": "auditor flag (10-27); near-rewrite: false '2019 investor residency 15,000 UI ≈ $2.1M', 'citizenship after 3 years' (3 with family/5 without), 'rentista visa ~$1,500', 500-ha DIEA rule and Patrimonio '1.5% above $115k' removed or corrected; Montevideo prices $1,800–3,200 → INGAR $2,160–4,180; buyer costs 4–5% → 5–9% (notary is the buyer's); unsourced rankings/appreciation claims removed; Sources (41) and FAQ JSON-LD rebuilt; checker: Law 16.340 limited to retirees, Law 19.283 scope, Punta del Este STR yield range (4–9%) hedged, unsourced Law 19.484/registrable-compromiso lines removed",
+    "sources": 45,
+    "links_checked": "2026-10-28"
+  },
   "guide/2026-market-entry-guide.html": {
     "verified": "2026-10-19",
     "claims_checked": 112,
@@ -294,13 +306,13 @@
     "links_checked": "2026-10-19"
   },
   "guide/expat-starter-kit.html": {
-    "verified": "2026-10-18",
-    "claims_checked": 64,
-    "corrected": 31,
-    "removed": 16,
-    "sources": 30,
-    "notes": "17-city table rebuilt from sourced data (GPG, Zonaprop, FipeZAP, BCRP, Numbeo); unsupported 8-12% beach yields and all Nicaragua figures removed; Uruguay tax-holiday rule corrected",
-    "links_checked": "2026-10-19"
+    "verified": "2026-10-28",
+    "claims_checked": 62,
+    "corrected": 29,
+    "removed": 2,
+    "notes": "auditor flag (10-27); Uruguay row rewritten to Law 20.446 (year + 10, >183 days, >UI 12.5M ≈ US$2.07M or UI 625,000/yr funds; rent still 12%); Numbeo rents refreshed (Medellín $1,048→$1,231, San José $943→$1,186); Brazil US$ prices re-converted at PTAX 5.3346; Cartagena rent removed (one data point); closing-cost range re-sourced (GPG Chile, Ámbito CABA); dead Ley 6043 link replaced; checker: Nicaragua 'seized homes owned by' → homes on leased municipal land; 50 m public zone; unsourced '8–12%' STR claim removed",
+    "sources": 37,
+    "links_checked": "2026-10-28"
   },
   "guide/panama-foreign-buyer-legal-guide.html": {
     "verified": "2026-10-16",
@@ -353,7 +365,8 @@
     "corrected": 9,
     "removed": 3,
     "sources": 42,
-    "notes": "new page; fact-checked (2 independent checkers). Fixes: Panama seller tax to 3%/10% regime, Peru SUNARP fee basis, CR notary wording, DR oposición and Law 30-26 2027 step, Colombia Art. 398 link, SP who-pays source; removed uncited CDMX table claim and Uruguay 'buyer pays escribano'"
+    "notes": "new page; fact-checked (2 independent checkers). Fixes: Panama seller tax to 3%/10% regime, Peru SUNARP fee basis, CR notary wording, DR oposición and Law 30-26 2027 step, Colombia Art. 398 link, SP who-pays source; removed uncited CDMX table claim and Uruguay 'buyer pays escribano'",
+    "links_checked": "2026-10-28"
   },
   "guides/cuenca-ecuador-neighborhood-guide-property-buyers-2026.html": {
     "verified": "2026-10-26",
@@ -361,7 +374,8 @@
     "corrected": 12,
     "removed": 14,
     "sources": 21,
-    "notes": "auditor flag; 6-8% yields corrected to ~4.7% (GPG); unsourced neighbourhood yields, El Ejido/Turi prices, $6.5bn pipeline and false 'no capital gains tax after 2 years' removed; added alcabala 1%, Cuenca 10% gain tax, ISD 5%, security/blackout risks"
+    "notes": "auditor flag; 6-8% yields corrected to ~4.7% (GPG); unsourced neighbourhood yields, El Ejido/Turi prices, $6.5bn pipeline and false 'no capital gains tax after 2 years' removed; added alcabala 1%, Cuenca 10% gain tax, ISD 5%, security/blackout risks",
+    "links_checked": "2026-10-28"
   },
   "guides/cuenca-vs-medellin-retirees-2026.html": {
     "verified": "2026-10-21",
@@ -539,6 +553,15 @@
     "sources": 11,
     "notes": "Primary-residence rates (0.5% to $700k, 0.7% above) were missing; rates are marginal; instalments Apr 30/Aug 31/Dec 31 (Ley 66 Art. 786); Ley 546 relief is for first sale of new homes up to $200k; ITBI cannot be shifted to buyer",
     "links_checked": "2026-10-17"
+  },
+  "quick-reads/property-tax-uruguay-foreigners-2026.html": {
+    "verified": "2026-10-28",
+    "claims_checked": 34,
+    "corrected": 7,
+    "removed": 2,
+    "notes": "auditor flag (10-27); added missing wealth tax (threshold UYU 6,653,000 ≈ US$165k, Decree 334/025; 1.5% floor for non-residents without IRNR, T14 art. 53) and rent withholding rules (Decree 149/007); 'all taxes on DNC value' corrected (Maldonado sets its own base); Primaria thresholds from Decree 140/025; title shortened; checker: Montevideo scale claim removed, IRNR link fixed",
+    "sources": 20,
+    "links_checked": "2026-10-28"
   },
   "quick-reads/uruguay-residency-requirements-retirees-2026.html": {
     "verified": "2026-10-26",
