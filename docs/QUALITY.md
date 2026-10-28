@@ -1,6 +1,6 @@
 # Article quality scorecard
 
-Generated 2026-10-28 by scripts/content_quality.py. 125 indexed articles, average score 84/100, 74 research-verified (59%), 76 with a Sources section, 95 with an FAQ.
+Generated 2026-10-28 by scripts/content_quality.py. 128 indexed articles, average score 85/100, 78 research-verified (61%), 80 with a Sources section, 100 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
@@ -9,9 +9,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1075 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/latam-weekly-apr-26-may-2-2026.html | — | 1060 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | blog/mendoza-wine-country-estates.html | — | 1187 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/best-neighborhoods-medellin-for-expats.html | — | 708 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/cost-of-living-lima-peru-per-month.html | — | 601 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | quick-reads/cost-of-living-panama-city-per-month.html | — | 623 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/lisbon-property-buying-timeline.html | — | 461 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 51 | quick-reads/property-tax-colombia-foreigners-2026.html | — | 590 | 0 | needs a Sources section with 2+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
 | 63 | blog/best-neighborhoods-panama-city-2026.html | — | 1754 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -33,7 +30,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | blog/retire-in-panama-2026.html | — | 1390 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/tulum-real-estate-investment-2026.html | — | 1611 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-colombia-2026.html | — | 1645 | 0 | needs a Sources section with 3+ external https links (has 0) |
-| 63 | guides/can-foreigners-buy-property-in-brazil-2026.html | — | 1466 | 0 | needs a Sources section with 3+ external https links (has 0) |
+| 63 | guides/can-foreigners-buy-property-in-brazil-2026.html | — | 1477 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-in-chile-2026.html | — | 1495 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/can-foreigners-buy-property-mexico-2026.html | — | 1687 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | guides/florianopolis-vs-punta-del-este-beach-buyers-2026.html | — | 1442 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -45,7 +42,9 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | quick-reads/airbnb-income-montevideo-uruguay-2026.html | — | 622 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-playa-del-carmen.html | — | 632 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-san-jose-costa-rica.html | — | 723 | 0 | needs a Sources section with 2+ external https links (has 0) |
+| 63 | quick-reads/cost-of-living-lima-peru-per-month.html | — | 725 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/cost-of-living-medellin-per-month.html | — | 823 | 0 | needs a Sources section with 2+ external https links (has 0) |
+| 63 | quick-reads/cost-of-living-panama-city-per-month.html | — | 740 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/cost-of-living-quito-ecuador-per-month.html | — | 763 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | tips/brazil-viper-residency-real-estate.html | — | 352 | 0 | needs a Sources section with 1+ external https links (has 0) |
 | 63 | tips/buenos-aires-usd-property.html | — | 352 | 0 | needs a Sources section with 1+ external https links (has 0) |
@@ -61,7 +60,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/argentina-real-estate-foreigners-2026.html | 2026-10-16 | 2748 | 28 | none |
 | 100 | blog/belize-real-estate-2026.html | 2026-10-27 | 3198 | 13 | none |
 | 100 | blog/best-places-retire-latin-america-2026.html | 2026-10-16 | 2192 | 24 | none |
-| 100 | blog/best-places-retire-mexico-2026.html | 2026-10-20 | 2572 | 15 | none |
+| 100 | blog/best-places-retire-mexico-2026.html | 2026-10-20 | 2598 | 15 | none |
 | 100 | blog/buenos-aires-best-value-2026.html | 2026-10-18 | 1997 | 21 | none |
 | 100 | blog/can-foreigners-buy-property-ecuador-2026.html | 2026-10-26 | 2755 | 18 | none |
 | 100 | blog/cost-of-living-costa-rica-expats-2026.html | 2026-10-27 | 2610 | 21 | none |
@@ -79,7 +78,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/panama-vs-costa-rica-expats-investors-2026.html | 2026-10-21 | 2773 | 29 | none |
 | 100 | blog/punta-del-este-real-estate-2026.html | 2026-10-22 | 1438 | 19 | none |
 | 100 | blog/retire-in-colombia-2026.html | 2026-10-16 | 2025 | 15 | none |
-| 100 | blog/retire-in-costa-rica-2026.html | 2026-10-23 | 2085 | 21 | none |
+| 100 | blog/retire-in-costa-rica-2026.html | 2026-10-23 | 2097 | 21 | none |
 | 100 | blog/retire-in-ecuador-2026.html | 2026-10-21 | 3293 | 31 | none |
 | 100 | blog/retire-in-uruguay-2026.html | 2026-10-27 | 2605 | 21 | none |
 | 100 | blog/san-juan-del-sur-affordable-beach.html | 2026-10-19 | 2552 | 16 | none |
@@ -100,11 +99,14 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | guides/montevideo-rental-yield-analysis-2026.html | 2026-10-20 | 2344 | 17 | none |
 | 100 | guides/panama-city-vs-san-jose-expat-investors-2026.html | 2026-10-16 | 1884 | 20 | none |
 | 100 | guides/punta-cana-real-estate-investment-2026.html | 2026-10-23 | 2455 | 22 | none |
+| 100 | guides/retire-mexico-vs-costa-rica-2026.html | 2026-10-28 | 2385 | 24 | none |
 | 100 | guides/retirement-visa-income-requirements-latin-america-2026.html | 2026-10-26 | 2565 | 25 | none |
 | 100 | guides/santiago-chile-neighborhood-guide-property-buyers-2026.html | 2026-10-16 | 2707 | 23 | none |
 | 100 | guides/uruguay-vs-chile-retirees-2026.html | 2026-10-26 | 1982 | 23 | none |
 | 100 | quick-reads/airbnb-income-sao-paulo-2026.html | 2026-10-27 | 1057 | 14 | none |
 | 100 | quick-reads/airbnb-rules-medellin-foreigners-2026.html | 2026-10-17 | 822 | 12 | none |
+| 100 | quick-reads/best-neighborhoods-medellin-for-expats.html | 2026-10-28 | 1160 | 13 | none |
+| 100 | quick-reads/brazil-retirement-visa-income-requirement-2026.html | 2026-10-28 | 700 | 6 | none |
 | 100 | quick-reads/cost-of-living-buenos-aires-per-month.html | 2026-10-18 | 1184 | 10 | none |
 | 100 | quick-reads/cost-of-living-cuenca-ecuador-per-month.html | 2026-10-20 | 560 | 5 | none |
 | 100 | quick-reads/ecuador-pensioner-visa-requirements-2026.html | 2026-10-22 | 609 | 5 | none |
@@ -116,7 +118,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | quick-reads/property-tax-mexico-foreigners-2026.html | 2026-10-27 | 1639 | 11 | none |
 | 100 | quick-reads/property-tax-panama-foreigners-2026.html | 2026-10-17 | 1040 | 11 | none |
 | 100 | quick-reads/property-tax-uruguay-foreigners-2026.html | 2026-10-28 | 1772 | 20 | none |
-| 100 | quick-reads/uruguay-residency-requirements-retirees-2026.html | 2026-10-26 | 815 | 7 | none |
+| 100 | quick-reads/uruguay-residency-requirements-retirees-2026.html | 2026-10-26 | 822 | 7 | none |
 | 100 | tips/brazil-cpf-required-buy-property.html | 2026-10-19 | 338 | 3 | none |
 | 100 | tips/cartagena-beachfront-vs-miami.html | 2026-10-23 | 940 | 13 | none |
 | 100 | tips/chile-off-plan-deposit-guarantee.html | 2026-10-16 | 333 | 2 | none |
@@ -131,3 +133,4 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | tips/peru-alcabala-transfer-tax-2026.html | 2026-10-17 | 419 | 5 | none |
 | 100 | tips/playa-del-carmen-vs-miami-beach.html | 2026-10-23 | 892 | 13 | none |
 | 100 | tips/uruguay-10-year-tax-holiday.html | 2026-10-27 | 1441 | 13 | none |
+| 100 | tips/uruguay-retiree-law-16340-duty-free.html | 2026-10-28 | 362 | 4 | none |

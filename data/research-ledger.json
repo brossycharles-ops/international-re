@@ -422,6 +422,14 @@
     "notes": "new page; fact-checked. GPG yields updated to Q3 2026 (9.07%/9.21%); Law 30-26 10% capital gains (GPG still quotes 27%); aclaw.com is Arthur & Castillo; unsupported tax-registration step and no-residency claim removed; 65+ IPI exclusion credited to DGII Guia 17",
     "links_checked": "2026-10-26"
   },
+  "guides/retire-mexico-vs-costa-rica-2026.html": {
+    "verified": "2026-10-28",
+    "claims_checked": 80,
+    "corrected": 7,
+    "removed": 0,
+    "sources": 24,
+    "notes": "new page; fact-checked (no mismatches; softened 5 overstated claims: IMSS pre-existing conditions, CR inland ownership, Law 6043 Art. 47 full list, Law 9996 window end date, Mexico health requirement; Art. 78 cited; Level 4 states attributed to press)"
+  },
   "guides/retirement-visa-income-requirements-latin-america-2026.html": {
     "verified": "2026-10-26",
     "claims_checked": 46,
@@ -464,6 +472,22 @@
     "sources": 12,
     "notes": "new page; fact-checked (condo registration and mixed-use zoning added; POT status updated to October 2026; ET art. 24 and Ley 675 sources added)",
     "links_checked": "2026-10-18"
+  },
+  "quick-reads/best-neighborhoods-medellin-for-expats.html": {
+    "verified": "2026-10-28",
+    "claims_checked": 42,
+    "corrected": 9,
+    "removed": 12,
+    "sources": 13,
+    "notes": "Research queue: prices per m² were 2026-stale (El Poblado ~$1,900 -> COP 8.7M ≈$2,770; Laureles ~$1,500 -> ≈$2,100; Envigado ~$1,300 -> COP 7.97–9.29M, not the cheapest); foreign-resident shares misread (25–30% is of Medellín's foreigners, not El Poblado's population); unsourced USD appreciation rates, Milla de Oro figure and neighborhood rents removed; Time Out ranking dated 2023; FAQ + sources added; independent checker found no mismatches, 5 unsupported descriptive claims removed"
+  },
+  "quick-reads/brazil-retirement-visa-income-requirement-2026.html": {
+    "verified": "2026-10-28",
+    "claims_checked": 20,
+    "corrected": 1,
+    "removed": 0,
+    "sources": 6,
+    "notes": "new page; fact-checked (renewal rule reworded: RN 40 defers renewal to a separate resolution)"
   },
   "quick-reads/cost-of-living-buenos-aires-per-month.html": {
     "verified": "2026-10-18",
@@ -689,5 +713,13 @@
     "removed": 7,
     "sources": 13,
     "notes": "Freshness Keeper (rule 9): pre-2026 regime ('zero tax on all foreign income', '~US$2M real estate', 'only country in South America') → Law 20.446 art. 24-BIS: IRNR option on foreign capital income for year + 10, >183 days or >UI 12.5M real estate (~US$2.07M, INE UI 6.6792, DGI 40.286) or ≥UI 625,000/yr funds, post-holiday options; old-regime holders keep it; title/meta/H1 corrected; checker: all confirmed"
+  },
+  "tips/uruguay-retiree-law-16340-duty-free.html": {
+    "verified": "2026-10-28",
+    "claims_checked": 13,
+    "corrected": 1,
+    "removed": 0,
+    "sources": 4,
+    "notes": "new page; fact-checked (added retiree condition, Art. 5/6 limits and residence-legal-permanente source)"
   }
 }
