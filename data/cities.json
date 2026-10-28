@@ -79,7 +79,7 @@
       "stats": {
         "pricePerSqm": "$2,200–$4,100",
         "rentalYield": "~5.2% gross",
-        "costOfLiving": "Not published (1-bed rent ~$580–$1,060/mo, Numbeo)",
+        "costOfLiving": "Not published (1-bed rent ~$760–$1,390/mo, Numbeo)",
         "currency": "Colombian Peso (COP)"
       },
       "matchSlugs": [
@@ -87,7 +87,7 @@
         "colombia"
       ],
       "metaDescription": "Cartagena, Colombia real estate guide 2026 — prices, yields, Old City vs Bocagrande, foreign buyer rules, and Airbnb income data.",
-      "statsUpdated": "2026-10-21",
+      "statsUpdated": "2026-10-28",
       "statsSources": [
         {
           "title": "Ciencuadras: apartments in Cartagena average COP 7 million per m² in 2026",
@@ -102,41 +102,109 @@
         {
           "title": "Global Property Guide: gross rental yields in Colombia",
           "url": "https://www.globalpropertyguide.com/latin-america/colombia/rental-yields",
-          "supports": "rentalYield: Cartagena average 5.22% gross, Q3 2026"
+          "supports": "rentalYield: Cartagena average 5.22% gross, Q3 2026 (Colombia average 7.06%)"
         },
         {
           "title": "Numbeo: cost of living in Cartagena",
           "url": "https://www.numbeo.com/cost-of-living/in/Cartagena?displayCurrency=USD",
-          "supports": "costOfLiving: 1-bed rent $584 (outside centre) to $1,057 (centre); no single-person estimate published, Oct 2026"
+          "supports": "costOfLiving: 1-bed rent $761 (outside centre) to $1,390 (centre, thin data); no single-person estimate published, updated 26 Oct 2026"
         },
         {
           "title": "datos.gov.co: TRM official COP/USD rate",
           "url": "https://www.datos.gov.co/resource/32sa-8pi3.json",
-          "supports": "currency: COP; TRM 3,163.76 per USD on 2026-10-21, used for conversions"
+          "supports": "currency: COP; TRM 3,148.02 per USD on 2026-10-28, used for conversions"
         }
       ],
       "sources": [
         {
-          "title": "Ciencuadras: apartments in Cartagena average COP 7 million per m² in 2026",
-          "url": "https://www.ciencuadras.com/blog/evolucion-del-mercado-de-vivienda/actualidad-del-mercado-inmobiliario-en-cartagena-2026"
+          "title": "Banco de la República — Decreto 1068 de 2015 (foreign investment regime, as amended by Decreto 119 de 2017)",
+          "url": "https://banrep.gov.co/sites/default/files/reglamentacion/archivos/decreto-1068-2015-pag393-403.pdf"
         },
         {
-          "title": "El Universal: price per m² in Cartagena’s coastal zone (Catastro observatory)",
-          "url": "https://www.eluniversal.com.co/economica/2025/10/22/asi-estan-los-precios-del-metro-cuadrado-en-la-zona-costera-de-cartagena/"
+          "title": "Banco de la República — Decreto 1044 de 2026 (registration of foreign investment)",
+          "url": "https://banrep.gov.co/sites/default/files/reglamentacion/archivos/decreto-1044-05-08-2026.pdf"
         },
         {
-          "title": "Global Property Guide: gross rental yields in Colombia",
+          "title": "Ley 1579 de 2012 — Estatuto de Registro de Instrumentos Públicos (CRA normograma)",
+          "url": "https://normas.cra.gov.co/gestor/docs/ley_1579_2012.htm"
+        },
+        {
+          "title": "Ley 397 de 1997 — Ley General de Cultura, Art. 11 (CRA normograma)",
+          "url": "https://normas.cra.gov.co/gestor/docs/ley_0397_1997.htm"
+        },
+        {
+          "title": "El Universal — Cartagena PEMP pending ministerial resolution (3 Sep 2026)",
+          "url": "https://www.eluniversal.com.co/cartagena/2026/09/03/cartagena-iluminara-el-castillo-san-felipe-y-57-monumentos-patrimoniales-asi-avanza-el-proceso/"
+        },
+        {
+          "title": "MinCIT — Respuesta a derecho de petición 2-2026-013436 on vivienda turística (May 2026)",
+          "url": "https://www.mincit.gov.co/servicio-ciudadano/contactenos-y-pqrsd/informes-de-gestion/respuestas-a-derechos-de-peticion-anonimos/pqrsd-radicadas-como-anonimas-con-destinatario/vigencia-2026/2-2026-013436.aspx"
+        },
+        {
+          "title": "MinCIT — Proyecto de decreto RNT 2026 (draft)",
+          "url": "https://www.mincit.gov.co/normatividad/proyectos-de-normatividad/proyectos-de-decreto-2026/01-07-2026-mj-pd-rnt.aspx"
+        },
+        {
+          "title": "El Universal — Rentas cortas en Cartagena: POT and district decree (9 Jun 2026)",
+          "url": "https://www.eluniversal.com.co/cartagena/2026/06/09/rentas-cortas-en-cartagena-gremio-teme-afectaciones-por-pot-y-decreto/"
+        },
+        {
+          "title": "US State Department — Colombia Travel Advisory (Level 3, March 2026)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/colombia.html"
+        },
+        {
+          "title": "El Universal — Coastal defence works in Cartagena (21 Jul 2026)",
+          "url": "https://www.eluniversal.com.co/cartagena/2026/07/21/avanzan-obras-de-defensa-costera-en-cartagena-un-nuevo-tramo-esta-a-punto-de-finalizar/"
+        },
+        {
+          "title": "DIAN — Oficio 906990 de 2022 on the 1% withholding (Art. 398 ET)",
+          "url": "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_906990_2022.htm"
+        },
+        {
+          "title": "Ley 223 de 1995 — impuesto de registro, Arts. 227 and 230 (CRA normograma)",
+          "url": "https://normas.cra.gov.co/gestor/docs/ley_0223_1995.htm"
+        },
+        {
+          "title": "Superintendencia de Notariado y Registro — 2026 registry fee resolution (Cancillería compilation)",
+          "url": "https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_superregistro_17266_2026.htm"
+        },
+        {
+          "title": "Global Property Guide — Gross rental yields in Colombia",
           "url": "https://www.globalpropertyguide.com/latin-america/colombia/rental-yields"
         },
         {
-          "title": "Numbeo: cost of living in Cartagena",
+          "title": "Numbeo — Cost of living in Cartagena",
           "url": "https://www.numbeo.com/cost-of-living/in/Cartagena?displayCurrency=USD"
         },
         {
-          "title": "datos.gov.co: TRM official COP/USD rate",
-          "url": "https://www.datos.gov.co/resource/32sa-8pi3.json"
+          "title": "Ciencuadras — Mercado inmobiliario en Cartagena 2026",
+          "url": "https://www.ciencuadras.com/blog/evolucion-del-mercado-de-vivienda/actualidad-del-mercado-inmobiliario-en-cartagena-2026"
         }
-      ]
+      ],
+      "about": [
+        "Cartagena's walled Old City, Getsemaní and the beachfront towers of Bocagrande and Castillogrande are what draw most foreign buyers, many of them planning a second home or a short-term rental. Colombian law treats foreign capital the same as local investment, and real estate is explicitly listed as a form of foreign investment. To keep the right to send the sale proceeds back abroad, bring the purchase money in through the formal foreign-exchange market: the exchange declaration doubles as the registration with the Banco de la República, and since Decreto 1044 of August 2026 investors can file any further registration declaration at any time rather than within a fixed deadline.",
+        "Title works through a public deed (escritura pública) signed before a notary and then entered on the property's folio de matrícula inmobiliaria at the Oficina de Registro de Instrumentos Públicos. Registration, not the deed alone, transfers ownership, and the registry's certificado de tradición y libertad shows the chain of owners, mortgages and liens, so ask your own lawyer to review it before paying a deposit. Colonial houses in the historic centre are protected heritage: any works need Ministry of Culture authorization that no ordinary building licence can replace, and a new protection plan (PEMP) approved in June 2026 was still awaiting its ministerial resolution in September 2026.",
+        "Weigh the risks honestly. The US State Department rates Colombia Level 3, 'Reconsider travel', and warns of drugging and armed break-ins where tourists stay, although its Level 4 areas do not include Bolívar. Waves have flooded streets in Castillogrande, and coastal-defence works along the seafront were still under way in July 2026. Short-term rental rules are tightening: every unit needs a free National Tourism Registry (RNT) listing, the building's rules must expressly allow tourist use, and national and district draft decrees in 2026 would add more conditions. Gross yields are among Colombia's lowest, about 5.2% against a national average near 7%, so do not buy on optimistic Airbnb projections."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Cartagena, Colombia?",
+          "a": "Yes. Colombian law treats foreign investment the same as local investment, and real estate is a recognized form of foreign investment. Bring the money in through the formal exchange market so your investment is registered with the Banco de la República, which is what gives you the right to send the sale proceeds back abroad."
+        },
+        {
+          "q": "Can I rent my Cartagena apartment on Airbnb?",
+          "a": "Only if the building allows it and you register. The Ministry of Commerce says the building's rules (reglamento de propiedad horizontal) must expressly allow tourist housing, and each host must hold a free National Tourism Registry (RNT) listing. New national and Cartagena draft decrees in 2026 could add further requirements, so check the current rules before you buy for rental income."
+        },
+        {
+          "q": "How do I check the title of a property in Cartagena?",
+          "a": "Ask for the certificado de tradición y libertad from the Oficina de Registro de Instrumentos Públicos. It shows the registered owners, mortgages and liens on the property's folio de matrícula inmobiliaria. Ownership only passes when the deed is registered there."
+        },
+        {
+          "q": "What does it cost to buy in Cartagena besides the price?",
+          "a": "Expect a departmental registration tax of 0.5% to 1% of the value, registry fees of roughly 0.9% to 1.3% on the 2026 sliding scale, and notary fees. The seller has 1% withheld at the notary as an advance on income tax."
+        }
+      ],
+      "updated": "2026-10-28"
     },
     {
       "slug": "panama-city-panama",
