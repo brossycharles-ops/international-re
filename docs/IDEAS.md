@@ -13,7 +13,7 @@ Order (2026-10-26 review): retirement visas and costs first (the most-read clust
 - [x] 2026-10-26 | quick-read | Uruguay Residency for Retirees 2026: Income Proof and Steps | uruguay residency requirements retirees
 - [x] 2026-10-27 | quick-read | Peru Retirement Visa (Rentista) Requirements 2026 | peru retirement visa requirements
 - [x] 2026-10-28 | quick-read | Brazil Retirement Visa Income Requirement 2026 | brazil retirement visa requirements
-- [ ] quick-read | Chile Retirement Visa (Rentista) Requirements 2026 | chile retirement visa requirements
+- [x] 2026-10-29 | quick-read | Chile Retirement Visa (Rentista) Requirements 2026 | chile retirement visa requirements
 - [ ] quick-read | Property Tax in Ecuador for Foreigners (2026 Rates) | property tax ecuador foreigners
 - [ ] guide | Fideicomiso vs Direct Ownership in Mexico: Costs Compared | fideicomiso cost mexico
 - [ ] quick-read | Airbnb Rules in Quintana Roo 2026: RETUR-Q Registration, Taxes, Fines | airbnb rules playa del carmen tulum 2026 (aggregators say 16% VAT + 6% lodging tax and a yearly RETUR-Q window; confirm with Sedetur/SAT)

@@ -170,6 +170,14 @@
     "links_checked": "2026-10-19",
     "notes": "Investor-visa threshold was $110-130k; 350 minimum wages is about $193,000. El Poblado yields 6.4-7.8% (GPG), not 4-5%; 2025 rise 8.3-9% (DANE/Metrocuadrado), not an agency's 10.3%; deeds paid in pesos, not USD"
   },
+  "blog/mendoza-wine-country-estates.html": {
+    "verified": "2026-10-29",
+    "claims_checked": 38,
+    "corrected": 15,
+    "removed": 20,
+    "sources": 27,
+    "notes": "Growth Engine research queue: unsourced 5-7% yields, 3-7%/yr appreciation and 8-14% total returns removed; page now leads with Ley 26.737 caps provisionally restored by the Supreme Court's 9 Oct 2026 interim suspension of DNU 70/2023 Art. 154, border-zone prior approval, Mendoza 2% stamp duty, Bienes Personales 0.50%; prices re-sourced to InmoUp; independent checker: 1 mismatch (BCRA quote limited to companies) + 6 wording/source fixes applied (Senate status of land bill, Uco range US$13-30k/ha, 2024 vineyard share, second sources)"
+  },
   "blog/panama-city-real-estate-2026.html": {
     "verified": "2026-10-20",
     "claims_checked": 24,
@@ -489,6 +497,14 @@
     "sources": 6,
     "notes": "new page; fact-checked (renewal rule reworded: RN 40 defers renewal to a separate resolution)"
   },
+  "quick-reads/chile-retirement-visa-rentista-requirements-2026.html": {
+    "verified": "2026-10-29",
+    "claims_checked": 25,
+    "corrected": 0,
+    "removed": 1,
+    "sources": 7,
+    "notes": "new page; fact-checked (Decreto 177/2022 arts. 53-58: no fixed income figure, basic needs per MDSF indicators; SERMIG 2-year permit, definitiva after 24/12 months; checker: 25/25 confirmed, FAQ exception wording tightened; definitiva fee CLP 142,726 table valid to 2026-10-31, re-check in November)"
+  },
   "quick-reads/cost-of-living-buenos-aires-per-month.html": {
     "verified": "2026-10-18",
     "claims_checked": 26,
@@ -704,6 +720,14 @@
     "removed": 4,
     "sources": 13,
     "notes": "auditor flag: Playa $3,800/m2 -> Propiedades.com median MXN 51,018 (~$2,730); Miami Beach $13,000 -> ~$6,800; gap 70% -> ~60%; 8-12% yield unsupported (GPG Cancun 4.60%); peso strengthened; checker: Solidaridad SHF +9.96% replaces press 11.7%, 6% lodging tax applies to private homes"
+  },
+  "tips/sao-paulo-itbi-transfer-tax-3-percent.html": {
+    "verified": "2026-10-29",
+    "claims_checked": 11,
+    "corrected": 1,
+    "removed": 0,
+    "sources": 5,
+    "notes": "new page; fact-checked (Lei 11.154/1991 arts. 6, 10, 12: 3%, buyer pays, before public deed; city's greater-of base vs STJ Tema 1113; checker: 8/8 confirmed)"
   },
   "tips/uruguay-10-year-tax-holiday.html": {
     "verified": "2026-10-27",
