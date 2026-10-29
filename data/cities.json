@@ -530,9 +530,9 @@
       "tagline": "Latin America's biggest economy hub — Polanco, Roma, Condesa drawing waves of remote workers.",
       "heroImage": "https://images.unsplash.com/photo-1518659526054-190340b32735",
       "stats": {
-        "pricePerSqm": "$2,300–$4,600",
+        "pricePerSqm": "$3,200–$4,300 (median asking, Narvarte to Roma Norte)",
         "rentalYield": "6.5–7% gross",
-        "costOfLiving": "$1,420–$1,800/mo",
+        "costOfLiving": "$1,480–$1,890/mo",
         "currency": "Mexican Peso (MXN)"
       },
       "matchSlugs": [
@@ -540,51 +540,89 @@
         "mexico"
       ],
       "metaDescription": "Mexico City (CDMX) real estate 2026 — Polanco, Roma, Condesa prices, rental yields, foreign buyer rules, and expat cost of living.",
-      "statsUpdated": "2026-10-21",
-      "statsSources": [
+      "about": [
+        "Mexico City (CDMX) draws foreign buyers with walkable, tree-lined neighbourhoods such as Roma Norte, Condesa, Polanco and Narvarte. In October 2026 the median asking price for apartments was about MXN 59,700/m² in Narvarte, MXN 64,000/m² in Polanco and MXN 80,400/m² in Roma Norte (roughly $3,200–$4,300 at Banxico's FIX of 18.67). Accumin data put the average new-build price at MXN 80,922/m² in Q2 2026, up 10.8% on a year earlier, and Global Property Guide puts average gross rental yields at about 6.8% (before vacancy, fees, maintenance and tax).",
+        "Unlike the coast, CDMX lies outside Mexico's restricted zone (100 km from borders, 50 km from beaches), so foreigners can hold title directly in their own name, with no bank trust (fideicomiso) needed. Under Article 27 of the Constitution and Article 10 A of the Ley de Inversión Extranjera, the buyer first files an agreement with the Secretaría de Relaciones Exteriores (SRE) to be treated as a Mexican national for that property and not to invoke their own government's protection (the Calvo clause), and gets the SRE permit. In a municipality wholly outside the zone, the permit counts as granted if no refusal is published within five business days. The sale is signed as an escritura before a notario público, who calculates the taxes and registers the deed with the Registro Público de la Propiedad de la CDMX, which can take three weeks to three months. The buyer pays the Impuesto sobre Adquisición de Inmuebles (ISAI), a sliding-scale tax under Article 113 of the CDMX Código Fiscal whose amounts were updated from 1 January 2026. It is charged on the highest of the price, the cadastral value and an appraisal, so ask the notario for the exact figure.",
+        "Now the risks. The US State Department's May 2026 reissue keeps Mexico City at Level 2, 'Exercise increased caution', citing terrorism, crime and kidnapping, while several other states are at Level 4. The city is seismic: the M7.1 earthquake of 19 September 2017 brought down buildings at 44 sites in the capital, so have your own structural engineer inspect any building, especially older ones and those repaired since. Short-term rental income is capped: under the 2024 reforms, hosts must register with the city's tourism ministry, and a listing occupied more than 50% of the year cannot renew its registration. Liquidity is softening: in Q2 2026 new-home sales fell 6.4% year on year while about 18,000 new units sat on the market, so price realistically and plan for a hold of several years."
+      ],
+      "faq": [
         {
-          "title": "Propiedades.com: apartment prices per m², Narvarte Poniente",
-          "url": "https://propiedades.com/valores/narvarte-poniente-benito-juarez/departamentos-venta",
-          "supports": "pricePerSqm low end: median asking MXN 43,100/m² (≈$2,340 at Banxico FIX 18.42), Oct 2026"
+          "q": "Can foreigners buy property in Mexico City?",
+          "a": "Yes. Mexico City is outside the restricted zone along the borders and coast, so foreigners can own property directly in their own name, with no fideicomiso. Before buying you file an agreement with the Secretaría de Relaciones Exteriores (the Calvo clause) and get its permit, under Article 27 of the Constitution and Article 10 A of the Foreign Investment Law."
         },
         {
-          "title": "Propiedades.com: apartment prices per m², Polanco V Sección",
-          "url": "https://propiedades.com/valores/polanco-v-seccion-miguel-hidalgo/departamentos-venta",
-          "supports": "pricePerSqm high end: median asking MXN 84,300/m² (≈$4,580), Oct 2026"
+          "q": "What taxes do you pay when buying in Mexico City?",
+          "a": "The main one is the Impuesto sobre Adquisición de Inmuebles (ISAI), which the buyer pays. It is a sliding-scale tax set in Article 113 of the CDMX Código Fiscal, updated from 1 January 2026, and charged on the highest of the purchase price, the cadastral value and an appraisal. The notario calculates it with the registration fees and notary costs at closing."
         },
         {
-          "title": "Global Property Guide: square meter prices in Mexico cities",
-          "url": "https://www.globalpropertyguide.com/latin-america/mexico/square-meter-prices",
-          "supports": "pricePerSqm cross-check: new-build Mexico City $2,947/m², 2026 Q2"
+          "q": "Is Mexico City safe to buy property in?",
+          "a": "The US State Department rates Mexico City Level 2, 'Exercise increased caution', in its May 2026 Mexico advisory, citing terrorism, crime and kidnapping. Beyond crime, check earthquake safety: the 2017 M7.1 quake brought down buildings at 44 sites in the capital, so get an independent structural inspection before you commit."
         },
         {
-          "title": "Global Property Guide: gross rental yields in Mexico",
-          "url": "https://www.globalpropertyguide.com/latin-america/mexico/rental-yields",
-          "supports": "rentalYield: Mexico City average 6.77%; 6.53–7.05% by unit size, Q2 2026"
-        },
-        {
-          "title": "Numbeo: cost of living in Mexico City",
-          "url": "https://www.numbeo.com/cost-of-living/in/Mexico-City?displayCurrency=USD",
-          "supports": "costOfLiving: $765.5/mo single excluding rent + 1-bed rent $657 (outside centre) to $1,030 (centre), Oct 2026"
-        },
-        {
-          "title": "Banxico: FIX exchange rate",
-          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp",
-          "supports": "currency: MXN; FIX 18.4200 per USD on 2026-10-20, used for conversions"
+          "q": "Can I rent out a Mexico City apartment on Airbnb?",
+          "a": "Yes, with limits. Under the 2024 reforms, hosts and platforms must register with Mexico City's tourism ministry, and a listing occupied for more than half the year cannot renew its registration. Don't base a purchase on full-time short-term rental income."
         }
       ],
       "sources": [
         {
-          "title": "Propiedades.com: apartment prices per m², Narvarte Poniente",
-          "url": "https://propiedades.com/valores/narvarte-poniente-benito-juarez/departamentos-venta"
+          "title": "US State Department — Mexico Travel Advisory (Level 2 for Mexico City, reissued 29 May 2026)",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/mexico.html"
         },
         {
-          "title": "Propiedades.com: apartment prices per m², Polanco V Sección",
-          "url": "https://propiedades.com/valores/polanco-v-seccion-miguel-hidalgo/departamentos-venta"
+          "title": "Fox News: State Department updates Mexico travel advisory; Mexico City remains Level 2 (5 Jun 2026)",
+          "url": "https://www.foxnews.com/travel/americans-warned-popular-travel-routes-this-summer-could-carry-crime-kidnapping-risks"
         },
         {
-          "title": "Global Property Guide: square meter prices in Mexico cities",
-          "url": "https://www.globalpropertyguide.com/latin-america/mexico/square-meter-prices"
+          "title": "Constitución Política de los Estados Unidos Mexicanos, Art. 27 fr. I (Cámara de Diputados, last reform DOF 07-10-2026)",
+          "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/CPEUM.pdf"
+        },
+        {
+          "title": "Ley de Inversión Extranjera, Arts. 2 (restricted zone) and 10 A (SRE agreement and permit) (Cámara de Diputados, last reform DOF 27-05-2024)",
+          "url": "https://www.diputados.gob.mx/LeyesBiblio/pdf/LIE.pdf"
+        },
+        {
+          "title": "Código Fiscal de la Ciudad de México, Art. 112: who pays the Impuesto sobre Adquisición de Inmuebles",
+          "url": "https://leyes-mx.com/codigo_fiscal_ciudad_de_mexico/112.htm"
+        },
+        {
+          "title": "Código Fiscal de la Ciudad de México, Art. 116: ISAI taxable value (highest of price, cadastral value, appraisal)",
+          "url": "https://leyes-mx.com/codigo_fiscal_ciudad_de_mexico/116.htm"
+        },
+        {
+          "title": "SCJN: summary of Gaceta Oficial CDMX No. 1762 Tomo II (19 Dec 2025): Art. 113 ISAI amounts reformed, in force 1 Jan 2026",
+          "url": "https://www.scjn.gob.mx/sites/default/files/sintesis_dof_gocdmx/documento/2026-01/GOCDMX%2019122025%20S%C3%8DNTESIS%20TOMO%20II.pdf"
+        },
+        {
+          "title": "Expansión Política: how to get your property deeds in CDMX (26 Aug 2026)",
+          "url": "https://politica.expansion.mx/cdmx/2026/08/26/como-sacar-las-escrituras-de-tu-vivienda-en-cdmx"
+        },
+        {
+          "title": "Greenberg Traurig: impact of the restrictions on short-term tourist stays (estancias turísticas eventuales) in Mexico City (Oct 2024)",
+          "url": "https://www.gtlaw.com/en/insights/2024/10/impacto-de-las-restricciones-a-las-estancias-turisticas-eventuales-en-la-ciudad-de-mexico"
+        },
+        {
+          "title": "USGS: M 7.1 earthquake, 1 km S of Matzaco, Mexico, 19 Sep 2017",
+          "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000ar20"
+        },
+        {
+          "title": "Associated Press via Philstar: 7.1 magnitude quake kills 119 as buildings crumble in Mexico (20 Sep 2017)",
+          "url": "https://www.philstar.com/world/2017/09/20/1740957/71-magnitude-quake-kills-119-buildings-crumble-mexico"
+        },
+        {
+          "title": "Mexico Business News: Mexico City home sales fall as prices hit double digits (Accumin 2Q26 data, 28 Jul 2026)",
+          "url": "https://mexicobusiness.news/infrastructure/news/mexico-city-home-sales-fall-prices-hit-double-digits"
+        },
+        {
+          "title": "Mudafy: apartments for sale in Narvarte, median asking price per m² (Oct 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/cdmx-benito-juarez-narvarte-narvarte-poniente"
+        },
+        {
+          "title": "Mudafy: apartments for sale in Polanco, median asking price per m² (Oct 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/cdmx-miguel-hidalgo-polanco"
+        },
+        {
+          "title": "Mudafy: apartments for sale in Roma Norte, median asking price per m² (Oct 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/cdmx-cuauhtemoc-roma-norte"
         },
         {
           "title": "Global Property Guide: gross rental yields in Mexico",
@@ -597,6 +635,45 @@
         {
           "title": "Banxico: FIX exchange rate",
           "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp"
+        }
+      ],
+      "updated": "2026-10-29",
+      "statsUpdated": "2026-10-29",
+      "statsSources": [
+        {
+          "title": "Mudafy: apartments for sale in Narvarte, median asking price per m² (Oct 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/cdmx-benito-juarez-narvarte-narvarte-poniente",
+          "supports": "pricePerSqm low end: median asking MXN 59,656/m² for Narvarte apartments (563 listings), Oct 2026 = ≈$3,196 at Banxico FIX 18.6673"
+        },
+        {
+          "title": "Mudafy: apartments for sale in Roma Norte, median asking price per m² (Oct 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/cdmx-cuauhtemoc-roma-norte",
+          "supports": "pricePerSqm high end: median asking MXN 80,422/m² for Roma Norte apartments (48 listings), Oct 2026 = ≈$4,308"
+        },
+        {
+          "title": "Mudafy: apartments for sale in Polanco, median asking price per m² (Oct 2026)",
+          "url": "https://mudafy.com.mx/venta/departamentos/cdmx-miguel-hidalgo-polanco",
+          "supports": "pricePerSqm: Polanco median asking MXN 64,010/m² (601 listings), Oct 2026 = ≈$3,429, inside the range"
+        },
+        {
+          "title": "Mexico Business News: Mexico City home sales fall as prices hit double digits (Accumin 2Q26 data, 28 Jul 2026)",
+          "url": "https://mexicobusiness.news/infrastructure/news/mexico-city-home-sales-fall-prices-hit-double-digits",
+          "supports": "pricePerSqm cross-check: Accumin average new-build price MXN 80,922/m² in 2Q26 (≈$4,335)"
+        },
+        {
+          "title": "Global Property Guide: gross rental yields in Mexico",
+          "url": "https://www.globalpropertyguide.com/latin-america/mexico/rental-yields",
+          "supports": "rentalYield: Mexico City average 6.77% gross, Q2 2026"
+        },
+        {
+          "title": "Numbeo: cost of living in Mexico City",
+          "url": "https://www.numbeo.com/cost-of-living/in/Mexico-City?displayCurrency=USD",
+          "supports": "costOfLiving: $767.2/mo single excluding rent + 1-bed rent $714 (outside centre) to $1,122 (centre), updated 27 Oct 2026"
+        },
+        {
+          "title": "Banxico: FIX exchange rate",
+          "url": "https://www.banxico.org.mx/tipcamb/tipCamMIAction.do?idioma=sp",
+          "supports": "currency: MXN; FIX 18.6673 per USD on 2026-10-28, used for conversions"
         }
       ]
     },
