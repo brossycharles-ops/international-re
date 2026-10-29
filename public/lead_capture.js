@@ -515,6 +515,28 @@
     });
   }
 
+  /* ---------- 9. STARTER KIT CALLOUTS ---------- */
+  // Articles carry one <p class="kit-callout"> after the first answer. Give it an
+  // email field (tagged 'kit-callout') so readers can get the kit right there,
+  // instead of a text link to another page. Skipped once the reader has subscribed.
+  function initKitCallouts() {
+    if (alreadySubscribed()) return;
+    document.querySelectorAll('p.kit-callout').forEach((p) => {
+      if (p.closest('.kit-callout-box')) return;
+      const box = document.createElement('div');
+      box.className = 'kit-callout-box';
+      p.parentNode.insertBefore(box, p);
+      box.appendChild(p);
+      p.removeAttribute('style');
+      const f = document.createElement('form');
+      f.className = 'kit-callout-form';
+      f.setAttribute('data-lc-subscribe', 'kit-callout');
+      f.innerHTML = '<input type="email" name="email" required autocomplete="email" placeholder="Your email" aria-label="Email address for the free Starter Kit">' +
+        '<button type="submit">Send me the free kit</button>';
+      box.appendChild(f);
+    });
+  }
+
   /* ---------- BOOT ---------- */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
@@ -528,6 +550,7 @@
     initExitIntent();
     initSocialToast();
     initStickyBar();
+    initKitCallouts();
     initGenericSubscribeForms();
     initTimeOnPage();
   }

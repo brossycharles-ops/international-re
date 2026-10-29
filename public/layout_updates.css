@@ -616,3 +616,48 @@ section { padding-block: 96px; }
   .sticky-bar-text { display: none; }
   .sticky-bar-form input { width: 160px; }
 }
+
+/* ============================================================
+   In-article Starter Kit callout (p.kit-callout, enhanced by
+   lead_capture.js into .kit-callout-box with an email field)
+   ============================================================ */
+.kit-callout-box {
+  margin: 28px 0 32px;
+  padding: 18px 20px;
+  background: #f7f5f0;
+  border-left: 4px solid var(--gold, #c9a84c);
+  border-radius: 8px;
+}
+.kit-callout-box .kit-callout { margin: 0 0 12px; padding: 0; background: none; border: 0; color: #3f3f46; }
+.kit-callout-box .kit-callout strong:first-child { color: var(--navy, #0a1628); }
+.kit-callout-form { display: flex; gap: 8px; flex-wrap: wrap; margin: 0; }
+.kit-callout-form input[type="email"] {
+  flex: 1 1 220px; min-width: 0; min-height: 46px; padding: 10px 14px;
+  font: 400 1rem/1.2 Inter, sans-serif; color: #18181b;
+  background: #fff; border: 1px solid #c8c2b4; border-radius: 6px;
+}
+.kit-callout-form input[type="email"]:focus-visible { outline: 3px solid var(--gold, #c9a84c); outline-offset: 1px; border-color: var(--navy, #0a1628); }
+.kit-callout-form button {
+  flex: 0 0 auto; min-height: 46px; padding: 10px 18px;
+  font: 600 0.95rem/1.2 Inter, sans-serif; color: var(--navy, #0a1628);
+  background: linear-gradient(180deg, var(--gold-soft, #e4c76b), var(--gold, #c9a84c));
+  border: 0; border-radius: 6px; cursor: pointer;
+}
+.kit-callout-form button:hover { filter: brightness(0.96); }
+.kit-callout-form button:focus-visible { outline: 3px solid var(--navy, #0a1628); outline-offset: 2px; }
+.kit-callout-box .subscribe-msg { margin: 8px 0 0; font-size: 0.9rem; color: #3f3f46; }
+@media (max-width: 600px) {
+  .kit-callout-box { padding: 16px; }
+  .kit-callout-form button { flex: 1 1 100%; }
+}
+
+/* Wide article tables scroll sideways inside their wrapper instead of widening the page */
+.blog-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Phones: a backdrop-filter on the scrolled navbar makes it the containing block for the
+   fixed full-screen menu, squashing the open menu into the 68px bar. The bar is 96% opaque
+   anyway, so drop the blur there and the menu covers the screen again. */
+@media (max-width: 768px) {
+  .navbar.scrolled { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .nav-links.active { background: #0a1628; }
+}
