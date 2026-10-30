@@ -1,14 +1,12 @@
 # Article quality scorecard
 
-Generated 2026-10-29 by scripts/content_quality.py. 130 indexed articles, average score 86/100, 81 research-verified (62%), 84 with a Sources section, 104 with an FAQ.
+Generated 2026-10-30 by scripts/content_quality.py. 130 indexed articles, average score 87/100, 84 research-verified (65%), 87 with a Sources section, 105 with an FAQ.
 
 Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 if the last check is over 90 days old).
 
 | Score | Page | Verified | Words | Sources | Problems |
 |---|---|---|---|---|---|
 | 51 | blog/latam-weekly-apr-21-25-2026.html | — | 1075 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 51 | blog/latam-weekly-apr-26-may-2-2026.html | — | 1060 | 0 | needs a Sources section with 3+ external https links (has 0); missing FAQ + FAQPage JSON-LD |
-| 63 | blog/best-neighborhoods-panama-city-2026.html | — | 1754 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/colombia-real-estate-foreigners-2026.html | — | 1684 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/cost-of-living-bogota-2026.html | — | 1356 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | blog/cost-of-living-buenos-aires-2026.html | — | 1713 | 0 | needs a Sources section with 3+ external https links (has 0) |
@@ -35,7 +33,6 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 63 | guides/mexico-beach-towns-vs-costa-rica-2026.html | — | 1813 | 0 | needs a Sources section with 3+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-cartagena-colombia-2026.html | — | 666 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-mexico-city-2026.html | — | 640 | 0 | needs a Sources section with 2+ external https links (has 0) |
-| 63 | quick-reads/airbnb-income-montevideo-uruguay-2026.html | — | 622 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-playa-del-carmen.html | — | 632 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/airbnb-income-san-jose-costa-rica.html | — | 723 | 0 | needs a Sources section with 2+ external https links (has 0) |
 | 63 | quick-reads/cost-of-living-lima-peru-per-month.html | — | 725 | 0 | needs a Sources section with 2+ external https links (has 0) |
@@ -58,6 +55,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/10-cheapest-beach-towns-latin-america-2026.html | 2026-10-17 | 2414 | 29 | none |
 | 100 | blog/argentina-real-estate-foreigners-2026.html | 2026-10-16 | 2773 | 28 | none |
 | 100 | blog/belize-real-estate-2026.html | 2026-10-27 | 3198 | 13 | none |
+| 100 | blog/best-neighborhoods-panama-city-2026.html | 2026-10-30 | 2883 | 18 | none |
 | 100 | blog/best-places-retire-latin-america-2026.html | 2026-10-16 | 2219 | 24 | none |
 | 100 | blog/best-places-retire-mexico-2026.html | 2026-10-20 | 2625 | 15 | none |
 | 100 | blog/buenos-aires-best-value-2026.html | 2026-10-18 | 1997 | 21 | none |
@@ -69,6 +67,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | blog/guanacaste-hottest-market-2026.html | 2026-10-20 | 1630 | 21 | none |
 | 100 | blog/how-to-buy-property-costa-rica-foreigner.html | 2026-10-20 | 3166 | 16 | none |
 | 100 | blog/latam-weekly-apr-14-18-2026.html | 2026-10-21 | 1778 | 18 | none |
+| 100 | blog/latam-weekly-apr-26-may-2-2026.html | 2026-10-30 | 1604 | 20 | none |
 | 100 | blog/latam-weekly-oct-12-17-2026.html | 2026-10-17 | 1982 | 21 | none |
 | 100 | blog/latin-america-market-update-june-2026.html | 2026-10-20 | 2759 | 29 | none |
 | 100 | blog/medellin-neighborhoods-expats-2026.html | 2026-10-16 | 1729 | 14 | none |
@@ -103,6 +102,7 @@ Score: 100, minus 12 per problem, minus 25 if never research-verified (minus 15 
 | 100 | guides/retirement-visa-income-requirements-latin-america-2026.html | 2026-10-26 | 2606 | 25 | none |
 | 100 | guides/santiago-chile-neighborhood-guide-property-buyers-2026.html | 2026-10-16 | 2707 | 23 | none |
 | 100 | guides/uruguay-vs-chile-retirees-2026.html | 2026-10-26 | 1982 | 23 | none |
+| 100 | quick-reads/airbnb-income-montevideo-uruguay-2026.html | 2026-10-30 | 1291 | 14 | none |
 | 100 | quick-reads/airbnb-income-sao-paulo-2026.html | 2026-10-27 | 1057 | 14 | none |
 | 100 | quick-reads/airbnb-rules-medellin-foreigners-2026.html | 2026-10-17 | 822 | 12 | none |
 | 100 | quick-reads/best-neighborhoods-medellin-for-expats.html | 2026-10-28 | 1160 | 13 | none |
