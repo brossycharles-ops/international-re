@@ -10,7 +10,7 @@
       "stats": {
         "pricePerSqm": "$1,600–$2,800",
         "rentalYield": "~6.9% gross",
-        "costOfLiving": "$1,470–$1,900/mo",
+        "costOfLiving": "$1,470–$2,040/mo",
         "currency": "Colombian Peso (COP)"
       },
       "matchSlugs": [
@@ -18,12 +18,12 @@
         "colombia"
       ],
       "metaDescription": "Everything we know about Medellín real estate in 2026 — current prices per m², rental yields, best neighborhoods, foreign buyer rules, and cost of living.",
-      "statsUpdated": "2026-10-21",
+      "statsUpdated": "2026-10-30",
       "statsSources": [
         {
           "title": "Metrocuadrado: price per m² for sale in Medellín (Aug 2026)",
           "url": "https://www.metrocuadrado.com/noticias/precios-m2/cual-es-el-precio-del-metro-cuadrado-en-venta-en-medellin-y-los-municipios-del-valle-de-aburra-7053",
-          "supports": "pricePerSqm: COP 5.13M–8.92M/m² for 50–200 m² apartments, estratos 3–6 (≈$1,620–$2,820 at TRM 3,163.76)"
+          "supports": "pricePerSqm: COP 5.13M–8.92M/m² for 50–200 m² apartments, estratos 3–6, August 2026 listings (≈$1,620–$2,820 at TRM 3,166.91 on Oct 30, 2026)"
         },
         {
           "title": "Global Property Guide: square meter prices in Colombia cities",
@@ -38,12 +38,12 @@
         {
           "title": "Numbeo: cost of living in Medellín",
           "url": "https://www.numbeo.com/cost-of-living/in/Medellin?displayCurrency=USD",
-          "supports": "costOfLiving: $840.6/mo single excluding rent + 1-bed rent $633 (outside centre) to $1,055 (centre), Oct 2026"
+          "supports": "costOfLiving: $828.6/mo single excluding rent + 1-bed rent $642 (outside centre) to $1,211 (centre), updated Oct 28, 2026"
         },
         {
           "title": "datos.gov.co: TRM official COP/USD rate",
           "url": "https://www.datos.gov.co/resource/32sa-8pi3.json",
-          "supports": "currency: COP; TRM 3,163.76 per USD on 2026-10-21, used for conversions"
+          "supports": "currency: COP; TRM 3,166.91 per USD on 2026-10-30, used for conversions"
         }
       ],
       "sources": [
@@ -66,8 +66,52 @@
         {
           "title": "datos.gov.co: TRM official COP/USD rate",
           "url": "https://www.datos.gov.co/resource/32sa-8pi3.json"
+        },
+        {
+          "title": "Cancillería de Colombia: Constitución Política, Article 100 (foreigners' civil rights)",
+          "url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/constitucion_politica_1991_pr003.pdf"
+        },
+        {
+          "title": "Banco de la República: Concepto JDS-02187 on registering foreign investment",
+          "url": "https://www.banrep.gov.co/es/banco/junta-directiva/conceptos/jds-02187"
+        },
+        {
+          "title": "Superintendencia de Industria y Comercio: Circular Externa 003 de 2023 on vivienda turística and the RNT",
+          "url": "https://sidn.ramajudicial.gov.co/SIDN/NORMATIVA/TEXTOS_COMPLETOS/4_CIRCULARES/CIRCULARES%202023/Circular%20Externa%20003%20de%202023.pdf"
+        },
+        {
+          "title": "Infobae: 105 tourist rentals suspended in Medellín (Sept 27, 2026)",
+          "url": "https://www.infobae.com/colombia/2026/09/27/viviendas-turisticas-en-medellin-en-la-mira-de-las-autoridades-ya-van-105-suspendidas-por-infracciones/"
+        },
+        {
+          "title": "US Department of State: Colombia Travel Advisory",
+          "url": "https://travel.state.gov/en/international-travel/travel-advisories/colombia.html"
         }
-      ]
+      ],
+      "about": [
+        "Medellín draws foreign buyers with its spring-like climate, a metro system, and apartment prices well below those of US cities: Metrocuadrado's August 2026 listings put most apartments between COP 5.1 million and 8.9 million per m², roughly US$1,600–$2,800 at the October 30, 2026 exchange rate, with small units in El Poblado's top strata asking more. Foreigners buy on the same footing as Colombians: Article 100 of the Constitution gives foreigners the same civil rights as citizens, and a residency permit is not needed to own property.",
+        "Title works through a public deed (escritura pública) signed before a notary and then recorded at the Oficina de Registro de Instrumentos Públicos; until it is registered, the purchase is not complete. Bring the money in through the formal exchange market and keep the foreign-exchange declaration: Banco de la República treats foreign investments paid in foreign currency as registered automatically when that declaration is filed, which is the record you will rely on to repatriate sale proceeds. Have your own lawyer check the registry record for liens and the chain of ownership before you pay a deposit.",
+        "The main risks are rules on short-term rentals and personal safety, not ownership. Any home let as vivienda turística must be on the Registro Nacional de Turismo before operating, and in a condominium the building's rules must allow it; Medellín inspected 408 short-term rentals between 2024 and 2026 and temporarily suspended 105. The US State Department rates Colombia Level 3, 'Reconsider travel', and has warned that criminals use dating apps to drug and rob foreigners, including in Medellín. Resale liquidity is best for mid-size apartments in established neighbourhoods; plan for the peso's swings if you measure returns in dollars."
+      ],
+      "faq": [
+        {
+          "q": "Can foreigners buy property in Medellín?",
+          "a": "Yes. Article 100 of Colombia's Constitution gives foreigners the same civil rights as Colombians, so you can buy and register property in your own name without a residency permit. Bring the funds through the formal exchange market so the investment is recorded with Banco de la República."
+        },
+        {
+          "q": "How much does an apartment cost in Medellín in 2026?",
+          "a": "Metrocuadrado's August 2026 listings put apartments of 50–200 m² at about COP 5.1 million to 8.9 million per m² across strata 3 to 6, roughly US$1,600 to US$2,800 per m² at the October 30, 2026 rate. Small apartments in strata 5 and 6 asked about COP 12.3 million per m²."
+        },
+        {
+          "q": "Can I rent my Medellín apartment on Airbnb?",
+          "a": "Only if it is registered on the Registro Nacional de Turismo before you start, and, in a condominium, the building's rules allow tourist rentals. The city inspected 408 short-term rentals between 2024 and 2026 and temporarily suspended 105 for breaking local rules."
+        },
+        {
+          "q": "Is Medellín safe for foreign property owners?",
+          "a": "The US State Department rates Colombia Level 3, 'Reconsider travel', with its Level 4 areas outside Medellín, and it has warned about criminals who use dating apps to drug and rob foreigners. Choose established neighbourhoods and take the usual precautions."
+        }
+      ],
+      "updated": "2026-10-30"
     },
     {
       "slug": "cartagena-colombia",
