@@ -9,12 +9,12 @@ Order (2026-10-26 review): retirement visas and costs first (the most-read clust
 - [x] 2026-10-27 | comparison | Closing Costs for Foreign Buyers in Latin America 2026: Country Table | closing costs buying property latin america (linkable asset: transfer tax, notary, registry per country from official sources; we already have verified property-tax quick-reads for CR, Panama, Chile + Peru alcabala tip to build on; no comparison page exists)
 - [x] 2026-10-26 | guide | Can Foreigners Buy Property in Ecuador? 2026 Guide | can foreigners buy property in ecuador
 - [x] 2026-10-28 | comparison | Retire in Mexico vs Costa Rica 2026: Visa Income, Costs, Property | retire mexico vs costa rica
-- [ ] comparison | Panama Pensionado vs Ecuador Pensioner Visa: Which Is Easier? | best retirement visa latin america
+- [x] 2026-10-30 | comparison | Panama Pensionado vs Ecuador Pensioner Visa: Which Is Easier? | best retirement visa latin america
 - [x] 2026-10-26 | quick-read | Uruguay Residency for Retirees 2026: Income Proof and Steps | uruguay residency requirements retirees
 - [x] 2026-10-27 | quick-read | Peru Retirement Visa (Rentista) Requirements 2026 | peru retirement visa requirements
 - [x] 2026-10-28 | quick-read | Brazil Retirement Visa Income Requirement 2026 | brazil retirement visa requirements
 - [x] 2026-10-29 | quick-read | Chile Retirement Visa (Rentista) Requirements 2026 | chile retirement visa requirements
-- [ ] quick-read | Property Tax in Ecuador for Foreigners (2026 Rates) | property tax ecuador foreigners
+- [x] 2026-10-30 | quick-read | Property Tax in Ecuador for Foreigners (2026 Rates) | property tax ecuador foreigners
 - [ ] guide | Fideicomiso vs Direct Ownership in Mexico: Costs Compared | fideicomiso cost mexico
 - [ ] quick-read | Airbnb Rules in Quintana Roo 2026: RETUR-Q Registration, Taxes, Fines | airbnb rules playa del carmen tulum 2026 (aggregators say 16% VAT + 6% lodging tax and a yearly RETUR-Q window; confirm with Sedetur/SAT)
 - [ ] quick-read | Airbnb Rules in Mexico City 2026 for Foreign Owners | airbnb rules mexico city 2026

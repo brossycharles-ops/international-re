@@ -70,6 +70,14 @@
     "notes": "new page; fact-checked",
     "links_checked": "2026-10-28"
   },
+  "blog/cost-of-living-buenos-aires-2026.html": {
+    "verified": "2026-10-30",
+    "claims_checked": 48,
+    "corrected": 14,
+    "removed": 41,
+    "sources": 6,
+    "notes": "research queue; rewritten on Numbeo Oct 28 2026, BCRA ARS 1,539/USD, INDEC Sept 2026 (33.4% y/y, was '~85%'), DNU 70/2023 rentals, Res. 1066/2026 hospital fees for non-residents; unsourced barrio rents, prepaga prices, city comparison and '9 defaults' removed; checker-verified"
+  },
   "blog/cost-of-living-costa-rica-expats-2026.html": {
     "verified": "2026-10-27",
     "links_checked": "2026-10-27",
@@ -438,6 +446,14 @@
     "notes": "San José out-yields Panama City (8.05% vs 7.66%, GPG) — thesis reversed; colón is a managed float, not USD-pegged; fake 40% foreign-buyer and 102% migration stats removed",
     "links_checked": "2026-10-19"
   },
+  "guides/panama-pensionado-vs-ecuador-pensioner-visa-2026.html": {
+    "verified": "2026-10-30",
+    "claims_checked": 46,
+    "corrected": 9,
+    "removed": 2,
+    "sources": 11,
+    "notes": "new page; fact-checked"
+  },
   "guides/punta-cana-real-estate-investment-2026.html": {
     "verified": "2026-10-23",
     "claims_checked": 56,
@@ -605,6 +621,14 @@
     "notes": "new page; fact-checked. Bill 25.239 wording (extra 0.5% to central government, not municipal); BCCR rate updated to 23 Oct 2026; Law 7509 Art. 6 added for nationality-neutral taxpayer",
     "links_checked": "2026-10-26"
   },
+  "quick-reads/property-tax-ecuador-foreigners-2026.html": {
+    "verified": "2026-10-30",
+    "claims_checked": 17,
+    "corrected": 5,
+    "removed": 0,
+    "sources": 7,
+    "notes": "new page; fact-checked"
+  },
   "quick-reads/property-tax-mexico-foreigners-2026.html": {
     "verified": "2026-10-27",
     "links_checked": "2026-10-27",
@@ -723,6 +747,14 @@
     "sources": 10,
     "links_checked": "2026-10-21",
     "notes": "Headline '$1,200/m2, 93% below Miami' replaced: Medellin new-builds ~$2,412/m2 (GPG Q3 2026) vs Miami $532/sq ft (~$5,700/m2, Redfin) = ~60% less; peso strengthened, not weakened"
+  },
+  "tips/panama-new-home-transfer-tax-exemption-120000.html": {
+    "verified": "2026-10-30",
+    "claims_checked": 11,
+    "corrected": 4,
+    "removed": 0,
+    "sources": 3,
+    "notes": "new page; fact-checked"
   },
   "tips/panama-pensionado-750-with-property.html": {
     "verified": "2026-10-22",
