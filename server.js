@@ -325,6 +325,15 @@ function signupPage(req) {
   } catch { return null; }
 }
 
+// The social-proof toast shows the stored city to every visitor, so only a
+// plain place name is kept (letters, spaces and . , ' -). Anything else (URLs,
+// digits, markup, spam) is dropped rather than published site-wide.
+const CITY_RE = /^\p{L}[\p{L}\p{M} .,'\u2019-]{0,63}$/u;
+function cleanCity(v) {
+  const c = typeof v === 'string' ? v.trim().replace(/\s+/g, ' ') : '';
+  return CITY_RE.test(c) ? c : null;
+}
+
 app.post('/api/subscribe', async (req, res) => {
   const ip = clientIp(req);
   if (!checkRateLimit(ip)) {
@@ -380,7 +389,7 @@ app.post('/api/subscribe', async (req, res) => {
       page: signupPage(req),
       dateSubscribed: now.toISOString().split('T')[0],
       subscribedAt: now.toISOString(),
-      city: (req.body.city && String(req.body.city).trim().slice(0, 64)) || null
+      city: cleanCity(req.body.city)
     });
 
     writeSubscribers(subscribers);
@@ -794,30 +803,30 @@ app.get('/api/subscriber-count', (req, res) => {
 //
 //   Returns ONLY: { initial, city, minutesAgo } per subscriber.
 //   - initial = first letter of firstName (no full name, no email)
-//   - city    = stored coarse location if present, else "" (skipped client-side)
-//   - minutesAgo = minutes since signup, capped to last 14 days
+//   - city    = stored coarse location; signups without a plain place name are
+//               left out entirely (no made-up fallback such as "a verified subscriber")
+//   - minutesAgo = minutes since signup, last 48 hours only, so the toast's
+//               "just subscribed" is not shown for a signup from last week
 //   This is intentionally minimal so the toast is honest social proof
 //   (real signups, real recency) without leaking PII.
+const RECENT_SUBSCRIBER_WINDOW_MS = 48 * 60 * 60 * 1000;
 
 app.get('/api/recent-subscribers', (req, res) => {
   try {
     const subs = readSubscribers();
-    const cutoff = Date.now() - 14 * 24 * 60 * 60 * 1000;
+    const now = Date.now();
     const items = subs
       .map(s => {
         const t = s.subscribedAt ? new Date(s.subscribedAt).getTime()
                 : s.dateSubscribed ? new Date(s.dateSubscribed + 'T12:00:00Z').getTime()
                 : 0;
-        return { s, t };
+        const initial = typeof s.firstName === 'string' ? s.firstName.trim().charAt(0).toUpperCase() : '';
+        return { t, initial, city: cleanCity(s.city) || cleanCity(s.location) };
       })
-      .filter(x => x.t >= cutoff && x.s.firstName)
+      .filter(x => x.t >= now - RECENT_SUBSCRIBER_WINDOW_MS && x.t <= now + 60000 && /^\p{L}$/u.test(x.initial) && x.city)
       .sort((a, b) => b.t - a.t)
       .slice(0, 25)
-      .map(({ s, t }) => ({
-        initial: s.firstName.charAt(0).toUpperCase(),
-        city: s.city || s.location || 'a verified subscriber',
-        minutesAgo: Math.max(1, Math.round((Date.now() - t) / 60000))
-      }));
+      .map(({ t, initial, city }) => ({ initial, city, minutesAgo: Math.max(1, Math.round((now - t) / 60000)) }));
     res.json({ items });
   } catch {
     res.json({ items: [] });
@@ -952,7 +961,9 @@ app.post('/api/send-newsletter', async (req, res) => {
   }
 
   const { subject, html } = req.body;
-  if (!subject || !html) {
+  // Non-string values used to throw inside this async handler (html.replace), which
+  // Express 4 does not catch: the request hung with no response.
+  if (typeof subject !== 'string' || typeof html !== 'string' || !subject.trim() || !html.trim()) {
     return res.status(400).json({ error: 'subject and html fields are required.' });
   }
 
