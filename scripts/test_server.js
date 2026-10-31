@@ -226,6 +226,25 @@ const check = (name, ok, detail = '') => { console.log(`  ${ok ? 'ok  ' : 'FAIL'
   check('status lists the Growth Director', gst.agents.some(a => a.id === 'director'));
   check('status audit ignores non-audit reports (e.g. YYYY-MM-DD-market.md)', gst.audit && gst.audit.file === `${yday}.md` && gst.audit.status === 'All systems green', JSON.stringify(gst.audit));
 
+  // Social-proof toast: last 48 hours only, real place names only, minimal shape.
+  const subAs = (ip, body) => fetch(B + '/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': ip }, body: JSON.stringify(body) });
+  await subAs('198.51.100.50', { email: 'toast1@realmail.io', firstName: 'maria', city: ' Medellín,  Colombia ' });
+  await subAs('198.51.100.51', { email: 'toast2@realmail.io', firstName: 'Spam', city: 'cheap visas at http://spam.example' });
+  await subAs('198.51.100.52', { email: 'toast3@realmail.io', firstName: 'Ned' }); // no city
+  const withOld = JSON.parse(fs.readFileSync(process.env.SUBSCRIBERS_FILE));
+  withOld.push({ email: 'toast-old@realmail.io', firstName: 'Olga', city: 'Lima', subscribedAt: day(3) });
+  fs.writeFileSync(process.env.SUBSCRIBERS_FILE, JSON.stringify(withOld));
+  const stored2 = JSON.parse(fs.readFileSync(process.env.SUBSCRIBERS_FILE));
+  check('signup keeps a plain city name and drops a spam/URL city', stored2.find(x => x.email === 'toast1@realmail.io')?.city === 'Medellín, Colombia' && stored2.find(x => x.email === 'toast2@realmail.io')?.city === null, JSON.stringify(stored2.slice(-4)));
+  const toast = (await (await fetch(B + '/api/recent-subscribers')).json()).items;
+  check('recent-subscribers lists only last-48h signups with a real city', toast.length === 1 && toast[0].city === 'Medellín, Colombia', JSON.stringify(toast));
+  check('recent-subscribers returns only { initial, city, minutesAgo }', toast.length === 1 && Object.keys(toast[0]).sort().join() === 'city,initial,minutesAgo' && toast[0].initial === 'M' && toast[0].minutesAgo <= 5, JSON.stringify(toast));
+  check('recent-subscribers never sends a made-up city', !toast.some(x => /verified subscriber|undefined|null/i.test(x.city)), JSON.stringify(toast));
+
+  // Admin newsletter send with non-string fields used to hang (uncaught throw in an async handler).
+  res = await fetch(B + '/api/send-newsletter', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Admin-Key': 'test-admin-key', 'X-Forwarded-For': '192.0.2.60' }, body: JSON.stringify({ subject: 'Hi', html: 5 }), signal: AbortSignal.timeout(5000) }).catch(() => ({ status: 'timeout' }));
+  check('send-newsletter rejects non-string html with 400 instead of hanging', res.status === 400, String(res.status));
+
   if (createdNl) fs.unlinkSync(nlFile);
   fs.rmSync(dir, { recursive: true, force: true });
   console.log(failures ? `[test_server] ${failures} FAILED` : '[test_server] all passed');

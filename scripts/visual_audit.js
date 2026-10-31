@@ -164,9 +164,21 @@ async function checkLiveAssets() {
       // Popups opened by scrolling get their own screenshot, then are closed so the map is visible.
       if (await page.locator('.popup-overlay.active').count()) {
         await page.screenshot({ path: shot.replace('.png', '_popup.png') });
+        // Park the mouse mid-screen first: Playwright's pointer sits at (0,0), so the
+        // scroll to the map fires a mouseout with clientY < 5 and the homepage's
+        // exit-intent handler re-opens the popup over the map screenshot.
+        await page.mouse.move(vp.width / 2, vp.height / 2);
         await page.evaluate(() => { document.querySelectorAll('.popup-overlay.active').forEach(el => el.classList.remove('active')); document.body.style.overflow = ''; });
       }
-      if (info.map) { await page.locator('#worldMap').screenshot({ path: shot.replace('.png', '_map.png') }).catch(() => {}); }
+      if (info.map) {
+        const map = page.locator('#worldMap');
+        await map.scrollIntoViewIfNeeded().catch(() => {});
+        const popupGone = await page.waitForFunction(() => [...document.querySelectorAll('.popup-overlay')].every(el => {
+          const s = getComputedStyle(el); return s.display === 'none' || s.visibility === 'hidden' || +s.opacity === 0;
+        }), null, { timeout: 3000 }).then(() => true, () => false);
+        if (!popupGone) add('P2', p, `${vp.name}: a popup stayed open over the travel map, so the map screenshot shows the popup`);
+        await map.screenshot({ path: shot.replace('.png', '_map.png') }).catch(() => {});
+      }
       report.push({ page: p, viewport: vp.name, status, thirdParty, screenshot: shot });
       await page.close();
     }
